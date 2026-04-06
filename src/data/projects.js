@@ -3,19 +3,11 @@ export const PROJECTS = [
     id: 'hotspots',
     title: 'Content Hotspots',
     company: 'Amazon · Kindle',
-<<<<<<< HEAD
     type: '0→1 Product Design · AI Experience',
     tagline: 'A layered reading model that surfaces contextual knowledge on demand without interrupting the act of reading.',
     thumbBg: 'linear-gradient(135deg, #1a2744 0%, #0d1a36 100%)',
     thumbIcon: '◈',
     thumbImg: 'images/hotspots/hotspot-hero.jpg',
-=======
-    type: '0→1 Product Design',
-    tagline: 'A layered reading model that surfaces contextual knowledge on demand without interrupting the act of reading.',
-    thumbBg: 'linear-gradient(135deg, #1a2744 0%, #0d1a36 100%)',
-    thumbIcon: '◈',
-    thumbImg: 'hotspot-hero.jpg',
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
     status: 'available',
   },
   {
@@ -26,11 +18,7 @@ export const PROJECTS = [
     tagline: 'Redesigning how readers capture, organize, and return to content that matters without ever leaving the page.',
     thumbBg: 'linear-gradient(135deg, #1a3030 0%, #0d2020 100%)',
     thumbIcon: '◉',
-<<<<<<< HEAD
     thumbImg: 'images/pins/pinnable-content-hero.jpg',
-=======
-    thumbImg: 'pinnable-content-hero.jpg',
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
     status: 'available',
   },
   {
@@ -41,11 +29,7 @@ export const PROJECTS = [
     tagline: 'Designing trustworthy ad experiences that drive e-commerce value by first understanding why users tune ads out entirely.',
     thumbBg: 'linear-gradient(135deg, #251a10 0%, #180f06 100%)',
     thumbIcon: '◇',
-<<<<<<< HEAD
     thumbImg: 'images/rokt/rokt-hero.jpg',
-=======
-    thumbImg: 'rokt-hero.jpg',
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
     status: 'available',
   },
   {
@@ -56,11 +40,7 @@ export const PROJECTS = [
     tagline: 'Sole designer across mobile, desktop, and brand for a home healthcare staffing platform. Built the system from scratch, including a call-out network that drove a 30% increase in shift coverage.',
     thumbBg: 'linear-gradient(135deg, #101a28 0%, #080f1a 100%)',
     thumbIcon: '◆',
-<<<<<<< HEAD
     thumbImg: 'images/swiftshift/swiftshift_thumbnail.jpg',
-=======
-    thumbImg: null,
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
     status: 'available',
   },
 ]

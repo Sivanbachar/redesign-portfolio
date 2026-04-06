@@ -54,11 +54,7 @@ export default function Hotspots() {
       <button className="cs-back" onClick={() => navigate('/')}>← All Work</button>
 
       <div className="cs-hero sr">
-<<<<<<< HEAD
         <p className="cs-tag">Amazon · Kindle · AI-Powered Experience · Sole Designer · 2026</p>
-=======
-        <p className="cs-tag">Amazon · Kindle · Sole Designer · 2026</p>
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
         <h1 className="cs-h1">Content<br />Hotspots</h1>
         <p className="cs-lead">A layered reading model that delivers contextual knowledge on demand without interrupting the act of reading.</p>
       </div>
@@ -67,11 +63,7 @@ export default function Hotspots() {
         {[
           ['Role', 'Sole Designer\nConcept Originator'],
           ['Platform', 'Kindle iOS & Android\nE-ink'],
-<<<<<<< HEAD
           ['Technology', 'AI-Powered\nOn-device + cloud inference'],
-=======
-          ['Timeline', '2026 launch'],
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
           ['Scope', 'Concept → Beta\nMulti-tranche experiment'],
         ].map(([l, v]) => (
           <div className="cs-meta-cell sr" key={l}>

@@ -23,13 +23,8 @@ export default function SwiftShift() {
         {[
           ['Role', 'Sole Product Designer'],
           ['Surfaces', 'iOS Mobile\nDesktop Web\nMarketing & Brand'],
-<<<<<<< HEAD
           ['Delivered', 'Design System\nNurse App\nScheduler Tool\nCall-Out System\nClock In / Out\nAnalytics Dashboard'],
           ['Impact', '$5,120 saved / manager / yr\n60% easier shift fill\n75% improved autonomy\n33% improved retention'],
-=======
-          ['Delivered', 'Design System\nNurse App\nScheduler Tool\nAdvanced Pay\nCall-Out System\nAnalytics Dashboard'],
-          ['Impact', '+30% shift coverage\nReduced scheduler burden\nGrowing platform adoption'],
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
         ].map(([l, v]) => (
           <div className="cs-meta-cell sr" key={l}>
             <p className="cs-meta-label">{l}</p>
@@ -42,15 +37,7 @@ export default function SwiftShift() {
 
         {/* HERO VISUAL */}
         <div className="cs-section sr">
-<<<<<<< HEAD
           <img src="/images/swiftshift/swift_shift_hero.jpg" alt="Swift Shift Platform Overview" style={{ width: '100%', borderRadius: 8, border: '1px solid var(--bdr)', display: 'block' }} />
-=======
-          <VP
-            label="Swift Shift Platform Overview"
-            desc="Split view: nurse mobile app on the left, scheduler desktop tool on the right. Both showing live shift states."
-            height={480}
-          />
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
         </div>
 
         {/* THE PROBLEM */}
@@ -184,20 +171,12 @@ export default function SwiftShift() {
               <p className="cs-p sr">I also introduced clear visual states for filled versus unfilled shifts, and a dashboard view that made urgent needs visible at a glance. Schedulers could now see exactly where the gaps were without hunting across multiple tools.</p>
             </div>
             <div>
-<<<<<<< HEAD
               <img src="/images/swiftshift/swiftshift-scheduler.jpg" alt="Scheduler Dashboard" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
-=======
-              <img src="/1.png" alt="Scheduler Dashboard" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
             </div>
           </div>
           <div className="cs-2col" style={{ marginTop: 40 }}>
             <div>
-<<<<<<< HEAD
               <img src="/images/swiftshift/swiftshift-create-shift.jpg" alt="Shift Creation Flow" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
-=======
-              <img src="/2.png" alt="Shift Creation Flow" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
             </div>
             <div>
               <div className="cs-callout sr">
@@ -236,20 +215,12 @@ export default function SwiftShift() {
             <div>
               <p className="cs-p sr">Nurses needed enough information to decide whether a shift made sense for them. But we couldn't expose patient details. That constraint was non-negotiable.</p>
               <p className="cs-p sr">What we landed on was a set of contextual signals that sat just below the privacy line: general age range, broad location at the market level, and required skills. Enough for a nurse to make a reasonable judgment. Not enough to identify a patient.</p>
-<<<<<<< HEAD
               <p className="cs-p sr">Every decision in this space required judgment about where that line was. What actually helps someone make a decision, and what crosses into territory that shouldn't be crossed. There was no formula. We worked through it case by case.</p>
               <div className="cs-insight sr" style={{ marginTop: 24 }}>
-=======
-            </div>
-            <div>
-              <p className="cs-p sr">Every decision in this space required judgment about where that line was. What actually helps someone make a decision, and what crosses into territory that shouldn't be crossed. There was no formula. We worked through it case by case.</p>
-              <div className="cs-insight sr">
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
                 <span className="cs-insight-label">Design Constraint</span>
                 <p className="cs-insight-text">The privacy constraint didn't just affect what information we showed. It affected how trust was built on both sides of the platform. Nurses needed confidence in the product. Patients and operators needed confidence that nothing was being exposed carelessly.</p>
               </div>
             </div>
-<<<<<<< HEAD
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
               <div style={{ width: '100%', maxWidth: 280 }}>
                 <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 12, textAlign: 'center' }}>Shift Detail View</p>
@@ -261,45 +232,6 @@ export default function SwiftShift() {
                 />
               </div>
             </div>
-=======
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
-          </div>
-        </div>
-
-        {/* NURSE APP */}
-        <div className="cs-section">
-          <span className="cs-section-label sr">The Nurse App</span>
-          <h2 className="cs-h2 sr">One question the mobile experience had to answer: is this shift right for me?</h2>
-          <div className="cs-2col">
-            <div>
-              <p className="cs-p sr">Nurses are busy, often mid-shift or in transit when they're evaluating new work. The mobile experience needed to answer that one question as quickly as possible: is this worth my time?</p>
-              <p className="cs-p sr">I designed the search and filtering experience so nurses could narrow by location, skill requirements, and timing without friction. Shift cards surfaced the right information in the right order, with enough context to decide without digging deeper.</p>
-            </div>
-            <div />
-          </div>
-          <div className="sr" style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div style={{ border: '1px solid var(--bdr)', borderRadius: 12, overflow: 'hidden', width: '100%', maxWidth: 420 }}>
-              <div style={{ padding: '10px 16px', borderBottom: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--bg2)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--cobalt)', display: 'inline-block', flexShrink: 0 }} />
-                  <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0 }}>Live prototype — click to interact</p>
-                </div>
-                <button
-                  onClick={() => { const f = document.getElementById('nurse-proto'); f.src = f.src }}
-                  style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', background: 'none', border: '1px solid var(--bdr)', borderRadius: 4, padding: '4px 10px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5 }}
-                  onMouseEnter={e => e.currentTarget.style.color = 'var(--txt)'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'var(--txt3)'}
-                >↺ Refresh</button>
-              </div>
-              <div style={{ position: 'relative', overflow: 'hidden', height: 560 }}>
-                <iframe
-                  id="nurse-proto"
-                  src="https://eagle-sauna-45279823.figma.site/"
-<<<<<<< HEAD
-                  style={{ position: 'absolute', top: 0, left: '50%', marginLeft: -280, width: '560px', height: '746px', border: 'none', display: 'block', transform: 'scale(0.75)', transformOrigin: 'top center' }}
-=======
-                  style={{ position: 'absolute', top: 0, left: 0, width: '560px', height: '746px', border: 'none', display: 'block', transform: 'scale(0.75)', transformOrigin: 'top left' }}
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
                   allowFullScreen
                 />
               </div>
@@ -322,32 +254,12 @@ export default function SwiftShift() {
               <p className="cs-p sr">I partnered with the CEO to test a different hypothesis: could nurses help fill shifts themselves? We built a group-based messaging system that organized nurses into care groups. When a nurse called out, the shift became visible to that group and nurses could pick it up directly.</p>
             </div>
           </div>
-<<<<<<< HEAD
-=======
-          <div className="cs-kpi-row sr" style={{ marginTop: 40 }}>
-            {[
-              ['+30%', 'Shift Coverage', 'increase through peer-driven fill'],
-              ['Reduced', 'Scheduler Burden', 'less time on manual replacement calls'],
-              ['Increased', 'Platform Trust', 'nurses felt more agency over their schedule'],
-            ].map(([n, l, d]) => (
-              <div className="cs-kpi" key={l}>
-                <p className="cs-kpi-num">{n}</p>
-                <p className="cs-kpi-label">{l}</p>
-                <p className="cs-kpi-desc">{d}</p>
-              </div>
-            ))}
-          </div>
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
           <div className="cs-2col" style={{ marginTop: 40 }}>
             <div>
               <div className="sr" style={{ display: 'flex', alignItems: 'center', gap: 16, justifyContent: 'center' }}>
                 <div style={{ flex: 1, textAlign: 'center' }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 10 }}>Messaging</p>
-<<<<<<< HEAD
                   <img src="/images/swiftshift/MessagingPage.jpg" alt="Group Messaging" style={{ width: '100%', maxWidth: 200, borderRadius: 8, border: '1px solid var(--bdr)', display: 'inline-block' }} />
-=======
-                  <img src="/MessagingPage.png" alt="Group Messaging" style={{ width: '100%', maxWidth: 200, borderRadius: 8, border: '1px solid var(--bdr)', display: 'inline-block' }} />
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flexShrink: 0 }}>
                   <div style={{ width: 32, height: 1, background: 'var(--cobalt)' }} />
@@ -355,11 +267,7 @@ export default function SwiftShift() {
                 </div>
                 <div style={{ flex: 1, textAlign: 'center' }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 10 }}>Call-Out</p>
-<<<<<<< HEAD
                   <img src="/images/swiftshift/call-out.jpg" alt="Call-Out Screen" style={{ width: '100%', maxWidth: 200, borderRadius: 8, border: '1px solid var(--bdr)', display: 'inline-block' }} />
-=======
-                  <img src="/call-out.png" alt="Call-Out Screen" style={{ width: '100%', maxWidth: 200, borderRadius: 8, border: '1px solid var(--bdr)', display: 'inline-block' }} />
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
                 </div>
               </div>
             </div>
@@ -371,7 +279,6 @@ export default function SwiftShift() {
           </div>
         </div>
 
-<<<<<<< HEAD
         {/* CLOCK IN/OUT */}
         <div className="cs-section">
           <span className="cs-section-label sr">Clock In / Clock Out</span>
@@ -426,31 +333,6 @@ export default function SwiftShift() {
         </div>
 
         {/* OUTCOMES */}
-=======
-        {/* ADVANCED PAY */}
-        <div className="cs-section">
-          <span className="cs-section-label sr">Advanced Pay</span>
-          <h2 className="cs-h2 sr">Nurses weren't hesitant about the work. They were hesitant about waiting two weeks to get paid for it.</h2>
-          <div className="cs-2col">
-            <div>
-              <p className="cs-p sr">Payment timing was a real barrier to adoption. Bi-weekly pay cycles don't match how a lot of home healthcare nurses manage their finances. They needed to know they'd see money sooner.</p>
-              <p className="cs-p sr">I designed an advanced pay feature that let nurses request early payment, see exactly how much had been advanced, and understand what that left in their upcoming paycheck. The math was transparent. The current state was always clear.</p>
-            </div>
-            <div>
-              <p className="cs-p sr">In user testing, this resonated more strongly than almost anything else we put in front of nurses. They understood it immediately and cited it as a genuine reason to choose Swift Shift over other work.</p>
-              <div className="cs-pullquote sr">
-                <p className="cs-pullquote-text">"This is how I actually think about my money."</p>
-                <p className="cs-pullquote-attr">Nurse, user testing session</p>
-              </div>
-            </div>
-          </div>
-          <div style={{ marginTop: 40 }}>
-            <VP label="Advanced Pay UI" desc="Mobile: pay summary card showing total earned, amount advanced, remaining in upcoming paycheck. Request advance CTA with confirmation state." height={320} />
-          </div>
-        </div>
-
-        {/* ANALYTICS */}
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
         <div className="cs-section">
           <span className="cs-section-label sr">Making Performance Visible</span>
           <h2 className="cs-h2 sr">Schedulers needed to see whether the platform was actually working.</h2>
@@ -460,11 +342,7 @@ export default function SwiftShift() {
               <p className="cs-p sr">After launch, more schedulers started incorporating Swift Shift into their regular workflow. Seeing the numbers gave them a concrete reason to keep using it.</p>
             </div>
             <div>
-<<<<<<< HEAD
               <img src="/images/swiftshift/dashboard.jpg" alt="Scheduler Analytics Dashboard" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
-=======
-              <VP label="Scheduler Analytics Dashboard" desc="Desktop dashboard: shifts filled chart, nurse type breakdown, fill rate trend over 30 days. Clean data layout with period selector." height={280} />
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
             </div>
           </div>
         </div>
@@ -475,11 +353,7 @@ export default function SwiftShift() {
           <h2 className="cs-h2 sr">This wasn't a set of features. It was a platform that changed how the work got done.</h2>
           <div className="cs-2col">
             <div>
-<<<<<<< HEAD
               <p className="cs-p sr">Schedule managers saved an average of $5,120 per year. 60% report an easier time filling work shifts. 75% report improved employee autonomy, and 33% report improved retention — outcomes that trace directly back to giving nurses more agency and schedulers a clearer system.</p>
-=======
-              <p className="cs-p sr">The call-out system drove a 30% increase in shifts covered through peer-to-peer fill. Time schedulers spent on manual replacement calls dropped. Nurse trust in the platform grew, particularly around pay transparency and shift visibility.</p>
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
               <p className="cs-p sr">As schedulers saw results, adoption grew. The platform wasn't just functional. It became something people relied on.</p>
             </div>
             <div>
@@ -489,16 +363,10 @@ export default function SwiftShift() {
           </div>
           <div className="cs-kpi-row sr" style={{ marginTop: 48 }}>
             {[
-<<<<<<< HEAD
               ['$5,120', 'Saved Yearly', 'per schedule manager on average'],
               ['60%', 'Easier Shift Fill', 'of managers report having an easier time filling work shifts'],
               ['75%', 'Employee Autonomy', 'of managers report improved employee autonomy'],
               ['33%', 'Employee Retention', 'of managers report having improved employee retention'],
-=======
-              ['+30%', 'Shift Coverage', 'peer-driven fill via call-out system'],
-              ['1 Designer', 'Full System', 'brand, mobile, desktop, internal tools'],
-              ['Growing', 'Scheduler Adoption', 'as platform confidence increased post-launch'],
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
             ].map(([n, l, d]) => (
               <div className="cs-kpi" key={l}>
                 <p className="cs-kpi-num">{n}</p>
@@ -513,11 +381,7 @@ export default function SwiftShift() {
 
       <footer className="footer" style={{ marginTop: 80 }}>
         <button className="cs-back" style={{ padding: 0 }} onClick={() => navigate('/')}>← All Work</button>
-<<<<<<< HEAD
         <button className="nav-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to Top ↑</button>
-=======
-        <button className="nav-btn" onClick={() => navigate('/projects/hotspots')}>Back to Top ↑</button>
->>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
       </footer>
     </div>
   )
