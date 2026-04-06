@@ -98,7 +98,10 @@ export default function Nav() {
                     </div>
                     <p className="mega-thumb-company">{p.company}</p>
                     <p className="mega-thumb-name">{p.title}</p>
+<<<<<<< HEAD
                     {p.type && <p className="mega-thumb-type">{p.type}</p>}
+=======
+>>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
                   </div>
                 ))}
               </div>
@@ -115,7 +118,11 @@ export default function Nav() {
                 onClick={() => { navigate('/ai'); setOpen(false) }}
               >
                 <div className="mega-ai-img">
+<<<<<<< HEAD
                   <img src="/images/ai/currently.png" alt="AI-Augmented Design" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 4 }} />
+=======
+                  <img src="/currently.png" alt="AI-Augmented Design" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 4 }} />
+>>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
                 </div>
                 <p className="mega-thumb-company">Personal · Ongoing</p>
                 <p className="mega-thumb-name">AI-Augmented Design</p>

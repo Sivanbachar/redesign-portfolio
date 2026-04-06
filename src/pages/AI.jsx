@@ -9,7 +9,11 @@ const AI_PROJECTS = [
     label: 'Currently',
     title: 'AI-Augmented Portfolio Build',
     headline: 'Using AI to accelerate execution so I can focus on product strategy and human centered problem solving.',
+<<<<<<< HEAD
     image: '/images/ai/currently.png',
+=======
+    image: '/currently.png',
+>>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
     body: [
       { text: "I've started building design in code with Claude Code and converting it directly into Figma.", bold: "The speed difference is real." },
       { text: "What used to take days now takes hours, and more importantly, it's freed me to focus on what actually matters: product strategy, user behavior, the deeper decisions about what gets built and why." },

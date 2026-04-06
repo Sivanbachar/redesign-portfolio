@@ -81,7 +81,11 @@ export default function About() {
         {/* Header photo + name + bio */}
         <div className="resume-header sr">
           <div className="resume-photo-wrap">
+<<<<<<< HEAD
             <img src="/images/resume/profile.png" alt="Sivan Baum" className="resume-portrait" />
+=======
+            <img src="/profile.png" alt="Sivan Baum" className="resume-portrait" />
+>>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
           </div>
           <div>
             <h1 className="resume-name">

@@ -33,8 +33,11 @@ export function usePaginatedScroll(active = true) {
       currentIdx = best
     }
     syncIdx()
+<<<<<<< HEAD
     // Re-sync after all images load so layout shifts don't desync the index
     window.addEventListener('load', syncIdx, { once: true })
+=======
+>>>>>>> 1c49746f2dcfe990d5800aef9f15830ac7cfc720
 
     const goTo = (idx) => {
       const now = Date.now()
