@@ -99,6 +99,23 @@ export default function Nav() {
                     <p className="mega-thumb-company">{p.company}</p>
                     <p className="mega-thumb-name">{p.title}</p>
                     {p.type && <p className="mega-thumb-type">{p.type}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="mega-divider" />
+
+            {/* AI Work */}
+            <div className="mega-col mega-col--ai">
+              <p className="mega-label">My AI Work</p>
+              <div
+                className="mega-ai-card"
+                onClick={() => { navigate('/ai'); setOpen(false) }}
+              >
+                <div className="mega-ai-img">
+                  <img src="/images/ai/currently.png" alt="AI-Augmented Design" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 4 }} />
                 </div>
                 <p className="mega-thumb-company">Personal · Ongoing</p>
                 <p className="mega-thumb-name">AI-Augmented Design</p>

@@ -232,13 +232,6 @@ export default function SwiftShift() {
                 />
               </div>
             </div>
-                  allowFullScreen
-                />
-              </div>
-              <div style={{ padding: '10px 16px', borderTop: '1px solid var(--bdr)', background: 'var(--bg2)' }}>
-                <p style={{ fontFamily: 'var(--sans)', fontSize: 11, color: 'var(--txt3)', marginBottom: 0, textAlign: 'center' }}>Clickable prototype — tap or click through to explore the nurse-facing experience</p>
-              </div>
-            </div>
           </div>
         </div>
 
