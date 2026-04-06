@@ -161,6 +161,25 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 .mega-cols { display: flex; align-items: flex-start; gap: 0; }
 .mega-col--work { flex: 1 1 auto; min-width: 0; }
 .mega-col--ai { flex: 0 0 220px; }
+.mega-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+.mega-thumb {
+  cursor: pointer; transition: opacity 0.2s;
+}
+.mega-thumb:hover { opacity: 0.7; }
+.mega-thumb-img {
+  width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;
+  background: var(--bg2); margin-bottom: 10px;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.mega-thumb:hover .mega-thumb-img { transform: scale(0.97); }
+.mega-thumb-icon {
+  width: 100%; height: 100%; display: flex; align-items: center;
+  justify-content: center; font-size: 24px; opacity: 0.15;
+}
 .mega-divider {
   width: 1px; align-self: stretch;
   background: var(--bdr); margin: 0 32px;
