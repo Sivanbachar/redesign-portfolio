@@ -432,7 +432,7 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
   pointer-events: none;
 }
 .hero-name {
-  font-family: var(--display); font-weight: 300;
+  font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300;
   font-size: clamp(80px, 13vw, 180px);
   line-height: 0.9; letter-spacing: -0.03em;
   color: var(--txt); margin-bottom: 28px; user-select: none;
