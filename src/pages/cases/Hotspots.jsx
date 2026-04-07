@@ -397,10 +397,10 @@ export default function Hotspots() {
                 </div>
 
                 {/* Iframe */}
-                <div style={{ position: 'relative', width: '100%', paddingBottom: '66.67%' }}>
+                <div style={{ width: '100%', height: '780px' }}>
                   <iframe
                     src="https://adjust-fleck-61194520.figma.site"
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none', display: 'block' }}
+                    style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
                     allowFullScreen
                     title="Hotspots Interactive Prototype"
                   />

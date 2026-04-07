@@ -109,8 +109,6 @@ export default function BookPins() {
             {[
               ['446K+', 'Users', 'reached through the shipped experience'],
               ['950K+', 'Pins created', 'across the user base'],
-              ['45%', 'Repeat usage', 'after first pin'],
-              ['56%', 'Engagement', 'pin interaction rate'],
             ].map(([n, l, d]) => (
               <div className="cs-kpi" key={l}>
                 <p className="cs-kpi-num">{n}</p>
@@ -389,7 +387,7 @@ export default function BookPins() {
           <p className="cs-p sr">Instead of navigating away to manage saved content, readers could engage with it directly leading to deeper interaction, higher retention and new reading behaviors.</p>
           <div className="cs-kpi-row sr">
             {[
-              ['950k+', 'Pins created', 'across the user base'],
+              ['950K+', 'Pins created', 'across the user base'],
               ['45%', 'Repeat usage', 'after first pin'],
               ['56%', 'Pin interaction rate', 'engagement with pinned content'],
             ].map(([n, l, d]) => (
