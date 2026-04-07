@@ -297,7 +297,28 @@ export default function BookPins() {
           <h2 className="cs-h2 sr">Book Pins</h2>
           <p className="cs-p sr" style={{ fontSize: 16, fontStyle: 'italic', color: 'var(--txt)', marginBottom: 8 }}>Reference in context. No page exits.</p>
           <p className="cs-p sr">Book Pins introduces a new interaction model that allows readers to reference content without leaving the page. Instead of navigating to saved highlights or notes, readers can bring relevant content into view and interact with it directly within the reading experience.</p>
-          <VP label="Book Pins Final Design" desc="Final solution screens: collapsed entry point state, expanded interaction layer, scroll/zoom within pins, and seamless dismissal back to reading position." height={460} />
+          {/* Solution video */}
+          <div className="bp-solution-video sr" style={{ marginTop: 32 }}>
+            <video
+              src="/images/pins/solution_video.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: '100%', borderRadius: 12, border: '1px solid var(--bdr)', display: 'block' }}
+            />
+            <p style={{
+              fontFamily: 'var(--mono)',
+              fontSize: 10,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--txt3)',
+              marginTop: 10,
+              textAlign: 'center',
+            }}>
+              ↑ Autoplaying loop · No audio · Demonstrates the live pinnable content experience
+            </p>
+          </div>
           <div className="cs-2col" style={{ marginTop: 40 }}>
             <div>
               <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 16 }}>How it works</p>
