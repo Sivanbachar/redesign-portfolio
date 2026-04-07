@@ -90,7 +90,7 @@ export default function Hotspots() {
         <div className="cs-section sr" style={{ position: 'relative', marginBottom: 0, paddingBottom: 0 }}>
           <div style={{ position: 'relative', borderRadius: 8, overflow: 'hidden' }}>
             <img
-              src="/images/hotspots/hotspot_main_hero.jpg"
+              src="/images/hotspots/hotspot-hero.jpg"
               alt="Hotspots Reading Experience"
               style={{ width: '100%', display: 'block', borderRadius: 8 }}
             />
