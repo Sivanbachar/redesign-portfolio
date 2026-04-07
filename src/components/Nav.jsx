@@ -82,7 +82,7 @@ export default function Nav() {
             <div className="mega-col mega-col--work">
               <p className="mega-label">Selected Work</p>
               <div className="mega-row">
-                {PROJECTS.map((p) => (
+                {PROJECTS.filter(p => !p.hidden).map((p) => (
                   <div
                     key={p.id}
                     className="mega-thumb"

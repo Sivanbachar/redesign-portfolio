@@ -101,7 +101,7 @@ export default function Home() {
       </section>
 
       <section className="projects-sec">
-        {PROJECTS.map((p, i) => (
+        {PROJECTS.filter(p => !p.hidden).map((p, i) => (
           <div
             key={p.id}
             className="proj-panel page-section"
