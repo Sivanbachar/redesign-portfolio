@@ -89,7 +89,7 @@ export default function BookPins() {
       <div className="cs-body">
         <div className="cs-section sr">
           <img
-            src="/images/hotspots/hotspot_main_hero.png"
+            src="/images/hotspots/hotspot_main_hero.jpg"
             alt="Book Pins Reading Surface"
             style={{ width: '100%', borderRadius: 8, display: 'block' }}
           />
