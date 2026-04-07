@@ -1,10 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../../hooks/useScrollReveal.js'
 import { useReadingProgress } from '../../hooks/useReadingProgress.js'
 import VP from '../../components/VP.jsx'
-
-const PASSWORD = 'helloworld'
 
 const ITERATIONS = [
   { id: 'menu-toggle', name: 'Menu Toggle', img: '/images/hotspots/iterations/menu-toggle.jpg', behavior: 'Global toggle switches all insights on and off via a menu control.', rejected: 'All-or-nothing approach lacks contextual control. Readers either see everything or nothing, with no way to engage with a specific moment in the text. Also required awareness of a menu item to activate.' },
@@ -20,44 +18,7 @@ export default function Hotspots() {
   useScrollReveal()
   const pct = useReadingProgress()
 
-  const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem('hs_unlock') === '1')
-  const [pwd, setPwd] = useState('')
-  const [error, setError] = useState(false)
   const [activeIter, setActiveIter] = useState(ITERATIONS[0])
-
-  const gateRef = useRef(null)
-  const inputRef = useRef(null)
-
-  // Block scrolling past the gate when locked
-  useEffect(() => {
-    if (unlocked) return
-    const onWheel = (e) => {
-      if (e.deltaY <= 0) return
-      const gate = gateRef.current
-      if (!gate) return
-      const rect = gate.getBoundingClientRect()
-      if (rect.top < window.innerHeight + 60) {
-        e.preventDefault()
-        gate.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        setTimeout(() => inputRef.current?.focus(), 450)
-      }
-    }
-    window.addEventListener('wheel', onWheel, { passive: false })
-    return () => window.removeEventListener('wheel', onWheel)
-  }, [unlocked])
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (pwd === PASSWORD) {
-      sessionStorage.setItem('hs_unlock', '1')
-      setUnlocked(true)
-    } else {
-      setError(true)
-      setPwd('')
-      setTimeout(() => setError(false), 1400)
-      inputRef.current?.focus()
-    }
-  }
 
   return (
     <div className="pg cs-wrap">
@@ -94,51 +55,11 @@ export default function Hotspots() {
               alt="Hotspots Reading Experience"
               style={{ width: '100%', display: 'block', borderRadius: 8 }}
             />
-            {!unlocked && (
-              <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0, height: '55%',
-                background: 'linear-gradient(to bottom, transparent 0%, var(--bg) 85%)',
-                pointerEvents: 'none',
-              }} />
-            )}
           </div>
         </div>
 
-        {/* ── Password gate ── */}
-        {!unlocked && (
-          <div ref={gateRef} className="hs-gate" style={{ marginTop: 0 }}>
-            <div className="hs-gate-fade" />
-            <div className="hs-gate-card">
-              <div className="hs-gate-lock">
-                <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="1" y="9" width="16" height="12" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-                  <path d="M4 9V6a5 5 0 0110 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  <circle cx="9" cy="15" r="1.5" fill="currentColor"/>
-                </svg>
-              </div>
-              <p className="hs-gate-title">Password protected</p>
-              <p className="hs-gate-sub">This case study requires a password to continue</p>
-              <form onSubmit={handleSubmit} className="hs-gate-form">
-                <input
-                  ref={inputRef}
-                  type="password"
-                  value={pwd}
-                  onChange={(e) => { setPwd(e.target.value); setError(false) }}
-                  placeholder="Enter password"
-                  className={`hs-gate-input${error ? ' err' : ''}`}
-                  autoComplete="off"
-                />
-                <button type="submit" className="btn-white hs-gate-btn">
-                  Unlock →
-                </button>
-              </form>
-              {error && <p className="hs-gate-error">Incorrect password. Try again.</p>}
-            </div>
-          </div>
-        )}
-
-        {/* ── Locked content hidden until unlocked ── */}
-        {unlocked && <>
+        {/* ── Case study content ── */}
+        {<>
 
           {/* CONTEXT */}
           <div className="cs-section">
