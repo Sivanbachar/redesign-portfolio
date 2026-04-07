@@ -590,7 +590,7 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
   width: 100%; max-width: 500px; aspect-ratio: 4/3;
   background: var(--bg2);
   border-radius: 8px; display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
+  overflow: hidden; position: relative;
   transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), box-shadow 0.55s cubic-bezier(0.16,1,0.3,1);
 }
 .proj-img-block:hover {
@@ -605,6 +605,22 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
   transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 .proj-img-block:hover .proj-img-photo { transform: scale(1.1); }
+.proj-coming-strip {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.62);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+}
+.proj-coming-strip span {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VISUAL PLACEHOLDER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .visual-placeholder {

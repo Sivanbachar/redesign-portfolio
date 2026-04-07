@@ -31,6 +31,7 @@ export const PROJECTS = [
     thumbIcon: '◇',
     thumbImg: 'images/rokt/rokt-hero.jpg',
     status: 'available',
+    comingSoon: true,
   },
   {
     id: 'swiftshift',

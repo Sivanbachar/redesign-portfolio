@@ -124,7 +124,7 @@ export default function Nav() {
                   <img src="/images/ai/currently.png" alt="AI-Augmented Design" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 4 }} />
                 </div>
                 <p className="mega-thumb-company">Personal · Ongoing</p>
-                <p className="mega-thumb-name">AI-Augmented Design</p>
+                <p className="mega-thumb-name">AI Augmented Design</p>
                 <p className="mega-ai-sub">Building and learning at the edge of AI + product design</p>
               </div>
             </div>

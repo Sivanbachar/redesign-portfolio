@@ -117,7 +117,7 @@ export default function Home() {
                 <p className="proj-company sr d1">{p.company}</p>
                 <h2 className="proj-title sr d2">{p.title}</h2>
                 <p className="proj-desc sr d3">{p.tagline}</p>
-                <span className="proj-link sr d4">View Case Study →</span>
+                <span className="proj-link sr d4">{p.comingSoon ? 'Preview Available →' : 'View Case Study →'}</span>
               </div>
               <div className="proj-img-wrap">
                 <div className="proj-img-block" style={{ background: p.thumbBg }}>
@@ -125,6 +125,11 @@ export default function Home() {
                     <img src={`/${p.thumbImg}`} alt={p.title} className="proj-img-photo" />
                   ) : (
                     <span style={{ fontSize: 48, opacity: 0.08 }}>{p.thumbIcon}</span>
+                  )}
+                  {p.comingSoon && (
+                    <div className="proj-coming-strip">
+                      <span>Full case study coming soon</span>
+                    </div>
                   )}
                 </div>
               </div>
