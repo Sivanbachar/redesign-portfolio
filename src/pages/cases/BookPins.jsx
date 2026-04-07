@@ -298,14 +298,14 @@ export default function BookPins() {
           <p className="cs-p sr" style={{ fontSize: 16, fontStyle: 'italic', color: 'var(--txt)', marginBottom: 8 }}>Reference in context. No page exits.</p>
           <p className="cs-p sr">Book Pins introduces a new interaction model that allows readers to reference content without leaving the page. Instead of navigating to saved highlights or notes, readers can bring relevant content into view and interact with it directly within the reading experience.</p>
           {/* Solution video */}
-          <div className="bp-solution-video sr" style={{ marginTop: 32 }}>
+          <div className="bp-solution-video sr" style={{ marginTop: 32, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <video
               src="/images/pins/solution_video.mp4"
               autoPlay
               loop
               muted
               playsInline
-              style={{ width: '100%', borderRadius: 12, border: '1px solid var(--bdr)', display: 'block' }}
+              style={{ maxHeight: '80vh', width: 'auto', maxWidth: '100%', borderRadius: 12, border: '1px solid var(--bdr)', display: 'block' }}
             />
             <p style={{
               fontFamily: 'var(--mono)',
