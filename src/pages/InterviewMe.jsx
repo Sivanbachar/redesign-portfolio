@@ -69,24 +69,13 @@ export default function InterviewMe() {
     setContactState('idle')
   }
 
-  const handleContactSubmit = async (e) => {
+  const handleContactSubmit = (e) => {
     e.preventDefault()
     if (!contactQ.trim() || !contactEmail.trim()) return
-    setContactState('sending')
-    try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email: contactEmail, message: contactQ }),
-      })
-      if (res.ok) {
-        setContactState('sent')
-      } else {
-        setContactState('error')
-      }
-    } catch {
-      setContactState('error')
-    }
+    const subject = encodeURIComponent('Question from your portfolio')
+    const body = encodeURIComponent(`From: ${contactEmail}\n\n${contactQ}`)
+    window.location.href = `mailto:builtbysivan@gmail.com?subject=${subject}&body=${body}`
+    setContactState('sent')
   }
 
   useEffect(() => {
@@ -186,14 +175,10 @@ export default function InterviewMe() {
                       <button
                         type="submit"
                         className="im-contact-send"
-                        disabled={contactState === 'sending'}
                       >
-                        {contactState === 'sending' ? 'Sending...' : 'Send →'}
+                        Send →
                       </button>
                     </div>
-                    {contactState === 'error' && (
-                      <p className="im-contact-error">Something went wrong. Try emailing me directly at builtbysivan@gmail.com</p>
-                    )}
                   </form>
                 </>
               )}
