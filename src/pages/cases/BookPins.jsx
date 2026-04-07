@@ -1,12 +1,65 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../../hooks/useScrollReveal.js'
 import { useReadingProgress } from '../../hooks/useReadingProgress.js'
 import VP from '../../components/VP.jsx'
 
+const ITERATIONS = [
+  {
+    id: 'floating-pip',
+    name: 'Floating PiP Overlay',
+    tag: 'Iteration 01',
+    img: '/images/pins/iteration_1.png',
+    behavior: 'Pinned content floats above the page as a picture-in-picture overlay, visible at all times while reading.',
+    rejected: 'Improved visibility but created gesture complexity, cognitive load, and overlapping interactions. The floating layer competed with reading rather than supporting it. Better for glancing, not deeper interaction.',
+  },
+  {
+    id: 'anchored-panel',
+    name: 'Anchored Panel',
+    tag: 'Iteration 02',
+    img: '/images/pins/iteration_2.png',
+    behavior: 'Content anchored to a fixed side panel, stable and always accessible alongside the reading surface.',
+    rejected: 'Better than floating but over-engineered for an MLP. Too much persistent interface for the initial launch scope — required real estate the reading experience wasn\'t ready to give up.',
+  },
+  {
+    id: 'layered-model',
+    name: 'Layered Model',
+    tag: 'Iteration 03',
+    img: '/images/pins/iteration_3.png',
+    behavior: 'A lightweight, dismissible layer that expands on demand. Collapsed entry point keeps the interface minimal until needed, then enables full interaction.',
+    outcome: 'Selected. Keeps the reading surface clean by default. Readers engage only when they choose to. Easily dismissed to return to context. Scalable as a framework for future in-reading features.',
+    selected: true,
+  },
+]
+
+const REDDIT_POSTS = [
+  {
+    quote: '"This is the best new feature in a long time. I\'m always hunting for my bookmarks for pronunciation guides, glossaries, maps, etc., especially for fantasy books. I love this! You can even zoom in on images right within the pop up"',
+    upvotes: '1.6K upvotes',
+    comments: '134 comments',
+  },
+  {
+    quote: '"I\'m following a Bible reading plan that includes one chapter from the Old Testament and one chapter from the New Testament each day, I started using the pin feature to make it easier to hop back-and-forth. I really appreciate it, and your post gives me hope that there are other uses for it that I haven\'t even imagined."',
+    upvotes: '89 upvotes',
+    comments: '4 comments',
+  },
+  {
+    quote: '"Well as a avid historical fiction and fantasy reader this is a game changer lol. Had always to go back so I just preferred to read those books in paper form. Very nice."',
+    upvotes: '94 upvotes',
+    comments: '13 likes',
+  },
+  {
+    quote: '"This pin feature is truly a game changer. I usually take a photo on my phone of any maps I need to reference and just pull them up when I need to picture the area the author is referencing."',
+    upvotes: '40 upvotes',
+    comments: null,
+  },
+]
+
 export default function BookPins() {
   const navigate = useNavigate()
   useScrollReveal()
   const pct = useReadingProgress()
+  const [activeIter, setActiveIter] = useState(ITERATIONS[0])
 
   return (
     <div className="pg cs-wrap">
@@ -113,6 +166,13 @@ export default function BookPins() {
           <div className="cs-callout sr" style={{ marginTop: 24 }}>
             <p><strong>How might we</strong> enable readers to reference content in context, without disrupting their reading flow?</p>
           </div>
+          <div className="sr" style={{ marginTop: 40 }}>
+            <img
+              src="/images/pins/diagram_1.jpg"
+              alt="Diagram showing the number of steps required to reference content in the original Kindle experience"
+              style={{ width: '100%', borderRadius: 8, border: '1px solid var(--bdr)', display: 'block' }}
+            />
+          </div>
         </div>
 
         {/* RESEARCH */}
@@ -156,7 +216,58 @@ export default function BookPins() {
               </div>
             </div>
             <div>
-              <VP label="Iteration Progression" desc="Side-by-side of three iteration states: floating PiP overlay → anchored panel → final layered model. Shows the visual and interaction evolution." height={320} />
+              <div style={{ border: '1px solid var(--bdr)', borderRadius: 10, overflow: 'hidden', background: 'var(--bg1)' }}>
+                {/* Header */}
+                <div style={{ padding: '12px 20px', borderBottom: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0 }}>Design Explorations</p>
+                  <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0, opacity: 0.6 }}>← Click to explore</p>
+                </div>
+                {/* Tab row */}
+                <div style={{ display: 'flex', borderBottom: '1px solid var(--bdr)' }}>
+                  {ITERATIONS.map(iter => {
+                    const isActive = activeIter?.id === iter.id
+                    return (
+                      <button
+                        key={iter.id}
+                        onClick={() => setActiveIter(iter)}
+                        style={{
+                          flex: 1, padding: '12px 16px', background: isActive ? 'rgba(255,255,255,0.06)' : 'transparent',
+                          border: 'none', borderBottom: `2px solid ${isActive ? (iter.selected ? 'rgba(134,239,172,0.7)' : 'rgba(255,255,255,0.4)') : 'transparent'}`,
+                          cursor: 'pointer', transition: 'background 0.15s',
+                        }}
+                      >
+                        <p style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 4 }}>{iter.tag}</p>
+                        <p style={{ fontFamily: 'var(--sans)', fontSize: 12, fontWeight: isActive ? 500 : 400, color: isActive ? 'var(--txt)' : 'var(--txt2)', marginBottom: 0, lineHeight: 1.3 }}>{iter.name}</p>
+                      </button>
+                    )
+                  })}
+                </div>
+                {/* Image */}
+                {activeIter && (
+                  <div style={{ background: 'var(--bg2)', padding: 20 }}>
+                    <img
+                      key={activeIter.id}
+                      src={activeIter.img}
+                      alt={activeIter.name}
+                      style={{ width: '100%', display: 'block', borderRadius: 6, border: '1px solid var(--bdr)' }}
+                    />
+                    <div style={{ marginTop: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+                      <div>
+                        <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>Behavior</p>
+                        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>{activeIter.behavior}</p>
+                      </div>
+                      <div>
+                        <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: activeIter.selected ? 'rgba(134,239,172,0.8)' : 'var(--txt3)', marginBottom: 8 }}>
+                          {activeIter.selected ? 'Why it worked' : 'Why it was set aside'}
+                        </p>
+                        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>
+                          {activeIter.selected ? activeIter.outcome : activeIter.rejected}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           <div className="cs-finding-grid sr" style={{ marginTop: 40 }}>
@@ -172,7 +283,7 @@ export default function BookPins() {
               </div>
             ))}
           </div>
-          <div className="cs-insight sr">
+          <div className="cs-insight sr" style={{ marginBottom: 0, borderBottom: 'none' }}>
             <span className="cs-insight-label">What This Meant</span>
             <p className="cs-insight-text">This work established a <strong>layered model for reading</strong>, enabling new features to integrate seamlessly without disrupting the core experience.</p>
           </div>
@@ -209,6 +320,65 @@ export default function BookPins() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* REDDIT FEEDBACK */}
+        <div className="cs-section">
+          <span className="cs-section-label sr">User Feedback</span>
+          <h2 className="cs-h2 sr">Hear it from readers.</h2>
+          <p className="cs-p sr">Book Pins resonated immediately after launch. Readers found use cases we hadn't fully anticipated — from religious study plans to fantasy map referencing — validating that the interaction model was flexible enough to support diverse reading behaviors.</p>
+          <div className="sr" style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            {REDDIT_POSTS.map((post, i) => (
+              <div key={i} style={{
+                background: 'var(--bg1)',
+                border: '1px solid var(--bdr)',
+                borderRadius: 10,
+                padding: '28px 28px 24px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: 24,
+              }}>
+                <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--txt2)', lineHeight: 1.7, marginBottom: 0 }}>{post.quote}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  {/* Reddit alien icon */}
+                  <div style={{
+                    width: 36, height: 36, borderRadius: '50%',
+                    background: '#FF4500',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20 10c0-1.1-.9-2-2-2-.5 0-1 .2-1.4.5C15 7.4 13.1 7 11 6.9l.9-4.1 2.7.6c0 .7.6 1.3 1.3 1.3.8 0 1.4-.6 1.4-1.4s-.6-1.4-1.4-1.4c-.5 0-1 .3-1.2.8L11.8 2c-.1 0-.2.1-.2.2l-1 4.6c-2.2.1-4.1.5-5.5 1.6-.4-.3-.9-.5-1.4-.5C2.6 7.9 1.7 8.8 1.7 10c0 .8.4 1.5 1.1 1.8 0 .2-.1.4-.1.6 0 3 3.3 5.4 7.3 5.4s7.3-2.4 7.3-5.4c0-.2 0-.4-.1-.6.6-.4 1-1 1-1.8zM6.1 11.4c0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3 0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3zm7.4 3.2c-.8.8-2.1 1.2-3.5 1.2-1.4 0-2.7-.4-3.5-1.2-.1-.1-.1-.3 0-.4.1-.1.3-.1.4 0 .7.7 1.8 1 3.1 1s2.4-.3 3.1-1c.1-.1.3-.1.4 0 .1.1.1.3 0 .4zm-.3-1.9c-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3 0 .7-.6 1.3-1.3 1.3z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 500, color: 'var(--txt2)', marginBottom: 2 }}>Reddit User</p>
+                    <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--txt3)', marginBottom: 0 }}>
+                      {post.upvotes}{post.comments ? ` · ${post.comments}` : ''}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="sr" style={{ marginTop: 24 }}>
+            <a
+              href="https://www.reddit.com/r/kindle/comments/1ryxcow/new_software_pin_feature/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--txt2)',
+                textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
+                borderBottom: '1px solid var(--bdr2)', paddingBottom: 2,
+                transition: 'color 0.15s, border-color 0.15s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--txt)'; e.currentTarget.style.borderColor = 'var(--txt2)' }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--txt2)'; e.currentTarget.style.borderColor = 'var(--bdr2)' }}
+            >
+              View on Reddit →
+            </a>
           </div>
         </div>
 
@@ -268,7 +438,7 @@ export default function BookPins() {
 
       <footer className="footer" style={{ marginTop: 80 }}>
         <button className="cs-back" style={{ padding: 0 }} onClick={() => navigate('/')}>← All Work</button>
-        <button className="nav-btn" onClick={() => navigate('/projects/rokt')}>Next: Rokt →</button>
+        <button className="nav-btn" onClick={() => navigate('/projects/swiftshift')}>Next: Swift Shift →</button>
       </footer>
     </div>
   )
