@@ -1,7 +1,7 @@
 export const PROJECTS = [
   {
     id: 'hotspots',
-    title: 'Content Hotspots',
+    title: 'Hotspots',
     company: 'Amazon · Kindle',
     type: '0→1 Product Design · AI Experience',
     tagline: 'A layered reading model that surfaces contextual knowledge on demand without interrupting the act of reading.',

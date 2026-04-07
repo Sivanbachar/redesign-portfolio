@@ -6,6 +6,15 @@ import VP from '../../components/VP.jsx'
 
 const PASSWORD = 'helloworld'
 
+const ITERATIONS = [
+  { id: 'menu-toggle', name: 'Menu Toggle', img: '/images/hotspots/iterations/menu-toggle.jpg', behavior: 'Global toggle switches all insights on and off via a menu control.', rejected: 'All-or-nothing approach lacks contextual control. Readers either see everything or nothing, with no way to engage with a specific moment in the text. Also required awareness of a menu item to activate.' },
+  { id: 'persistent-carousel', name: 'Persistent Carousel', img: '/images/hotspots/iterations/persistent-carousel.jpg', behavior: 'Horizontal scroll bar with insights always visible below the reading area.', rejected: 'Creates visual clutter and competes for attention. A persistently visible content strip fights the text rather than supporting it, adding noise to a surface already asking a lot of the reader.' },
+  { id: 'section-indicators', name: 'Section-level Indicators', img: '/images/hotspots/iterations/section-level-indicators.jpg', behavior: 'Subtle markers in the margin hint at available insights for a given section.', rejected: 'Too subtle and easy to miss entirely. Required onboarding or help text to be discoverable, and still underperformed without it. A pattern that needs explanation to be found is not discoverable.' },
+  { id: 'anchored-side-panel', name: 'Anchored Side Panel', img: '/images/hotspots/iterations/anchored-side-panel.jpg', behavior: 'Fixed sidebar shows insights alongside the reading content.', rejected: 'Takes valuable screen real estate, is not mobile-friendly, and starts competing with upcoming reading features. Adds a second surface the reading experience has to share attention with.' },
+  { id: 'bottom-peek', name: 'Bottom Peek Surface', img: '/images/hotspots/iterations/bottom-peek-surface.jpg', behavior: 'Collapsible drawer at the bottom reveals insights on tap.', rejected: 'Hidden by default and requires both awareness and deliberate action to use. No different from the pull model already failing. Readers still had to know something was there before they could find it.' },
+  { id: 'layered-inline', name: 'Layered Inline Model', img: '/images/hotspots/iterations/layered-inline.jpg', behavior: 'Insights embedded directly within the content as inline markers. A tap surfaces a bottom sheet with progressive disclosure. The reading surface is never removed.', outcome: 'Selected. Minimal disruption, contextual by nature, no help text required to understand, and scalable as a framework across all supplemental content types.', selected: true },
+]
+
 export default function Hotspots() {
   const navigate = useNavigate()
   useScrollReveal()
@@ -14,6 +23,8 @@ export default function Hotspots() {
   const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem('hs_unlock') === '1')
   const [pwd, setPwd] = useState('')
   const [error, setError] = useState(false)
+  const [activeIter, setActiveIter] = useState(ITERATIONS[0])
+
   const gateRef = useRef(null)
   const inputRef = useRef(null)
 
@@ -55,8 +66,8 @@ export default function Hotspots() {
 
       <div className="cs-hero sr">
         <p className="cs-tag">Amazon · Kindle · AI-Powered Experience · Sole Designer · 2026</p>
-        <h1 className="cs-h1">Content<br />Hotspots</h1>
-        <p className="cs-lead">A layered reading model that delivers contextual knowledge on demand without interrupting the act of reading.</p>
+        <h1 className="cs-h1">Hotspots</h1>
+        <p className="cs-lead">Reading is the product. Adding contextual content to it risks breaking the thing readers came for. The challenge was never what to surface. It was how to introduce it without the reader knowing an intervention happened.</p>
       </div>
 
       <div className="cs-meta-row">
@@ -75,14 +86,27 @@ export default function Hotspots() {
 
       <div className="cs-body">
 
-        {/* ── Always visible: first section ── */}
-        <div className="cs-section sr">
-          <VP label="Kindle UI" desc="[Replace with Kindle UI screenshot]" height={480} />
+        {/* ── Hero image — fades out at bottom into gate ── */}
+        <div className="cs-section sr" style={{ position: 'relative', marginBottom: 0, paddingBottom: 0 }}>
+          <div style={{ position: 'relative', borderRadius: 8, overflow: 'hidden' }}>
+            <img
+              src="/images/hotspots/hotspot_main_hero.jpg"
+              alt="Hotspots Reading Experience"
+              style={{ width: '100%', display: 'block', borderRadius: 8 }}
+            />
+            {!unlocked && (
+              <div style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0, height: '55%',
+                background: 'linear-gradient(to bottom, transparent 0%, var(--bg) 85%)',
+                pointerEvents: 'none',
+              }} />
+            )}
+          </div>
         </div>
 
         {/* ── Password gate ── */}
         {!unlocked && (
-          <div ref={gateRef} className="hs-gate">
+          <div ref={gateRef} className="hs-gate" style={{ marginTop: 0 }}>
             <div className="hs-gate-fade" />
             <div className="hs-gate-card">
               <div className="hs-gate-lock">
@@ -154,7 +178,14 @@ export default function Hotspots() {
               ))}
             </div>
             <div className="cs-callout sr" style={{ marginTop: 28 }}>
-              <p><strong>How might we</strong> deliver relevant, contextual information within the reading experience in a way that enhances understanding without disrupting the act of reading?</p>
+              <p><strong>How might we</strong> deliver relevant, contextual information within reading in a way that enhances understanding without the reader ever leaving the page?</p>
+            </div>
+            <div className="sr" style={{ marginTop: 40 }}>
+              <img
+                src="/images/hotspots/before_after.jpg"
+                alt="Before and after: reader leaving Kindle vs staying in reading surface"
+                style={{ width: '100%', borderRadius: 8, border: '1px solid var(--bdr)', display: 'block' }}
+              />
             </div>
           </div>
 
@@ -166,6 +197,7 @@ export default function Hotspots() {
               <div>
                 <p className="cs-p sr">The temptation was to fix the specific underperforming features. Better X-Ray. A smarter dictionary. That approach would have produced incremental improvements to a broken model.</p>
                 <p className="cs-p sr">The real opportunity was structural: replace the pull model entirely. Build a unified delivery layer that makes contextual content findable without requiring the reader to look for it.</p>
+                <p className="cs-p sr">This wasn't a feature design problem. It was a question of how supplemental content belongs inside a reading experience at all.</p>
               </div>
               <div>
                 {[
@@ -227,7 +259,7 @@ export default function Hotspots() {
           <div className="cs-section">
             <span className="cs-section-label">Exploration</span>
             <h2 className="cs-h2 sr">Multiple strong directions. One constraint.</h2>
-            <p className="cs-p sr">The constraint that eliminated most directions: any solution that requires the reader to leave the reading surface fails. That ruled out panels, modals and menu based access before they reached hi fi.</p>
+            <p className="cs-p sr">The constraint that eliminated most directions: any solution that requires the reader to leave the reading surface fails. We were looking for a pattern that required no help text to understand, kept the reader inside the experience, didn't add clutter to an already dense page, and felt like a framework rather than another disconnected feature sitting on top of the content.</p>
             <div className="cs-insight sr">
               <span className="cs-insight-label">Design Principle</span>
               <p className="cs-insight-text">Features should exist within reading, not alongside it.</p>
@@ -250,14 +282,90 @@ export default function Hotspots() {
                 ))}
               </div>
             </div>
-            <VP label="Exploration Rejected Directions" desc="Grid of rejected direction sketches: floating overlay, side panel, menu-based access. Annotations showing why each fails the reading-continuity constraint." height={360} />
+            {/* Interactive iteration explorer */}
+            <div className="sr" style={{ marginTop: 40, border: '1px solid var(--bdr)', borderRadius: 10, overflow: 'hidden', background: 'var(--bg1)' }}>
+
+              {/* Header */}
+              <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0, flex: 1 }}>
+                  Design Explorations
+                </p>
+                <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0, opacity: 0.6 }}>
+                  ← Click to explore
+                </p>
+              </div>
+
+              {/* Body: list + image */}
+              <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr' }}>
+
+                {/* Left: iteration list */}
+                <div style={{ borderRight: '1px solid var(--bdr)' }}>
+                  {ITERATIONS.map((iter, i) => {
+                    const isActive = activeIter?.id === iter.id
+                    return (
+                      <button
+                        key={iter.id}
+                        onClick={() => setActiveIter(iter)}
+                        style={{
+                          width: '100%', textAlign: 'left', padding: '16px 20px',
+                          background: isActive ? 'rgba(255,255,255,0.06)' : 'transparent',
+                          border: 'none',
+                          borderBottom: i < ITERATIONS.length - 1 ? '1px solid var(--bdr)' : 'none',
+                          borderLeft: `2px solid ${isActive ? (iter.selected ? 'rgba(134,239,172,0.7)' : 'rgba(255,255,255,0.4)') : 'transparent'}`,
+                          cursor: 'pointer', transition: 'background 0.15s',
+                          display: 'flex', flexDirection: 'column', gap: 6,
+                        }}
+                      >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+                          <p style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: isActive ? 500 : 400, color: isActive ? 'var(--txt)' : 'var(--txt2)', marginBottom: 0, lineHeight: 1.3 }}>
+                            {iter.name}
+                          </p>
+                          <span style={{
+                            fontFamily: 'var(--mono)', fontSize: 7, letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0,
+                            color: iter.selected ? 'rgba(134,239,172,0.8)' : 'var(--txt3)',
+                          }}>
+                            {iter.selected ? '✓ Selected' : 'Rejected'}
+                          </span>
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
+
+                {/* Right: image + detail */}
+                {activeIter && (
+                  <div style={{ padding: '28px 32px' }}>
+                    <div style={{ borderRadius: 6, overflow: 'hidden', border: '1px solid var(--bdr)', marginBottom: 24 }}>
+                      <img
+                        key={activeIter.id}
+                        src={activeIter.img}
+                        alt={activeIter.name}
+                        style={{ width: '100%', display: 'block' }}
+                      />
+                    </div>
+                    <div style={{ paddingBottom: 18, marginBottom: 18, borderBottom: '1px solid var(--bdr)' }}>
+                      <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>Behavior</p>
+                      <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>{activeIter.behavior}</p>
+                    </div>
+                    <div>
+                      <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: activeIter.selected ? 'rgba(134,239,172,0.8)' : 'var(--txt3)', marginBottom: 8 }}>
+                        {activeIter.selected ? 'Why it worked' : 'Why it failed'}
+                      </p>
+                      <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>
+                        {activeIter.selected ? activeIter.outcome : activeIter.rejected}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* SOLUTION */}
           <div className="cs-section">
             <span className="cs-section-label sr">Solution</span>
             <h2 className="cs-h2 sr">The layered reading model.</h2>
-            <p className="cs-p sr">Hotspots surfaces contextual content without changing the reading surface. Readers activate a single toggle. Inline markers appear on relevant entities characters, places, key terms. A tap opens a bottom sheet. The text stays visible. One dismiss returns the reader to their exact position.</p>
+            <p className="cs-p sr">After eliminating every direction that moved the reader off the page, one model remained. Three components define it: an inline marker system embedded in the text, a single toggle that keeps the reader in control, and a bottom sheet that surfaces content without removing the reading surface. This is the model that was chosen, and the pattern that every subsequent supplemental content type can inherit.</p>
             <VP label="Hotspots Reading Surface" desc="Kindle reading page with inline hotspot markers visible on 2-3 entities. Shows the toggle pill in the reading corner in the on state." height={440} />
             <div className="cs-decision-grid sr" style={{ marginTop: 40 }}>
               {[

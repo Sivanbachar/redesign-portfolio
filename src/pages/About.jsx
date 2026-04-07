@@ -29,7 +29,7 @@ const experience = [
     date: 'Aug 2022 to Present',
     bullets: [
       'Defined and secured leadership adoption of a 3-year vision for the core Kindle reading experience across mobile and e-reader platforms, shaping roadmap investment and enabling new in-book content capabilities.',
-      'Led end-to-end design and launch of four customer-facing features Pinnable Content, Link Preview, Content Hotspots, and Entity Cards improving discoverability and engagement across millions of reading sessions.',
+      'Led end-to-end design and launch of four customer-facing features Pinnable Content, Link Preview, Hotspots, and Entity Cards improving discoverability and engagement across millions of reading sessions.',
       'Architected a scalable UX framework for contextual content, increasing feature development velocity and reducing time-to-launch for new reading capabilities.',
       'Used AI-assisted prototyping via Kiro to build functional, production-like prototypes, shortening iteration cycles and reducing engineering rework through earlier stakeholder alignment.',
     ],
