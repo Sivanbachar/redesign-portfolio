@@ -372,7 +372,50 @@ export default function Hotspots() {
             <span className="cs-section-label sr">Solution</span>
             <h2 className="cs-h2 sr">The layered reading model.</h2>
             <p className="cs-p sr">After eliminating every direction that moved the reader off the page, one model remained. Three components define it: an inline marker system embedded in the text, a single toggle that keeps the reader in control, and a bottom sheet that surfaces content without removing the reading surface. This is the model that was chosen, and the pattern that every subsequent supplemental content type can inherit.</p>
-            <VP label="Hotspots Reading Surface" desc="Kindle reading page with inline hotspot markers visible on 2-3 entities. Shows the toggle pill in the reading corner in the on state." height={440} />
+            {/* Figma prototype embed */}
+            <div className="sr" style={{ marginTop: 40 }}>
+              <div style={{ border: '1px solid var(--bdr)', borderRadius: 10, overflow: 'hidden', background: 'var(--bg1)' }}>
+
+                {/* Header bar */}
+                <div style={{ padding: '12px 20px', borderBottom: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: 'rgba(134,239,172,0.7)', flexShrink: 0 }} />
+                    <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0 }}>
+                      Interactive Prototype · Click to explore
+                    </p>
+                  </div>
+                  <a
+                    href="https://adjust-fleck-61194520.figma.site"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', textDecoration: 'none', flexShrink: 0 }}
+                    onMouseEnter={e => e.currentTarget.style.color = 'var(--txt2)'}
+                    onMouseLeave={e => e.currentTarget.style.color = 'var(--txt3)'}
+                  >
+                    Open full screen ↗
+                  </a>
+                </div>
+
+                {/* Iframe */}
+                <div style={{ position: 'relative', width: '100%', paddingBottom: '66.67%' }}>
+                  <iframe
+                    src="https://adjust-fleck-61194520.figma.site"
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none', display: 'block' }}
+                    allowFullScreen
+                    title="Hotspots Interactive Prototype"
+                  />
+                </div>
+
+                {/* Disclaimer */}
+                <div style={{ padding: '12px 20px', borderTop: '1px solid var(--bdr)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', flexShrink: 0, paddingTop: 2 }}>Note</span>
+                  <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--txt3)', lineHeight: 1.6, marginBottom: 0 }}>
+                    This is a high-fidelity conceptual prototype intended to demonstrate the interaction model and supplemental content framework. Some flows and screens may not be fully connected.
+                  </p>
+                </div>
+
+              </div>
+            </div>
             <div className="cs-decision-grid sr" style={{ marginTop: 40 }}>
               {[
                 ['01 Toggle on', 'Reader activates Hotspots via the toggle pill in the reading corner. The surface shifts inline markers appear on 2 to 4 entities per screen.'],
