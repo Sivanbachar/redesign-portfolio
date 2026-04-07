@@ -318,21 +318,32 @@ export default function Hotspots() {
                   </a>
                 </div>
 
-                {/* Iframe */}
-                <div className="hs-figma-frame" style={{ width: '100%', height: '780px' }}>
+                {/* Iframe — rendered at 143% width & 1114px height, then scaled to 70% so visual footprint stays at ~780px */}
+                <div className="hs-figma-frame" style={{ width: '100%', height: '780px', overflow: 'hidden', position: 'relative' }}>
                   <iframe
                     src="https://adjust-fleck-61194520.figma.site"
-                    style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+                    style={{
+                      width: '143%',
+                      height: '1114px',
+                      border: 'none',
+                      display: 'block',
+                      transform: 'scale(0.7)',
+                      transformOrigin: 'top left',
+                    }}
                     allowFullScreen
                     title="Hotspots Interactive Prototype"
                   />
                 </div>
 
                 {/* Disclaimer */}
-                <div style={{ padding: '12px 20px', borderTop: '1px solid var(--bdr)', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', flexShrink: 0, paddingTop: 2 }}>Note</span>
+                <div style={{ padding: '14px 20px', borderTop: '1px solid var(--bdr)', display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{
+                    fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.14em', textTransform: 'uppercase',
+                    color: 'rgba(134,239,172,0.6)', flexShrink: 0, paddingTop: 3, border: '1px solid rgba(134,239,172,0.25)',
+                    padding: '3px 7px', borderRadius: 3,
+                  }}>AI-Rebuilt</span>
                   <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--txt3)', lineHeight: 1.6, marginBottom: 0 }}>
-                    This is a high-fidelity conceptual prototype intended to demonstrate the interaction model and supplemental content framework. Some flows and screens may not be fully connected.
+                    These designs were recreated using AI tools to represent the solution. The interaction model, component structure, and product decisions are real — the visuals were rebuilt for portfolio presentation.
                   </p>
                 </div>
 

@@ -162,6 +162,18 @@ export default function SwiftShift() {
         </div>
 
         {/* SCHEDULER TOOL */}
+        {/* AI-rebuilt caveat */}
+        <div className="sr" style={{ margin: '0 0 -60px', padding: '14px 20px', background: 'var(--bg1)', border: '1px solid var(--bdr)', borderRadius: 8, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+          <span style={{
+            fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.14em', textTransform: 'uppercase',
+            color: 'rgba(134,239,172,0.6)', flexShrink: 0,
+            border: '1px solid rgba(134,239,172,0.25)', padding: '3px 7px', borderRadius: 3, marginTop: 1,
+          }}>AI-Rebuilt</span>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--txt3)', lineHeight: 1.6, marginBottom: 0 }}>
+            These designs were recreated using AI tools to represent the solution. The product decisions, interaction patterns, and system design are real — the visuals were rebuilt for portfolio presentation.
+          </p>
+        </div>
+
         <div className="cs-section">
           <span className="cs-section-label sr">The Scheduler Tool</span>
           <h2 className="cs-h2 sr">A system for seeing what needs attention and acting on it.</h2>
