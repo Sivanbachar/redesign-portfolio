@@ -8,6 +8,7 @@ import BookPins from './pages/cases/BookPins.jsx'
 import Rokt from './pages/cases/Rokt.jsx'
 import SwiftShift from './pages/cases/SwiftShift.jsx'
 import AI from './pages/AI.jsx'
+import InterviewMe from './pages/InterviewMe.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/projects/rokt" element={<Rokt />} />
         <Route path="/projects/swiftshift" element={<SwiftShift />} />
         <Route path="/ai" element={<AI />} />
+        <Route path="/interview" element={<InterviewMe />} />
         {/* Catch-all: redirect to home */}
         <Route path="*" element={<Home />} />
       </Routes>

@@ -332,28 +332,34 @@ export default function Hotspots() {
                   })}
                 </div>
 
-                {/* Right: image + detail */}
+                {/* Right: image + detail side by side */}
                 {activeIter && (
-                  <div style={{ padding: '28px 32px' }}>
-                    <div style={{ borderRadius: 6, overflow: 'hidden', border: '1px solid var(--bdr)', marginBottom: 24 }}>
-                      <img
-                        key={activeIter.id}
-                        src={activeIter.img}
-                        alt={activeIter.name}
-                        style={{ width: '100%', display: 'block' }}
-                      />
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
+                    {/* Image */}
+                    <div style={{ borderRight: '1px solid var(--bdr)', padding: '24px', display: 'flex', alignItems: 'center', background: 'var(--bg2)' }}>
+                      <div style={{ borderRadius: 6, overflow: 'hidden', border: '1px solid var(--bdr)', width: '100%' }}>
+                        <img
+                          key={activeIter.id}
+                          src={activeIter.img}
+                          alt={activeIter.name}
+                          style={{ width: '100%', display: 'block' }}
+                        />
+                      </div>
                     </div>
-                    <div style={{ paddingBottom: 18, marginBottom: 18, borderBottom: '1px solid var(--bdr)' }}>
-                      <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>Behavior</p>
-                      <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>{activeIter.behavior}</p>
-                    </div>
-                    <div>
-                      <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: activeIter.selected ? 'rgba(134,239,172,0.8)' : 'var(--txt3)', marginBottom: 8 }}>
-                        {activeIter.selected ? 'Why it worked' : 'Why it failed'}
-                      </p>
-                      <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>
-                        {activeIter.selected ? activeIter.outcome : activeIter.rejected}
-                      </p>
+                    {/* Detail */}
+                    <div style={{ padding: '28px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20 }}>
+                      <div>
+                        <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>Behavior</p>
+                        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>{activeIter.behavior}</p>
+                      </div>
+                      <div style={{ paddingTop: 20, borderTop: '1px solid var(--bdr)' }}>
+                        <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: activeIter.selected ? 'rgba(134,239,172,0.8)' : 'var(--txt3)', marginBottom: 8 }}>
+                          {activeIter.selected ? 'Why it worked' : 'Why it failed'}
+                        </p>
+                        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>
+                          {activeIter.selected ? activeIter.outcome : activeIter.rejected}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
