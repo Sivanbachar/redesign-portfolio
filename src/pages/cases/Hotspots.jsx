@@ -90,7 +90,7 @@ export default function Hotspots() {
         <div className="cs-section sr" style={{ position: 'relative', marginBottom: 0, paddingBottom: 0 }}>
           <div style={{ position: 'relative', borderRadius: 8, overflow: 'hidden' }}>
             <img
-              src="/images/hotspots/hotspot_main_hero.jpg"
+              src="/images/hotspots/hotspot_main_hero.png"
               alt="Hotspots Reading Experience"
               style={{ width: '100%', display: 'block', borderRadius: 8 }}
             />
@@ -182,7 +182,7 @@ export default function Hotspots() {
             </div>
             <div className="sr" style={{ marginTop: 40 }}>
               <img
-                src="/images/hotspots/before_after.jpg"
+                src="/images/hotspots/before_after.png"
                 alt="Before and after: reader leaving Kindle vs staying in reading surface"
                 style={{ width: '100%', borderRadius: 8, border: '1px solid var(--bdr)', display: 'block' }}
               />
@@ -296,7 +296,7 @@ export default function Hotspots() {
               </div>
 
               {/* Body: list + image */}
-              <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr' }}>
+              <div className="hs-iter-layout" style={{ display: 'grid', gridTemplateColumns: '260px 1fr' }}>
 
                 {/* Left: iteration list */}
                 <div style={{ borderRight: '1px solid var(--bdr)' }}>
@@ -334,7 +334,7 @@ export default function Hotspots() {
 
                 {/* Right: image + detail side by side */}
                 {activeIter && (
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
+                  <div className="hs-iter-detail" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
                     {/* Image */}
                     <div style={{ borderRight: '1px solid var(--bdr)', padding: '24px', display: 'flex', alignItems: 'center', background: 'var(--bg2)' }}>
                       <div style={{ borderRadius: 6, overflow: 'hidden', border: '1px solid var(--bdr)', width: '100%' }}>
@@ -397,7 +397,7 @@ export default function Hotspots() {
                 </div>
 
                 {/* Iframe */}
-                <div style={{ width: '100%', height: '780px' }}>
+                <div className="hs-figma-frame" style={{ width: '100%', height: '780px' }}>
                   <iframe
                     src="https://adjust-fleck-61194520.figma.site"
                     style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}

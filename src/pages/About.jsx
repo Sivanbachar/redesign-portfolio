@@ -235,6 +235,11 @@ export default function About() {
                   covering prototyping with code agents, prompt-driven iteration, and what it
                   means to design when the machine can build.
                 </p>
+                <img
+                  src="/images/resume/speaker.png"
+                  alt="Speaking at Amazon Conflux Design Summit 2025"
+                  style={{ width: '100%', maxWidth: 560, borderRadius: 8, border: '1px solid var(--bdr)', display: 'block', marginTop: 20 }}
+                />
               </div>
             </div>
 

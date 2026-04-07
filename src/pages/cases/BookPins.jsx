@@ -88,7 +88,11 @@ export default function BookPins() {
 
       <div className="cs-body">
         <div className="cs-section sr">
-          <VP label="Book Pins Reading Surface" desc="Kindle reading UI showing pinned content layer expanded alongside the reading view. Shows the collapsed entry point and expanded interaction state." height={480} />
+          <img
+            src="/images/pins/pinnable-content-hero.jpg"
+            alt="Book Pins Reading Surface"
+            style={{ width: '100%', borderRadius: 8, display: 'block' }}
+          />
         </div>
 
         {/* OVERVIEW */}
@@ -249,7 +253,7 @@ export default function BookPins() {
                       alt={activeIter.name}
                       style={{ width: '100%', display: 'block', borderRadius: 6, border: '1px solid var(--bdr)' }}
                     />
-                    <div style={{ marginTop: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+                    <div className="bp-iter-detail" style={{ marginTop: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                       <div>
                         <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>Behavior</p>
                         <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.65, marginBottom: 0 }}>{activeIter.behavior}</p>
@@ -326,7 +330,7 @@ export default function BookPins() {
           <span className="cs-section-label sr">User Feedback</span>
           <h2 className="cs-h2 sr">Hear it from readers.</h2>
           <p className="cs-p sr">Book Pins resonated immediately after launch. Readers found use cases we hadn't fully anticipated — from religious study plans to fantasy map referencing — validating that the interaction model was flexible enough to support diverse reading behaviors.</p>
-          <div className="sr" style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="sr bp-reddit-grid" style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             {REDDIT_POSTS.map((post, i) => (
               <div key={i} style={{
                 background: 'var(--bg1)',

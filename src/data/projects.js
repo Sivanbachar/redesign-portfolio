@@ -18,7 +18,7 @@ export const PROJECTS = [
     tagline: 'Redesigning how readers capture, organize, and return to content that matters without ever leaving the page.',
     thumbBg: 'linear-gradient(135deg, #1a3030 0%, #0d2020 100%)',
     thumbIcon: '◉',
-    thumbImg: 'images/pins/pinnable-content-hero.jpg',
+    thumbImg: 'images/pins/bookpins_thumbnail.png',
     status: 'available',
   },
   {
