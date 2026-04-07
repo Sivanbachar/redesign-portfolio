@@ -43,6 +43,9 @@ export default function InterviewMe() {
   const [messages, setMessages] = useState([])
   const [askedIds, setAskedIds] = useState(new Set())
   const bottomRef = useRef(null)
+  const [contactQ, setContactQ] = useState('')
+  const [contactEmail, setContactEmail] = useState('')
+  const [contactState, setContactState] = useState('idle') // idle | sending | sent | error
 
   const currentPrompts = askedIds.size === 0
     ? INTERVIEW_DATA.filter(item => INITIAL_IDS.includes(item.id))
@@ -61,6 +64,29 @@ export default function InterviewMe() {
   const handleReset = () => {
     setMessages([])
     setAskedIds(new Set())
+    setContactQ('')
+    setContactEmail('')
+    setContactState('idle')
+  }
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault()
+    if (!contactQ.trim() || !contactEmail.trim()) return
+    setContactState('sending')
+    try {
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: contactEmail, message: contactQ }),
+      })
+      if (res.ok) {
+        setContactState('sent')
+      } else {
+        setContactState('error')
+      }
+    } catch {
+      setContactState('error')
+    }
   }
 
   useEffect(() => {
@@ -124,10 +150,54 @@ export default function InterviewMe() {
           </div>
         )}
 
-        {/* All questions asked */}
+        {/* All questions asked — contact form */}
         {currentPrompts.length === 0 && messages.length > 0 && (
-          <div className="im-end">
-            <p className="im-end-text">That's everything. Thanks for the conversation.</p>
+          <div className="im-end im-appear">
+            <div className="im-contact-card">
+              {contactState === 'sent' ? (
+                <div className="im-contact-sent">
+                  <p className="im-contact-sent-title">Got it.</p>
+                  <p className="im-contact-sent-sub">Your question is in my inbox. I'll follow up at {contactEmail}.</p>
+                </div>
+              ) : (
+                <>
+                  <div className="im-contact-header">
+                    <p className="im-contact-label">Got more questions?</p>
+                    <p className="im-contact-sub">Your question goes right to my inbox.</p>
+                  </div>
+                  <form className="im-contact-form" onSubmit={handleContactSubmit}>
+                    <textarea
+                      className="im-contact-textarea"
+                      placeholder="Ask me anything..."
+                      value={contactQ}
+                      onChange={e => setContactQ(e.target.value)}
+                      rows={3}
+                      required
+                    />
+                    <div className="im-contact-row">
+                      <input
+                        className="im-contact-input"
+                        type="email"
+                        placeholder="Your email"
+                        value={contactEmail}
+                        onChange={e => setContactEmail(e.target.value)}
+                        required
+                      />
+                      <button
+                        type="submit"
+                        className="im-contact-send"
+                        disabled={contactState === 'sending'}
+                      >
+                        {contactState === 'sending' ? 'Sending...' : 'Send →'}
+                      </button>
+                    </div>
+                    {contactState === 'error' && (
+                      <p className="im-contact-error">Something went wrong. Try emailing me directly at builtbysivan@gmail.com</p>
+                    )}
+                  </form>
+                </>
+              )}
+            </div>
             <button className="im-restart" onClick={handleReset}>Start over</button>
           </div>
         )}
