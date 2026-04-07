@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useForm, ValidationError } from '@formspree/react'
 
 const PROFILE_IMG = '/images/resume/profile.png'
 
@@ -43,9 +44,7 @@ export default function InterviewMe() {
   const [messages, setMessages] = useState([])
   const [askedIds, setAskedIds] = useState(new Set())
   const bottomRef = useRef(null)
-  const [contactQ, setContactQ] = useState('')
-  const [contactEmail, setContactEmail] = useState('')
-  const [contactState, setContactState] = useState('idle') // idle | sending | sent | error
+  const [fsState, handleFsSubmit] = useForm('xvzvygyg')
 
   const currentPrompts = askedIds.size === 0
     ? INTERVIEW_DATA.filter(item => INITIAL_IDS.includes(item.id))
@@ -64,29 +63,6 @@ export default function InterviewMe() {
   const handleReset = () => {
     setMessages([])
     setAskedIds(new Set())
-    setContactQ('')
-    setContactEmail('')
-    setContactState('idle')
-  }
-
-  const handleContactSubmit = async (e) => {
-    e.preventDefault()
-    if (!contactQ.trim() || !contactEmail.trim()) return
-    setContactState('sending')
-    try {
-      const res = await fetch('https://formspree.io/f/xvzvygyg', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email: contactEmail, message: contactQ }),
-      })
-      if (res.ok) {
-        setContactState('sent')
-      } else {
-        setContactState('error')
-      }
-    } catch {
-      setContactState('error')
-    }
   }
 
   useEffect(() => {
@@ -154,10 +130,10 @@ export default function InterviewMe() {
         {currentPrompts.length === 0 && messages.length > 0 && (
           <div className="im-end im-appear">
             <div className="im-contact-card">
-              {contactState === 'sent' ? (
+              {fsState.succeeded ? (
                 <div className="im-contact-sent">
                   <p className="im-contact-sent-title">Got it.</p>
-                  <p className="im-contact-sent-sub">Your question is in my inbox. I'll follow up at {contactEmail}.</p>
+                  <p className="im-contact-sent-sub">Your question is in my inbox. I'll follow up shortly.</p>
                 </div>
               ) : (
                 <>
@@ -165,35 +141,32 @@ export default function InterviewMe() {
                     <p className="im-contact-label">Got more questions?</p>
                     <p className="im-contact-sub">Your question goes right to my inbox.</p>
                   </div>
-                  <form className="im-contact-form" onSubmit={handleContactSubmit}>
+                  <form className="im-contact-form" onSubmit={handleFsSubmit}>
                     <textarea
                       className="im-contact-textarea"
+                      name="message"
                       placeholder="Ask me anything..."
-                      value={contactQ}
-                      onChange={e => setContactQ(e.target.value)}
                       rows={3}
                       required
                     />
+                    <ValidationError field="message" prefix="Message" errors={fsState.errors} className="im-contact-error" />
                     <div className="im-contact-row">
                       <input
                         className="im-contact-input"
                         type="email"
+                        name="email"
                         placeholder="Your email"
-                        value={contactEmail}
-                        onChange={e => setContactEmail(e.target.value)}
                         required
                       />
                       <button
                         type="submit"
                         className="im-contact-send"
-                        disabled={contactState === 'sending'}
+                        disabled={fsState.submitting}
                       >
-                        {contactState === 'sending' ? 'Sending...' : 'Send →'}
+                        {fsState.submitting ? 'Sending...' : 'Send →'}
                       </button>
                     </div>
-                    {contactState === 'error' && (
-                      <p className="im-contact-error">Something went wrong. Try emailing me directly at builtbysivan@gmail.com</p>
-                    )}
+                    <ValidationError prefix="Email" field="email" errors={fsState.errors} className="im-contact-error" />
                   </form>
                 </>
               )}
