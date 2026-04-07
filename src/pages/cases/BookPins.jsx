@@ -19,7 +19,7 @@ const ITERATIONS = [
     tag: 'Iteration 02',
     img: '/images/pins/iteration_2.png',
     behavior: 'Content anchored to a fixed side panel, stable and always accessible alongside the reading surface.',
-    rejected: 'Better than floating but over-engineered for an MLP. Too much persistent interface for the initial launch scope — required real estate the reading experience wasn\'t ready to give up.',
+    rejected: 'Better than floating but over-engineered for an MLP. Too much persistent interface for the initial launch scope, requiring real estate the reading experience wasn\'t ready to give up.',
   },
   {
     id: 'layered-model',

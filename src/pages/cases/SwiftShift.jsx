@@ -195,7 +195,7 @@ export default function SwiftShift() {
                 { icon: '⚡', title: 'Share schedules and updates instantly', body: 'Push notifications go out automatically to affected nurses the moment a new or updated schedule is published. No manual outreach required.' },
                 { icon: '✓', title: 'Know when workers see a shift', body: 'Shift seen confirmations let schedulers track which nurses have viewed their assigned shifts, removing the guesswork from follow-up.' },
                 { icon: '◎', title: 'Centralize staffing needs and availability', body: 'Employee positions, days off, and availability all live in one place. Schedulers build from current data, not memory or disconnected spreadsheets.' },
-                { icon: '↗', title: 'Fill empty shifts faster', body: 'Open shifts surface instantly to qualified nurses. Schedulers post once — the platform does the notifying.' },
+                { icon: '↗', title: 'Fill empty shifts faster', body: 'Open shifts surface instantly to qualified nurses. Schedulers post once; the platform does the notifying.' },
               ].map(({ icon, title, body }) => (
                 <div key={title} style={{ background: 'var(--bg1)', padding: '24px 28px' }}>
                   <p style={{ fontSize: 18, marginBottom: 14, lineHeight: 1 }}>{icon}</p>
@@ -303,7 +303,7 @@ export default function SwiftShift() {
               {
                 icon: '⏱',
                 label: 'Break-Aware Tracking',
-                body: 'Nurses often moved between responsibilities throughout a shift. The system supported breaks and ensured time tracking reflected how their day actually unfolded — precise tracking of start, end, and break periods for accurate payroll.',
+                body: 'Nurses often moved between responsibilities throughout a shift. The system supported breaks and ensured time tracking reflected how their day actually unfolded: precise tracking of start, end, and break periods for accurate payroll.',
               },
               {
                 icon: '◎',
