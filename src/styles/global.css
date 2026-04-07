@@ -543,9 +543,7 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 .proj-panel {
   min-height: 100vh; overflow: hidden;
   cursor: pointer; display: flex; align-items: stretch;
-  transition: background 0.3s;
 }
-.proj-panel:hover { background: var(--hover); }
 .proj-panel-inner {
   display: grid; grid-template-columns: 1fr 1fr;
   width: 100%; max-width: var(--max); margin: 0 auto;
@@ -584,27 +582,46 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
   display: inline-flex; align-items: center; gap: 8px;
   transition: color 0.2s;
 }
-.proj-panel:hover .proj-link { color: var(--txt); }
+.proj-img-block:hover ~ * .proj-link,
+.proj-img-wrap:hover ~ * .proj-link { color: var(--txt); }
 .proj-img-wrap { display: flex; align-items: center; justify-content: center; padding: 40px 0; }
 .proj-img-block {
   width: 100%; max-width: 500px; aspect-ratio: 4/3;
   background: var(--bg2);
   border-radius: 8px; display: flex; align-items: center; justify-content: center;
   overflow: hidden; position: relative;
-  transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), box-shadow 0.55s cubic-bezier(0.16,1,0.3,1);
+  transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), box-shadow 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+/* Shimmer glare sweep */
+.proj-img-block::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  pointer-events: none; border-radius: inherit;
+  background: linear-gradient(
+    108deg,
+    transparent 30%,
+    rgba(255,255,255,0.07) 50%,
+    transparent 70%
+  );
+  transform: translateX(-130%);
+  transition: none;
+}
+.proj-img-block:hover::after {
+  transform: translateX(130%);
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .proj-img-block:hover {
-  transform: scale(0.98) translateY(-6px);
-  box-shadow: 0 28px 56px rgba(0,0,0,0.45);
+  transform: translateY(-10px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05);
 }
 .proj-img-photo {
   width: 100%; height: 100%;
   object-fit: cover; border-radius: inherit;
   display: block;
   transform-origin: center center;
-  transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
 }
-.proj-img-block:hover .proj-img-photo { transform: scale(1.1); }
+.proj-img-block:hover .proj-img-photo { transform: scale(1.07); }
 .proj-coming-strip {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 10px 16px;

@@ -254,31 +254,34 @@ export default function About() {
               <div className="outside-icon">🏷️</div>
               <p className="outside-title">Thrift &amp; flip</p>
               <p className="outside-desc">
-                I've bought second-hand my whole life. I find pieces with good bones, restore
-                what's worth keeping, and move on what isn't. Same eye I bring to design.
+                I've been buying second-hand for as long as I can remember. I look for pieces
+                with good bones, fix what's worth keeping, and let go of what isn't. It's the
+                same instinct I bring to design.
               </p>
             </div>
             <div className="outside-cell">
               <div className="outside-icon">♻️</div>
               <p className="outside-title">Sustainable by default</p>
               <p className="outside-desc">
-                Furnishing my entire home second-hand one intentional find at a time. Nothing
-                fast, nothing disposable. Things that last and look better with age.
+                I've furnished my home almost entirely second hand, one intentional find at a
+                time. Nothing rushed, nothing disposable. I'm drawn to things that last and
+                get better with age.
               </p>
             </div>
             <div className="outside-cell">
               <div className="outside-icon">🛋️</div>
               <p className="outside-title">Obsessed with mid-century modern</p>
               <p className="outside-desc">
-                MCM gets it right: form follows function, nothing decorative for its own sake.
-                The same principles as good product design clarity, purpose, restraint.
+                I keep coming back to mid century modern because it gets the fundamentals right.
+                Form follows function. Nothing extra. The same principles I care about in
+                product design: clarity, purpose, restraint.
               </p>
               <div className="outside-found-list">
                 {[
-                  ['✓', 'Wassily Chair (Found)'],
-                  ['✓', 'Sunburst Clock (Found)'],
-                  ['✓', 'Hairpin Bed Frame (Found)'],
-                  ['→', 'Arc Lamp (Hunting)'],
+                  ['✓', 'Wassily chair (found)'],
+                  ['✓', 'Post-modern hutch (found)'],
+                  ['✓', 'Hairpin bed frame (found)'],
+                  ['→', 'Arc lamp (still hunting)'],
                 ].map(([status, item]) => (
                   <div className="outside-found-item" key={item}>
                     <div className="outside-found-dot" style={{ opacity: status === '→' ? 0.3 : 1 }} />
