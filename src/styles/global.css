@@ -169,8 +169,8 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 .mega-col--ai { flex: 0 0 220px; }
 .mega-row {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 .mega-thumb {
   cursor: pointer; transition: opacity 0.2s;
