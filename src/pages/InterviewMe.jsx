@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useForm, ValidationError } from '@formspree/react'
 
 const PROFILE_IMG = '/images/resume/profile.png'
 
@@ -44,7 +43,7 @@ export default function InterviewMe() {
   const [messages, setMessages] = useState([])
   const [askedIds, setAskedIds] = useState(new Set())
   const bottomRef = useRef(null)
-  const [fsState, handleFsSubmit] = useForm('xvzvygyg')
+  const [formStatus, setFormStatus] = useState('idle') // idle | sending | sent | error
 
   const currentPrompts = askedIds.size === 0
     ? INTERVIEW_DATA.filter(item => INITIAL_IDS.includes(item.id))
@@ -63,6 +62,30 @@ export default function InterviewMe() {
   const handleReset = () => {
     setMessages([])
     setAskedIds(new Set())
+    setFormStatus('idle')
+  }
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault()
+    const form = e.target
+    const email = form.email.value.trim()
+    const message = form.message.value.trim()
+    if (!email || !message) return
+    setFormStatus('sending')
+    try {
+      const res = await fetch('https://formspree.io/f/xvzvygyg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email, message }),
+      })
+      if (res.ok) {
+        setFormStatus('sent')
+      } else {
+        setFormStatus('error')
+      }
+    } catch {
+      setFormStatus('error')
+    }
   }
 
   useEffect(() => {
@@ -130,7 +153,7 @@ export default function InterviewMe() {
         {currentPrompts.length === 0 && messages.length > 0 && (
           <div className="im-end im-appear">
             <div className="im-contact-card">
-              {fsState.succeeded ? (
+              {formStatus === 'sent' ? (
                 <div className="im-contact-sent">
                   <p className="im-contact-sent-title">Got it.</p>
                   <p className="im-contact-sent-sub">Your question is in my inbox. I'll follow up shortly.</p>
@@ -141,7 +164,7 @@ export default function InterviewMe() {
                     <p className="im-contact-label">Got more questions?</p>
                     <p className="im-contact-sub">Your question goes right to my inbox.</p>
                   </div>
-                  <form className="im-contact-form" onSubmit={handleFsSubmit}>
+                  <form className="im-contact-form" onSubmit={handleContactSubmit}>
                     <textarea
                       className="im-contact-textarea"
                       name="message"
@@ -149,7 +172,6 @@ export default function InterviewMe() {
                       rows={3}
                       required
                     />
-                    <ValidationError field="message" prefix="Message" errors={fsState.errors} className="im-contact-error" />
                     <div className="im-contact-row">
                       <input
                         className="im-contact-input"
@@ -161,12 +183,14 @@ export default function InterviewMe() {
                       <button
                         type="submit"
                         className="im-contact-send"
-                        disabled={fsState.submitting}
+                        disabled={formStatus === 'sending'}
                       >
-                        {fsState.submitting ? 'Sending...' : 'Send →'}
+                        {formStatus === 'sending' ? 'Sending...' : 'Send →'}
                       </button>
                     </div>
-                    <ValidationError prefix="Email" field="email" errors={fsState.errors} className="im-contact-error" />
+                    {formStatus === 'error' && (
+                      <p className="im-contact-error">Something went wrong. Email me directly at builtbysivan@gmail.com</p>
+                    )}
                   </form>
                 </>
               )}
