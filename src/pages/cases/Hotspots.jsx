@@ -29,6 +29,7 @@ export default function Hotspots() {
         <p className="cs-tag">Amazon · Kindle · AI-Powered Experience · Sole Designer · 2026</p>
         <h1 className="cs-h1">Hotspots</h1>
         <p className="cs-lead">The challenge wasn't surfacing content. It was doing it without disrupting reading. Every additional layer we introduce competes with the reading experience. Too hidden, and it never gets used. Too visible, and it pulls the reader out of flow. We weren't designing a feature. We were deciding how supplemental content should exist within reading.</p>
+        <p className="cs-tag" style={{ marginTop: 16, fontFamily: 'var(--sans)', letterSpacing: 0, textTransform: 'none', fontSize: 13, opacity: 0.5 }}>This work is based on internal product development and has been adapted to remove confidential details while preserving the core problem, approach, and design decisions.</p>
       </div>
 
       <div className="cs-meta-row">
