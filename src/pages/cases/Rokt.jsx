@@ -16,7 +16,7 @@ export default function Rokt() {
       <div className="cs-hero sr">
         <p className="cs-tag">Rokt · E-Commerce Ad-Tech · Experimentation &amp; Design · 2021</p>
         <h1 className="cs-h1">ROKT</h1>
-        <p className="cs-lead">Improving ad performance through experimentation, not redesign. This wasn't about redesigning an ad unit. It was about understanding what actually drives action and systematically improving it.</p>
+        <p className="cs-lead">Driving product performance through experimentation at the transaction moment. At Rokt, every completed purchase creates an opportunity to generate additional revenue through relevant offers. This moment is uniquely high intent — users are engaged, decision-ready, and more receptive to offers that feel connected to what they just purchased.</p>
       </div>
 
       <div className="cs-meta-row">
@@ -44,13 +44,13 @@ export default function Rokt() {
           <h2 className="cs-h2 sr">Scale wasn't the problem.<br />Effectiveness was.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">At Rokt, every transaction is an opportunity to generate revenue through relevant offers. But while overall revenue was increasing, performance at the product level had plateaued.</p>
-              <p className="cs-p sr">The core metric — revenue per transaction — had seen little improvement over time. The problem wasn't scale. It was effectiveness.</p>
+              <p className="cs-p sr">Despite increasing scale across partners, one key metric had stagnated: revenue per transaction. The system was growing, but the product itself wasn't becoming more effective.</p>
+              <p className="cs-p sr">Improving RPT required navigating a fundamental tension: more visibility created higher revenue potential, but more friction created a worse user experience.</p>
             </div>
             <div>
-              <p className="cs-p sr">Improving performance meant navigating a constant tension: more visibility created higher revenue potential, but more friction created a worse user experience.</p>
+              <p className="cs-p sr">Ads exist within a highly sensitive moment. When irrelevant, they feel intrusive. When relevant, they feel additive.</p>
               <div className="cs-callout sr">
-                <p>Ads are inherently interruptive. The goal wasn't to remove them. It was to make them more relevant, more understandable, and easier to engage with.</p>
+                <p>The problem wasn't simply improving design. It was understanding what actually drives action in a high-intent environment.</p>
               </div>
             </div>
           </div>
@@ -62,14 +62,14 @@ export default function Rokt() {
           <h2 className="cs-h2 sr">Design direction and experimentation strategy.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">I led design direction and experimentation strategy for improving ad performance across key partners, while mentoring a designer through execution and iteration.</p>
+              <p className="cs-p sr">I led design direction and experimentation strategy for improving ad performance across key partner experiences, while mentoring a designer through execution. My focus was not just designing ad units, but defining how design decisions influenced performance outcomes — work that sat at the intersection of product, data, and business.</p>
             </div>
             <div>
               {[
-                ['Defining', 'what to test and why'],
-                ['Shaping', 'design directions across multiple partners'],
-                ['Guiding', 'iterations based on experiment results'],
-                ['Collaborating', 'closely with product, data, and account teams'],
+                ['Defining', 'what to test and how to structure each experiment'],
+                ['Shaping', 'design directions that could be measured and iterated on'],
+                ['Analyzing', 'how design decisions influenced performance outcomes'],
+                ['Bridging', 'product, data, and business objectives across the team'],
               ].map(([tag, b]) => (
                 <div key={tag} style={{ padding: '16px 0', borderTop: '1px solid var(--bdr)' }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>{tag}</p>
@@ -86,9 +86,9 @@ export default function Rokt() {
           <h2 className="cs-h2 sr">Shifting from design to experimentation.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">Instead of treating this as a design problem, we treated it as a system of experiments.</p>
-              <p className="cs-p sr">We established a repeatable loop: design variations based on hypotheses, test across partner environments, measure performance, then feed learnings into the next iteration.</p>
-              <p className="cs-p sr">Over time, this shifted the team from shipping static designs to continuously improving performance.</p>
+              <p className="cs-p sr">Instead of treating this as a redesign effort, we reframed it as a system of continuous experimentation.</p>
+              <p className="cs-p sr">We established a repeatable loop: generate hypotheses based on behavior and performance gaps, design targeted variations, test across live partner environments, measure impact on key metrics (CTR, conversion, RPT), then feed learnings into the next iteration.</p>
+              <p className="cs-p sr">Over time, this shifted the team from shipping static designs to building a system that continuously improves performance.</p>
             </div>
             <div>
               <div className="cs-insight sr">
@@ -263,9 +263,9 @@ export default function Rokt() {
           </div>
           <div className="cs-finding-grid sr" style={{ marginTop: 40 }}>
             {[
-              { tag: 'Experiment · Imagery', h: 'Overcoming hesitation around visuals', b: 'There was initial hesitation around using images due to historically poor performance. We tested functional and contextual imagery and saw a significant increase in engagement. Result: +25% conversion per impression.' },
-              { tag: 'Experiment · Content Structure', h: 'Designing for how users actually read', b: 'Users tend to scan rather than read, especially in transactional moments. We introduced structured benefit lists to make offers easier to parse. Result: mixed impact, but improved clarity and a slight lift in revenue.' },
-              { tag: 'Experiment · Interaction Control', h: 'Giving users agency over the experience', b: 'Previously, once a user skipped an offer, they couldn\'t revisit it. We introduced navigation between offers, giving users more control over what they engaged with. Result: +30% conversion per impression.' },
+              { tag: 'Experiment · Imagery', h: 'Overcoming hesitation around visuals', b: 'Historically, imagery had been avoided due to poor performance. We tested functional and contextual imagery that reinforced the value of the offer. This demonstrated that relevance and clarity mattered more than previous assumptions about visual noise. Result: +25% conversion per impression.' },
+              { tag: 'Experiment · Content Structure', h: 'Designing for how users actually read', b: "Users in transactional flows don't read deeply. They scan. We introduced structured benefit lists to make offers easier to understand quickly. Result: improved clarity and incremental performance gains." },
+              { tag: 'Experiment · Interaction Control', h: 'Giving users agency over the experience', b: "Previously, once a user dismissed an offer, they could not revisit it. We introduced navigation between offers, allowing users to explore options at their own pace. This shifted the experience from passive exposure to active exploration. Result: +30% conversion per impression." },
             ].map(({ tag, h, b }) => (
               <div className="cs-finding sr" key={tag}>
                 <span className="cs-finding-tag">{tag}</span>
@@ -285,14 +285,14 @@ export default function Rokt() {
           <h2 className="cs-h2 sr">More than incremental improvements.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">Over time, this work led to outcomes beyond individual experiment results.</p>
-              <p className="cs-p sr">Increased revenue per transaction across major partners. A new standard for ad unit design. A playbook of best practices grounded in real performance data.</p>
+              <p className="cs-p sr">This work extended beyond individual experiment results. 40+ experiments across multiple design directions, doubled experimentation velocity from monthly to biweekly, and applied learnings across major partners.</p>
+              <p className="cs-p sr">This created a system where performance improvements could compound over time — not just for a single partner, but across the platform.</p>
             </div>
             <div>
               {[
-                ['Experimentation velocity', 'Doubled the speed of experimentation — monthly cycles became biweekly'],
-                ['Design standard', 'Defined a reusable framework for ad unit design across partner verticals'],
-                ['Business impact', 'Increased revenue per transaction across major partners'],
+                ['Revenue impact', 'Increased revenue per transaction across partner experiences'],
+                ['Framework', 'Established a repeatable experimentation framework used across the team'],
+                ['Design elevation', "Elevated design's role from execution to performance driver"],
               ].map(([tag, b]) => (
                 <div key={tag} style={{ padding: '16px 0', borderTop: '1px solid var(--bdr)' }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>{tag}</p>
@@ -309,8 +309,8 @@ export default function Rokt() {
           <h2 className="cs-h2 sr">Systems learn. Designs don't.</h2>
           <div className="cs-finding-grid sr">
             {[
-              { h: 'Ads are inevitable. Relevance is the opportunity.', b: 'Balancing business and user needs isn\'t about choosing one over the other. The opportunity is in making ads feel relevant and useful rather than intrusive.' },
-              { h: 'The best improvements come from systems, not solutions.', b: 'The most effective improvements didn\'t come from a single design decision. They came from building a system that could continuously learn and adapt based on real performance data.' },
+              { h: "The most effective products aren't defined by a single solution. They're defined by how well they learn.", b: 'In high-intent environments, small changes can have outsized impact. The key is not predicting the right answer upfront, but building systems that can discover it quickly.' },
+              { h: "Design's role is most powerful when it's connected to outcomes, not just outputs.", b: "The work that mattered most wasn't any individual design decision. It was building a system that could continuously improve — and positioning design as the engine of that improvement." },
             ].map(({ h, b }) => (
               <div className="cs-finding" key={h}>
                 <span className="cs-finding-tag">Key Learning</span>
