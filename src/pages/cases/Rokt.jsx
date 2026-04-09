@@ -100,6 +100,105 @@ export default function Rokt() {
               </div>
             </div>
           </div>
+
+          {/* ── EXPERIMENTATION LOOP DIAGRAM ── */}
+          <div className="sr" style={{
+            marginTop: 72,
+            padding: '40px 20px 28px',
+            background: 'rgba(255,255,255,0.015)',
+            border: '1px solid rgba(255,255,255,0.07)',
+            borderRadius: 6,
+            overflow: 'hidden',
+          }}>
+            <p style={{
+              fontFamily: 'var(--mono)',
+              fontSize: 9,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.28)',
+              marginBottom: 0,
+              textAlign: 'center',
+            }}>Experimentation Loop — System Overview</p>
+
+            {/* SVG viewBox clips the standalone-file title block (y<120),
+                showing only the loop itself. All colors adapted to dark theme. */}
+            <svg
+              viewBox="0 120 1000 740"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            >
+              <defs>
+                <marker id="arr-exp" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                  <polygon points="0 0.5, 8 3.5, 0 6.5" fill="#5B8BD4"/>
+                </marker>
+              </defs>
+
+              {/* ── ARCS (deep blue, clockwise) ── */}
+              {/* Arc 0 · Hypothesis → Design Variation  18°→42° */}
+              <path d="M 577.3,212.2 A 250,250 0 0,1 667.3,264.2" fill="none" stroke="#5B8BD4" strokeWidth="1.3" markerEnd="url(#arr-exp)" opacity="0.7"/>
+              {/* Arc 1 · Design Variation → Experiment  78°→102° */}
+              <path d="M 744.5,398.0 A 250,250 0 0,1 744.5,502.0" fill="none" stroke="#5B8BD4" strokeWidth="1.3" markerEnd="url(#arr-exp)" opacity="0.7"/>
+              {/* Arc 2 · Experiment → Measure  138°→162° */}
+              <path d="M 667.3,635.8 A 250,250 0 0,1 577.3,687.8" fill="none" stroke="#5B8BD4" strokeWidth="1.3" markerEnd="url(#arr-exp)" opacity="0.7"/>
+              {/* Arc 3 · Measure → Learn  198°→222° */}
+              <path d="M 422.7,687.8 A 250,250 0 0,1 332.7,635.8" fill="none" stroke="#5B8BD4" strokeWidth="1.3" markerEnd="url(#arr-exp)" opacity="0.7"/>
+              {/* Arc 4 · Learn → Iterate  258°→282° */}
+              <path d="M 255.5,502.0 A 250,250 0 0,1 255.5,398.0" fill="none" stroke="#5B8BD4" strokeWidth="1.3" markerEnd="url(#arr-exp)" opacity="0.7"/>
+              {/* Arc 5 · Iterate → Hypothesis  318°→342° */}
+              <path d="M 332.7,264.2 A 250,250 0 0,1 422.7,212.2" fill="none" stroke="#5B8BD4" strokeWidth="1.3" markerEnd="url(#arr-exp)" opacity="0.7"/>
+
+              {/* ── NODE 01 · Hypothesis (top, centered) ── */}
+              <text x="500" y="157" textAnchor="middle" fill="rgba(255,255,255,0.2)"  fontSize={8}  fontFamily="'DM Mono','Courier New',monospace"    letterSpacing="0.18em">01</text>
+              <text x="500" y="175" textAnchor="middle" fill="rgba(255,255,255,0.88)" fontSize={15} fontWeight="500" fontFamily="'Satoshi','Inter',sans-serif">Hypothesis</text>
+              <text x="500" y="192" textAnchor="middle" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">Based on observed behavior</text>
+              <text x="500" y="206" textAnchor="middle" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">or performance gaps</text>
+
+              {/* ── NODE 02 · Design Variation (right-top) ── */}
+              <text x="740" y="293" textAnchor="start" fill="rgba(255,255,255,0.2)"  fontSize={8}  fontFamily="'DM Mono','Courier New',monospace"    letterSpacing="0.18em">02</text>
+              <text x="740" y="311" textAnchor="start" fill="rgba(255,255,255,0.88)" fontSize={15} fontWeight="500" fontFamily="'Satoshi','Inter',sans-serif">Design Variation</text>
+              <text x="740" y="328" textAnchor="start" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">Imagery, layout, content,</text>
+              <text x="740" y="342" textAnchor="start" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">or interaction pattern</text>
+
+              {/* ── NODE 03 · Experiment (right-bottom) ── */}
+              <text x="740" y="550" textAnchor="start" fill="rgba(255,255,255,0.2)"  fontSize={8}  fontFamily="'DM Mono','Courier New',monospace"    letterSpacing="0.18em">03</text>
+              <text x="740" y="568" textAnchor="start" fill="rgba(255,255,255,0.88)" fontSize={15} fontWeight="500" fontFamily="'Satoshi','Inter',sans-serif">Experiment</text>
+              <text x="740" y="585" textAnchor="start" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">A/B tested across real users</text>
+              <text x="740" y="599" textAnchor="start" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">and partner environments</text>
+
+              {/* ── NODE 04 · Measure (bottom, centered) ── */}
+              <text x="500" y="722" textAnchor="middle" fill="rgba(255,255,255,0.2)"  fontSize={8}  fontFamily="'DM Mono','Courier New',monospace"    letterSpacing="0.18em">04</text>
+              <text x="500" y="740" textAnchor="middle" fill="rgba(255,255,255,0.88)" fontSize={15} fontWeight="500" fontFamily="'Satoshi','Inter',sans-serif">Measure</text>
+              <text x="500" y="757" textAnchor="middle" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">CTR · conversion rate · revenue per transaction</text>
+
+              {/* ── NODE 05 · Learn (left-bottom) ── */}
+              <text x="260" y="550" textAnchor="end" fill="rgba(255,255,255,0.2)"  fontSize={8}  fontFamily="'DM Mono','Courier New',monospace"    letterSpacing="0.18em">05</text>
+              <text x="260" y="568" textAnchor="end" fill="rgba(255,255,255,0.88)" fontSize={15} fontWeight="500" fontFamily="'Satoshi','Inter',sans-serif">Learn</text>
+              <text x="260" y="585" textAnchor="end" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">What influenced behavior?</text>
+              <text x="260" y="599" textAnchor="end" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">What increased engagement?</text>
+
+              {/* ── NODE 06 · Iterate (left-top) ── */}
+              <text x="260" y="293" textAnchor="end" fill="rgba(255,255,255,0.2)"  fontSize={8}  fontFamily="'DM Mono','Courier New',monospace"    letterSpacing="0.18em">06</text>
+              <text x="260" y="311" textAnchor="end" fill="rgba(255,255,255,0.88)" fontSize={15} fontWeight="500" fontFamily="'Satoshi','Inter',sans-serif">Iterate</text>
+              <text x="260" y="328" textAnchor="end" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">Insights feed the next</text>
+              <text x="260" y="342" textAnchor="end" fill="rgba(255,255,255,0.4)"  fontSize={10} fontFamily="'Satoshi','Inter',sans-serif">set of hypotheses</text>
+
+              {/* ── CENTER LABEL ── */}
+              <text x="500" y="437" textAnchor="middle" fill="rgba(255,255,255,0.1)" fontSize={8}  fontFamily="'DM Mono','Courier New',monospace" letterSpacing="0.14em">CONTINUOUS</text>
+              <text x="500" y="452" textAnchor="middle" fill="rgba(255,255,255,0.1)" fontSize={8}  fontFamily="'DM Mono','Courier New',monospace" letterSpacing="0.14em">IMPROVEMENT</text>
+              <text x="500" y="470" textAnchor="middle" fill="rgba(255,255,255,0.12)" fontSize={16} fontFamily="'Satoshi','Inter',sans-serif">↻</text>
+
+              {/* ── ANNOTATIONS (very subtle) ── */}
+              <text x="94"  y="424" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize={8.5} fontFamily="'Satoshi','Inter',sans-serif">40+ experiments</text>
+              <text x="94"  y="438" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize={8.5} fontFamily="'Satoshi','Inter',sans-serif">across 10+ design</text>
+              <text x="94"  y="452" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize={8.5} fontFamily="'Satoshi','Inter',sans-serif">directions</text>
+              <line x1="150" y1="438" x2="163" y2="438" stroke="rgba(255,255,255,0.1)" strokeWidth="0.6"/>
+
+              <text x="906" y="424" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize={8.5} fontFamily="'Satoshi','Inter',sans-serif">Experiment velocity</text>
+              <text x="906" y="438" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize={8.5} fontFamily="'Satoshi','Inter',sans-serif">monthly → biweekly</text>
+              <line x1="837" y1="438" x2="850" y2="438" stroke="rgba(255,255,255,0.1)" strokeWidth="0.6"/>
+
+              <text x="500" y="800" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize={8.5} fontFamily="'Satoshi','Inter',sans-serif">↑  Improved revenue per transaction</text>
+            </svg>
+          </div>
         </div>
 
         {/* DISCOVERY */}
