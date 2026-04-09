@@ -23,7 +23,7 @@ export const PROJECTS = [
   },
   {
     id: 'rokt',
-    title: 'Rokt Ad-Tech UX',
+    title: 'Rokt Ads',
     company: 'Rokt · Ad Tech',
     type: 'Experimentation System',
     tagline: 'Improved revenue per transaction through experimentation-driven design.',
