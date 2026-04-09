@@ -319,17 +319,15 @@ export default function Hotspots() {
                   </a>
                 </div>
 
-                {/* Iframe — rendered at 200% width & 1560px height, then scaled to 50% so visual footprint stays at ~780px */}
-                <div className="hs-figma-frame" style={{ width: '100%', height: '780px', overflow: 'hidden', position: 'relative' }}>
+                {/* Iframe */}
+                <div className="hs-figma-frame" style={{ width: '100%', height: '700px', overflow: 'hidden', position: 'relative' }}>
                   <iframe
                     src="https://adjust-fleck-61194520.figma.site"
                     style={{
-                      width: '200%',
-                      height: '1560px',
+                      width: '100%',
+                      height: '100%',
                       border: 'none',
                       display: 'block',
-                      transform: 'scale(0.5)',
-                      transformOrigin: 'top left',
                     }}
                     allowFullScreen
                     title="Hotspots Interactive Prototype"
