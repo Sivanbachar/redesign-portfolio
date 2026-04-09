@@ -3,7 +3,7 @@ export const PROJECTS = [
     id: 'hotspots',
     title: 'Hotspots',
     company: 'Amazon · Kindle',
-    type: 'Interaction Model',
+    type: 'Interaction Model · AI Powered Experience',
     tagline: 'Defined a new interaction model for contextual knowledge in reading.',
     thumbBg: 'linear-gradient(135deg, #1a2744 0%, #0d1a36 100%)',
     thumbIcon: '◈',
