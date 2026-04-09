@@ -1,6 +1,8 @@
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Nav from './components/Nav.jsx'
+import Loader from './components/Loader.jsx'
+import CaseStudyOutline from './components/CaseStudyOutline.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Hotspots from './pages/cases/Hotspots.jsx'
@@ -21,8 +23,10 @@ function ScrollToTop() {
 export default function App() {
   return (
     <>
+      <Loader />
       <ScrollToTop />
       <Nav />
+      <CaseStudyOutline />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

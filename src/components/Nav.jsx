@@ -92,7 +92,14 @@ export default function Nav() {
                     }}
                   >
                     <div className="mega-thumb-img" style={{ background: p.thumbBg }}>
-                      {p.thumbImg ? (
+                      {p.locked ? (
+                        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.2)' }}>
+                          <svg width="16" height="18" viewBox="0 0 18 20" fill="none">
+                            <rect x="3" y="9" width="12" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+                            <path d="M6 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                          </svg>
+                        </div>
+                      ) : p.thumbImg ? (
                         <img
                           src={`/${p.thumbImg}`}
                           alt={p.title}

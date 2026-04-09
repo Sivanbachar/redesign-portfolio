@@ -1,15 +1,79 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../../hooks/useScrollReveal.js'
 import { useReadingProgress } from '../../hooks/useReadingProgress.js'
 import VP from '../../components/VP.jsx'
+
+const PASSWORD = 'lowlow'
+
+const LockIcon = ({ size = 18 }) => (
+  <svg width={size} height={size * 1.1} viewBox="0 0 18 20" fill="none">
+    <rect x="3" y="9" width="12" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+    <path d="M6 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+)
 
 export default function Rokt() {
   const navigate = useNavigate()
   useScrollReveal()
   const pct = useReadingProgress()
 
+  const [unlocked, setUnlocked] = useState(false)
+  const [pwd, setPwd]           = useState('')
+  const [error, setError]       = useState(false)
+
+  // Block body scroll while gate is up
+  useEffect(() => {
+    if (!unlocked) document.body.style.overflow = 'hidden'
+    else           document.body.style.overflow = ''
+    return ()    => { document.body.style.overflow = '' }
+  }, [unlocked])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (pwd === PASSWORD) { setUnlocked(true); setError(false) }
+    else                  { setError(true);    setPwd('') }
+  }
+
   return (
-    <div className="pg cs-wrap">
+    <div className="pg cs-wrap" style={{ overflow: unlocked ? '' : 'hidden', maxHeight: unlocked ? '' : '100vh' }}>
+
+      {/* ── PASSWORD GATE OVERLAY ── */}
+      {!unlocked && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 999,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          background: 'rgba(10,10,10,0.72)',
+          backdropFilter: 'blur(3px)',
+          WebkitBackdropFilter: 'blur(3px)',
+        }}>
+          <div className="hs-gate-card">
+            <div className="hs-gate-lock"><LockIcon size={18}/></div>
+            <p className="hs-gate-title">Password Protected</p>
+            <p className="hs-gate-sub">This case study is private.<br/>Enter the password to continue.</p>
+            <form className="hs-gate-form" onSubmit={handleSubmit}>
+              <input
+                className={`hs-gate-input${error ? ' err' : ''}`}
+                type="password"
+                placeholder="Password"
+                value={pwd}
+                onChange={e => { setPwd(e.target.value); setError(false) }}
+                autoFocus
+              />
+              <button type="submit" className="nav-btn hs-gate-btn">Unlock →</button>
+              {error && <p className="hs-gate-error">Incorrect password</p>}
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* ── PAGE CONTENT (blurred behind gate) ── */}
+      <div style={{
+        filter:       unlocked ? 'none' : 'blur(14px)',
+        pointerEvents:unlocked ? 'auto' : 'none',
+        userSelect:   unlocked ? 'auto' : 'none',
+        transition:   'filter 0.5s',
+      }}>
       <div className="progress-bar" style={{ transform: `scaleX(${pct})` }} />
       <button className="cs-back" onClick={() => navigate('/')}>← All Work</button>
 
@@ -326,6 +390,7 @@ export default function Rokt() {
         <button className="cs-back" style={{ padding: 0 }} onClick={() => navigate('/')}>← All Work</button>
         <button className="nav-btn" onClick={() => navigate('/projects/swiftshift')}>Next: Swift Shift →</button>
       </footer>
+      </div>{/* end blur wrapper */}
     </div>
   )
 }

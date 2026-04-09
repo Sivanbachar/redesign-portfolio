@@ -117,11 +117,18 @@ export default function Home() {
                 <p className="proj-company sr d1">{p.company}</p>
                 <h2 className="proj-title sr d2">{p.title}</h2>
                 <p className="proj-desc sr d3">{p.tagline}</p>
-                <span className="proj-link sr d4">{p.comingSoon ? 'Preview Available →' : 'View Case Study →'}</span>
+                <span className="proj-link sr d4">{p.locked ? 'Password Protected →' : p.comingSoon ? 'Preview Available →' : 'View Case Study →'}</span>
               </div>
               <div className="proj-img-wrap">
                 <div className="proj-img-block" style={{ background: p.thumbBg }}>
-                  {p.thumbImg ? (
+                  {p.locked ? (
+                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.18)' }}>
+                      <svg width="32" height="36" viewBox="0 0 18 20" fill="none">
+                        <rect x="3" y="9" width="12" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+                        <path d="M6 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                  ) : p.thumbImg ? (
                     <img src={`/${p.thumbImg}`} alt={p.title} className="proj-img-photo" />
                   ) : (
                     <span style={{ fontSize: 48, opacity: 0.08 }}>{p.thumbIcon}</span>
