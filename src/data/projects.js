@@ -7,7 +7,7 @@ export const PROJECTS = [
     tagline: 'A layered reading model that surfaces contextual knowledge on demand without interrupting the act of reading.',
     thumbBg: 'linear-gradient(135deg, #1a2744 0%, #0d1a36 100%)',
     thumbIcon: '◈',
-    thumbImg: 'images/hotspots/hotspot_thumbnail.png',
+    thumbImg: 'images/hotspots/hotspot_thumbnail.jpg',
     status: 'available',
   },
   {
@@ -31,8 +31,6 @@ export const PROJECTS = [
     thumbIcon: '◇',
     thumbImg: 'images/rokt/rokt-hero.jpg',
     status: 'available',
-    comingSoon: true,
-    hidden: true,
   },
   {
     id: 'swiftshift',
