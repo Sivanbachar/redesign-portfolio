@@ -12,6 +12,7 @@ import BookPins         from './pages/cases/BookPins.jsx'
 import Rokt             from './pages/cases/Rokt.jsx'
 import SwiftShift       from './pages/cases/SwiftShift.jsx'
 import AI               from './pages/AI.jsx'
+import AIPortfolio      from './pages/ai/Portfolio.jsx'
 import InterviewMe      from './pages/InterviewMe.jsx'
 
 function ScrollToTop() {
@@ -24,7 +25,7 @@ function ScrollToTop() {
 
 function AppShell() {
   const { pathname } = useLocation()
-  const isCaseStudy  = pathname.startsWith('/projects/')
+  const isCaseStudy  = pathname.startsWith('/projects/') || (pathname.startsWith('/ai/') && pathname.length > 4)
 
   return (
     <>
@@ -41,6 +42,7 @@ function AppShell() {
         <Route path="/projects/rokt"        element={<Rokt />} />
         <Route path="/projects/swiftshift"  element={<SwiftShift />} />
         <Route path="/ai"                   element={<AI />} />
+        <Route path="/ai/portfolio"         element={<AIPortfolio />} />
         <Route path="/interview"            element={<InterviewMe />} />
         <Route path="*"                     element={<Home />} />
       </Routes>
