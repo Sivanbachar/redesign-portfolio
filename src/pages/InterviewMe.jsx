@@ -34,9 +34,14 @@ const INTERVIEW_DATA = [
     question: 'What kind of problems do you enjoy working on?',
     answer: `I'm drawn to problems where the path isn't obvious.\n\nEspecially ones that sit across multiple parts of a system, where solving them requires more than just designing a single interface.`,
   },
+  {
+    id: 'ai-usage',
+    question: 'How are you actually using AI in your design work?',
+    answer: `I use AI across a mix of tools depending on the stage of the work.\n\nAt Amazon, I've used tools like Kiro and Quick Suite to help with microcopy, narrative framing, and getting to clearer, more concise artifacts faster. Outside of that, I've been using tools like Google Stitch, Figma Make, Claude Code, and Codex to prototype and build ideas directly.\n\nThe design tools are impressive from a speed and polish perspective, but they're not great at evaluating usability. A lot of what they produce looks finished, but the underlying experience often doesn't hold up. It tends to over-index on visuals without really solving the interaction or flow.\n\nI also find AI-generated writing is becoming easier to spot, so I spend a fair amount of time editing and stripping things back. It feels less like generating and more like debugging.\n\nWhere it's been most useful is in testing ideas quickly. I can get something that behaves like a real product and see what works or doesn't almost immediately. That's a big shift from building partial prototypes that only represent a fraction of the experience.\n\nSo for me, AI isn't replacing design thinking. It's compressing the time it takes to explore and reject ideas, which lets me spend more time on the decisions that actually matter.`,
+  },
 ]
 
-const INITIAL_IDS = ['ai-role', 'ambiguous', 'difficult-decision', 'enjoy']
+const INITIAL_IDS = ['ai-usage', 'ai-role', 'ambiguous', 'difficult-decision']
 
 export default function InterviewMe() {
   const navigate = useNavigate()
