@@ -15,7 +15,7 @@ export default function ExploreMore() {
   return (
     <section style={{
       background:  'var(--bg)',
-      padding:     'clamp(72px,8vw,112px) clamp(20px,5vw,80px) 0',
+      padding:     'clamp(72px,8vw,112px) clamp(20px,5vw,80px) clamp(72px,8vw,112px)',
       borderTop:   '1px solid var(--bdr)',
     }}>
       {/* Heading */}
