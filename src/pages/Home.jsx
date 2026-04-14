@@ -42,7 +42,7 @@ function KeyboardHint() {
 
 function InteractiveHero() {
   const heroRef = useRef(null)
-  const tagline = useScramble('SENIOR PRODUCT DESIGNER · AMAZON KINDLE')
+  const tagline = useScramble('Product Designer · Amazon Kindle')
 
   useEffect(() => {
     if (isTouch()) return  // filter:blur() on large composited elements crashes mobile Safari
@@ -66,11 +66,6 @@ function InteractiveHero() {
           Baum
         </h1>
         <div className="hero-tagline">{tagline}</div>
-        <p className="hero-desc">
-          I design product experiences that shape <strong>strategy</strong>,
-          <br />
-          not just interfaces.
-        </p>
         <div className="hero-scroll">
           <span>Scroll</span>
           <span className="hero-scroll-chevron">∨</span>
