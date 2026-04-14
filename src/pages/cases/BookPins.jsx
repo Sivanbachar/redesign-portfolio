@@ -99,11 +99,21 @@ export default function BookPins() {
         <div className="cs-section">
           <span className="cs-section-label sr">Origin</span>
           <h2 className="cs-h2 sr">This work didn't start as a defined project.</h2>
-          <p className="cs-p sr">At the time, product and leadership were exploring a long-term vision for reading, but there was no clear direction for how that vision should take shape.</p>
-          <p className="cs-p sr">I brought together product, engineering, and leadership in a generative workshop to surface opportunities, then carried that work forward by translating the ideas into concrete concepts through design and prototyping.</p>
-          <p className="cs-p sr">I expanded beyond the initial outputs, introducing additional directions and shaping a clear point of view on where the product could go.</p>
-          <p className="cs-p sr">By making the work tangible, it created alignment across teams and gave leadership something real to evaluate.</p>
-          <p className="cs-p sr">That direction was ultimately funded and became the foundation for the work that followed.</p>
+          <p className="cs-p sr">Product and leadership were exploring a long-term vision for reading — but there was no clear direction for how that vision should take shape.</p>
+          <div className="cs-outcome-row sr">
+            <div className="cs-outcome-cell">
+              <p className="cs-outcome-label">Situation</p>
+              <p className="cs-outcome-val">A long-term vision existed but lacked direction. No defined brief, no assigned scope — just open ambiguity and an opportunity to shape something from scratch.</p>
+            </div>
+            <div className="cs-outcome-cell">
+              <p className="cs-outcome-label">Approach</p>
+              <p className="cs-outcome-val">I brought together product, engineering, and leadership in a generative workshop to surface opportunities. Then carried it forward — translating ideas into concrete concepts and introducing directions beyond the initial outputs.</p>
+            </div>
+            <div className="cs-outcome-cell">
+              <p className="cs-outcome-label">Outcome</p>
+              <p className="cs-outcome-val">Making the work tangible created alignment across teams and gave leadership something real to evaluate. That direction was funded and became the foundation for everything that followed.</p>
+            </div>
+          </div>
         </div>
 
         {/* OVERVIEW */}
