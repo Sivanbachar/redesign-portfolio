@@ -84,6 +84,31 @@ export default function SwiftShift() {
           </div>
         </div>
 
+        {/* SCOPE OF WORK */}
+        <div className="cs-section">
+          <span className="cs-section-label sr">Scope of Work</span>
+          <h2 className="cs-h2 sr">As the sole designer, I owned the end-to-end experience across the Swift Shift platform, spanning multiple surfaces and user types.</h2>
+          <div className="cs-outcome-row sr">
+            <div className="cs-outcome-cell">
+              <p className="cs-outcome-label">Product</p>
+              <p className="cs-outcome-val">Onboarding experience</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>Scheduler tool — desktop application</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>Nurse app — mobile experience</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>TCM app — iPad, pre-launch</p>
+            </div>
+            <div className="cs-outcome-cell">
+              <p className="cs-outcome-label">Brand & Marketing</p>
+              <p className="cs-outcome-val">Marketing website and acquisition flows</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>Marketing materials and campaign assets</p>
+            </div>
+            <div className="cs-outcome-cell">
+              <p className="cs-outcome-label">Foundation</p>
+              <p className="cs-outcome-val">Design language system and component foundations</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>System states — error, empty, edge cases</p>
+            </div>
+          </div>
+        </div>
+
         {/* FIELD WORK */}
         <div className="cs-section">
           <span className="cs-section-label sr">Understanding Real Workflows</span>
