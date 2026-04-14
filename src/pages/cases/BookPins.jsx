@@ -109,7 +109,7 @@ export default function BookPins() {
               <p className="cs-p sr">The solution enabled readers to access and interact with referenced content without leaving the page, reducing disruption to reading flow and improving comprehension for high intent use cases like learning and research.</p>
             </div>
           </div>
-          <div className="cs-kpi-row sr" style={{ marginTop: 40 }}>
+          <div className="cs-kpi-row sr" style={{ marginTop: 64 }}>
             {[
               ['446K+', 'Users', 'reached through the shipped experience'],
               ['950K+', 'Pins created', 'across the user base'],
@@ -121,7 +121,7 @@ export default function BookPins() {
               </div>
             ))}
           </div>
-          <div className="cs-finding-grid two-col sr" style={{ marginTop: 28 }}>
+          <div className="cs-finding-grid two-col sr" style={{ marginTop: 48 }}>
             {[
               { tag: 'Product Direction', b: 'Originated from a three-year product vision grounded in customer research and prioritized by leadership to evolve the Kindle reading experience.' },
               { tag: 'Scalable Framework', b: 'Introduced a layered approach to in reading features, enabling new capabilities without disrupting the core experience.' },
@@ -165,10 +165,10 @@ export default function BookPins() {
             <p className="cs-insight-text">Content was treated as something to save and retrieve later, rather than something to use in context, alongside the reading experience. This created a fundamental gap between how content was structured in the product and <strong>how readers actually needed to interact with it.</strong></p>
           </div>
           <p className="cs-p sr">This reframed the problem entirely. Rather than improving highlights, notes, or bookmarks, the opportunity was to rethink how referencing worked at a system level.</p>
-          <div className="cs-callout sr" style={{ marginTop: 24 }}>
+          <div className="cs-callout sr" style={{ marginTop: 40 }}>
             <p><strong>How might we</strong> enable readers to reference content in context, without disrupting their reading flow?</p>
           </div>
-          <div className="sr" style={{ marginTop: 40 }}>
+          <div className="sr" style={{ marginTop: 64 }}>
             <img
               src="/images/pins/diagram_1.jpg"
               alt="Diagram showing the number of steps required to reference content in the original Kindle experience"
@@ -197,7 +197,7 @@ export default function BookPins() {
               <h3 className="cs-h3" style={{ marginBottom: 16 }}>What we explored</h3>
               <p className="cs-p sr">Analyzing patterns across adjacent products revealed two key tensions: PiP patterns worked well for passive consumption where content is viewed at a glance, while interactive tools required stability and depth, especially when users needed to read, scroll or zoom.</p>
               <p className="cs-p sr">Platforms like Notion and Apple Books demonstrated that users are comfortable with on-page tooling, so long as it enhances the primary task rather than distracting from it. This challenged an existing assumption within Kindle: that preserving a "reading sanctuary" required minimizing all on page UI.</p>
-              <div className="cs-callout sr" style={{ marginTop: 16 }}>
+              <div className="cs-callout sr" style={{ marginTop: 28 }}>
                 <p><strong>What we learned from users:</strong> Content was treated as something to save and retrieve later, rather than something to use in context, alongside the reading experience. This created a fundamental gap between how content was structured in the product and how readers actually needed to interact with it.</p>
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function BookPins() {
               <h3 className="cs-h3 sr" style={{ marginBottom: 16 }}>From overlays to a layered reading model</h3>
               <p className="cs-p sr">Early exploration focused on floating and anchored UI layered on top of reading. While these approaches improved visibility, they increased cognitive load and disrupted the reading experience.</p>
               <p className="cs-p sr">This led to a fundamental shift: instead of placing features around reading, I introduced a layered model that integrates functionality into the reading experience itself, enabling new capabilities without competing with the core act of reading.</p>
-              <div className="cs-callout sr" style={{ marginTop: 16 }}>
+              <div className="cs-callout sr" style={{ marginTop: 28 }}>
                 <p><strong>The pivot:</strong> We moved away from keeping content persistently visible and instead designed for on-demand interaction allowing readers to engage deeply when needed without compromising the reading experience.</p>
               </div>
             </div>
@@ -272,7 +272,7 @@ export default function BookPins() {
               </div>
             </div>
           </div>
-          <div className="cs-finding-grid sr" style={{ marginTop: 40 }}>
+          <div className="cs-finding-grid sr" style={{ marginTop: 64 }}>
             {[
               { tag: 'Iteration 01: Floating PiP Overlay', h: 'Improved visibility, increased complexity', b: 'Pinned content floats above the page. Improved visibility but created gesture complexity, cognitive load, and overlapping interactions. Favored glancing, not deeper interaction.' },
               { tag: 'Iteration 02: Anchored Model', h: 'Anchored model, over-engineered for MLP', b: 'Content anchored to a fixed panel. Better than floating but over-engineered for a minimum loveable product. Too much interface for the initial launch scope.' },
@@ -319,7 +319,7 @@ export default function BookPins() {
               ↑ Autoplaying loop · No audio · Demonstrates the live pinnable content experience
             </p>
           </div>
-          <div className="cs-2col" style={{ marginTop: 40 }}>
+          <div className="cs-2col" style={{ marginTop: 64 }}>
             <div>
               <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 16 }}>How it works</p>
               {[
@@ -386,7 +386,7 @@ export default function BookPins() {
               </div>
             ))}
           </div>
-          <div className="sr" style={{ marginTop: 24 }}>
+          <div className="sr" style={{ marginTop: 40 }}>
             <a
               href="https://www.reddit.com/r/kindle/comments/1ryxcow/new_software_pin_feature/"
               target="_blank"
@@ -423,10 +423,10 @@ export default function BookPins() {
               </div>
             ))}
           </div>
-          <div className="cs-callout sr" style={{ marginTop: 28 }}>
+          <div className="cs-callout sr" style={{ marginTop: 48 }}>
             <p><strong>What this means:</strong> These metrics show that readers didn't just save content, they actively used it. Referencing became part of the reading experience, supporting behaviors like studying, comparing ideas, and revisiting key information without breaking flow.</p>
           </div>
-          <div className="cs-finding-grid two-col sr" style={{ marginTop: 32 }}>
+          <div className="cs-finding-grid two-col sr" style={{ marginTop: 52 }}>
             {[
               { tag: 'Product Impact', b: 'Established a new interaction model for in-book experiences. Influenced broader investment in interactive and AI-powered reading features.' },
               { tag: 'Strategic Impact', b: 'Helped shift Kindle from linear consumption → active engagement. Drove alignment on multi-year product vision and direction.' },

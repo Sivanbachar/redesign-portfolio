@@ -96,7 +96,7 @@ export default function SwiftShift() {
             </div>
             <div>
               <p className="cs-p sr">What I heard from nurses was different, but just as important. They weren't just choosing between shifts, they were deciding whether the work was worth the uncertainty. They didn't know enough about the patient upfront. They didn't have clarity on how much they would actually make. And waiting for bi-weekly pay made many shifts feel like a risk.</p>
-              <div className="cs-insight sr" style={{ marginTop: 24 }}>
+              <div className="cs-insight sr" style={{ marginTop: 40 }}>
                 <span className="cs-insight-label">Field Observation</span>
                 <p className="cs-insight-text">This shaped the system in a fundamental way. It wasn't just about helping schedulers fill shifts faster. It was about giving both sides enough clarity and confidence to participate at all.</p>
               </div>
@@ -186,7 +186,7 @@ export default function SwiftShift() {
               <img src="/images/swiftshift/swiftshift-scheduler.png" alt="Scheduler Dashboard" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
             </div>
           </div>
-          <div className="cs-2col" style={{ marginTop: 40 }}>
+          <div className="cs-2col" style={{ marginTop: 64 }}>
             <div>
               <img src="/images/swiftshift/swiftshift-create-shift.png" alt="Shift Creation Flow" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
             </div>
@@ -228,7 +228,7 @@ export default function SwiftShift() {
               <p className="cs-p sr">Nurses needed enough information to decide whether a shift made sense for them. But we couldn't expose patient details. That constraint was non-negotiable.</p>
               <p className="cs-p sr">What we landed on was a set of contextual signals that sat just below the privacy line: general age range, broad location at the market level, and required skills. Enough for a nurse to make a reasonable judgment. Not enough to identify a patient.</p>
               <p className="cs-p sr">Every decision in this space required judgment about where that line was. What actually helps someone make a decision, and what crosses into territory that shouldn't be crossed. There was no formula. We worked through it case by case.</p>
-              <div className="cs-insight sr" style={{ marginTop: 24 }}>
+              <div className="cs-insight sr" style={{ marginTop: 40 }}>
                 <span className="cs-insight-label">Design Constraint</span>
                 <p className="cs-insight-text">The privacy constraint didn't just affect what information we showed. It affected how trust was built on both sides of the platform. Nurses needed confidence in the product. Patients and operators needed confidence that nothing was being exposed carelessly.</p>
               </div>
@@ -259,7 +259,7 @@ export default function SwiftShift() {
               <p className="cs-p sr">I partnered with the CEO to test a different hypothesis: could nurses help fill shifts themselves? We built a group-based messaging system that organized nurses into care groups. When a nurse called out, the shift became visible to that group and nurses could pick it up directly.</p>
             </div>
           </div>
-          <div className="cs-2col" style={{ marginTop: 40 }}>
+          <div className="cs-2col" style={{ marginTop: 64 }}>
             <div>
               <div className="sr" style={{ display: 'flex', alignItems: 'center', gap: 16, justifyContent: 'center' }}>
                 <div style={{ flex: 1, textAlign: 'center' }}>

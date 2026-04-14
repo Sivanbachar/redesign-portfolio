@@ -295,12 +295,6 @@ export default function About() {
 
       </div>
 
-      <footer className="footer">
-        <span className="footer-l">© 2025 Sivan Baum</span>
-        <button className="nav-btn footer-r" onClick={() => navigate('/')}>
-          Back to Work →
-        </button>
-      </footer>
     </div>
   )
 }

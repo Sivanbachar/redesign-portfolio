@@ -159,7 +159,7 @@ export default function Rokt() {
                 <span className="cs-insight-label">Design Principle</span>
                 <p className="cs-insight-text">The question isn't what should we design. It's what should we learn next.</p>
               </div>
-              <div className="cs-callout sr" style={{ marginTop: 16 }}>
+              <div className="cs-callout sr" style={{ marginTop: 28 }}>
                 <p><strong>Why experiment?</strong> Testing ideas before committing resources meant we could learn faster, fail cheaper, and ship with higher confidence in performance outcomes.</p>
               </div>
             </div>
@@ -272,7 +272,7 @@ export default function Rokt() {
           <div className="cs-2col">
             <div>
               <p className="cs-p sr">I surveyed and screened over 100 users to interview 50 regarding their general experience shopping online and encountering ads in their journey. These interviews consisted of questions to probe users about their experience while going through actual websites they enjoy shopping on.</p>
-              <div className="cs-method-row sr" style={{ marginTop: 24 }}>
+              <div className="cs-method-row sr" style={{ marginTop: 40 }}>
                 {[
                   ['📊', 'Data Audit', 'Tableau + Business Analytics'],
                   ['🎙', 'User Interviews', '50 in-depth sessions'],
@@ -285,7 +285,7 @@ export default function Rokt() {
                   </div>
                 ))}
               </div>
-              <div className="cs-dot-matrix sr" style={{ marginTop: 24 }}>
+              <div className="cs-dot-matrix sr" style={{ marginTop: 40 }}>
                 <div className="cs-dot-grid">
                   {Array.from({ length: 100 }).map((_, i) => (
                     <div className={`cs-dot${i >= 50 ? ' empty' : ''}`} key={i} />
@@ -300,7 +300,7 @@ export default function Rokt() {
                 <p className="cs-pullquote-text">"I don't even see them anymore. My brain just skips past anything that looks like an ad."</p>
                 <p className="cs-pullquote-attr">User interview · Discovery research</p>
               </div>
-              <div className="cs-insight sr" style={{ marginTop: 24 }}>
+              <div className="cs-insight sr" style={{ marginTop: 40 }}>
                 <span className="cs-insight-label">Central Finding</span>
                 <p className="cs-insight-text">Users aren't passively ignoring ads. They are actively and consciously avoiding them regardless of relevance. The question became: how do we earn the right to be there at all?</p>
               </div>
@@ -325,7 +325,7 @@ export default function Rokt() {
               </div>
             ))}
           </div>
-          <div className="cs-finding-grid sr" style={{ marginTop: 40 }}>
+          <div className="cs-finding-grid sr" style={{ marginTop: 64 }}>
             {[
               { tag: 'Experiment · Imagery', h: 'Overcoming hesitation around visuals', b: 'Historically, imagery had been avoided due to poor performance. We tested functional and contextual imagery that reinforced the value of the offer. This demonstrated that relevance and clarity mattered more than previous assumptions about visual noise. Result: +25% conversion per impression.' },
               { tag: 'Experiment · Content Structure', h: 'Designing for how users actually read', b: "Users in transactional flows don't read deeply. They scan. We introduced structured benefit lists to make offers easier to understand quickly. Result: improved clarity and incremental performance gains." },
@@ -338,7 +338,7 @@ export default function Rokt() {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 40 }}>
+          <div style={{ marginTop: 64 }}>
             <VP label="Design Variant Grid" desc="Grid of ad variants across key experiments with hypothesis labels and result annotations." height={440} />
           </div>
         </div>

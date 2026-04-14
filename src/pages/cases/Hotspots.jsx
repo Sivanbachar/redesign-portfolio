@@ -99,10 +99,10 @@ export default function Hotspots() {
                 </div>
               ))}
             </div>
-            <div className="cs-callout sr" style={{ marginTop: 28 }}>
+            <div className="cs-callout sr" style={{ marginTop: 48 }}>
               <p><strong>How might we</strong> deliver relevant, contextual information within reading in a way that enhances understanding without the reader ever leaving the page?</p>
             </div>
-            <div className="sr" style={{ marginTop: 40 }}>
+            <div className="sr" style={{ marginTop: 64 }}>
               <img
                 src="/images/hotspots/before_after.png"
                 alt="Before and after: reader leaving Kindle vs staying in reading surface"
@@ -205,7 +205,7 @@ export default function Hotspots() {
               </div>
             </div>
             {/* Interactive iteration explorer */}
-            <div className="sr" style={{ marginTop: 40, border: '1px solid var(--bdr)', borderRadius: 10, overflow: 'hidden', background: 'var(--bg1)' }}>
+            <div className="sr" style={{ marginTop: 64, border: "1px solid var(--bdr)", borderRadius: 10, overflow: 'hidden', background: 'var(--bg1)' }}>
 
               {/* Header */}
               <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -296,7 +296,7 @@ export default function Hotspots() {
             <p className="cs-p sr">The solution wasn't a single UI pattern. It was a layered interaction model.</p>
             <p className="cs-p sr">After eliminating every direction that moved the reader off the page, one model remained. Three components define it: inline markers embedded in the text, a toggle that keeps the reader in control, and a bottom sheet that surfaces content without removing the reading surface. This establishes a scalable pattern for how supplemental content can exist within the reading experience — not alongside it.</p>
             {/* Figma prototype embed */}
-            <div className="sr" style={{ marginTop: 40 }}>
+            <div className="sr" style={{ marginTop: 64 }}>
               <div style={{ border: '1px solid var(--bdr)', borderRadius: 10, overflow: 'hidden', background: 'var(--bg1)' }}>
 
                 {/* Header bar */}
@@ -348,7 +348,7 @@ export default function Hotspots() {
 
               </div>
             </div>
-            <div className="cs-decision-grid sr" style={{ marginTop: 40 }}>
+            <div className="cs-decision-grid sr" style={{ marginTop: 64 }}>
               {[
                 ['01 Toggle on', 'Reader activates Hotspots via the toggle pill in the reading corner. The surface shifts inline markers appear on 2 to 4 entities per screen.'],
                 ['02 Tap a hotspot', 'Reader taps a marked entity. A bottom sheet rises over the lower portion of the reading page. Text above remains visible and in position.'],
@@ -369,7 +369,7 @@ export default function Hotspots() {
             <span className="cs-section-label sr">System Impact</span>
             <h2 className="cs-h2 sr">One model. Platform wide implications.</h2>
             <p className="cs-p sr">Hotspots wasn't just a feature, it established the architecture for how in reading features behave. The placement engine, rendering layer, and tracking infrastructure became reusable across content types. New content no longer needs a new interaction pattern. It inherits the framework.</p>
-            <div className="cs-finding-grid two-col sr" style={{ marginTop: 32 }}>
+            <div className="cs-finding-grid two-col sr" style={{ marginTop: 48 }}>
               {[
                 { tag: 'Scalability', b: 'Placement, rendering, and engagement tracking shared across all supplemental content types. Engineering cost per new content type dropped significantly.' },
                 { tag: 'Unified interaction', b: 'Characters, places, terms, author annotations all accessible through a single learnable gesture. One tap. One card. One dismiss.' },
