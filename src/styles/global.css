@@ -154,14 +154,22 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--bdr);
   padding: 32px var(--pad) 36px;
-  opacity: 0; transform: translateY(-8px);
+  opacity: 0;
+  transform: translateY(-6px) scaleY(0.96);
+  transform-origin: top center;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.28s cubic-bezier(0.16,1,0.3,1);
+  transition:
+    opacity 0.22s cubic-bezier(0.4,0,0.2,1),
+    transform 0.32s cubic-bezier(0.16,1,0.3,1);
   max-height: calc(100vh - var(--nav));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-.mega.open { opacity: 1; transform: none; pointer-events: all; }
+.mega.open {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+  pointer-events: all;
+}
 .mega-inner { max-width: var(--max); margin: 0 auto; }
 .mega-label {
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
@@ -170,7 +178,7 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 .mega-overlay {
   position: fixed; inset: 0; z-index: 480;
   background: rgba(0,0,0,0.5);
-  opacity: 0; pointer-events: none; transition: opacity 0.25s;
+  opacity: 0; pointer-events: none; transition: opacity 0.22s cubic-bezier(0.4,0,0.2,1);
 }
 .mega-overlay.open { opacity: 1; pointer-events: all; }
 
