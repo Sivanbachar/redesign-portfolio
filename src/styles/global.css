@@ -135,6 +135,17 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
   line-height: 1; transition: color 0.2s;
 }
 .nav-btn:hover, .nav-btn.act { color: var(--txt); }
+.nav-btn--cta {
+  color: var(--bg);
+  background: var(--txt2);
+  border-radius: 20px;
+  padding: 7px 14px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-btn--cta:hover, .nav-btn--cta.act {
+  color: var(--bg);
+  background: var(--txt);
+}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MEGA MENU ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .mega {

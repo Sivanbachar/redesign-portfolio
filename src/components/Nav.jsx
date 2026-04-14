@@ -62,7 +62,7 @@ export default function Nav() {
             Resume
           </button>
           <button
-            className={`nav-btn${location.pathname === '/interview' ? ' act' : ''}`}
+            className={`nav-btn nav-btn--cta${location.pathname === '/interview' ? ' act' : ''}`}
             onClick={() => navigate('/interview')}
           >
             Interview Me
