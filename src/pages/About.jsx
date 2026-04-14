@@ -203,7 +203,7 @@ export default function About() {
               <div className="exp-entry sr" key={e.role + e.company}>
                 <div>
                   <div className="exp-logo">
-                    <img src={e.logo} alt={e.company} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 7 }} />
+                    <img src={e.logo} alt={e.company} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 7 }} />
                   </div>
                 </div>
                 <div className="exp-right">
