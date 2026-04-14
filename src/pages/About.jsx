@@ -22,7 +22,7 @@ const skills = [
 
 const experience = [
   {
-    logo: 'A',
+    logo: '/images/resume/amazon_logo.jpg',
     role: 'UX Designer II',
     company: 'Amazon · Kindle',
     location: 'New York',
@@ -35,7 +35,7 @@ const experience = [
     ],
   },
   {
-    logo: 'G',
+    logo: '/images/resume/getuwell_logo.jpg',
     role: 'Head of Service & Product Design',
     company: 'Getuwell',
     location: 'New York',
@@ -47,7 +47,7 @@ const experience = [
     ],
   },
   {
-    logo: 'R',
+    logo: '/images/resume/rokt_logo.webp',
     role: 'UX Designer',
     company: 'Rokt',
     location: 'New York',
@@ -58,7 +58,7 @@ const experience = [
     ],
   },
   {
-    logo: 'S',
+    logo: '/images/resume/swift_shift_logo.png',
     role: 'UX Designer',
     company: 'Swift Shift',
     location: 'New York',
@@ -203,7 +203,7 @@ export default function About() {
               <div className="exp-entry sr" key={e.role + e.company}>
                 <div>
                   <div className="exp-logo">
-                    <span className="exp-logo-letter">{e.logo}</span>
+                    <img src={e.logo} alt={e.company} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 7 }} />
                   </div>
                 </div>
                 <div className="exp-right">
