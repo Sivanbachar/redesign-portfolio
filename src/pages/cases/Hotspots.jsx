@@ -62,6 +62,17 @@ export default function Hotspots() {
         {/* ── Case study content ── */}
         {<>
 
+          {/* ORIGIN */}
+          <div className="cs-section">
+            <span className="cs-section-label sr">Origin</span>
+            <h2 className="cs-h2 sr">This work didn't start as a defined project.</h2>
+            <p className="cs-p sr">At the time, product and leadership were exploring a long-term vision for reading, but there was no clear direction for how that vision should take shape.</p>
+            <p className="cs-p sr">I brought together product, engineering, and leadership in a generative workshop to surface opportunities, then carried that work forward by translating the ideas into concrete concepts through design and prototyping.</p>
+            <p className="cs-p sr">I expanded beyond the initial outputs, introducing additional directions and shaping a clear point of view on where the product could go.</p>
+            <p className="cs-p sr">By making the work tangible, it created alignment across teams and gave leadership something real to evaluate.</p>
+            <p className="cs-p sr">That direction was ultimately funded and became the foundation for the work that followed.</p>
+          </div>
+
           {/* CONTEXT */}
           <div className="cs-section">
             <span className="cs-section-label sr">Context</span>
