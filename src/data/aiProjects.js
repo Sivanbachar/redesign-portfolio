@@ -5,12 +5,12 @@ export const AI_PROJECTS = [
     type: 'Vibe Coded Build',
     tagline: 'A full React SPA built from scratch using AI as the primary execution layer.',
     thumbBg: 'linear-gradient(135deg, #12181f 0%, #0a0f14 100%)',
-    thumbImg: 'images/ai/portfolio_thumbnail.jpg',
+    thumbImg: 'images/ai/currently.png',
     thumbIcon: '◈',
     route: '/ai/portfolio',
 
     // Hero
-    heroImg: 'images/ai/portfolio_thumbnail.jpg',
+    heroImg: 'images/ai/currently.png',
     description: 'A production React portfolio built end-to-end using AI as the execution layer — designed, coded, and shipped in two weeks.',
 
     // What / Problem / Why
