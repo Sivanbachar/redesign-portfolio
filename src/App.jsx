@@ -13,6 +13,7 @@ import Rokt             from './pages/cases/Rokt.jsx'
 import SwiftShift       from './pages/cases/SwiftShift.jsx'
 import AI               from './pages/AI.jsx'
 import AIPortfolio      from './pages/ai/Portfolio.jsx'
+import AIResellerApp    from './pages/ai/ResellerApp.jsx'
 import InterviewMe      from './pages/InterviewMe.jsx'
 
 function ScrollToTop() {
@@ -43,6 +44,7 @@ function AppShell() {
         <Route path="/projects/swiftshift"  element={<SwiftShift />} />
         <Route path="/ai"                   element={<AI />} />
         <Route path="/ai/portfolio"         element={<AIPortfolio />} />
+        <Route path="/ai/reseller"          element={<AIResellerApp />} />
         <Route path="/interview"            element={<InterviewMe />} />
         <Route path="*"                     element={<Home />} />
       </Routes>

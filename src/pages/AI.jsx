@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
 import { AI_PROJECTS } from '../data/aiProjects.js'
+import ToolIcon from '../components/ToolIcon.jsx'
 
 export default function AI() {
   const navigate = useNavigate()
@@ -45,7 +46,12 @@ export default function AI() {
                 <p className="proj-type sr d1">{p.type}</p>
                 <h2 className="proj-title sr d2">{p.title}</h2>
                 <p className="proj-desc sr d3">{p.tagline}</p>
-                <span className="proj-link sr d4">View Project →</span>
+                {p.toolIcons?.length > 0 && (
+                  <div className="proj-tool-icon-row sr d4">
+                    {p.toolIcons.map(t => <ToolIcon key={t} tool={t} />)}
+                  </div>
+                )}
+                <span className="proj-link sr d5">View Project →</span>
               </div>
               <div className="proj-img-wrap">
                 <div className="proj-img-block" style={{ background: p.thumbBg }}>
