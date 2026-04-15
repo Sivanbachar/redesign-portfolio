@@ -43,14 +43,21 @@ export default function AIResellerApp() {
             <span className="cs-section-label">Prototype</span>
           </div>
           <div className="aip-section-content">
-            <div className="aip-proto-wrap sr d1">
-              <iframe
-                src={p.prototype}
-                title={`${p.title} prototype`}
-                className="aip-proto-frame"
-                allowFullScreen
-              />
-            </div>
+            <a
+              href={p.prototype}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="aip-proto-cta sr d1"
+            >
+              <div className="aip-proto-cta-inner">
+                <div className="aip-proto-cta-left">
+                  <p className="aip-proto-cta-label">Interactive Prototype</p>
+                  <p className="aip-proto-cta-name">{p.title}</p>
+                  <p className="aip-proto-cta-sub">Designed in Google Stitch · Opens in new tab</p>
+                </div>
+                <span className="aip-proto-cta-btn">View Prototype ↗</span>
+              </div>
+            </a>
           </div>
         </section>
 
