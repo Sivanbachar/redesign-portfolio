@@ -22,7 +22,7 @@ const INTERVIEW_DATA = [
   {
     id: 'difficult-decision',
     question: 'Tell me about a difficult product decision',
-    answer: `On the Hotspots project, the hardest part wasn't what content to show, it was how to introduce it without breaking reading.\n\nWe explored a number of directions that worked in isolation, like overlays or panels, but each of them introduced friction or pulled the reader out of context.\n\nThe decision we ended up making was to treat this as a system problem instead of a UI problem. That's what led to the layered model with inline markers, a toggle, and a bottom sheet.`,
+    answer: `On the Contextual Layers project, the hardest part wasn't what content to show, it was how to introduce it without breaking reading.\n\nWe explored a number of directions that worked in isolation, like overlays or panels, but each of them introduced friction or pulled the reader out of context.\n\nThe decision we ended up making was to treat this as a system problem instead of a UI problem. That's what led to the layered model with inline markers, a toggle, and a bottom sheet.`,
   },
   {
     id: 'done',

@@ -1,7 +1,7 @@
 export const PROJECTS = [
   {
-    id: 'hotspots',
-    title: 'Hotspots',
+    id: 'contextual-layers',
+    title: 'Contextual Layers',
     company: 'Amazon · Kindle',
     type: 'Interaction Model',
     tagline: 'Defined a new interaction model for contextual knowledge in reading.',

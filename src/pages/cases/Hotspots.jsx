@@ -13,7 +13,7 @@ const ITERATIONS = [
   { id: 'layered-inline', name: 'Layered Inline Model', img: '/images/hotspots/iterations/layered-inline.jpg', behavior: 'Insights embedded directly within the content as inline markers. A tap surfaces a bottom sheet with progressive disclosure. The reading surface is never removed.', outcome: 'Selected. Minimal disruption, contextual by nature, no help text required to understand, and scalable as a framework across all supplemental content types.', selected: true },
 ]
 
-export default function Hotspots() {
+export default function ContextualLayers() {
   const navigate = useNavigate()
   useScrollReveal()
   const pct = useReadingProgress()
@@ -27,7 +27,8 @@ export default function Hotspots() {
 
       <div className="cs-hero sr">
         <p className="cs-tag">Amazon · Kindle · AI-Powered Experience · Sole Designer · 2026</p>
-        <h1 className="cs-h1">Hotspots</h1>
+        <h1 className="cs-h1">Contextual Layers</h1>
+        <p className="cs-subtitle sr">A layered model for surfacing contextual knowledge within reading</p>
         <p className="cs-lead">The challenge wasn't surfacing content. It was doing it without disrupting reading. Every additional layer we introduce competes with the reading experience. Too hidden, and it never gets used. Too visible, and it pulls the reader out of flow. We weren't designing a feature. We were deciding how supplemental content should exist within reading.</p>
         <p className="cs-tag" style={{ marginTop: 16, fontFamily: 'var(--sans)', letterSpacing: 0, textTransform: 'none', fontSize: 13, opacity: 0.5 }}>This work is based on internal product development and has been adapted to remove confidential details while preserving the core problem, approach, and design decisions.</p>
       </div>
@@ -53,7 +54,7 @@ export default function Hotspots() {
           <div style={{ position: 'relative', borderRadius: 8, overflow: 'hidden' }}>
             <img
               src="/images/hotspots/hotspot-hero.jpg"
-              alt="Hotspots Reading Experience"
+              alt="Contextual Layers Reading Experience"
               style={{ width: '100%', display: 'block', borderRadius: 8 }}
             />
           </div>
@@ -162,7 +163,7 @@ export default function Hotspots() {
             <span className="cs-section-label sr">Key Decisions</span>
             <h2 className="cs-h2 sr">Four decision points that shaped the product.</h2>
             {[
-              { n: '01', h: 'Toggle model: opt in by default', p1: 'Hotspots launches in an off state. Readers activate it. This removed the most significant objection: that push content would feel intrusive.', p2: 'The opt in model also provided a clean signal for engagement analysis. Every activation was an intentional choice, not an accidental interaction.' },
+              { n: '01', h: 'Toggle model: opt in by default', p1: 'Contextual Layers launches in an off state. Readers activate it. This removed the most significant objection: that push content would feel intrusive.', p2: 'The opt in model also provided a clean signal for engagement analysis. Every activation was an intentional choice, not an accidental interaction.' },
               { n: '02', h: 'Bottom sheet over overlay', p1: 'Competing directions included a floating overlay anchored near the tapped entity. The bottom sheet was chosen because it preserves the full reading surface, the text remains visible and in context while the card is open.', p2: 'This also aligned with established platform patterns on iOS and Android, reducing the cognitive load of learning a new interaction.' },
               { n: '03', h: 'Smart entity selection, not highlight everything', p1: 'Early prototypes marked every recognizable entity in the text. The reading surface looked annotated, not layered. The quality bar shifted from coverage to relevance.', p2: 'The placement engine was redesigned to surface 2 to 4 hotspots per page, those most likely to benefit comprehension without fragmenting attention.' },
               { n: '04', h: 'Reader controlled density', p1: 'Beyond the global toggle, readers can long press any hotspot to suppress that entity type across the book. Character fatigue is real. The control is local and persistent.', p2: 'This extended the trust model: the product earns its place on the reading surface session by session, not by default.' },
@@ -210,7 +211,7 @@ export default function Hotspots() {
             <div className="cs-2col">
               <div>
                 <p className="cs-p sr">The design breakthrough wasn't a UI solution it was a reframe. Every direction we'd explored placed supplemental content adjacent to reading. A panel. A menu. A button. All of them asked the reader to leave the text.</p>
-                <p className="cs-p sr">The layered model treated the text itself as the interface. Hotspots live inside the reading surface. Content emerges from the words not from chrome around them. Readers never leave the page.</p>
+                <p className="cs-p sr">The layered model treated the text itself as the interface. Contextual layers live inside the reading surface. Content emerges from the words not from chrome around them. Readers never leave the page.</p>
               </div>
               <div>
                 {[
@@ -352,7 +353,7 @@ export default function Hotspots() {
                       flexShrink: 0,
                     }}
                     allowFullScreen
-                    title="Hotspots Interactive Prototype"
+                    title="Contextual Layers Interactive Prototype"
                   />
                 </div>
 
@@ -372,7 +373,7 @@ export default function Hotspots() {
             </div>
             <div className="cs-decision-grid sr" style={{ marginTop: 64 }}>
               {[
-                ['01 Toggle on', 'Reader activates Hotspots via the toggle pill in the reading corner. The surface shifts inline markers appear on 2 to 4 entities per screen.'],
+                ['01 Toggle on', 'Reader activates Contextual Layers via the toggle pill in the reading corner. The surface shifts inline markers appear on 2 to 4 entities per screen.'],
                 ['02 Tap a hotspot', 'Reader taps a marked entity. A bottom sheet rises over the lower portion of the reading page. Text above remains visible and in position.'],
                 ['03 Read the card', 'Card displays entity summary, type (character / place / term), and relevant context. Navigation to related entities is available within the card.'],
                 ['04 Return to page', 'Reader dismisses the sheet. Reading surface restores to the exact position. No scroll reset. No context loss. Reading continues.'],
@@ -390,13 +391,13 @@ export default function Hotspots() {
           <div className="cs-section">
             <span className="cs-section-label sr">System Impact</span>
             <h2 className="cs-h2 sr">One model. Platform wide implications.</h2>
-            <p className="cs-p sr">Hotspots wasn't just a feature, it established the architecture for how in reading features behave. The placement engine, rendering layer, and tracking infrastructure became reusable across content types. New content no longer needs a new interaction pattern. It inherits the framework.</p>
+            <p className="cs-p sr">Contextual Layers wasn't just a feature, it established the architecture for how in reading features behave. The placement engine, rendering layer, and tracking infrastructure became reusable across content types. New content no longer needs a new interaction pattern. It inherits the framework.</p>
             <div className="cs-finding-grid two-col sr" style={{ marginTop: 48 }}>
               {[
                 { tag: 'Scalability', b: 'Placement, rendering, and engagement tracking shared across all supplemental content types. Engineering cost per new content type dropped significantly.' },
                 { tag: 'Unified interaction', b: 'Characters, places, terms, author annotations all accessible through a single learnable gesture. One tap. One card. One dismiss.' },
-                { tag: 'AI integration', b: 'The framework was designed to ingest AI generated content from day one. Hotspots set the delivery surface. AI enriches the payload over time.' },
-                { tag: 'Feature to system shift', b: 'Hotspots changed how the team thinks about building on Kindle. The question shifted from which feature to does this extend the framework.' },
+                { tag: 'AI integration', b: 'The framework was designed to ingest AI generated content from day one. Contextual Layers set the delivery surface. AI enriches the payload over time.' },
+                { tag: 'Feature to system shift', b: 'Contextual Layers changed how the team thinks about building on Kindle. The question shifted from which feature to does this extend the framework.' },
               ].map(({ tag, b }) => (
                 <div className="cs-finding" key={tag}>
                   <span className="cs-finding-tag">{tag}</span>
@@ -433,7 +434,7 @@ export default function Hotspots() {
             <h2 className="cs-h2 sr">A new model.<br />Not just a new feature.</h2>
             <div className="cs-2col">
               <div>
-                <p className="cs-p sr">Hotspots validated that push based content delivery improves engagement without degrading reading. The interaction model proved learnable, the content surface proved trustworthy, and the guardrails held.</p>
+                <p className="cs-p sr">Contextual Layers validated that push based content delivery improves engagement without degrading reading. The interaction model proved learnable, the content surface proved trustworthy, and the guardrails held.</p>
                 <p className="cs-p sr">More durably: it shifted Kindle's product thinking. Features that previously lived outside the reading experience now had a path inside it. The framework created an integration surface that subsequent teams inherited rather than rebuilt.</p>
                 <p className="cs-p sr">The work is ongoing. The MLP was designed to be expanded. AI powered content generation, personalized entity selection, and author contributed annotations are all paths the framework can absorb. The model was built for it.</p>
               </div>

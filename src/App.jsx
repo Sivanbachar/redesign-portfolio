@@ -7,7 +7,7 @@ import ExploreMore      from './components/ExploreMore.jsx'
 import Footer           from './components/Footer.jsx'
 import Home             from './pages/Home.jsx'
 import About            from './pages/About.jsx'
-import Hotspots         from './pages/cases/Hotspots.jsx'
+import ContextualLayers from './pages/cases/Hotspots.jsx'
 import BookPins         from './pages/cases/BookPins.jsx'
 import Rokt             from './pages/cases/Rokt.jsx'
 import SwiftShift       from './pages/cases/SwiftShift.jsx'
@@ -38,7 +38,7 @@ function AppShell() {
       <Routes>
         <Route path="/"                     element={<Home />} />
         <Route path="/about"                element={<About />} />
-        <Route path="/projects/hotspots"    element={<Hotspots />} />
+        <Route path="/projects/contextual-layers" element={<ContextualLayers />} />
         <Route path="/projects/bookpins"    element={<BookPins />} />
         <Route path="/projects/rokt"        element={<Rokt />} />
         <Route path="/projects/swiftshift"  element={<SwiftShift />} />

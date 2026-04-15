@@ -703,7 +703,8 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
   margin: 0 auto; width: 100%;
 }
 .cs-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 24px; }
-.cs-h1 { font-family: var(--sans); font-weight: 500; font-size: clamp(40px, 6vw, 86px); line-height: 1.0; letter-spacing: -0.03em; color: var(--txt); margin-bottom: 36px; max-width: 800px; }
+.cs-h1 { font-family: var(--sans); font-weight: 500; font-size: clamp(40px, 6vw, 86px); line-height: 1.0; letter-spacing: -0.03em; color: var(--txt); margin-bottom: 16px; max-width: 800px; }
+.cs-subtitle { font-family: var(--sans); font-size: clamp(14px, 1.4vw, 17px); color: var(--txt3); font-weight: 300; margin-bottom: 28px; letter-spacing: 0; }
 .cs-lead { font-size: clamp(17px, 1.8vw, 22px); color: var(--txt2); line-height: 1.65; max-width: 600px; }
 .cs-meta-row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr); max-width: var(--max); margin: 0 auto; width: 100%; }
 .cs-meta-cell { padding: 36px var(--pad); border-right: 1px solid var(--bdr); }
@@ -850,11 +851,11 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 }
 .skills-pills { display: flex; flex-wrap: wrap; gap: 8px; }
 .skill-pill {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--txt2);
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 6px; padding: 8px 14px;
+  border-radius: 6px; padding: 6px 11px;
   transition: background 0.2s, color 0.2s;
 }
 .skill-pill:hover {
