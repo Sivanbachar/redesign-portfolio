@@ -4,19 +4,30 @@ import { useScrollReveal } from '../hooks/useScrollReveal.js'
 const skills = [
   {
     group: 'Design',
-    items: ['Product Design', 'Interaction Design', 'UX Frameworks', 'Visual Design', 'Rapid Prototyping', 'Interaction Modeling'],
+    items: [
+      'Product Design', 'Design Systems', 'Native Mobile (iOS/Android)',
+      'Interaction Design', 'Visual Design', 'Information Architecture',
+      'Accessibility (WCAG)', 'Rapid Prototyping',
+    ],
+  },
+  {
+    group: 'Development',
+    items: [
+      'React/HTML/CSS/JS', 'Agentic AI Workflows', 'AI-Assisted Development',
+      'Front-End Development', 'AI Prototyping', 'Prompt Design',
+    ],
   },
   {
     group: 'Strategy',
-    items: ['Product Strategy 0→1', 'Product Discovery', 'Experimentation', 'Stakeholder Alignment', 'Product Systems'],
-  },
-  {
-    group: 'AI Workflows',
-    items: ['AI Prototyping', 'Agentic Workflows', 'Prompt Design', 'Code-Assisted Design'],
+    items: [
+      '0→1 Product Design', 'PRD Writing', 'Cross-Functional Collaboration',
+      'Stakeholder Storytelling', 'User Research', 'Requirements Gathering',
+      'Product Discovery', 'Experimentation',
+    ],
   },
   {
     group: 'Tools',
-    items: ['Figma', 'Framer', 'Claude Code', 'Kiro', 'Jira', 'Asana'],
+    items: ['Figma', 'GitHub', 'Vercel', 'Claude Code', 'Jira', 'Confluence', 'Framer'],
   },
 ]
 
