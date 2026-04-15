@@ -86,6 +86,7 @@ export const AI_PROJECTS = [
       { heading: 'Prompting sharpens product thinking', body: 'Using ChatGPT to refine the UX logic forced me to articulate decisions I would normally leave implicit — which fields are required, what happens when platforms conflict, how errors surface. Writing prompts good enough to get useful output is really just writing a product spec.' },
       { heading: 'Adaptive forms are a systems problem', body: 'The interesting design challenge wasn\'t visual — it was data modeling. Which platform is the "most detailed"? What happens if two platforms want the same field in different formats? Solving that made the rest of the UI much simpler to design.' },
       { heading: 'Design tools that generate are still design tools', body: 'Stitch doesn\'t remove design judgment. It removes keystroke work. I still had to evaluate every screen it generated — whether the hierarchy was right, whether the form felt approachable, whether the adaptive logic was legible to a user who doesn\'t know it\'s happening.' },
+      { heading: 'AI takes liberties', body: 'Left to its own interpretation, AI will make decisions — about layout, copy, hierarchy, flow — that aren\'t wrong, but aren\'t yours. Getting it to the right place required significant back and forth, and even then the final output doesn\'t fully capture the intended experience. Better prompting helps constrain this, but the gap between what you picture and what gets generated is real. Precision in prompting is a skill that has to be developed deliberately.' },
     ],
   },
 ]
