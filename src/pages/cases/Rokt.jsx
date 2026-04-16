@@ -116,36 +116,27 @@ export default function Rokt() {
               </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-              {/* Mobile video placeholder */}
+              {/* Mobile frame */}
               <div style={{
                 width: 220,
-                aspectRatio: '9/16',
                 background: 'var(--bg1)',
                 border: '1px solid var(--bdr)',
                 borderRadius: 20,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 12,
                 position: 'relative',
                 overflow: 'hidden',
               }}>
                 {/* notch */}
                 <div style={{
-                  position: 'absolute', top: 14, left: '50%', transform: 'translateX(-50%)',
-                  width: 56, height: 6, borderRadius: 3,
-                  background: 'rgba(255,255,255,0.1)',
+                  position: 'absolute', top: 10, left: '50%', transform: 'translateX(-50%)',
+                  width: 48, height: 5, borderRadius: 3,
+                  background: 'rgba(255,255,255,0.12)',
+                  zIndex: 2,
                 }} />
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ opacity: 0.2 }}>
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
-                  <polygon points="10,8 17,12 10,16" fill="currentColor"/>
-                </svg>
-                <p style={{
-                  fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em',
-                  textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)',
-                  textAlign: 'center', lineHeight: 1.6, padding: '0 20px',
-                }}>Video placeholder<br/>Mobile</p>
+                <img
+                  src="/images/rokt/background_video.gif"
+                  alt="Rokt post-purchase ad experience"
+                  style={{ width: '100%', display: 'block' }}
+                />
               </div>
             </div>
           </div>
