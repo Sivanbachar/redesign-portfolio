@@ -382,7 +382,11 @@ export default function Rokt() {
             ))}
           </div>
           <div style={{ marginTop: 64 }}>
-            <VP label="Design Variant Grid" desc="Grid of ad variants across key experiments with hypothesis labels and result annotations." height={440} />
+            <img
+              src="/images/rokt/key_experiments.png"
+              alt="Key experiments — design variants and results"
+              style={{ width: '100%', display: 'block', borderRadius: 4, border: '1px solid var(--bdr)' }}
+            />
           </div>
         </div>
 
