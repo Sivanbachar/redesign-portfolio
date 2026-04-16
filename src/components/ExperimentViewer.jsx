@@ -67,7 +67,7 @@ const variants = [
     image: '/images/rokt/variants/variant7.jpg',
     tag: 'Visual Trust',
     title: 'Restrained palette, site-mirrored UI',
-    hypothesis: 'Matching the host site's visual language extends brand trust to ad content',
+    hypothesis: "Matching the host site's visual language extends brand trust to ad content",
     result: 'Increased content engagement',
   },
   {
