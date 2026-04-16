@@ -1,396 +1,331 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
-// ─── CONFIGURATION ──────────────────────────────────────────────────────────
-// When you have real assets, update the paths below and adjust slotPosition
-// to match where the ad placement sits inside your screen image.
-//
-// slotPosition values are percentages of the screen container's dimensions:
-//   top / left / width / height  (e.g. top: 38 means 38% from the top)
+// ─── ASSETS ─────────────────────────────────────────────────────────────────
+const SCREEN_IMAGE = '/images/rokt/variants/screen.jpg'
 
-const SCREEN_IMAGE = null // e.g. '/images/rokt/screen_bg.png'
-
-const SLOT_POSITION = {
-  top:    38,   // % from top of screen container
-  left:   62,   // % from left
-  width:  34,   // % of screen container width
-  height: 48,   // % of screen container height
+// Position of the ad slot as % of the screen container dimensions.
+// Derived from the grey box in screen.jpg (original 5760×4096px).
+const SLOT = {
+  top:   22.36,  // % from top
+  left:   7.36,  // % from left
+  width: 80.85,  // % of container width
 }
 
+// ─── VARIANT DATA ────────────────────────────────────────────────────────────
+// Update title / hypothesis / result as needed.
 const variants = [
   {
-    id:         'variant-a',
-    label:      '01',
-    title:      'Visual Context',
-    hypothesis: 'Added contextual imagery to reinforce offer value',
-    result:     '+25% conversion per impression',
-    image:      null, // '/images/rokt/variant-a.png'
-    accent:     'rgba(255,255,255,0.06)',
+    id: 'v1',
+    image: '/images/rokt/variants/variant1.jpg',
+    tag: 'Content Clarity',
+    title: 'Compact single-line layout',
+    hypothesis: 'Minimal copy with a single clear CTA reduces friction and improves scan time',
+    result: 'Baseline',
   },
   {
-    id:         'variant-b',
-    label:      '02',
-    title:      'Content Clarity',
-    hypothesis: 'Replaced dense copy with structured benefit lists',
-    result:     'Incremental lift + improved clarity scores',
-    image:      null, // '/images/rokt/variant-b.png'
-    accent:     'rgba(255,255,255,0.04)',
+    id: 'v2',
+    image: '/images/rokt/variants/variant2.jpg',
+    tag: 'Content Clarity',
+    title: 'Expanded copy, inline CTA',
+    hypothesis: 'Adding a second line of supporting copy increases perceived value before the CTA',
+    result: 'Incremental lift',
   },
   {
-    id:         'variant-c',
-    label:      '03',
-    title:      'Interaction Control',
-    hypothesis: 'Navigation between offers to support active exploration',
-    result:     '+30% conversion per impression',
-    image:      null, // '/images/rokt/variant-c.png'
-    accent:     'rgba(255,255,255,0.06)',
+    id: 'v3',
+    image: '/images/rokt/variants/variant3.jpg',
+    tag: 'Visual Context',
+    title: 'Card image left, structured copy',
+    hypothesis: 'Contextual product imagery reinforces offer relevance at a glance',
+    result: '+25% conversion per impression',
   },
   {
-    id:         'variant-d',
-    label:      '04',
-    title:      'Visual Trust',
-    hypothesis: 'UI mirrored host site visual language to extend brand trust',
-    result:     'Increased ad content engagement',
-    image:      null, // '/images/rokt/variant-d.png'
-    accent:     'rgba(255,255,255,0.04)',
+    id: 'v4',
+    image: '/images/rokt/variants/variant4.jpg',
+    tag: 'Visual Context',
+    title: 'Larger card image, expanded layout',
+    hypothesis: 'Increasing image prominence drives stronger visual association with the offer',
+    result: '+25% conversion per impression',
+  },
+  {
+    id: 'v5',
+    image: '/images/rokt/variants/variant5.jpg',
+    tag: 'Content Clarity',
+    title: 'Condensed banner, text-forward',
+    hypothesis: 'Text-first layout with muted visual hierarchy focuses attention on the offer value',
+    result: 'Incremental lift',
+  },
+  {
+    id: 'v6',
+    image: '/images/rokt/variants/variant6.jpg',
+    tag: 'Content Clarity',
+    title: 'Structured benefit layout',
+    hypothesis: 'Breaking copy into a benefit list improves clarity scores in transactional flows',
+    result: 'Incremental lift',
+  },
+  {
+    id: 'v7',
+    image: '/images/rokt/variants/variant7.jpg',
+    tag: 'Visual Trust',
+    title: 'Restrained palette, site-mirrored UI',
+    hypothesis: 'Matching the host site's visual language extends brand trust to ad content',
+    result: 'Increased content engagement',
+  },
+  {
+    id: 'v8',
+    image: '/images/rokt/variants/variant8.jpg',
+    tag: 'Visual Trust',
+    title: 'Native UI treatment, expanded',
+    hypothesis: 'Deeper visual alignment with the host page reduces ad recognition and avoidance',
+    result: 'Increased content engagement',
+  },
+  {
+    id: 'v9',
+    image: '/images/rokt/variants/variant9.jpg',
+    tag: 'Visual Context',
+    title: 'Multi-card stacked imagery',
+    hypothesis: 'Showing a product family rather than a single card signals greater offer scope',
+    result: '+25% conversion per impression',
+  },
+  {
+    id: 'v10',
+    image: '/images/rokt/variants/variant10.jpg',
+    tag: 'Interaction Control',
+    title: 'Navigation-enabled layout',
+    hypothesis: 'Allowing users to move between offers shifts the experience from passive to active',
+    result: '+30% conversion per impression',
+  },
+  {
+    id: 'v11',
+    image: '/images/rokt/variants/variant11.jpg',
+    tag: 'Interaction Control',
+    title: 'Multi-offer explorer, expanded view',
+    hypothesis: 'Wider offer exploration reduces early dismissal and increases time with content',
+    result: '+30% conversion per impression',
   },
 ]
 
-// ─── STYLES ─────────────────────────────────────────────────────────────────
-
-const S = {
-  wrap: {
-    width: '100%',
-    fontFamily: "var(--sans, -apple-system, sans-serif)",
-  },
-
-  // Screen mock
-  screenWrap: {
-    position: 'relative',
-    width: '100%',
-    background: '#0e0e0e',
-    border: '1px solid rgba(255,255,255,0.08)',
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
-  chromebar: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 6,
-    padding: '10px 14px',
-    borderBottom: '1px solid rgba(255,255,255,0.06)',
-    background: '#111',
-  },
-  dot: (color) => ({
-    width: 8, height: 8, borderRadius: '50%', background: color, flexShrink: 0,
-  }),
-  urlbar: {
-    flex: 1,
-    height: 20,
-    borderRadius: 4,
-    background: 'rgba(255,255,255,0.04)',
-    marginLeft: 8,
-    maxWidth: 320,
-  },
-
-  // Screen content area
-  screenContent: {
-    position: 'relative',
-    width: '100%',
-    aspectRatio: '16/9',
-    overflow: 'hidden',
-  },
-  screenBg: (image) => ({
-    position: 'absolute',
-    inset: 0,
-    backgroundImage: image ? `url(${image})` : undefined,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center top',
-  }),
-
-  // Ad slot
-  adSlot: (pos, fadingIn) => ({
-    position: 'absolute',
-    top:    `${pos.top}%`,
-    left:   `${pos.left}%`,
-    width:  `${pos.width}%`,
-    height: `${pos.height}%`,
-    border: '1px solid rgba(255,255,255,0.15)',
-    borderRadius: 3,
-    overflow: 'hidden',
-    transition: 'opacity 0.25s ease',
-    opacity: fadingIn ? 0 : 1,
-  }),
-
-  // Controls row
-  controls: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '20px 0 0',
-    borderTop: '1px solid rgba(255,255,255,0.07)',
-    marginTop: 1,
-  },
-  counter: {
-    fontFamily: "var(--mono, monospace)",
-    fontSize: 10,
-    letterSpacing: '0.16em',
-    textTransform: 'uppercase',
-    color: 'rgba(255,255,255,0.35)',
-    minWidth: 48,
-  },
-  dots: {
-    display: 'flex',
-    gap: 6,
-    alignItems: 'center',
-  },
-  navDot: (active) => ({
-    width: active ? 18 : 6,
-    height: 6,
-    borderRadius: 3,
-    background: active ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.15)',
-    transition: 'width 0.25s ease, background 0.25s ease',
-    cursor: 'pointer',
-    border: 'none',
-    padding: 0,
-    flexShrink: 0,
-  }),
-  arrows: {
-    display: 'flex',
-    gap: 6,
-  },
-  arrowBtn: (disabled) => ({
-    width: 34,
-    height: 34,
-    borderRadius: 4,
-    border: '1px solid rgba(255,255,255,0.1)',
-    background: disabled ? 'transparent' : 'rgba(255,255,255,0.03)',
-    color: disabled ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.7)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: disabled ? 'not-allowed' : 'pointer',
-    fontSize: 14,
-    transition: 'background 0.15s, color 0.15s',
-    flexShrink: 0,
-  }),
-
-  // Metadata card
-  meta: {
-    padding: '24px 0 0',
-  },
-  metaInner: {
-    display: 'grid',
-    gridTemplateColumns: '1fr auto',
-    gap: '16px 32px',
-    alignItems: 'start',
-  },
-  variantTitle: {
-    fontFamily: "var(--sans, sans-serif)",
-    fontWeight: 500,
-    fontSize: 15,
-    letterSpacing: '-0.01em',
-    color: 'rgba(255,255,255,0.88)',
-    marginBottom: 8,
-    lineHeight: 1.3,
-  },
-  hypothesis: {
-    fontSize: 13,
-    color: 'rgba(255,255,255,0.5)',
-    lineHeight: 1.6,
-  },
-  resultPill: {
-    fontFamily: "var(--mono, monospace)",
-    fontSize: 10,
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-    color: 'rgba(255,255,255,0.55)',
-    background: 'rgba(255,255,255,0.05)',
-    border: '1px solid rgba(255,255,255,0.08)',
-    borderRadius: 3,
-    padding: '6px 10px',
-    whiteSpace: 'nowrap',
-    lineHeight: 1.4,
-    textAlign: 'right',
-  },
+// ─── TAG ACCENT COLORS ───────────────────────────────────────────────────────
+const TAG_COLORS = {
+  'Content Clarity':    'rgba(180,160,255,0.15)',
+  'Visual Context':     'rgba(100,180,255,0.15)',
+  'Visual Trust':       'rgba(100,220,160,0.15)',
+  'Interaction Control':'rgba(255,180,100,0.15)',
+}
+const TAG_TEXT = {
+  'Content Clarity':    'rgba(180,160,255,0.75)',
+  'Visual Context':     'rgba(100,180,255,0.75)',
+  'Visual Trust':       'rgba(100,220,160,0.75)',
+  'Interaction Control':'rgba(255,180,100,0.75)',
 }
 
-// ─── PLACEHOLDER SCREEN (shown when no SCREEN_IMAGE provided) ───────────────
-function PlaceholderScreen({ variant }) {
-  return (
-    <div style={{
-      position: 'absolute', inset: 0,
-      background: '#0d0d0d',
-      display: 'flex',
-    }}>
-      {/* Left content column */}
-      <div style={{ flex: '0 0 60%', padding: '5% 4%', display: 'flex', flexDirection: 'column', gap: '3%' }}>
-        <div style={{ height: '6%', width: '45%', background: 'rgba(255,255,255,0.05)', borderRadius: 2 }} />
-        <div style={{ height: '3%', width: '72%', background: 'rgba(255,255,255,0.04)', borderRadius: 2 }} />
-        <div style={{ height: '3%', width: '60%', background: 'rgba(255,255,255,0.03)', borderRadius: 2 }} />
-        <div style={{ height: '12%', width: '80%', background: 'rgba(255,255,255,0.03)', borderRadius: 3, marginTop: '4%' }} />
-        <div style={{ display: 'flex', gap: '3%', marginTop: '4%' }}>
-          {[40, 55, 38].map((w, i) => (
-            <div key={i} style={{ height: '3%', width: `${w}%`, background: 'rgba(255,255,255,0.04)', borderRadius: 2 }} />
-          ))}
-        </div>
-        <div style={{ height: '28%', width: '88%', background: 'rgba(255,255,255,0.025)', borderRadius: 4, marginTop: 'auto' }} />
-      </div>
-
-      {/* Right: ad placement simulation */}
-      <div style={{
-        flex: '0 0 40%',
-        padding: '5% 4%',
-        display: 'flex',
-        flexDirection: 'column',
-        borderLeft: '1px solid rgba(255,255,255,0.04)',
-      }}>
-        <div style={{ height: '4%', width: '60%', background: 'rgba(255,255,255,0.04)', borderRadius: 2, marginBottom: '4%' }} />
-        <div style={{
-          flex: 1,
-          background: variant.accent,
-          border: '1px solid rgba(255,255,255,0.08)',
-          borderRadius: 4,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          gap: 8,
-        }}>
-          <p style={{
-            fontFamily: 'var(--mono, monospace)',
-            fontSize: 9,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.18)',
-          }}>Ad Placement</p>
-          <p style={{
-            fontFamily: 'var(--sans, sans-serif)',
-            fontWeight: 500,
-            fontSize: 11,
-            color: 'rgba(255,255,255,0.28)',
-            textAlign: 'center',
-            padding: '0 12px',
-            lineHeight: 1.4,
-          }}>{variant.title}</p>
-        </div>
-        <div style={{ height: '6%', marginTop: '4%', background: 'rgba(255,255,255,0.03)', borderRadius: 2 }} />
-      </div>
-    </div>
-  )
-}
-
-// ─── COMPONENT ──────────────────────────────────────────────────────────────
+// ─── COMPONENT ───────────────────────────────────────────────────────────────
 export default function ExperimentViewer() {
   const [index, setIndex]   = useState(0)
   const [fading, setFading] = useState(false)
-
   const total   = variants.length
   const current = variants[index]
 
   const goTo = useCallback((next) => {
     if (next === index) return
     setFading(true)
-    setTimeout(() => {
-      setIndex(next)
-      setFading(false)
-    }, 220)
+    setTimeout(() => { setIndex(next); setFading(false) }, 200)
   }, [index])
 
-  const prev = () => goTo(index > 0 ? index - 1 : total - 1)
-  const next = () => goTo(index < total - 1 ? index + 1 : 0)
+  const prev = () => goTo((index - 1 + total) % total)
+  const next = () => goTo((index + 1) % total)
 
-  // Keyboard navigation
-  const handleKey = (e) => {
-    if (e.key === 'ArrowLeft')  prev()
-    if (e.key === 'ArrowRight') next()
-  }
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'ArrowLeft')  prev()
+      if (e.key === 'ArrowRight') next()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [index])
 
   return (
-    <div style={S.wrap} onKeyDown={handleKey} tabIndex={0}
-      role="region" aria-label="Experiment variants viewer">
+    <div style={{ width: '100%', fontFamily: 'var(--sans)' }}>
 
-      {/* ── SCREEN MOCK ── */}
-      <div style={S.screenWrap}>
+      {/* ── SCREEN MOCK ─────────────────────────────────────────────────── */}
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        background: '#111',
+        border: '1px solid rgba(255,255,255,0.08)',
+        borderRadius: 8,
+        overflow: 'hidden',
+      }}>
         {/* Browser chrome */}
-        <div style={S.chromebar}>
-          <div style={S.dot('rgba(255,255,255,0.12)')} />
-          <div style={S.dot('rgba(255,255,255,0.08)')} />
-          <div style={S.dot('rgba(255,255,255,0.06)')} />
-          <div style={S.urlbar} />
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 6,
+          padding: '9px 14px',
+          background: '#161616',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+        }}>
+          {['rgba(255,255,255,0.14)', 'rgba(255,255,255,0.08)', 'rgba(255,255,255,0.05)'].map((c, i) => (
+            <div key={i} style={{ width: 8, height: 8, borderRadius: '50%', background: c }} />
+          ))}
+          <div style={{
+            flex: 1, height: 18, borderRadius: 3,
+            background: 'rgba(255,255,255,0.04)',
+            marginLeft: 8, maxWidth: 280,
+          }} />
         </div>
 
-        {/* Screen content */}
-        <div style={S.screenContent}>
-          {/* Background */}
-          <div style={S.screenBg(SCREEN_IMAGE)}>
-            {!SCREEN_IMAGE && <PlaceholderScreen variant={current} />}
-          </div>
+        {/* Screen image + slot overlay */}
+        <div style={{ position: 'relative', width: '100%' }}>
+          <img
+            src={SCREEN_IMAGE}
+            alt="Checkout page context"
+            style={{ width: '100%', display: 'block' }}
+            draggable={false}
+          />
 
-          {/* Ad slot — only shown when SCREEN_IMAGE is set */}
-          {SCREEN_IMAGE && (
-            <div style={S.adSlot(SLOT_POSITION, fading)}>
-              {current.image
-                ? <img src={current.image} alt={current.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                : <div style={{
-                    width: '100%', height: '100%',
-                    background: current.accent,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em',
-                      textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)' }}>
-                      {current.title}
-                    </p>
-                  </div>
-              }
-            </div>
-          )}
+          {/* Ad slot — overlaid exactly on the grey box */}
+          <div style={{
+            position: 'absolute',
+            top:   `${SLOT.top}%`,
+            left:  `${SLOT.left}%`,
+            width: `${SLOT.width}%`,
+            transition: 'opacity 0.2s ease',
+            opacity: fading ? 0 : 1,
+          }}>
+            <img
+              key={current.id}
+              src={current.image}
+              alt={current.title}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              draggable={false}
+            />
+          </div>
         </div>
       </div>
 
-      {/* ── CONTROLS ── */}
-      <div style={S.controls}>
+      {/* ── CONTROLS + COUNTER ──────────────────────────────────────────── */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '16px 0',
+        borderTop: '1px solid rgba(255,255,255,0.07)',
+        marginTop: 1,
+      }}>
         {/* Counter */}
-        <span style={S.counter}>
+        <span style={{
+          fontFamily: 'var(--mono)',
+          fontSize: 10,
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.3)',
+        }}>
           {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
         </span>
 
-        {/* Dot indicators */}
-        <div style={S.dots} role="tablist" aria-label="Variant selector">
+        {/* Dots */}
+        <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
           {variants.map((v, i) => (
             <button
               key={v.id}
-              style={S.navDot(i === index)}
               onClick={() => goTo(i)}
-              role="tab"
-              aria-selected={i === index}
               aria-label={v.title}
+              style={{
+                width: i === index ? 20 : 6,
+                height: 6,
+                borderRadius: 3,
+                background: i === index ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.12)',
+                transition: 'width 0.22s ease, background 0.22s ease',
+                border: 'none',
+                padding: 0,
+                cursor: 'pointer',
+                flexShrink: 0,
+              }}
             />
           ))}
         </div>
 
         {/* Arrows */}
-        <div style={S.arrows}>
-          <button style={S.arrowBtn(false)} onClick={prev}
-            aria-label="Previous variant">←</button>
-          <button style={S.arrowBtn(false)} onClick={next}
-            aria-label="Next variant">→</button>
+        <div style={{ display: 'flex', gap: 6 }}>
+          {[['←', prev, 'Previous'], ['→', next, 'Next']].map(([label, fn, ariaLabel]) => (
+            <button
+              key={label}
+              onClick={fn}
+              aria-label={`${ariaLabel} variant`}
+              style={{
+                width: 32, height: 32,
+                borderRadius: 4,
+                border: '1px solid rgba(255,255,255,0.1)',
+                background: 'rgba(255,255,255,0.03)',
+                color: 'rgba(255,255,255,0.65)',
+                fontSize: 13,
+                cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'background 0.15s',
+              }}
+            >{label}</button>
+          ))}
         </div>
       </div>
 
-      {/* ── METADATA ── */}
-      <div style={S.meta} role="tabpanel">
-        <div style={{
-          ...S.metaInner,
-          opacity: fading ? 0 : 1,
-          transition: 'opacity 0.25s ease',
-        }}>
-          <div>
-            <p style={S.variantTitle}>{current.title}</p>
-            <p style={S.hypothesis}>{current.hypothesis}</p>
-          </div>
-          <div style={S.resultPill}>{current.result}</div>
+      {/* ── VARIANT METADATA ────────────────────────────────────────────── */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr auto',
+        gap: '12px 24px',
+        alignItems: 'start',
+        padding: '16px 0 0',
+        opacity: fading ? 0 : 1,
+        transition: 'opacity 0.2s ease',
+      }}>
+        <div>
+          {/* Tag */}
+          <span style={{
+            display: 'inline-block',
+            fontFamily: 'var(--mono)',
+            fontSize: 9,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: TAG_TEXT[current.tag],
+            background: TAG_COLORS[current.tag],
+            borderRadius: 3,
+            padding: '3px 8px',
+            marginBottom: 10,
+          }}>{current.tag}</span>
+
+          {/* Title */}
+          <p style={{
+            fontFamily: 'var(--sans)',
+            fontWeight: 500,
+            fontSize: 14,
+            color: 'rgba(255,255,255,0.85)',
+            letterSpacing: '-0.01em',
+            marginBottom: 6,
+            lineHeight: 1.35,
+          }}>{current.title}</p>
+
+          {/* Hypothesis */}
+          <p style={{
+            fontSize: 13,
+            color: 'rgba(255,255,255,0.45)',
+            lineHeight: 1.6,
+          }}>{current.hypothesis}</p>
         </div>
+
+        {/* Result pill */}
+        <div style={{
+          fontFamily: 'var(--mono)',
+          fontSize: 10,
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.5)',
+          background: 'rgba(255,255,255,0.04)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: 3,
+          padding: '8px 12px',
+          whiteSpace: 'nowrap',
+          lineHeight: 1.5,
+          textAlign: 'right',
+          marginTop: 2,
+        }}>{current.result}</div>
       </div>
 
     </div>
