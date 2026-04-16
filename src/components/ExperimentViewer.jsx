@@ -209,14 +209,27 @@ export default function ExperimentViewer() {
             draggable={false}
           />
 
-          {/* Ad slot — overlaid exactly on the grey box */}
+          {/* Scrim — softens screen content behind the ad slot */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(0,0,0,0.22)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }} />
+
+          {/* Ad slot — overlaid exactly on the grey box, floats above scrim */}
           <div style={{
             position: 'absolute',
             top:   `${SLOT.top}%`,
             left:  `${SLOT.left}%`,
             width: `${SLOT.width}%`,
+            zIndex: 2,
             transition: 'opacity 0.2s ease',
             opacity: fading ? 0 : 1,
+            boxShadow: '0 16px 48px rgba(0,0,0,0.75), 0 4px 16px rgba(0,0,0,0.5)',
+            borderRadius: 4,
+            overflow: 'hidden',
           }}>
             <img
               key={current.id}
