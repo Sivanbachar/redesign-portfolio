@@ -54,7 +54,8 @@ export default function Rokt() {
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
               {/* Mobile frame */}
               <div style={{
-                width: 220,
+                width: '100%',
+                maxWidth: 380,
                 background: 'var(--bg1)',
                 border: '1px solid var(--bdr)',
                 borderRadius: 20,
