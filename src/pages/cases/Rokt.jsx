@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../../hooks/useScrollReveal.js'
 import { useReadingProgress } from '../../hooks/useReadingProgress.js'
 import VP from '../../components/VP.jsx'
+import ExperimentViewer from '../../components/ExperimentViewer.jsx'
 
 export default function Rokt() {
   const navigate = useNavigate()
@@ -319,11 +320,7 @@ export default function Rokt() {
             ))}
           </div>
           <div style={{ marginTop: 64 }}>
-            <img
-              src="/images/rokt/key_experiments.png"
-              alt="Key experiments — design variants and results"
-              style={{ width: '100%', display: 'block', borderRadius: 4, border: '1px solid var(--bdr)' }}
-            />
+            <ExperimentViewer />
           </div>
         </div>
 
