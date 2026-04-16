@@ -80,15 +80,17 @@ export default function Rokt() {
       <div className="cs-hero sr">
         <p className="cs-tag">Rokt · E-Commerce Ad-Tech · Experimentation &amp; Design · 2021</p>
         <h1 className="cs-h1">ROKT</h1>
-        <p className="cs-lead">Driving product performance through experimentation at the transaction moment. At Rokt, every completed purchase creates an opportunity to generate additional revenue through relevant offers. This moment is uniquely high intent — users are engaged, decision-ready, and more receptive to offers that feel connected to what they just purchased.</p>
+        <p className="cs-lead">Improving revenue per transaction through experimentation</p>
+        <p className="cs-lead" style={{ marginTop: 16 }}>Rokt helps companies generate additional revenue by showing ads at the moment of purchase. While overall revenue increased as more partners were added, a core metric — revenue per transaction (RPT) — had stagnated. The system was scaling, but the product itself wasn't becoming more effective.</p>
+        <p className="cs-lead" style={{ marginTop: 16 }}>My focus was to improve RPT by identifying what actually drives engagement and conversion in this high-intent moment.</p>
       </div>
 
       <div className="cs-meta-row">
         {[
           ['Year', '2021'],
-          ['Role', 'Design Direction\nExperimentation Strategy\nTeam Mentorship'],
+          ['Role', 'Defined experimentation strategy and test roadmap\nLed design direction across 30+ experiments\nIdentified and tested key behavioral levers (imagery, content, interaction)\nMentored a designer through execution and iteration'],
           ['Devices', 'Mobile\nDesktop'],
-          ['Impact', '+25–30% conversion\nper impression across key experiments'],
+          ['Impact', '+25–30% lift in conversion per impression across key experiments, contributing to increased revenue per transaction (RPT)'],
         ].map(([l, v]) => (
           <div className="cs-meta-cell sr" key={l}>
             <p className="cs-meta-label">{l}</p>
