@@ -56,31 +56,6 @@ export default function Rokt() {
                 <p><strong>Customers get ads after a purchase.</strong> On the confirmation page, every time a customer clicks on an ad, the website or app earns revenue from that advertiser. That means every transaction is an opportunity to earn revenue from ads. On the biggest US retail stores, this can reach $300k+ in a single day.</p>
               </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-              {/* Mobile frame */}
-              <div style={{
-                width: '100%',
-                maxWidth: 380,
-                background: 'var(--bg1)',
-                border: '1px solid var(--bdr)',
-                borderRadius: 20,
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
-                {/* notch */}
-                <div style={{
-                  position: 'absolute', top: 10, left: '50%', transform: 'translateX(-50%)',
-                  width: 48, height: 5, borderRadius: 3,
-                  background: 'rgba(255,255,255,0.12)',
-                  zIndex: 2,
-                }} />
-                <img
-                  src="/images/rokt/background_video.gif"
-                  alt="Rokt post-purchase ad experience"
-                  style={{ width: '100%', display: 'block' }}
-                />
-              </div>
-            </div>
           </div>
         </div>
 
