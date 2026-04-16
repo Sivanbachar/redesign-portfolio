@@ -102,6 +102,53 @@ export default function Rokt() {
           <VP label="Rokt Ad Experience Overview" desc="Ad placement UI across partner checkout flows. Mobile and desktop frames." height={440} />
         </div>
 
+        {/* BACKGROUND */}
+        <div className="cs-section">
+          <span className="cs-section-label sr">Background</span>
+          <h2 className="cs-h2 sr">What is Rokt?</h2>
+          <div className="cs-2col">
+            <div>
+              <p className="cs-p sr">Rokt is an ecommerce technology company that runs ads and offers on the checkout pages of Ticketmaster, Uber, Domino's and others. These ads are carefully selected so that they're relevant to the customer.</p>
+              <div className="cs-callout sr" style={{ marginTop: 32 }}>
+                <p><strong>Customers get ads after a purchase.</strong> On the confirmation page, every time a customer clicks on an ad, the website or app earns revenue from that advertiser. That means every transaction is an opportunity to earn revenue from ads. On the biggest US retail stores, this can reach $300k+ in a single day.</p>
+              </div>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+              {/* Mobile video placeholder */}
+              <div style={{
+                width: 220,
+                aspectRatio: '9/16',
+                background: 'var(--bg1)',
+                border: '1px solid var(--bdr)',
+                borderRadius: 20,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 12,
+                position: 'relative',
+                overflow: 'hidden',
+              }}>
+                {/* notch */}
+                <div style={{
+                  position: 'absolute', top: 14, left: '50%', transform: 'translateX(-50%)',
+                  width: 56, height: 6, borderRadius: 3,
+                  background: 'rgba(255,255,255,0.1)',
+                }} />
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ opacity: 0.2 }}>
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
+                  <polygon points="10,8 17,12 10,16" fill="currentColor"/>
+                </svg>
+                <p style={{
+                  fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em',
+                  textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)',
+                  textAlign: 'center', lineHeight: 1.6, padding: '0 20px',
+                }}>Video placeholder<br/>Mobile</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* BUSINESS CONTEXT */}
         <div className="cs-section">
           <span className="cs-section-label sr">The Business Context</span>
