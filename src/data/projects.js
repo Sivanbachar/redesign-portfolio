@@ -41,7 +41,5 @@ export const PROJECTS = [
     thumbBg: 'linear-gradient(135deg, #251a10 0%, #180f06 100%)',
     thumbIcon: '◇',
     thumbImg: 'images/rokt/rokt_thumbnail.jpg',
-    status: 'locked',
-    locked: true,
   },
 ]
