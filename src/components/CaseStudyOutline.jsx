@@ -182,7 +182,6 @@ export default function CaseStudyOutline() {
               key={s.id}
               onClick={() => scrollTo(s.id)}
               style={{
-                width:       '100%',
                 textAlign:   'left',
                 background:  isActive ? 'rgba(255,255,255,0.055)' : 'transparent',
                 border:      'none',
