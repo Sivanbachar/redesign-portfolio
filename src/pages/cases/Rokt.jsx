@@ -38,7 +38,11 @@ export default function Rokt() {
 
       <div className="cs-body no-dividers">
         <div className="cs-section sr">
-          <VP label="Rokt Ad Experience Overview" desc="Ad placement UI across partner checkout flows. Mobile and desktop frames." height={440} />
+          <img
+            src="/images/rokt/rokt_hero.jpg"
+            alt="Rokt Ad Experience Overview"
+            style={{ width: '100%', borderRadius: 12, display: 'block' }}
+          />
         </div>
 
         {/* BACKGROUND */}
