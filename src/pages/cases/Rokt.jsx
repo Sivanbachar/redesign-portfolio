@@ -105,17 +105,16 @@ export default function Rokt() {
         {/* BUSINESS CONTEXT */}
         <div className="cs-section">
           <span className="cs-section-label sr">The Business Context</span>
-          <h2 className="cs-h2 sr">Scale wasn't the problem.<br />Effectiveness was.</h2>
+          <h2 className="cs-h2 sr">The business problem</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">Despite increasing scale across partners, one key metric had stagnated: revenue per transaction. The system was growing, but the product itself wasn't becoming more effective.</p>
-              <p className="cs-p sr">Improving RPT required navigating a fundamental tension: more visibility created higher revenue potential, but more friction created a worse user experience.</p>
+              <p className="cs-p sr">Ad revenue from the core product wasn't improving.</p>
+              <p className="cs-p sr">Rokt's platform helps companies generate additional revenue by showing ads during high-intent moments, like after a purchase.</p>
+              <p className="cs-p sr">For example, if a company earns an additional $0.10 per transaction from ads, that quickly scales. At 100,000 transactions, that's an extra $10,000 in revenue. This metric — revenue per transaction (RPT) — is a key indicator of how effective the product is.</p>
             </div>
             <div>
-              <p className="cs-p sr">Ads exist within a highly sensitive moment. When irrelevant, they feel intrusive. When relevant, they feel additive.</p>
-              <div className="cs-callout sr">
-                <p>The problem wasn't simply improving design. It was understanding what actually drives action in a high-intent environment.</p>
-              </div>
+              <p className="cs-p sr">While overall revenue continued to grow as Rokt partnered with more companies, RPT had stagnated. The system was scaling, but the product itself wasn't becoming more effective.</p>
+              <p className="cs-p sr">The goal was to meaningfully increase RPT.</p>
             </div>
           </div>
         </div>
