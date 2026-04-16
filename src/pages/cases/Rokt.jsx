@@ -88,7 +88,7 @@ export default function Rokt() {
       <div className="cs-meta-row">
         {[
           ['Year', '2021'],
-          ['Role', 'Defined experimentation strategy and test roadmap\nLed design direction across 30+ experiments\nIdentified and tested key behavioral levers (imagery, content, interaction)\nMentored a designer through execution and iteration'],
+          ['Role', 'Experimentation Strategy\nDesign Direction\nTeam Mentorship'],
           ['Devices', 'Mobile\nDesktop'],
           ['Impact', '+25–30% lift in conversion per impression across key experiments, contributing to increased revenue per transaction (RPT)'],
         ].map(([l, v]) => (
