@@ -310,12 +310,12 @@ export default function Rokt() {
         {/* KEY EXPERIMENTS */}
         <div className="cs-section">
           <span className="cs-section-label sr">Key Experiments</span>
-          <h2 className="cs-h2 sr">34 designs. 7 verticals. 200+ user tests.</h2>
+          <h2 className="cs-h2 sr">34 experiments · 7 verticals · 200+ tests</h2>
           <div className="cs-kpi-row sr">
             {[
-              ['+25%', 'Imagery', 'conversion per impression with functional and contextual images'],
-              ['Mixed', 'Content Structure', 'slight revenue lift with improved clarity through benefit lists'],
-              ['+30%', 'Interaction Control', 'conversion per impression by introducing offer navigation'],
+              ['+25%', 'Visual Context', 'conversion per impression with functional and contextual imagery'],
+              ['Incremental Lift', 'Content Clarity', 'improved performance through structured content and clearer scanning'],
+              ['+30%', 'Interaction Control', 'conversion per impression by introducing navigation between offers'],
             ].map(([n, l, d]) => (
               <div className="cs-kpi" key={l}>
                 <p className="cs-kpi-num">{n}</p>
@@ -326,10 +326,10 @@ export default function Rokt() {
           </div>
           <div className="cs-finding-grid sr" style={{ marginTop: 64 }}>
             {[
-              { tag: 'Experiment · Imagery', h: 'Overcoming hesitation around visuals', b: 'Historically, imagery had been avoided due to poor performance. We tested functional and contextual imagery that reinforced the value of the offer. This demonstrated that relevance and clarity mattered more than previous assumptions about visual noise. Result: +25% conversion per impression.' },
-              { tag: 'Experiment · Content Structure', h: 'Designing for how users actually read', b: "Users in transactional flows don't read deeply. They scan. We introduced structured benefit lists to make offers easier to understand quickly. Result: improved clarity and incremental performance gains." },
-              { tag: 'Experiment · Interaction Control', h: 'Giving users agency over the experience', b: "Previously, once a user dismissed an offer, they could not revisit it. We introduced navigation between offers, allowing users to explore options at their own pace. This shifted the experience from passive exposure to active exploration. Result: +30% conversion per impression." },
-              { tag: 'Experiment · Visual Trust', h: 'Brand association drove content engagement', b: "Customer research revealed that users were significantly more inclined to read and engage with ad content when the UI closely mirrored the visual language of the site they were purchasing from. The reasoning was direct: users extended trust from the reputable brand they had just bought from to the ad content surfaced alongside it. Ads that felt native to the host experience weren't perceived as intrusions — they were perceived as endorsed." },
+              { tag: 'Experiment · Visual Context', h: 'Relevance mattered more than visual restraint', b: 'Imagery had been avoided due to historically poor performance. Testing functional and contextual imagery — visuals that reinforced the offer\'s value — showed that relevance and clarity outweighed assumptions about visual noise. Result: +25% conversion per impression.' },
+              { tag: 'Experiment · Content Clarity', h: 'Users scan, not read', b: 'In transactional flows, users process information quickly. Replacing dense copy with structured benefit lists made offers easier to evaluate at a glance. Result: incremental performance lift and measurably improved clarity scores.' },
+              { tag: 'Experiment · Interaction Control', h: 'Agency increased engagement', b: 'Once dismissed, offers could not be revisited. Adding navigation between offers let users explore at their own pace — shifting the experience from passive exposure to active exploration. Result: +30% conversion per impression.' },
+              { tag: 'Experiment · Visual Trust', h: 'Brand association drove content engagement', b: "Users were more likely to engage with ad content when the UI mirrored the visual language of the host site. They extended trust from the brand they had just purchased from to the ad content alongside it. Ads that felt native weren't seen as intrusions — they were perceived as endorsed." },
             ].map(({ tag, h, b }) => (
               <div className="cs-finding sr" key={tag}>
                 <span className="cs-finding-tag">{tag}</span>
