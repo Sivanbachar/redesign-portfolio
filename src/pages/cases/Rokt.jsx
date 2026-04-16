@@ -308,41 +308,44 @@ export default function Rokt() {
         <div className="cs-section">
           <span className="cs-section-label sr">User Research</span>
           <h2 className="cs-h2 sr">The finding that changed everything.</h2>
-          <div className="cs-2col">
-            <div>
-              <p className="cs-p sr">I surveyed and screened over 100 users to interview 50 regarding their general experience shopping online and encountering ads in their journey. These interviews consisted of questions to probe users about their experience while going through actual websites they enjoy shopping on.</p>
-              <div className="cs-method-row sr" style={{ marginTop: 40 }}>
-                {[
-                  ['📊', 'Data Audit', 'Tableau + Business Analytics'],
-                  ['🎙', 'User Interviews', '50 in-depth sessions'],
-                  ['📋', 'User Surveys', '100+ screened respondents'],
-                ].map(([g, n, c]) => (
-                  <div className="cs-method-card" key={n}>
-                    <span className="cs-method-glyph">{g}</span>
-                    <p className="cs-method-name">{n}</p>
-                    <p className="cs-method-count">{c}</p>
-                  </div>
+
+          {/* Intro + method cards */}
+          <p className="cs-p sr" style={{ maxWidth: 680 }}>I surveyed and screened over 100 users to interview 50 about their experience shopping online and encountering ads. Sessions were conducted on actual sites they use — probing how they notice, process, and respond to ads at different points in the journey.</p>
+
+          <div className="cs-method-row sr" style={{ marginTop: 40 }}>
+            {[
+              ['📊', 'Data Audit', 'Tableau + Business Analytics'],
+              ['🎙', 'User Interviews', '50 in-depth sessions'],
+              ['📋', 'User Surveys', '100+ screened respondents'],
+            ].map(([g, n, c]) => (
+              <div className="cs-method-card" key={n}>
+                <span className="cs-method-glyph">{g}</span>
+                <p className="cs-method-name">{n}</p>
+                <p className="cs-method-count">{c}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Pullquote — full width */}
+          <div className="cs-pullquote sr" style={{ marginTop: 64 }}>
+            <p className="cs-pullquote-text">"I don't even see them anymore. My brain just skips past anything that looks like an ad."</p>
+            <p className="cs-pullquote-attr">User interview · Discovery research</p>
+          </div>
+
+          {/* Dot matrix + central finding side by side */}
+          <div className="cs-2col sr" style={{ marginTop: 0, alignItems: 'center' }}>
+            <div className="cs-dot-matrix">
+              <div className="cs-dot-grid">
+                {Array.from({ length: 100 }).map((_, i) => (
+                  <div className={`cs-dot${i >= 50 ? ' empty' : ''}`} key={i} />
                 ))}
               </div>
-              <div className="cs-dot-matrix sr" style={{ marginTop: 40 }}>
-                <div className="cs-dot-grid">
-                  {Array.from({ length: 100 }).map((_, i) => (
-                    <div className={`cs-dot${i >= 50 ? ' empty' : ''}`} key={i} />
-                  ))}
-                </div>
-                <p className="cs-dot-fraction">50 <span>/ 100+</span></p>
-                <p className="cs-dot-label">users screened — 50 selected for in-depth sessions based on shopping behavior and ad engagement patterns</p>
-              </div>
+              <p className="cs-dot-fraction">50 <span>/ 100+</span></p>
+              <p className="cs-dot-label">users screened — 50 selected for in-depth sessions based on shopping behavior and ad engagement patterns</p>
             </div>
-            <div>
-              <div className="cs-pullquote sr">
-                <p className="cs-pullquote-text">"I don't even see them anymore. My brain just skips past anything that looks like an ad."</p>
-                <p className="cs-pullquote-attr">User interview · Discovery research</p>
-              </div>
-              <div className="cs-insight sr" style={{ marginTop: 40 }}>
-                <span className="cs-insight-label">Central Finding</span>
-                <p className="cs-insight-text">Users aren't passively ignoring ads. They are actively and consciously avoiding them regardless of relevance. The question became: how do we earn the right to be there at all?</p>
-              </div>
+            <div className="cs-insight" style={{ margin: 0, padding: '40px 0' }}>
+              <span className="cs-insight-label">Central Finding</span>
+              <p className="cs-insight-text">Users aren't passively ignoring ads — they're actively avoiding them regardless of relevance. The question became: how do we earn the right to be there at all?</p>
             </div>
           </div>
         </div>
