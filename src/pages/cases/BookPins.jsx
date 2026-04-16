@@ -480,10 +480,6 @@ export default function BookPins() {
         </div>
       </div>
 
-      <footer className="footer" style={{ marginTop: 80 }}>
-        <button className="cs-back" style={{ padding: 0 }} onClick={() => navigate('/')}>← All Work</button>
-        <button className="nav-btn" onClick={() => navigate('/projects/swiftshift')}>Next: Swift Shift →</button>
-      </footer>
     </div>
   )
 }

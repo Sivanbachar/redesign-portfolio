@@ -409,10 +409,6 @@ export default function SwiftShift() {
 
       </div>
 
-      <footer className="footer" style={{ marginTop: 80 }}>
-        <button className="cs-back" style={{ padding: 0 }} onClick={() => navigate('/')}>← All Work</button>
-        <button className="nav-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Back to Top ↑</button>
-      </footer>
     </div>
   )
 }

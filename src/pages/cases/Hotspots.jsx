@@ -459,10 +459,6 @@ export default function ContextualLayers() {
         </>}
       </div>
 
-      <footer className="footer" style={{ marginTop: 80 }}>
-        <button className="cs-back" style={{ padding: 0 }} onClick={() => navigate('/')}>← All Work</button>
-        <button className="nav-btn" onClick={() => navigate('/projects/bookpins')}>Next: Book Pins →</button>
-      </footer>
     </div>
   )
 }
