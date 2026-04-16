@@ -146,6 +146,34 @@ export default function ExperimentViewer() {
   return (
     <div style={{ width: '100%', fontFamily: 'var(--sans)' }}>
 
+      {/* ── HEADER ROW ──────────────────────────────────────────────────── */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 12,
+      }}>
+        <span style={{
+          fontFamily: 'var(--mono)',
+          fontSize: 9,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.3)',
+        }}>Interactive — Ad Placement Variants</span>
+        <span style={{
+          fontFamily: 'var(--mono)',
+          fontSize: 9,
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.22)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+        }}>
+          <span style={{ fontSize: 13, letterSpacing: 0 }}>←→</span> use arrows or keyboard to explore
+        </span>
+      </div>
+
       {/* ── SCREEN MOCK ─────────────────────────────────────────────────── */}
       <div style={{
         position: 'relative',
