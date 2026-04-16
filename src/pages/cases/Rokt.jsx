@@ -97,7 +97,7 @@ export default function Rokt() {
         ))}
       </div>
 
-      <div className="cs-body">
+      <div className="cs-body no-dividers">
         <div className="cs-section sr">
           <VP label="Rokt Ad Experience Overview" desc="Ad placement UI across partner checkout flows. Mobile and desktop frames." height={440} />
         </div>
@@ -134,7 +134,7 @@ export default function Rokt() {
                 ['Analyzing', 'how design decisions influenced performance outcomes'],
                 ['Bridging', 'product, data, and business objectives across the team'],
               ].map(([tag, b]) => (
-                <div key={tag} style={{ padding: '16px 0', borderTop: '1px solid var(--bdr)' }}>
+                <div key={tag} style={{ padding: '16px 0' }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>{tag}</p>
                   <p className="cs-p" style={{ marginBottom: 0, fontSize: 14 }}>{b}</p>
                 </div>
@@ -358,7 +358,7 @@ export default function Rokt() {
                 ['Framework', 'Established a repeatable experimentation framework used across the team'],
                 ['Design elevation', "Elevated design's role from execution to performance driver"],
               ].map(([tag, b]) => (
-                <div key={tag} style={{ padding: '16px 0', borderTop: '1px solid var(--bdr)' }}>
+                <div key={tag} style={{ padding: '16px 0' }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 8 }}>{tag}</p>
                   <p className="cs-p" style={{ marginBottom: 0, fontSize: 14 }}>{b}</p>
                 </div>
