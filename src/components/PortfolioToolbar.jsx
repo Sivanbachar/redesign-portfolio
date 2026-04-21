@@ -270,6 +270,14 @@ export default function PortfolioToolbar() {
         </div>
       </div>
 
+      {/* Equalizer keyframe */}
+      <style>{`
+        @keyframes eqBar {
+          0%, 100% { height: 3px; }
+          50%       { height: 11px; }
+        }
+      `}</style>
+
       {/* ── TOOLBAR ──────────────────────────────────────────────────────── */}
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,
@@ -301,17 +309,52 @@ export default function PortfolioToolbar() {
             </TBtn>
           </div>
 
-          {/* Track name + progress */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 5, minWidth: 0, flex: 1, maxWidth: 300 }}>
-            <span style={{
-              fontFamily: 'var(--mono)', fontSize: 9,
-              letterSpacing: '0.12em',
-              color: playing ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.35)',
-              whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-              transition: 'color 0.4s',
-            }}>
-              {track.artist} — {track.title}
-            </span>
+          {/* Track info + progress */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0, flex: 1, maxWidth: 320 }}>
+
+            {/* Top row: label + equalizer + track name */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+              {/* "Now Playing" label — only when playing */}
+              <span style={{
+                fontFamily: 'var(--mono)', fontSize: 8,
+                letterSpacing: '0.18em', textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.3)',
+                whiteSpace: 'nowrap', flexShrink: 0,
+                opacity: playing ? 1 : 0,
+                transition: 'opacity 0.4s',
+              }}>Now Playing</span>
+
+              {/* Animated equalizer bars */}
+              {playing && (
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 2, height: 12, flexShrink: 0 }}>
+                  {[
+                    'eqBar 0.9s ease-in-out infinite',
+                    'eqBar 0.9s ease-in-out 0.3s infinite',
+                    'eqBar 0.9s ease-in-out 0.6s infinite',
+                  ].map((anim, i) => (
+                    <div key={i} style={{
+                      width: 2, borderRadius: 1,
+                      background: 'rgba(255,255,255,0.5)',
+                      animation: anim,
+                      height: 8,
+                    }} />
+                  ))}
+                </div>
+              )}
+
+              {/* Track name */}
+              <span style={{
+                fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 500,
+                letterSpacing: '-0.01em',
+                color: playing ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.4)',
+                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                transition: 'color 0.4s',
+              }}>
+                {track.artist} <span style={{ fontWeight: 400, color: playing ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.25)' }}>— {track.title}</span>
+              </span>
+            </div>
+
+            {/* Progress bar */}
             <div
               ref={progressRef}
               onClick={seekTo}
