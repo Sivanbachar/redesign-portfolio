@@ -274,10 +274,11 @@ export default function PortfolioToolbar() {
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,
         height: 56,
-        background: 'rgba(7,7,7,0.94)',
-        backdropFilter: 'blur(18px)',
-        WebkitBackdropFilter: 'blur(18px)',
-        borderTop: '1px solid rgba(255,255,255,0.07)',
+        background: 'rgba(18,18,18,0.97)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderTop: '1px solid rgba(255,255,255,0.14)',
+        boxShadow: '0 -1px 0 rgba(255,255,255,0.04), 0 -16px 48px rgba(0,0,0,0.7)',
         display: 'flex', alignItems: 'center',
         padding: '0 20px',
         zIndex: 999,
@@ -305,7 +306,7 @@ export default function PortfolioToolbar() {
             <span style={{
               fontFamily: 'var(--mono)', fontSize: 9,
               letterSpacing: '0.12em',
-              color: playing ? 'rgba(255,255,255,0.48)' : 'rgba(255,255,255,0.2)',
+              color: playing ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.35)',
               whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
               transition: 'color 0.4s',
             }}>
@@ -322,7 +323,7 @@ export default function PortfolioToolbar() {
               <div style={{
                 position: 'absolute', top: 0, left: 0,
                 height: '100%', width: `${progress * 100}%`,
-                background: playing ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)',
+                background: playing ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.25)',
                 borderRadius: 1,
                 transition: 'background 0.4s',
               }} />
@@ -331,7 +332,7 @@ export default function PortfolioToolbar() {
         </div>
 
         {/* Divider */}
-        <div style={{ width: 1, height: 22, background: 'rgba(255,255,255,0.08)', marginLeft: 20, flexShrink: 0 }} />
+        <div style={{ width: 1, height: 22, background: 'rgba(255,255,255,0.12)', marginLeft: 20, flexShrink: 0 }} />
 
         {/* ── RIGHT: Notes ─────────────────────────────────────────── */}
         <div style={{ marginLeft: 20, flexShrink: 0 }}>
@@ -344,7 +345,7 @@ export default function PortfolioToolbar() {
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: 6, padding: '6px 11px',
               cursor: 'pointer',
-              color: notes.trim() ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.22)',
+              color: notes.trim() ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.38)',
               transition: 'background 0.2s, color 0.2s',
             }}
           >
@@ -379,11 +380,14 @@ function TBtn({ onClick, label, accent, children }) {
       onClick={onClick}
       aria-label={label}
       style={{
-        background: 'none', border: 'none', padding: 0,
-        width: accent ? 32 : 28, height: accent ? 32 : 28,
+        padding: 0,
+        width: accent ? 34 : 28, height: accent ? 34 : 28,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        cursor: 'pointer', borderRadius: 5,
-        color: accent ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.35)',
+        cursor: 'pointer',
+        borderRadius: accent ? '50%' : 5,
+        background: accent ? 'rgba(255,255,255,0.1)' : 'none',
+        border: accent ? '1px solid rgba(255,255,255,0.14)' : 'none',
+        color: accent ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.45)',
         transition: 'color 0.15s, background 0.15s',
         flexShrink: 0,
       }}
