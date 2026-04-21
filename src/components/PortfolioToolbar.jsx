@@ -296,6 +296,18 @@ export default function PortfolioToolbar() {
         {/* ── LEFT: Music player ────────────────────────────────────── */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1, minWidth: 0 }}>
 
+          {/* Spotify logo */}
+          <img
+            src="/images/toolbar/spotify_logo.png"
+            alt="Spotify"
+            style={{
+              height: 18, width: 18,
+              objectFit: 'contain',
+              opacity: 0.7,
+              flexShrink: 0,
+            }}
+          />
+
           {/* Prev / Play / Next */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 2, flexShrink: 0 }}>
             <TBtn onClick={() => goToTrack((trackIdx - 1 + TRACKS.length) % TRACKS.length)} label="Previous">
