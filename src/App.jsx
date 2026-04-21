@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Nav              from './components/Nav.jsx'
+import PortfolioToolbar from './components/PortfolioToolbar.jsx'
 import Loader           from './components/Loader.jsx'
 import CaseStudyOutline from './components/CaseStudyOutline.jsx'
 import ExploreMore      from './components/ExploreMore.jsx'
@@ -54,6 +55,9 @@ function AppShell() {
 
       {/* Global footer on every page */}
       <Footer />
+
+      {/* Fixed bottom toolbar — music + notes */}
+      <PortfolioToolbar />
     </>
   )
 }

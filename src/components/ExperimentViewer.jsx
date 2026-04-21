@@ -1,14 +1,7 @@
-import { useState, useCallback, useEffect, useRef } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
 // ─── ASSETS ─────────────────────────────────────────────────────────────────
 const SCREEN_IMAGE = '/images/rokt/variants/screen.jpg'
-
-const TRACKS = [
-  { src: '/audio/Jungle - Julia.mp3',                              label: 'Jungle — Julia' },
-  { src: '/audio/Rhye - Open.mp3',                                 label: 'Rhye — Open' },
-  { src: '/audio/Parcels - Yougotmefeeling (Lyric Video).mp3',     label: 'Parcels — Yougotmefeeling' },
-  { src: '/audio/Lana Del Rey - Blue Jeans.mp3',                   label: 'Lana Del Rey — Blue Jeans' },
-]
 
 // Position of the ad slot as % of the screen container dimensions.
 // Derived from the grey box in screen.jpg (original 5760×4096px).
@@ -127,75 +120,10 @@ const TAG_TEXT = {
 
 // ─── COMPONENT ───────────────────────────────────────────────────────────────
 export default function ExperimentViewer() {
-  const [index, setIndex]       = useState(0)
-  const [fading, setFading]     = useState(false)
-  const [playing, setPlaying]   = useState(false)
-  const [trackIdx, setTrackIdx] = useState(0)
-  const audioRef  = useRef(null)
+  const [index, setIndex]   = useState(0)
+  const [fading, setFading] = useState(false)
   const total   = variants.length
   const current = variants[index]
-
-  // ── AUDIO SETUP ──────────────────────────────────────────────────────────
-  useEffect(() => {
-    const audio = new Audio(TRACKS[0].src)
-    audio.volume = 0
-    audioRef.current = audio
-
-    const onEnd = () => {
-      setTrackIdx(i => {
-        const next = (i + 1) % TRACKS.length
-        audio.src = TRACKS[next].src
-        audio.volume = 0.35
-        audio.play().catch(() => {})
-        return next
-      })
-    }
-    audio.addEventListener('ended', onEnd)
-    return () => { audio.removeEventListener('ended', onEnd); audio.pause(); audio.src = '' }
-  }, [])
-
-  // Keep audio src in sync when trackIdx changes via button
-  const playTrack = (idx) => {
-    const audio = audioRef.current
-    if (!audio) return
-    audio.src = TRACKS[idx].src
-    audio.volume = 0
-    audio.play().catch(() => {})
-    let vol = 0
-    const fadeIn = setInterval(() => {
-      vol = Math.min(0.35, vol + 0.02)
-      audio.volume = vol
-      if (vol >= 0.35) clearInterval(fadeIn)
-    }, 30)
-    setTrackIdx(idx)
-    setPlaying(true)
-  }
-
-  const toggleMusic = () => {
-    const audio = audioRef.current
-    if (!audio) return
-    if (playing) {
-      let vol = audio.volume
-      const fadeOut = setInterval(() => {
-        vol = Math.max(0, vol - 0.05)
-        audio.volume = vol
-        if (vol === 0) { clearInterval(fadeOut); audio.pause() }
-      }, 30)
-      setPlaying(false)
-    } else {
-      playTrack(trackIdx)
-    }
-  }
-
-  const skipTrack = (e) => {
-    e.stopPropagation()
-    const next = (trackIdx + 1) % TRACKS.length
-    if (playing) {
-      playTrack(next)
-    } else {
-      setTrackIdx(next)
-    }
-  }
 
   const goTo = useCallback((next) => {
     if (next === index) return
@@ -220,97 +148,23 @@ export default function ExperimentViewer() {
 
       {/* ── HEADER ROW ──────────────────────────────────────────────────── */}
       <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 12,
+        display: 'flex', alignItems: 'center',
+        justifyContent: 'space-between', marginBottom: 12,
       }}>
-        {/* Left: music toggle + track info + label */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-
-          {/* Play/pause button */}
-          <button
-            onClick={toggleMusic}
-            aria-label={playing ? 'Pause music' : 'Play music'}
-            style={{
-              background: 'none', border: 'none', padding: 0,
-              cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5,
-              color: playing ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.2)',
-              transition: 'color 0.3s ease',
-            }}
-          >
-            <svg width="11" height="13" viewBox="0 0 11 13" fill="none">
-              <path d="M3.5 10V3.5L10 2V8.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="2" cy="10" r="1.5" stroke="currentColor" strokeWidth="1.1"/>
-              <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" strokeWidth="1.1"/>
-            </svg>
-            {/* Pulsing dot */}
-            <span style={{
-              width: 4, height: 4, borderRadius: '50%',
-              background: playing ? 'rgba(255,255,255,0.5)' : 'transparent',
-              boxShadow: playing ? '0 0 6px rgba(255,255,255,0.35)' : 'none',
-              animation: playing ? 'musicPulse 1.8s ease-in-out infinite' : 'none',
-              transition: 'background 0.3s, box-shadow 0.3s',
-              flexShrink: 0,
-            }} />
-          </button>
-
-          {/* Track name + skip — fades in when playing */}
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 6,
-            opacity: playing ? 1 : 0,
-            maxWidth: playing ? 220 : 0,
-            overflow: 'hidden',
-            transition: 'opacity 0.4s ease, max-width 0.4s ease',
-          }}>
-            <span style={{
-              fontFamily: 'var(--mono)', fontSize: 9,
-              letterSpacing: '0.12em',
-              color: 'rgba(255,255,255,0.38)',
-              whiteSpace: 'nowrap',
-            }}>{TRACKS[trackIdx].label}</span>
-            <button
-              onClick={skipTrack}
-              aria-label="Next track"
-              style={{
-                background: 'none', border: 'none', padding: 0,
-                cursor: 'pointer', color: 'rgba(255,255,255,0.22)',
-                fontSize: 9, lineHeight: 1, flexShrink: 0,
-                transition: 'color 0.2s',
-              }}
-            >›</button>
-          </div>
-
-          <span style={{
-            fontFamily: 'var(--mono)', fontSize: 9,
-            letterSpacing: '0.18em', textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.3)',
-            whiteSpace: 'nowrap',
-          }}>Interactive — Ad Placement Variants</span>
-        </div>
-
-        {/* Right: keyboard hint */}
         <span style={{
-          fontFamily: 'var(--mono)',
-          fontSize: 9,
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
+          fontFamily: 'var(--mono)', fontSize: 9,
+          letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.3)',
+        }}>Interactive — Ad Placement Variants</span>
+        <span style={{
+          fontFamily: 'var(--mono)', fontSize: 9,
+          letterSpacing: '0.14em', textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.22)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 6,
+          display: 'flex', alignItems: 'center', gap: 6,
         }}>
           <span style={{ fontSize: 13, letterSpacing: 0 }}>←→</span> use arrows or keyboard to explore
         </span>
       </div>
-
-      {/* Pulse keyframe injected inline */}
-      <style>{`
-        @keyframes musicPulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50%       { opacity: 0.4; transform: scale(0.7); }
-        }
-      `}</style>
 
       {/* ── SCREEN MOCK ─────────────────────────────────────────────────── */}
       <div style={{
