@@ -1,7 +1,8 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 
 // ─── ASSETS ─────────────────────────────────────────────────────────────────
-const SCREEN_IMAGE = '/images/rokt/variants/screen.jpg'
+const SCREEN_IMAGE  = '/images/rokt/variants/screen.jpg'
+const AMBIENT_TRACK = '/audio/ambient.mp3'
 
 // Position of the ad slot as % of the screen container dimensions.
 // Derived from the grey box in screen.jpg (original 5760×4096px).
@@ -122,8 +123,44 @@ const TAG_TEXT = {
 export default function ExperimentViewer() {
   const [index, setIndex]   = useState(0)
   const [fading, setFading] = useState(false)
+  const [playing, setPlaying] = useState(false)
+  const audioRef = useRef(null)
   const total   = variants.length
   const current = variants[index]
+
+  // ── AUDIO ────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    const audio = new Audio(AMBIENT_TRACK)
+    audio.loop = true
+    audio.volume = 0
+    audioRef.current = audio
+    return () => { audio.pause(); audio.src = '' }
+  }, [])
+
+  const toggleMusic = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (playing) {
+      // fade out then pause
+      let vol = audio.volume
+      const fadeOut = setInterval(() => {
+        vol = Math.max(0, vol - 0.05)
+        audio.volume = vol
+        if (vol === 0) { clearInterval(fadeOut); audio.pause() }
+      }, 30)
+    } else {
+      audio.volume = 0
+      audio.play().catch(() => {})
+      // fade in
+      let vol = 0
+      const fadeIn = setInterval(() => {
+        vol = Math.min(0.35, vol + 0.02)
+        audio.volume = vol
+        if (vol >= 0.35) clearInterval(fadeIn)
+      }, 30)
+    }
+    setPlaying(p => !p)
+  }
 
   const goTo = useCallback((next) => {
     if (next === index) return
@@ -153,13 +190,50 @@ export default function ExperimentViewer() {
         justifyContent: 'space-between',
         marginBottom: 12,
       }}>
-        <span style={{
-          fontFamily: 'var(--mono)',
-          fontSize: 9,
-          letterSpacing: '0.18em',
-          textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.3)',
-        }}>Interactive — Ad Placement Variants</span>
+        {/* Left: music toggle + label */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <button
+            onClick={toggleMusic}
+            aria-label={playing ? 'Pause music' : 'Play ambient music'}
+            title={playing ? 'Pause music' : 'Play ambient music'}
+            style={{
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 5,
+              color: playing ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.2)',
+              transition: 'color 0.3s ease',
+            }}
+          >
+            {/* Music note icon */}
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.5 10V3.5L10 2V8.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="2" cy="10" r="1.5" stroke="currentColor" strokeWidth="1.1"/>
+              <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" strokeWidth="1.1"/>
+            </svg>
+            {/* Pulsing dot when playing */}
+            <span style={{
+              width: 4, height: 4, borderRadius: '50%',
+              background: playing ? 'rgba(255,255,255,0.5)' : 'transparent',
+              boxShadow: playing ? '0 0 6px rgba(255,255,255,0.4)' : 'none',
+              animation: playing ? 'musicPulse 1.8s ease-in-out infinite' : 'none',
+              transition: 'background 0.3s, box-shadow 0.3s',
+              flexShrink: 0,
+            }} />
+          </button>
+          <span style={{
+            fontFamily: 'var(--mono)',
+            fontSize: 9,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.3)',
+          }}>Interactive — Ad Placement Variants</span>
+        </div>
+
+        {/* Right: keyboard hint */}
         <span style={{
           fontFamily: 'var(--mono)',
           fontSize: 9,
@@ -173,6 +247,14 @@ export default function ExperimentViewer() {
           <span style={{ fontSize: 13, letterSpacing: 0 }}>←→</span> use arrows or keyboard to explore
         </span>
       </div>
+
+      {/* Pulse keyframe injected inline */}
+      <style>{`
+        @keyframes musicPulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50%       { opacity: 0.4; transform: scale(0.7); }
+        }
+      `}</style>
 
       {/* ── SCREEN MOCK ─────────────────────────────────────────────────── */}
       <div style={{
