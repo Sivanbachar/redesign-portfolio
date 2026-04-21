@@ -2,10 +2,13 @@ import { useState, useEffect, useRef } from 'react'
 
 // ─── TRACKS ──────────────────────────────────────────────────────────────────
 const TRACKS = [
-  { src: '/audio/Jungle - Julia.mp3',                            artist: 'Jungle',       title: 'Julia' },
-  { src: '/audio/Rhye - Open.mp3',                               artist: 'Rhye',         title: 'Open' },
-  { src: '/audio/Parcels - Yougotmefeeling (Lyric Video).mp3',   artist: 'Parcels',      title: 'Yougotmefeeling' },
-  { src: '/audio/Lana Del Rey - Blue Jeans.mp3',                 artist: 'Lana Del Rey', title: 'Blue Jeans' },
+  { src: '/audio/Jungle - Julia.mp3',                            artist: 'Jungle',          title: 'Julia' },
+  { src: '/audio/Rhye - Open.mp3',                               artist: 'Rhye',            title: 'Open' },
+  { src: '/audio/Parcels - Yougotmefeeling (Lyric Video).mp3',   artist: 'Parcels',         title: 'Yougotmefeeling' },
+  { src: '/audio/Lana Del Rey - Blue Jeans.mp3',                 artist: 'Lana Del Rey',    title: 'Blue Jeans' },
+  { src: "/audio/L'Impératrice  AGITATIONS TROPICALES.mp3",      artist: "L'Impératrice",   title: 'Agitations Tropicales' },
+  { src: '/audio/Muse - Uprising  Lyrics.mp3',                   artist: 'Muse',            title: 'Uprising' },
+  { src: '/audio/Roosevelt - Ordinary Love (Official Audio).mp3', artist: 'Roosevelt',      title: 'Ordinary Love' },
 ]
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
