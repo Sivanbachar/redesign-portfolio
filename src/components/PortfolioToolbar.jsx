@@ -410,7 +410,7 @@ export default function PortfolioToolbar() {
               letterSpacing: '0.14em', textTransform: 'uppercase',
               whiteSpace: 'nowrap',
             }}>
-              {notes.trim() ? 'Notes' : 'Take a note'}
+  Take Notes
             </span>
             {/* Dot if notes exist */}
             {notes.trim() && (
