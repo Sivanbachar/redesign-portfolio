@@ -37,11 +37,16 @@ const INTERVIEW_DATA = [
   {
     id: 'ai-usage',
     question: 'How are you actually using AI in your design work?',
-    answer: `I use AI across a mix of tools depending on the stage of the work.\n\nAt Amazon, I've used tools like Kiro and Quick Suite to help with microcopy, narrative framing, and getting to clearer, more concise artifacts faster. Outside of that, I've been using tools like Google Stitch, Figma Make, Claude Code, and Codex to prototype and build ideas directly.\n\nThe design tools are impressive from a speed and polish perspective, but they're not great at evaluating usability. A lot of what they produce looks finished, but the underlying experience often doesn't hold up. It tends to over-index on visuals without really solving the interaction or flow.\n\nI also find AI-generated writing is becoming easier to spot, so I spend a fair amount of time editing and stripping things back. It feels less like generating and more like debugging.\n\nWhere it's been most useful is in testing ideas quickly. I can get something that behaves like a real product and see what works or doesn't almost immediately. That's a big shift from building partial prototypes that only represent a fraction of the experience.\n\nSo for me, AI isn't replacing design thinking. It's compressing the time it takes to explore and reject ideas, which lets me spend more time on the decisions that actually matter.`,
+    answer: `I'm using AI across both design and build workflows, depending on what stage the work is in.\n\nThis portfolio itself was built using a mix of Google Stitch, Figma Make, Claude Code, and ChatGPT for narrative framing. I've been using these tools to move from idea to something tangible much faster than traditional workflows usually allow.\n\nWhat's been most valuable isn't just speed for the sake of speed. It's that these tools free up more time to focus on the things that actually matter: influencing product strategy, shaping direction earlier, and bringing the user's perspective further upstream into decision-making.\n\nI still think the quality of the thinking matters more than the output. AI just makes it easier to test, reject, refine, and move faster without getting stuck in production.`,
+  },
+  {
+    id: 'why-not',
+    question: "Why shouldn't I hire you?",
+    answer: `If what you need is a pure graphic designer, I'm probably not the right fit.\n\nA lot of product designers still end up functioning like production designers, turning around decks, marketing material, and visual artifacts on demand. I can do that work, but it's not where I create the most value.\n\nThe work I'm strongest at is defining what should exist in the first place. Framing problems, shaping direction, thinking through systems, and helping teams make better product decisions.\n\nAI is only making that clearer. As more execution work becomes faster and easier to generate, I think product designers and product managers are going to work much more closely and in some cases start to blend. The value shifts away from artifact production and more toward judgment, prioritization, and strategy.\n\nThat's the space I'm most interested in and where I've already done some of my best work.`,
   },
 ]
 
-const INITIAL_IDS = ['ai-usage', 'ai-role', 'ambiguous', 'difficult-decision']
+const INITIAL_IDS = ['why-not', 'ai-usage', 'ai-role', 'ambiguous']
 
 export default function InterviewMe() {
   const navigate = useNavigate()
