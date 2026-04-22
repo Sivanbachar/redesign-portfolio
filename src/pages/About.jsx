@@ -27,7 +27,11 @@ const skills = [
   },
   {
     group: 'Tools',
-    items: ['Figma', 'GitHub', 'Vercel', 'Claude Code', 'Jira', 'Confluence', 'Framer'],
+    items: ['Figma', 'GitHub', 'Vercel', 'Jira', 'Confluence', 'Framer'],
+  },
+  {
+    group: 'AI Tools',
+    items: ['Claude Code', 'Claude Design', 'Google Stitch', 'Figma Make', 'Kiro (Amazon)', 'Quick Suite (Amazon)', 'Vercel AI', 'GitHub Copilot'],
   },
 ]
 
