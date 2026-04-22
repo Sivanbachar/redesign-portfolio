@@ -53,7 +53,7 @@ export default function ContextualLayers() {
         <div className="cs-section sr" style={{ position: 'relative', marginBottom: 0, paddingBottom: 0 }}>
           <div style={{ position: 'relative', borderRadius: 8, overflow: 'hidden' }}>
             <img
-              src="/images/hotspots/hotspot-hero.jpg"
+              src="/images/hotspots/hotspot-hero.jpg?v=3"
               alt="Contextual Layers Reading Experience"
               style={{ width: '100%', display: 'block', borderRadius: 8 }}
             />
@@ -126,7 +126,7 @@ export default function ContextualLayers() {
             </div>
             <div className="sr" style={{ marginTop: 64 }}>
               <img
-                src="/images/hotspots/before_after.png"
+                src="/images/hotspots/before_after.png?v=3"
                 alt="Before and after: reader leaving Kindle vs staying in reading surface"
                 style={{ width: '100%', borderRadius: 8, border: '1px solid var(--bdr)', display: 'block' }}
               />

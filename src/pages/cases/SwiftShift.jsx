@@ -37,7 +37,7 @@ export default function SwiftShift() {
 
         {/* HERO VISUAL */}
         <div className="cs-section sr">
-          <img src="/images/swiftshift/swift_shift_hero.jpg" alt="Swift Shift Platform Overview" style={{ width: '100%', borderRadius: 8, border: '1px solid var(--bdr)', display: 'block' }} />
+          <img src="/images/swiftshift/swift_shift_hero.jpg?v=3" alt="Swift Shift Platform Overview" style={{ width: '100%', borderRadius: 8, border: '1px solid var(--bdr)', display: 'block' }} />
         </div>
 
         {/* THE PROBLEM */}
@@ -208,12 +208,12 @@ export default function SwiftShift() {
               <p className="cs-p sr">I also introduced clear visual states for filled versus unfilled shifts, and a dashboard view that made urgent needs visible at a glance. Schedulers could now see exactly where the gaps were without hunting across multiple tools.</p>
             </div>
             <div>
-              <img src="/images/swiftshift/swiftshift-scheduler.png" alt="Scheduler Dashboard" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
+              <img src="/images/swiftshift/swiftshift-scheduler.png?v=3" alt="Scheduler Dashboard" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
             </div>
           </div>
           <div className="cs-2col" style={{ marginTop: 64 }}>
             <div>
-              <img src="/images/swiftshift/swiftshift-create-shift.png" alt="Shift Creation Flow" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
+              <img src="/images/swiftshift/swiftshift-create-shift.png?v=3" alt="Shift Creation Flow" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
             </div>
             <div>
               <div className="cs-callout sr">
@@ -262,7 +262,7 @@ export default function SwiftShift() {
               <div style={{ width: '100%', maxWidth: 280 }}>
                 <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 12, textAlign: 'center' }}>Shift Detail View</p>
                 <img
-                  src="/images/swiftshift/ShiftDetailPage.png"
+                  src="/images/swiftshift/ShiftDetailPage.png?v=3"
                   alt="Shift Detail Page"
                   className="sr"
                   style={{ width: '100%', borderRadius: 16, border: '1px solid var(--bdr)', display: 'block' }}
@@ -289,7 +289,7 @@ export default function SwiftShift() {
               <div className="sr" style={{ display: 'flex', alignItems: 'center', gap: 16, justifyContent: 'center' }}>
                 <div style={{ flex: 1, textAlign: 'center' }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 10 }}>Messaging</p>
-                  <img src="/images/swiftshift/MessagingPage.png" alt="Group Messaging" style={{ width: '100%', maxWidth: 200, borderRadius: 8, border: '1px solid var(--bdr)', display: 'inline-block' }} />
+                  <img src="/images/swiftshift/MessagingPage.png?v=3" alt="Group Messaging" style={{ width: '100%', maxWidth: 200, borderRadius: 8, border: '1px solid var(--bdr)', display: 'inline-block' }} />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flexShrink: 0 }}>
                   <div style={{ width: 32, height: 1, background: 'var(--cobalt)' }} />
@@ -297,7 +297,7 @@ export default function SwiftShift() {
                 </div>
                 <div style={{ flex: 1, textAlign: 'center' }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 10 }}>Call-Out</p>
-                  <img src="/images/swiftshift/call-out.png" alt="Call-Out Screen" style={{ width: '100%', maxWidth: 200, borderRadius: 8, border: '1px solid var(--bdr)', display: 'inline-block' }} />
+                  <img src="/images/swiftshift/call-out.png?v=3" alt="Call-Out Screen" style={{ width: '100%', maxWidth: 200, borderRadius: 8, border: '1px solid var(--bdr)', display: 'inline-block' }} />
                 </div>
               </div>
             </div>
@@ -325,7 +325,7 @@ export default function SwiftShift() {
               <div style={{ width: '100%', maxWidth: 280 }}>
                 <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 12, textAlign: 'center' }}>Clock In / Out</p>
                 <img
-                  src="/images/swiftshift/cloclinout.png"
+                  src="/images/swiftshift/cloclinout.png?v=3"
                   alt="Clock In and Clock Out Screen"
                   className="sr"
                   style={{ width: '100%', borderRadius: 16, display: 'block' }}
@@ -372,7 +372,7 @@ export default function SwiftShift() {
               <p className="cs-p sr">After launch, more schedulers started incorporating Swift Shift into their regular workflow. Seeing the numbers gave them a concrete reason to keep using it.</p>
             </div>
             <div>
-              <img src="/images/swiftshift/dashboard.png" alt="Scheduler Analytics Dashboard" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
+              <img src="/images/swiftshift/dashboard.png?v=3" alt="Scheduler Analytics Dashboard" className="sr" style={{ width: '100%', borderRadius: 6, border: '1px solid var(--bdr)', display: 'block' }} />
             </div>
           </div>
         </div>

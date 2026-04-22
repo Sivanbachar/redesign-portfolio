@@ -89,7 +89,7 @@ export default function BookPins() {
       <div className="cs-body">
         <div className="cs-section sr">
           <img
-            src="/images/pins/pinnable-content-hero.jpg"
+            src="/images/pins/pinnable-content-hero.jpg?v=3"
             alt="Book Pins Reading Surface"
             style={{ width: '100%', borderRadius: 8, display: 'block' }}
           />
@@ -191,7 +191,7 @@ export default function BookPins() {
           </div>
           <div className="sr" style={{ marginTop: 64 }}>
             <img
-              src="/images/pins/diagram_1.jpg"
+              src="/images/pins/diagram_1.jpg?v=3"
               alt="Diagram showing the number of steps required to reference content in the original Kindle experience"
               style={{ width: '100%', borderRadius: 8, border: '1px solid var(--bdr)', display: 'block' }}
             />
