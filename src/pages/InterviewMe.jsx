@@ -41,8 +41,8 @@ const INTERVIEW_DATA = [
   },
   {
     id: 'why-not',
-    question: "Why shouldn't I hire you?",
-    answer: `If what you need is a pure graphic designer, I'm probably not the right fit.\n\nA lot of product designers still end up functioning like production designers, turning around decks, marketing material, and visual artifacts on demand. I can do that work, but it's not where I create the most value.\n\nThe work I'm strongest at is defining what should exist in the first place. Framing problems, shaping direction, thinking through systems, and helping teams make better product decisions.\n\nAI is only making that clearer. As more execution work becomes faster and easier to generate, I think product designers and product managers are going to work much more closely and in some cases start to blend. The value shifts away from artifact production and more toward judgment, prioritization, and strategy.\n\nThat's the space I'm most interested in and where I've already done some of my best work.`,
+    question: "Where do I create the most value and where don't I?",
+    answer: `I create the most value when I'm helping teams define what should exist in the first place.\n\nFraming problems, shaping direction, thinking through systems, and bringing the user's perspective into product decisions earlier on. That's where I've consistently had the most impact.\n\nWhere I'm less differentiated is purely production-focused design work. Things like turning around decks, marketing assets, or visual polish on tight timelines. I can do that work, but it's not where I'm strongest or where I spend most of my time.\n\nAI is making that distinction even clearer. As more execution work becomes faster to generate, the role shifts toward judgment, prioritization, and strategy. Product designers and product managers are already starting to overlap more in that space.\n\nThat's the direction I'm leaning into, and where I've found I'm most effective.`,
   },
 ]
 
