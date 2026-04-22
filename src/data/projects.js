@@ -7,7 +7,7 @@ export const PROJECTS = [
     tagline: 'Defined a new interaction model for contextual knowledge in reading.',
     thumbBg: 'linear-gradient(135deg, #1a2744 0%, #0d1a36 100%)',
     thumbIcon: '◈',
-    thumbImg: 'images/hotspots/hotspot_thumbnail.jpg',
+    thumbImg: 'images/hotspots/hotspot_thumbnail.jpg?v=3',
     status: 'available',
   },
   {
@@ -18,7 +18,7 @@ export const PROJECTS = [
     tagline: 'Designed an in context reference system that keeps readers in flow.',
     thumbBg: 'linear-gradient(135deg, #1a3030 0%, #0d2020 100%)',
     thumbIcon: '◉',
-    thumbImg: 'images/pins/bookpins_thumbnail.jpg',
+    thumbImg: 'images/pins/bookpins_thumbnail.jpg?v=3',
     status: 'available',
   },
   {
@@ -29,7 +29,7 @@ export const PROJECTS = [
     tagline: 'Built a full scheduling system used to place and manage shifts.',
     thumbBg: 'linear-gradient(135deg, #101a28 0%, #080f1a 100%)',
     thumbIcon: '◆',
-    thumbImg: 'images/swiftshift/swiftshift_thumbnail.jpg',
+    thumbImg: 'images/swiftshift/swiftshift_thumbnail.jpg?v=3',
     status: 'available',
   },
   {
@@ -40,6 +40,6 @@ export const PROJECTS = [
     tagline: 'Improved revenue per transaction through experimentation driven design.',
     thumbBg: 'linear-gradient(135deg, #251a10 0%, #180f06 100%)',
     thumbIcon: '◇',
-    thumbImg: 'images/rokt/rokt_thumbnail.jpg',
+    thumbImg: 'images/rokt/rokt_thumbnail.jpg?v=3',
   },
 ]
