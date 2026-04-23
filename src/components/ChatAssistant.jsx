@@ -77,9 +77,11 @@ export default function ChatAssistant() {
   const bottomRef = useRef(null)
   const panelRef  = useRef(null)
 
-  const currentPrompts = askedIds.size === 0
-    ? INTERVIEW_DATA.filter(item => INITIAL_IDS.includes(item.id))
-    : INTERVIEW_DATA.filter(item => !askedIds.has(item.id)).slice(0, 4)
+  // Always filter out asked questions. Prioritise INITIAL_IDS order, then the rest.
+  const currentPrompts = [
+    ...INTERVIEW_DATA.filter(i => INITIAL_IDS.includes(i.id)  && !askedIds.has(i.id)),
+    ...INTERVIEW_DATA.filter(i => !INITIAL_IDS.includes(i.id) && !askedIds.has(i.id)),
+  ].slice(0, 4)
 
   const handleSelect = (item) => {
     if (askedIds.has(item.id)) return
@@ -96,6 +98,30 @@ export default function ChatAssistant() {
     setMessages([])
     setAskedIds(new Set())
     setTyping(false)
+    setFormStatus('idle')
+    setOwnQuestion('')
+    setOwnEmail('')
+  }
+
+  // Contact form state (shown when all prompts exhausted)
+  const [formStatus,   setFormStatus]   = useState('idle') // idle | sending | sent | error
+  const [ownQuestion,  setOwnQuestion]  = useState('')
+  const [ownEmail,     setOwnEmail]     = useState('')
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault()
+    if (!ownQuestion.trim() || !ownEmail.trim()) return
+    setFormStatus('sending')
+    try {
+      const res = await fetch('https://formspree.io/f/xvzvygyg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: ownEmail, message: ownQuestion }),
+      })
+      setFormStatus(res.ok ? 'sent' : 'error')
+    } catch {
+      setFormStatus('error')
+    }
   }
 
   // Scroll to bottom on new messages
@@ -167,7 +193,7 @@ export default function ChatAssistant() {
               <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <p style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', margin: 0, letterSpacing: '-0.01em' }}>Sivan Baum</p>
-                <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', margin: 0 }}>Ask me anything</p>
+                <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', margin: 0 }}>Interview me</p>
               </div>
               <button onClick={() => setOpen(false)} aria-label="Close" style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', padding: 4, display: 'flex', borderRadius: 4, lineHeight: 1 }}>
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>
@@ -247,11 +273,66 @@ export default function ChatAssistant() {
               </div>
             )}
 
-            {/* All done */}
+            {/* All done — own question form */}
             {!typing && currentPrompts.length === 0 && messages.length > 0 && (
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '14px 16px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.13em', color: 'rgba(255,255,255,0.25)', margin: 0 }}>You've asked everything.</p>
-                <button onClick={handleReset} style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.13em', textTransform: 'uppercase', background: 'none', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, padding: '5px 10px', color: 'rgba(255,255,255,0.35)', cursor: 'pointer' }}>Start over</button>
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '14px 16px', flexShrink: 0 }}>
+                {formStatus === 'sent' ? (
+                  <div style={{ textAlign: 'center', padding: '8px 0' }}>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: '0 0 4px' }}>Got it.</p>
+                    <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.13em', color: 'rgba(255,255,255,0.28)', margin: 0 }}>Your question is in my inbox.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleContactSubmit}>
+                    <p style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', margin: '0 0 8px' }}>Have your own question?</p>
+                    <textarea
+                      value={ownQuestion}
+                      onChange={e => setOwnQuestion(e.target.value)}
+                      placeholder="Interview me…"
+                      rows={3}
+                      required
+                      style={{
+                        width: '100%', boxSizing: 'border-box',
+                        background: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: 8, padding: '9px 11px',
+                        color: 'rgba(255,255,255,0.7)', fontSize: 12, lineHeight: 1.55,
+                        fontFamily: 'var(--sans)', resize: 'none', outline: 'none',
+                        marginBottom: 8,
+                      }}
+                    />
+                    <div style={{ display: 'flex', gap: 7 }}>
+                      <input
+                        type="email"
+                        value={ownEmail}
+                        onChange={e => setOwnEmail(e.target.value)}
+                        placeholder="Your email"
+                        required
+                        style={{
+                          flex: 1, background: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          borderRadius: 6, padding: '8px 10px',
+                          color: 'rgba(255,255,255,0.7)', fontSize: 12,
+                          fontFamily: 'var(--sans)', outline: 'none',
+                        }}
+                      />
+                      <button
+                        type="submit"
+                        disabled={formStatus === 'sending'}
+                        style={{
+                          background: 'rgba(255,255,255,0.07)',
+                          border: '1px solid rgba(255,255,255,0.12)',
+                          borderRadius: 6, padding: '8px 14px',
+                          color: 'rgba(255,255,255,0.6)', fontSize: 12,
+                          fontFamily: 'var(--sans)', cursor: 'pointer',
+                        }}
+                      >{formStatus === 'sending' ? '…' : 'Send →'}</button>
+                    </div>
+                    {formStatus === 'error' && (
+                      <p style={{ fontFamily: 'var(--mono)', fontSize: 9, color: 'rgba(255,80,80,0.6)', margin: '8px 0 0' }}>Something went wrong. Try emailing me directly.</p>
+                    )}
+                    <button type="button" onClick={handleReset} style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.13em', textTransform: 'uppercase', background: 'none', border: 'none', color: 'rgba(255,255,255,0.2)', cursor: 'pointer', marginTop: 10, padding: 0 }}>Start over</button>
+                  </form>
+                )}
               </div>
             )}
           </div>
@@ -261,7 +342,7 @@ export default function ChatAssistant() {
         <button
           className="chat-launcher"
           onClick={() => setOpen(o => !o)}
-          aria-label={open ? 'Close assistant' : 'Ask me anything'}
+          aria-label={open ? 'Close assistant' : 'Interview me'}
           style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
         >
           {/* Helper text */}
@@ -274,7 +355,7 @@ export default function ChatAssistant() {
               boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
               transition: 'background 0.2s',
             }}>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap' }}>Ask me anything</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap' }}>Interview me</span>
             </div>
           )}
           {/* Avatar */}
