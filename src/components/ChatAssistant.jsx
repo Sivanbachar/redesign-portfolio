@@ -175,7 +175,11 @@ export default function ChatAssistant() {
             </div>
 
             {/* Messages */}
-            <div style={{ flex: 1, overflowY: 'auto', padding: '16px 16px 8px', display: 'flex', flexDirection: 'column', gap: 4, scrollbarWidth: 'none' }}>
+            <div
+              onWheel={e => e.stopPropagation()}
+              onTouchMove={e => e.stopPropagation()}
+              style={{ flex: 1, overflowY: 'auto', overscrollBehavior: 'contain', padding: '16px 16px 8px', display: 'flex', flexDirection: 'column', gap: 4, scrollbarWidth: 'none' }}
+            >
 
               {/* Intro message */}
               {messages.length === 0 && (
