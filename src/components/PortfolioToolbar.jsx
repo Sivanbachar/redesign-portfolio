@@ -183,7 +183,7 @@ export default function PortfolioToolbar() {
         borderBottom: 'none',
         borderRadius: '10px 10px 0 0',
         padding: '14px 16px 12px',
-        zIndex: 998,
+        zIndex: 1200,
         boxShadow: '0 -8px 48px rgba(0,0,0,0.55)',
         fontFamily: 'var(--sans)',
         transition: 'bottom 0.32s cubic-bezier(0.16,1,0.3,1)',
