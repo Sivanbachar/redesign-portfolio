@@ -41,7 +41,7 @@ const INTERVIEW_DATA = [
   },
   {
     id: 'why-not',
-    question: "Where do I create the most value and where don't I?",
+    question: "Where do you create the most value and where don't you?",
     answer: `I create the most value when I'm helping teams define what should exist in the first place.\n\nFraming problems, shaping direction, thinking through systems, and bringing the user's perspective into product decisions earlier on. That's where I've consistently had the most impact.\n\nWhere I'm less differentiated is purely production-focused design work. Things like turning around decks, marketing assets, or visual polish on tight timelines. I can do that work, but it's not where I'm strongest or where I spend most of my time.\n\nAI is making that distinction even clearer. As more execution work becomes faster to generate, the role shifts toward judgment, prioritization, and strategy. Product designers and product managers are already starting to overlap more in that space.\n\nThat's the direction I'm leaning into, and where I've found I'm most effective.`,
   },
 ]
