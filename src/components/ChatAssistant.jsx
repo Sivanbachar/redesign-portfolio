@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const PROFILE_IMG = '/images/resume/profile.png'
 
@@ -46,7 +47,25 @@ const INTERVIEW_DATA = [
   },
 ]
 
-const INITIAL_IDS = ['why-not', 'ai-usage', 'ai-role', 'ambiguous']
+// ─── ROUTE-AWARE QUESTION PRIORITIES ─────────────────────────────────────────
+const DEFAULT_INITIAL_IDS = ['why-not', 'ai-usage', 'ai-role', 'ambiguous']
+
+const ROUTE_INITIAL_IDS = {
+  '/projects/rokt':              ['ai-usage', 'difficult-decision', 'balance', 'ai-role'],
+  '/projects/contextual-layers': ['difficult-decision', 'ambiguous', 'enjoy', 'ai-role'],
+  '/projects/bookpins':          ['difficult-decision', 'ambiguous', 'balance', 'done'],
+  '/projects/swiftshift':        ['balance', 'done', 'enjoy', 'ambiguous'],
+  '/about':                      ['why-not', 'ai-usage', 'ai-role', 'balance'],
+}
+
+// ─── NUDGE MESSAGES (by route) ────────────────────────────────────────────────
+const ROUTE_NUDGE = {
+  '/projects/rokt':              'Curious about the experimentation process?',
+  '/projects/contextual-layers': 'Want to hear how I approached this?',
+  '/projects/bookpins':          'Questions about this project?',
+  '/projects/swiftshift':        'Want to know more about this build?',
+  '/about':                      'Want to know where I create the most value?',
+}
 const TYPING_DELAY = 1100
 
 // ─── TYPING DOTS ─────────────────────────────────────────────────────────────
@@ -70,17 +89,24 @@ function TypingDots() {
 
 // ─── COMPONENT ───────────────────────────────────────────────────────────────
 export default function ChatAssistant() {
+  const { pathname } = useLocation()
   const [open, setOpen]         = useState(false)
   const [messages, setMessages] = useState([])
   const [askedIds, setAskedIds] = useState(new Set())
   const [typing, setTyping]     = useState(false)
+  const [nudgeVisible, setNudgeVisible] = useState(false)
+  const [nudgeDone,    setNudgeDone]    = useState(false)
   const bottomRef = useRef(null)
   const panelRef  = useRef(null)
 
-  // Always filter out asked questions. Prioritise INITIAL_IDS order, then the rest.
+  // Route-aware question priority — re-orders when route changes
+  const initialIds = ROUTE_INITIAL_IDS[pathname] || DEFAULT_INITIAL_IDS
+
+  // Always filter out asked questions; initial IDs for this route come first
   const currentPrompts = [
-    ...INTERVIEW_DATA.filter(i => INITIAL_IDS.includes(i.id)  && !askedIds.has(i.id)),
-    ...INTERVIEW_DATA.filter(i => !INITIAL_IDS.includes(i.id) && !askedIds.has(i.id)),
+    ...INTERVIEW_DATA.filter(i =>  initialIds.includes(i.id) && !askedIds.has(i.id))
+                     .sort((a, b) => initialIds.indexOf(a.id) - initialIds.indexOf(b.id)),
+    ...INTERVIEW_DATA.filter(i => !initialIds.includes(i.id) && !askedIds.has(i.id)),
   ].slice(0, 4)
 
   const handleSelect = (item) => {
@@ -141,6 +167,21 @@ export default function ChatAssistant() {
     return () => document.removeEventListener('mousedown', handler)
   }, [open])
 
+  // Proactive nudge — fires once per session, 9s after page load, not if already open
+  useEffect(() => {
+    if (nudgeDone || open) return
+    const t = setTimeout(() => {
+      setNudgeVisible(true)
+      setNudgeDone(true)
+      // Auto-dismiss after 5s
+      setTimeout(() => setNudgeVisible(false), 5000)
+    }, 9000)
+    return () => clearTimeout(t)
+  }, [nudgeDone, open])
+
+  // Hide nudge when chat opens
+  useEffect(() => { if (open) setNudgeVisible(false) }, [open])
+
   // Reduced motion
   const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -161,6 +202,14 @@ export default function ChatAssistant() {
         @keyframes msgIn {
           from { opacity: 0; transform: translateY(6px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes nudgeIn {
+          from { opacity: 0; transform: translateY(6px) scale(0.96); }
+          to   { opacity: 1; transform: translateY(0)   scale(1); }
+        }
+        @keyframes avatarPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.15); }
+          50%       { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
         }
         .chat-prompt-row:hover { background: rgba(255,255,255,0.06) !important; }
         .chat-launcher:hover .chat-launcher-pill { background: rgba(26,26,26,0.98) !important; }
@@ -338,6 +387,24 @@ export default function ChatAssistant() {
           </div>
         )}
 
+        {/* ── NUDGE TOOLTIP ────────────────────────────────────────────── */}
+        {nudgeVisible && !open && (
+          <div style={{
+            alignSelf: 'flex-end',
+            background: 'rgba(16,16,16,0.97)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            borderRadius: 10,
+            padding: '9px 14px',
+            boxShadow: '0 8px 28px rgba(0,0,0,0.55)',
+            animation: 'nudgeIn 0.28s cubic-bezier(0.16,1,0.3,1)',
+            pointerEvents: 'none',
+          }}>
+            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', margin: 0, whiteSpace: 'nowrap' }}>
+              {ROUTE_NUDGE[pathname] || 'Curious about my process?'}
+            </p>
+          </div>
+        )}
+
         {/* ── LAUNCHER ─────────────────────────────────────────────────── */}
         <button
           className="chat-launcher"
@@ -358,13 +425,14 @@ export default function ChatAssistant() {
               <span style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap' }}>Interview me</span>
             </div>
           )}
-          {/* Avatar */}
+          {/* Avatar — pulses gently when nudge fires */}
           <div style={{
             width: 44, height: 44, borderRadius: '50%',
             border: `2px solid ${open ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.15)'}`,
             overflow: 'hidden', flexShrink: 0,
             boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
             transition: 'border-color 0.2s',
+            animation: nudgeVisible ? 'avatarPulse 1.4s ease-in-out 3' : 'none',
           }}>
             <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
