@@ -95,6 +95,40 @@ export default function BookPins() {
           />
         </div>
 
+        {/* HOW IT STARTED */}
+        <div className="cs-section">
+          <span className="cs-section-label sr">How It Started</span>
+          <h2 className="cs-h2 sr">The team had a direction problem. I reframed it as a user problem.</h2>
+          <div className="cs-2col">
+            <div>
+              <p className="cs-p sr">Kindle's product team had been asked to define a three-year vision — but the work was stalling. Conversations kept circling without landing. Big ideas, no shared thread, and growing pressure to show direction.</p>
+              <p className="cs-p sr">I stepped in and proposed a different starting point. Instead of beginning with the product, begin with the reader. I led a cross-functional workshop that brought together product managers, engineers, and leadership to map the current Kindle reading experience from the user's perspective.</p>
+              <p className="cs-p sr">Not features. Not roadmaps. Friction. Where were readers struggling? Where were their expectations going unmet?</p>
+            </div>
+            <div>
+              <div className="cs-callout sr">
+                <p><strong>One pattern surfaced clearly across the group:</strong> readers needed to engage with content non-linearly — revisiting earlier sections, cross-referencing ideas, holding two pieces of content in mind at once. The current experience didn't support any of it. And no one had named it clearly before.</p>
+              </div>
+              <div style={{ marginTop: 28 }}>
+                {[
+                  ['Who was in the room', 'Product managers, engineering leads, and senior leadership — brought together under a shared user lens rather than a product roadmap.'],
+                  ['How I framed it', 'Reanchored the conversation from "what should we build" to "where are readers failing today" — shifting the group from ideation to diagnosis.'],
+                  ['What came out of it', 'Reference behavior was the clearest and most promising gap. That became the foundation for everything that followed.'],
+                ].map(([label, val]) => (
+                  <div key={label} className="sr" style={{ padding: '14px 0', borderTop: '1px solid var(--bdr)' }}>
+                    <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 6 }}>{label}</p>
+                    <p className="cs-p" style={{ marginBottom: 0, fontSize: 14 }}>{val}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="cs-insight sr" style={{ marginTop: 40 }}>
+            <span className="cs-insight-label">The Pivot</span>
+            <p className="cs-insight-text">Reframing the three-year vision as a user problem created the clarity the team needed. It gave everyone a shared starting point — and gave me the opening to drive something forward that wouldn't have existed otherwise.</p>
+          </div>
+        </div>
+
         {/* ORIGIN */}
         <div className="cs-section">
           <span className="cs-section-label sr">Origin</span>
