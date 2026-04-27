@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../../hooks/useScrollReveal.js'
 import { useReadingProgress } from '../../hooks/useReadingProgress.js'
@@ -23,16 +24,161 @@ const slideNum = {
 const DIVIDER = { borderTop: '1px solid rgba(255,255,255,0.06)' }
 const PAD     = { padding: '100px 80px' }
 
+const SLIDE_IDS = [
+  'slide-cover',
+  'slide-problem',
+  'slide-insight',
+  'slide-research',
+  'slide-iterations',
+  'slide-solution',
+  'slide-impact',
+  'slide-voices',
+  'slide-learnings',
+]
+
 export default function BookPinsSlides() {
-  const navigate = useNavigate()
+  const navigate  = useNavigate()
+  const [active, setActive] = useState(0)
+  const scrollingRef = useRef(false)
   useScrollReveal()
   const pct = useReadingProgress()
+
+  // Track active slide via IntersectionObserver
+  useEffect(() => {
+    const observers = []
+    SLIDE_IDS.forEach((id, i) => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(i) },
+        { threshold: 0.35 }
+      )
+      obs.observe(el)
+      observers.push(obs)
+    })
+    return () => observers.forEach(o => o.disconnect())
+  }, [])
+
+  const goTo = useCallback((index) => {
+    const el = document.getElementById(SLIDE_IDS[index])
+    if (!el) return
+    scrollingRef.current = true
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setTimeout(() => { scrollingRef.current = false }, 800)
+  }, [])
+
+  // Keyboard navigation
+  useEffect(() => {
+    const onKey = (e) => {
+      if (['ArrowDown', 'ArrowRight', 'PageDown'].includes(e.key)) {
+        e.preventDefault()
+        setActive(prev => { const next = Math.min(prev + 1, SLIDE_IDS.length - 1); goTo(next); return next })
+      }
+      if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
+        e.preventDefault()
+        setActive(prev => { const next = Math.max(prev - 1, 0); goTo(next); return next })
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [goTo])
 
   return (
     <div style={{ background: '#070707', minHeight: '100vh', fontFamily: 'var(--sans)', paddingBottom: 56 }}>
 
       {/* Reading progress */}
       <div className="progress-bar" style={{ transform: `scaleX(${pct})` }} />
+
+      {/* ── DOT NAV — fixed right side ── */}
+      <nav style={{
+        position: 'fixed', right: 24, top: '50%',
+        transform: 'translateY(-50%)',
+        zIndex: 700,
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
+      }}>
+        {SLIDE_IDS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            style={{
+              width: active === i ? 6 : 4,
+              height: active === i ? 6 : 4,
+              borderRadius: '50%',
+              background: active === i ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.18)',
+              border: 'none', padding: 0, cursor: 'pointer',
+              transition: 'all 0.25s cubic-bezier(0.16,1,0.3,1)',
+              flexShrink: 0,
+            }}
+          />
+        ))}
+      </nav>
+
+      {/* ── PREV / NEXT arrows — fixed bottom center ── */}
+      <div style={{
+        position: 'fixed', bottom: 72, left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 700,
+        display: 'flex', alignItems: 'center', gap: 8,
+      }}>
+        <button
+          onClick={() => goTo(Math.max(active - 1, 0))}
+          disabled={active === 0}
+          aria-label="Previous slide"
+          style={{
+            width: 38, height: 38,
+            borderRadius: '50%',
+            background: 'rgba(14,14,14,0.9)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            color: active === 0 ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.55)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: active === 0 ? 'default' : 'pointer',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            transition: 'color 0.2s, border-color 0.2s',
+          }}
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 10L2 6l4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
+        {/* Slide counter */}
+        <span style={{
+          fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.18em',
+          color: 'rgba(255,255,255,0.28)',
+          background: 'rgba(14,14,14,0.9)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: 20, padding: '8px 14px',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          userSelect: 'none',
+        }}>
+          {String(active + 1).padStart(2, '0')} / {String(SLIDE_IDS.length).padStart(2, '0')}
+        </span>
+
+        <button
+          onClick={() => goTo(Math.min(active + 1, SLIDE_IDS.length - 1))}
+          disabled={active === SLIDE_IDS.length - 1}
+          aria-label="Next slide"
+          style={{
+            width: 38, height: 38,
+            borderRadius: '50%',
+            background: 'rgba(14,14,14,0.9)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            color: active === SLIDE_IDS.length - 1 ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.55)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: active === SLIDE_IDS.length - 1 ? 'default' : 'pointer',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            transition: 'color 0.2s, border-color 0.2s',
+          }}
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      </div>
 
       {/* Fixed back pill */}
       <button
@@ -53,7 +199,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           01 / COVER
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-cover" style={{
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -125,7 +271,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           02 / THE PROBLEM
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-problem" style={{
         minHeight: '100vh',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
@@ -176,7 +322,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           03 / CRITICAL INSIGHT
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-insight" style={{
         minHeight: '80vh',
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
@@ -219,7 +365,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           04 / RESEARCH
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-research" style={{
         minHeight: '100vh',
         display: 'grid',
         gridTemplateColumns: '360px 1fr',
@@ -277,7 +423,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           05 / ITERATIONS
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-iterations" style={{
         minHeight: '100vh',
         ...PAD,
         ...DIVIDER,
@@ -350,7 +496,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           06 / THE SOLUTION
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-solution" style={{
         minHeight: '100vh',
         ...PAD,
         ...DIVIDER,
@@ -411,7 +557,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           07 / IMPACT
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-impact" style={{
         minHeight: '80vh',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
         ...PAD,
@@ -458,7 +604,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           08 / USER VOICES
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-voices" style={{
         minHeight: '100vh',
         ...PAD,
         ...DIVIDER,
@@ -510,7 +656,7 @@ export default function BookPinsSlides() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           09 / LEARNINGS
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section style={{
+      <section id="slide-learnings" style={{
         minHeight: '90vh',
         padding: '100px 80px 140px',
         ...DIVIDER,
