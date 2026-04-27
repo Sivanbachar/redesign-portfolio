@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function CaseStudyOutline() {
   const location  = useLocation()
+  const navigate  = useNavigate()
   const [open,     setOpen]     = useState(false)
   const [sections, setSections] = useState([])
   const [activeId, setActiveId] = useState(null)
@@ -173,6 +174,55 @@ export default function CaseStudyOutline() {
           padding:       '0 32px',
           marginBottom:   32,
         }}>Case Study</p>
+
+        {/* Slide deck toggle — BookPins only */}
+        {(location.pathname === '/projects/bookpins' || location.pathname === '/projects/bookpins/slides') && (
+          <div style={{ padding: '0 16px 24px', marginTop: 8 }}>
+            <button
+              onClick={() => {
+                navigate(location.pathname === '/projects/bookpins/slides'
+                  ? '/projects/bookpins'
+                  : '/projects/bookpins/slides')
+                setOpen(false)
+              }}
+              style={{
+                width: '100%',
+                display: 'flex', alignItems: 'center', gap: 10,
+                background: location.pathname === '/projects/bookpins/slides'
+                  ? 'rgba(255,255,255,0.05)'
+                  : 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 8,
+                padding: '10px 16px',
+                cursor: 'pointer',
+                textAlign: 'left',
+              }}
+            >
+              {/* Icon */}
+              {location.pathname === '/projects/bookpins/slides' ? (
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                  <rect x="1" y="1" width="11" height="11" rx="2" stroke="rgba(255,255,255,0.45)" strokeWidth="1.1"/>
+                  <path d="M3.5 5h6M3.5 8h4" stroke="rgba(255,255,255,0.45)" strokeWidth="1.1" strokeLinecap="round"/>
+                </svg>
+              ) : (
+                <svg width="13" height="13" viewBox="0 0 14 13" fill="none">
+                  <rect x="1" y="1" width="12" height="9" rx="1.5" stroke="rgba(255,255,255,0.45)" strokeWidth="1.1"/>
+                  <path d="M5 12h4" stroke="rgba(255,255,255,0.45)" strokeWidth="1.1" strokeLinecap="round"/>
+                  <path d="M7 11v1" stroke="rgba(255,255,255,0.45)" strokeWidth="1.1" strokeLinecap="round"/>
+                </svg>
+              )}
+              <span style={{
+                fontFamily: 'var(--mono)',
+                fontSize: 9,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.45)',
+              }}>
+                {location.pathname === '/projects/bookpins/slides' ? 'Case Study View' : 'Slide Deck View'}
+              </span>
+            </button>
+          </div>
+        )}
 
         {/* Section items */}
         {sections.map(s => {

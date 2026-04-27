@@ -10,6 +10,7 @@ import Home             from './pages/Home.jsx'
 import About            from './pages/About.jsx'
 import ContextualLayers from './pages/cases/Hotspots.jsx'
 import BookPins         from './pages/cases/BookPins.jsx'
+import BookPinsSlides   from './pages/cases/BookPinsSlides.jsx'
 import Rokt             from './pages/cases/Rokt.jsx'
 import SwiftShift       from './pages/cases/SwiftShift.jsx'
 import AI               from './pages/AI.jsx'
@@ -40,7 +41,8 @@ function AppShell() {
         <Route path="/"                     element={<Home />} />
         <Route path="/about"                element={<About />} />
         <Route path="/projects/contextual-layers" element={<ContextualLayers />} />
-        <Route path="/projects/bookpins"    element={<BookPins />} />
+        <Route path="/projects/bookpins"        element={<BookPins />} />
+        <Route path="/projects/bookpins/slides" element={<BookPinsSlides />} />
         <Route path="/projects/rokt"        element={<Rokt />} />
         <Route path="/projects/swiftshift"  element={<SwiftShift />} />
         <Route path="/ai"                   element={<AI />} />
