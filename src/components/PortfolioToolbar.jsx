@@ -269,6 +269,9 @@ export default function PortfolioToolbar() {
 
   const track = TRACKS[trackIdx]
 
+  // Hide toolbar on the slide deck view
+  if (pathname === '/projects/bookpins/slides') return null
+
   return (
     <>
       <style>{`

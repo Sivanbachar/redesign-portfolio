@@ -40,6 +40,7 @@ const SLIDE_IDS = [
 export default function BookPinsSlides() {
   const navigate  = useNavigate()
   const [active, setActive] = useState(0)
+  const activeRef    = useRef(0)
   const scrollingRef = useRef(false)
   useScrollReveal()
   const pct = useReadingProgress()
@@ -51,7 +52,7 @@ export default function BookPinsSlides() {
       const el = document.getElementById(id)
       if (!el) return
       const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActive(i) },
+        ([entry]) => { if (entry.isIntersecting) { setActive(i); activeRef.current = i } },
         { threshold: 0.35 }
       )
       obs.observe(el)
@@ -65,6 +66,8 @@ export default function BookPinsSlides() {
     if (!el) return
     scrollingRef.current = true
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setActive(index)
+    activeRef.current = index
     setTimeout(() => { scrollingRef.current = false }, 800)
   }, [])
 
@@ -73,11 +76,11 @@ export default function BookPinsSlides() {
     const onKey = (e) => {
       if (['ArrowDown', 'ArrowRight', 'PageDown'].includes(e.key)) {
         e.preventDefault()
-        setActive(prev => { const next = Math.min(prev + 1, SLIDE_IDS.length - 1); goTo(next); return next })
+        goTo(Math.min(activeRef.current + 1, SLIDE_IDS.length - 1))
       }
       if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
         e.preventDefault()
-        setActive(prev => { const next = Math.max(prev - 1, 0); goTo(next); return next })
+        goTo(Math.max(activeRef.current - 1, 0))
       }
     }
     window.addEventListener('keydown', onKey)
