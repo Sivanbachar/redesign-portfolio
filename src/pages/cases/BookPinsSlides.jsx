@@ -26,6 +26,7 @@ const PAD     = { padding: '100px 80px' }
 
 const SLIDE_IDS = [
   'slide-cover',
+  'slide-how-it-started',
   'slide-problem',
   'slide-insight',
   'slide-research',
@@ -265,11 +266,69 @@ export default function BookPinsSlides() {
           </div>
         </div>
 
-        <p style={{ ...slideNum, position: 'absolute', bottom: 100, right: 80 }}>01 / 09</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 100, right: 80 }}>01 / 10</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          02 / THE PROBLEM
+          02 / HOW IT STARTED
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section id="slide-how-it-started" style={{
+        minHeight: '100vh',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        ...DIVIDER,
+        background: '#080808',
+        position: 'relative',
+      }}>
+        {/* Left — narrative */}
+        <div style={{ padding: '100px 64px 100px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
+          <p className="sr" style={{ ...label(28), marginBottom: 28 }}>02 — How It Started</p>
+          <h2 className="sr" style={{
+            fontSize: 'clamp(30px, 3.4vw, 46px)',
+            fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1,
+            color: '#fff', marginBottom: 32,
+          }}>
+            The team had a direction problem. I reframed it as a user problem.
+          </h2>
+          <p className="sr" style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, marginBottom: 20 }}>
+            Kindle's product team had been asked to define a three-year vision — but the work was stalling. Conversations kept circling without landing. Big ideas, no shared thread, growing pressure.
+          </p>
+          <p className="sr" style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75 }}>
+            I stepped in and proposed a different starting point. Instead of beginning with the product, begin with the reader. I led a cross-functional workshop that brought together product managers, engineers, and leadership — focused not on features or roadmaps, but on friction.
+          </p>
+        </div>
+
+        {/* Right — structure + callout */}
+        <div style={{ padding: '100px 80px 100px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 0 }}>
+          {[
+            ['Who was in the room', 'Product managers, engineering leads, and senior leadership — brought together under a shared user lens rather than a product roadmap.'],
+            ['How I framed it', 'Reanchored the conversation from "what should we build" to "where are readers failing today" — shifting the group from ideation to diagnosis.'],
+            ['What came out of it', 'Reference behavior was the clearest and most promising gap. Readers needed to engage with content non-linearly — and no one had named it clearly before.'],
+          ].map(([heading, body]) => (
+            <div key={heading} className="sr" style={{ padding: '24px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 10 }}>{heading}</p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.52)', lineHeight: 1.7 }}>{body}</p>
+            </div>
+          ))}
+
+          <div className="sr" style={{
+            marginTop: 32,
+            padding: '24px 28px',
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: 12,
+          }}>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, fontStyle: 'italic' }}>
+              "That moment is where Book Pins started."
+            </p>
+          </div>
+        </div>
+
+        <p style={{ ...slideNum, gridColumn: '1 / -1', textAlign: 'right', padding: '0 80px 40px' }}>02 / 10</p>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          03 / THE PROBLEM
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section id="slide-problem" style={{
         minHeight: '100vh',
@@ -281,7 +340,7 @@ export default function BookPinsSlides() {
       }}>
         {/* Left */}
         <div style={{ padding: '100px 64px 100px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
-          <p className="sr" style={{ ...label(28), marginBottom: 28 }}>02 — The Problem</p>
+          <p className="sr" style={{ ...label(28), marginBottom: 28 }}>03 — The Problem</p>
           <h2 className="sr" style={{
             fontSize: 'clamp(32px, 3.5vw, 50px)',
             fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1,
@@ -316,7 +375,7 @@ export default function BookPinsSlides() {
           />
         </div>
 
-        <p style={{ ...slideNum, gridColumn: '1 / -1', textAlign: 'right', padding: '0 80px 40px' }}>02 / 09</p>
+        <p style={{ ...slideNum, gridColumn: '1 / -1', textAlign: 'right', padding: '0 80px 40px' }}>03 / 10</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -332,7 +391,7 @@ export default function BookPinsSlides() {
         textAlign: 'center',
         position: 'relative',
       }}>
-        <p className="sr" style={{ ...label(44), marginBottom: 44 }}>03 — Critical Insight</p>
+        <p className="sr" style={{ ...label(44), marginBottom: 44 }}>04 — Critical Insight</p>
 
         <div style={{ width: 32, height: 1, background: 'rgba(255,255,255,0.18)', margin: '0 auto 48px' }} />
 
@@ -359,7 +418,7 @@ export default function BookPinsSlides() {
           This reframed the problem entirely
         </p>
 
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>03 / 09</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>04 / 10</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -379,7 +438,7 @@ export default function BookPinsSlides() {
           borderRight: '1px solid rgba(255,255,255,0.06)',
           display: 'flex', flexDirection: 'column', justifyContent: 'center',
         }}>
-          <p className="sr" style={{ ...label(28), marginBottom: 28 }}>04 — Research</p>
+          <p className="sr" style={{ ...label(28), marginBottom: 28 }}>05 — Research</p>
           <h2 className="sr" style={{
             fontSize: 'clamp(28px, 2.8vw, 40px)',
             fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15,
@@ -417,7 +476,7 @@ export default function BookPinsSlides() {
           ))}
         </div>
 
-        <p style={{ ...slideNum, gridColumn: '1 / -1', textAlign: 'right', padding: '0 80px 40px' }}>04 / 09</p>
+        <p style={{ ...slideNum, gridColumn: '1 / -1', textAlign: 'right', padding: '0 80px 40px' }}>05 / 10</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -430,7 +489,7 @@ export default function BookPinsSlides() {
         background: '#0a0a0a',
         position: 'relative',
       }}>
-        <p className="sr" style={{ ...label(24), marginBottom: 24 }}>05 — Design Iterations</p>
+        <p className="sr" style={{ ...label(24), marginBottom: 24 }}>06 — Design Iterations</p>
         <h2 className="sr" style={{
           fontSize: 'clamp(30px, 3.8vw, 52px)',
           fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.08,
@@ -490,7 +549,7 @@ export default function BookPinsSlides() {
           ))}
         </div>
 
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>05 / 09</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>06 / 10</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -503,7 +562,7 @@ export default function BookPinsSlides() {
         background: '#080808',
         position: 'relative',
       }}>
-        <p className="sr" style={{ ...label(24), marginBottom: 24 }}>06 — The Solution</p>
+        <p className="sr" style={{ ...label(24), marginBottom: 24 }}>07 — The Solution</p>
         <h2 className="sr" style={{
           fontSize: 'clamp(36px, 5vw, 68px)',
           fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.0,
@@ -551,7 +610,7 @@ export default function BookPinsSlides() {
           ))}
         </div>
 
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>06 / 09</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>07 / 10</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -565,7 +624,7 @@ export default function BookPinsSlides() {
         background: '#050505',
         position: 'relative',
       }}>
-        <p className="sr" style={{ ...label(28), marginBottom: 28 }}>07 — Impact</p>
+        <p className="sr" style={{ ...label(28), marginBottom: 28 }}>08 — Impact</p>
         <h2 className="sr" style={{
           fontSize: 'clamp(22px, 2.8vw, 36px)',
           fontWeight: 500, letterSpacing: '-0.02em',
@@ -598,7 +657,7 @@ export default function BookPinsSlides() {
           ))}
         </div>
 
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>07 / 09</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>08 / 10</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -611,7 +670,7 @@ export default function BookPinsSlides() {
         background: '#080808',
         position: 'relative',
       }}>
-        <p className="sr" style={{ ...label(24), marginBottom: 24 }}>08 — User Voices</p>
+        <p className="sr" style={{ ...label(24), marginBottom: 24 }}>09 — User Voices</p>
         <h2 className="sr" style={{
           fontSize: 'clamp(28px, 3.6vw, 50px)',
           fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1,
@@ -650,7 +709,7 @@ export default function BookPinsSlides() {
           ))}
         </div>
 
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>08 / 09</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>09 / 10</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -663,7 +722,7 @@ export default function BookPinsSlides() {
         background: '#0a0a0a',
         position: 'relative',
       }}>
-        <p className="sr" style={{ ...label(24), marginBottom: 24 }}>09 — Learnings</p>
+        <p className="sr" style={{ ...label(24), marginBottom: 24 }}>10 — Learnings</p>
         <h2 className="sr" style={{
           fontSize: 'clamp(30px, 3.8vw, 52px)',
           fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.08,
@@ -714,7 +773,7 @@ export default function BookPinsSlides() {
           >↑ Back to top</button>
         </div>
 
-        <p style={{ ...slideNum, position: 'absolute', bottom: 56, right: 80 }}>09 / 09</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 56, right: 80 }}>10 / 10</p>
       </section>
 
     </div>

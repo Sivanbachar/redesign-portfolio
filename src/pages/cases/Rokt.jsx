@@ -39,7 +39,7 @@ export default function Rokt() {
       <div className="cs-body no-dividers">
         <div className="cs-section sr">
           <img
-            src="/images/rokt/rokt_hero.jpg"
+            src="/images/rokt/rokt_hero.jpg?v=3"
             alt="Rokt Ad Experience Overview"
             style={{ width: '100%', borderRadius: 12, display: 'block' }}
           />
