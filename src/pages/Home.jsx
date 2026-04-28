@@ -4,6 +4,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal.js'
 import { usePaginatedScroll } from '../hooks/usePaginatedScroll.js'
 import { useScramble } from '../hooks/useScramble.js'
 import ElectricGrid from '../components/ElectricGrid.jsx'
+import PhoneMockup  from '../components/PhoneMockup.jsx'
 import { PROJECTS } from '../data/projects.js'
 
 // Keyboard hint is only useful on devices with physical keyboards
@@ -123,6 +124,16 @@ export default function Home() {
                         <path d="M6 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
                     </div>
+                  ) : p.id === 'bookpins' ? (
+                    <PhoneMockup
+                      src="/images/pins/solution_video.mp4"
+                      taps={[
+                        { x: 50, y: 60, delay: 0.5 },
+                        { x: 50, y: 38, delay: 3.5 },
+                        { x: 50, y: 68, delay: 6.2 },
+                      ]}
+                      videoDuration={9}
+                    />
                   ) : p.thumbImg ? (
                     <img src={`/${p.thumbImg}`} alt={p.title} className="proj-img-photo" />
                   ) : (
