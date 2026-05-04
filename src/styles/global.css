@@ -944,7 +944,7 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 .contact-h2 { font-family: var(--sans); font-weight: 500; font-size: clamp(40px, 6vw, 80px); line-height: 1.0; letter-spacing: -0.03em; color: var(--txt); margin-bottom: 20px; }
 .contact-sub { font-size: 17px; color: var(--txt2); margin-bottom: 44px; line-height: 1.6; }
 .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.footer { border-top: 1px solid var(--bdr); position: relative; z-index: 2; padding: 28px var(--pad); display: flex; justify-content: space-between; align-items: center; }
+.footer { border-top: 1px solid var(--bdr); position: relative; z-index: 2; padding: 28px var(--pad) 84px; display: flex; justify-content: space-between; align-items: center; }
 .footer-l, .footer-r { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--txt3); }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ GRID BACKGROUNDS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
