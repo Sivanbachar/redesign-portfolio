@@ -7,7 +7,7 @@ export const PROJECTS = [
     tagline: 'Defined a new interaction model for contextual knowledge in reading.',
     thumbBg: 'linear-gradient(135deg, #1a2744 0%, #0d1a36 100%)',
     thumbIcon: '◈',
-    thumbImg: 'images/hotspots/hotspot_thumbnail.jpg?v=3',
+    thumbVideo: 'images/hotspots/contextual_layers_thumbnail.mp4',
     status: 'available',
   },
   {

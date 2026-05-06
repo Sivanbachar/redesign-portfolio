@@ -123,6 +123,13 @@ export default function Home() {
                         <path d="M6 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                       </svg>
                     </div>
+                  ) : p.thumbVideo ? (
+                    <video
+                      src={`/${p.thumbVideo}`}
+                      autoPlay loop muted playsInline
+                      className="proj-img-photo"
+                      style={{ objectFit: 'cover' }}
+                    />
                   ) : p.thumbImg ? (
                     <img src={`/${p.thumbImg}`} alt={p.title} className="proj-img-photo" />
                   ) : (
