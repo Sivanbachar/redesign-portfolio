@@ -93,6 +93,12 @@ export default function Nav() {
                             <path d="M6 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                           </svg>
                         </div>
+                      ) : p.thumbVideo ? (
+                        <video
+                          src={`/${p.thumbVideo}`}
+                          autoPlay loop muted playsInline
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 4 }}
+                        />
                       ) : p.thumbImg ? (
                         <img
                           src={`/${p.thumbImg}`}
