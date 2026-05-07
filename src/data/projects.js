@@ -18,7 +18,7 @@ export const PROJECTS = [
     tagline: 'Designed an in context reference system that keeps readers in flow.',
     thumbBg: 'linear-gradient(135deg, #1a3030 0%, #0d2020 100%)',
     thumbIcon: '◉',
-    thumbImg: 'images/pins/bookpins_thumbnail.jpg?v=3',
+    thumbVideo: 'images/pins/bookpin_thumbnail.mp4',
     status: 'available',
   },
   {
