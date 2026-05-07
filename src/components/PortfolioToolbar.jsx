@@ -122,9 +122,11 @@ export default function PortfolioToolbar() {
   const { pathname } = useLocation()
 
   // ── Music state ───────────────────────────────────────────────────────────
-  const [playing,   setPlaying]   = useState(false)
-  const [trackIdx,  setTrackIdx]  = useState(0)
-  const [progress,  setProgress]  = useState(0)
+  const [playing,     setPlaying]     = useState(false)
+  const [trackIdx,    setTrackIdx]    = useState(0)
+  const [progress,    setProgress]    = useState(0)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration,    setDuration]    = useState(0)
   const audioRef    = useRef(null)
   const progressRef = useRef(null)
 
@@ -134,8 +136,15 @@ export default function PortfolioToolbar() {
     audioRef.current = audio
 
     const onTime = () => {
-      if (audio.duration) setProgress(audio.currentTime / audio.duration)
+      if (audio.duration) {
+        setProgress(audio.currentTime / audio.duration)
+        setCurrentTime(audio.currentTime)
+        setDuration(audio.duration)
+      }
     }
+    const onLoaded = () => setDuration(audio.duration)
+    audio.addEventListener('loadedmetadata', onLoaded)
+
     const onEnd = () => {
       setTrackIdx(i => {
         const next = (i + 1) % TRACKS.length
@@ -152,6 +161,7 @@ export default function PortfolioToolbar() {
     return () => {
       audio.removeEventListener('timeupdate', onTime)
       audio.removeEventListener('ended', onEnd)
+      audio.removeEventListener('loadedmetadata', onLoaded)
       audio.pause()
       audio.src = ''
     }
@@ -193,6 +203,8 @@ export default function PortfolioToolbar() {
     audio.src = TRACKS[idx].src
     setTrackIdx(idx)
     setProgress(0)
+    setCurrentTime(0)
+    setDuration(0)
     if (playing) {
       audio.volume = 0.4
       audio.play().catch(() => {})
@@ -269,6 +281,13 @@ export default function PortfolioToolbar() {
 
   const track = TRACKS[trackIdx]
 
+  const formatTime = (s) => {
+    if (!s || isNaN(s)) return '0:00'
+    const m = Math.floor(s / 60)
+    const sec = Math.floor(s % 60)
+    return `${m}:${sec.toString().padStart(2, '0')}`
+  }
+
   // Hide toolbar on the slide deck view
   if (pathname === '/projects/bookpins/slides') return null
 
@@ -311,7 +330,7 @@ export default function PortfolioToolbar() {
           onTouchMove={e => e.stopPropagation()}
           style={{
             position: 'fixed',
-            bottom: 152,
+            bottom: 168,
             right: 20,
             width: 'clamp(300px, 90vw, 380px)',
             maxHeight: 'min(520px, calc(100vh - 180px))',
@@ -472,7 +491,7 @@ export default function PortfolioToolbar() {
       {/* ── FLOATING INTERVIEW ME BUTTON ─────────────────────────────────── */}
       <div style={{
         position: 'fixed',
-        bottom: 80,
+        bottom: 96,
         right: 20,
         zIndex: 1000,
         animation: 'imEntrance 0.4s 0.6s cubic-bezier(0.16,1,0.3,1) both',
@@ -542,77 +561,98 @@ export default function PortfolioToolbar() {
         </button>
       </div>
 
-      {/* ── TOOLBAR — music player only, centered ────────────────────────── */}
+      {/* ── TOOLBAR — Spotify style ───────────────────────────────────────── */}
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,
-        height: 64,
-        background: 'rgba(12,12,12,0.97)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(255,255,255,0.1)',
-        boxShadow: '0 -1px 0 rgba(255,255,255,0.04), 0 -16px 48px rgba(0,0,0,0.7)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        height: 80,
+        background: 'rgba(10,10,10,0.98)',
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+        boxShadow: '0 -8px 40px rgba(0,0,0,0.6)',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto 1fr',
+        alignItems: 'center',
         padding: '0 24px',
+        gap: 16,
         zIndex: 999,
         fontFamily: 'var(--sans)',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16, maxWidth: 480, width: '100%' }}>
 
-          <img
-            src="/images/toolbar/spotify_logo.png"
-            alt="Spotify"
-            style={{ height: 18, width: 18, objectFit: 'contain', opacity: 0.6, flexShrink: 0 }}
-          />
+        {/* ── LEFT: album art + track info ─────────────────────────────── */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+          {/* Album art placeholder */}
+          <div style={{
+            width: 48, height: 48, borderRadius: 4, flexShrink: 0,
+            background: 'linear-gradient(135deg, #2a2a2a, #1a1a1a)',
+            border: '1px solid rgba(255,255,255,0.07)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            overflow: 'hidden',
+          }}>
+            {playing ? (
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 2, height: 18 }}>
+                {['eqBar 0.9s ease-in-out infinite', 'eqBar 0.9s ease-in-out 0.3s infinite', 'eqBar 0.9s ease-in-out 0.6s infinite'].map((anim, i) => (
+                  <div key={i} style={{ width: 3, borderRadius: 2, background: 'rgba(255,255,255,0.55)', animation: anim, height: 12 }} />
+                ))}
+              </div>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 4h10v1.5H2V4zm0 3h10v1.5H2V7zm0 3h7v1.5H2V10z" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="12" cy="12" r="2.5" fill="rgba(255,255,255,0.2)"/>
+                <line x1="14" y1="5" x2="14" y2="10.5" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
+              </svg>
+            )}
+          </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 2, flexShrink: 0 }}>
+          {/* Track name + artist */}
+          <div style={{ minWidth: 0 }}>
+            <p style={{
+              fontSize: 13, fontWeight: 500, letterSpacing: '-0.01em',
+              color: 'rgba(255,255,255,0.9)', margin: 0,
+              whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+            }}>{track.title}</p>
+            <p style={{
+              fontSize: 11, color: 'rgba(255,255,255,0.45)', margin: 0, marginTop: 2,
+              whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+            }}>{track.artist}</p>
+          </div>
+        </div>
+
+        {/* ── CENTER: controls + progress ──────────────────────────────── */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, width: 'clamp(280px, 40vw, 560px)' }}>
+          {/* Transport controls */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <TBtn onClick={() => goToTrack((trackIdx - 1 + TRACKS.length) % TRACKS.length)} label="Previous"><IconPrev /></TBtn>
             <TBtn onClick={togglePlay} label={playing ? 'Pause' : 'Play'} accent>{playing ? <IconPause /> : <IconPlay />}</TBtn>
             <TBtn onClick={() => goToTrack((trackIdx + 1) % TRACKS.length)} label="Next"><IconNext /></TBtn>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flex: 1, minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
-              <span style={{
-                fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.18em',
-                textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)',
-                whiteSpace: 'nowrap', flexShrink: 0,
-                opacity: playing ? 1 : 0, transition: 'opacity 0.4s',
-              }}>Now Playing</span>
-              {playing && (
-                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 2, height: 12, flexShrink: 0 }}>
-                  {['eqBar 0.9s ease-in-out infinite', 'eqBar 0.9s ease-in-out 0.3s infinite', 'eqBar 0.9s ease-in-out 0.6s infinite'].map((anim, i) => (
-                    <div key={i} style={{ width: 2, borderRadius: 1, background: 'rgba(255,255,255,0.5)', animation: anim, height: 8 }} />
-                  ))}
-                </div>
-              )}
-              <span style={{
-                fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 500,
-                letterSpacing: '-0.01em',
-                color: playing ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.4)',
-                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-                transition: 'color 0.4s',
-              }}>
-                {track.artist}{' '}
-                <span style={{ fontWeight: 400, color: playing ? 'rgba(255,255,255,0.42)' : 'rgba(255,255,255,0.22)' }}>
-                  — {track.title}
-                </span>
-              </span>
-            </div>
-
+          {/* Progress bar + timestamps */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, width: '100%' }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'rgba(255,255,255,0.35)', flexShrink: 0, letterSpacing: '0.04em' }}>
+              {formatTime(currentTime)}
+            </span>
             <div
               ref={progressRef}
               onClick={seekTo}
-              style={{ height: 2, background: 'rgba(255,255,255,0.09)', borderRadius: 1, cursor: 'pointer', position: 'relative' }}
+              style={{ flex: 1, height: 3, background: 'rgba(255,255,255,0.12)', borderRadius: 2, cursor: 'pointer', position: 'relative' }}
             >
               <div style={{
                 position: 'absolute', top: 0, left: 0, height: '100%',
                 width: `${progress * 100}%`,
-                background: playing ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.22)',
-                borderRadius: 1, transition: 'background 0.4s',
+                background: 'rgba(255,255,255,0.75)',
+                borderRadius: 2,
               }} />
             </div>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'rgba(255,255,255,0.35)', flexShrink: 0, letterSpacing: '0.04em' }}>
+              {formatTime(duration)}
+            </span>
           </div>
         </div>
+
+        {/* ── RIGHT: empty (keeps center truly centered) ───────────────── */}
+        <div />
+
       </div>
     </>
   )
