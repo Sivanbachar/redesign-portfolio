@@ -565,7 +565,7 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
   cursor: pointer; display: flex; align-items: stretch;
 }
 .proj-panel-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
+  display: grid; grid-template-columns: 1fr 1.4fr;
   width: 100%; max-width: var(--max); margin: 0 auto;
   padding: 0 var(--pad); align-items: center;
 }
