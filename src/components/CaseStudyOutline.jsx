@@ -102,7 +102,7 @@ export default function CaseStudyOutline() {
         aria-label="Case study outline"
         style={{
           position:   'fixed',
-          bottom:      72,
+          bottom:      80,
           left:        28,
           zIndex:      600,
           width:       48,

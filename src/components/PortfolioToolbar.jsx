@@ -284,45 +284,57 @@ export default function PortfolioToolbar() {
           30%            { opacity: 1;    transform: translateY(-3px); }
         }
         @keyframes chatUp {
-          from { opacity: 0; transform: translateY(8px); }
-          to   { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; transform: translateY(12px) scale(0.98); }
+          to   { opacity: 1; transform: translateY(0)    scale(1); }
         }
         @keyframes msgIn {
           from { opacity: 0; transform: translateY(5px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        @keyframes pulseRing {
+          0%   { transform: scale(1);    opacity: 0.5; }
+          70%  { transform: scale(1.55); opacity: 0; }
+          100% { transform: scale(1.55); opacity: 0; }
+        }
+        @keyframes imEntrance {
+          from { opacity: 0; transform: translateY(16px) scale(0.95); }
+          to   { opacity: 1; transform: translateY(0)    scale(1); }
+        }
         .chat-prompt-btn:hover { background: rgba(255,255,255,0.06) !important; }
-        .im-trigger:hover { background: rgba(255,255,255,0.06) !important; }
+        .im-fab:hover { border-color: rgba(255,255,255,0.28) !important; box-shadow: 0 12px 40px rgba(0,0,0,0.7) !important; }
       `}</style>
 
-      {/* ── CHAT PANEL (slides up from toolbar) ──────────────────────────── */}
+      {/* ── CHAT PANEL ───────────────────────────────────────────────────── */}
       {chatOpen && (
         <div
           onWheel={e => e.stopPropagation()}
           onTouchMove={e => e.stopPropagation()}
           style={{
             position: 'fixed',
-            bottom: 57,
+            bottom: 152,
             right: 20,
             width: 'clamp(300px, 90vw, 380px)',
-            maxHeight: 'min(520px, calc(100vh - 120px))',
+            maxHeight: 'min(520px, calc(100vh - 180px))',
             background: 'rgba(10,10,10,0.98)',
             border: '1px solid rgba(255,255,255,0.1)',
-            borderRadius: '14px 14px 14px 14px',
-            boxShadow: '0 -8px 48px rgba(0,0,0,0.6), 0 24px 64px rgba(0,0,0,0.5)',
+            borderRadius: 16,
+            boxShadow: '0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04)',
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
             zIndex: 1100,
-            animation: 'chatUp 0.22s cubic-bezier(0.16,1,0.3,1)',
+            animation: 'chatUp 0.25s cubic-bezier(0.16,1,0.3,1)',
           }}
         >
           {/* Chat header */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '13px 16px', borderBottom: '1px solid rgba(255,255,255,0.07)', flexShrink: 0 }}>
-            <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: 30, height: 30, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px', borderBottom: '1px solid rgba(255,255,255,0.07)', flexShrink: 0 }}>
+            <div style={{ position: 'relative', flexShrink: 0 }}>
+              <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', display: 'block' }} />
+              <div style={{ position: 'absolute', bottom: 0, right: 0, width: 9, height: 9, borderRadius: '50%', background: '#4ade80', border: '1.5px solid #0a0a0a', boxShadow: '0 0 6px rgba(74,222,128,0.5)' }} />
+            </div>
             <div style={{ flex: 1 }}>
-              <p style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', margin: 0, letterSpacing: '-0.01em' }}>Sivan Baum</p>
-              <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', margin: 0 }}>Interview me</p>
+              <p style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.88)', margin: 0, letterSpacing: '-0.01em' }}>Sivan Baum</p>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', margin: 0 }}>Sr. Product Designer · Amazon Kindle</p>
             </div>
             <button onClick={() => setChatOpen(false)} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', padding: 4, display: 'flex', borderRadius: 4 }}>
               <IconClose />
@@ -457,25 +469,100 @@ export default function PortfolioToolbar() {
         </div>
       )}
 
-      {/* ── TOOLBAR ──────────────────────────────────────────────────────── */}
+      {/* ── FLOATING INTERVIEW ME BUTTON ─────────────────────────────────── */}
+      <div style={{
+        position: 'fixed',
+        bottom: 80,
+        right: 20,
+        zIndex: 1000,
+        animation: 'imEntrance 0.4s 0.6s cubic-bezier(0.16,1,0.3,1) both',
+      }}>
+        {/* Pulse ring — only when closed */}
+        {!chatOpen && (
+          <div style={{
+            position: 'absolute', inset: 0,
+            borderRadius: 28,
+            border: '1.5px solid rgba(255,255,255,0.2)',
+            pointerEvents: 'none',
+            animation: 'pulseRing 2.8s ease-out 1.2s infinite',
+          }} />
+        )}
+
+        <button
+          className="im-fab"
+          onClick={() => setChatOpen(o => !o)}
+          aria-label={chatOpen ? 'Close chat' : 'Interview me'}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 10,
+            background: chatOpen ? 'rgba(30,30,30,0.98)' : 'rgba(18,18,18,0.96)',
+            border: `1px solid ${chatOpen ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.13)'}`,
+            borderRadius: 28,
+            padding: '8px 16px 8px 8px',
+            cursor: 'pointer',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03)',
+            transition: 'border-color 0.2s, box-shadow 0.2s, background 0.2s',
+          }}
+        >
+          {/* Avatar with online dot */}
+          <div style={{ position: 'relative', flexShrink: 0 }}>
+            <img
+              src={PROFILE_IMG}
+              alt="Sivan Baum"
+              style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', display: 'block' }}
+            />
+            <div style={{
+              position: 'absolute', bottom: 0, right: 0,
+              width: 9, height: 9, borderRadius: '50%',
+              background: '#4ade80',
+              border: '1.5px solid #121212',
+              boxShadow: '0 0 6px rgba(74,222,128,0.55)',
+            }} />
+          </div>
+
+          {/* Text */}
+          <div style={{ textAlign: 'left' }}>
+            <p style={{
+              fontSize: 12, fontWeight: 500,
+              color: chatOpen ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.88)',
+              margin: 0, letterSpacing: '-0.01em',
+              transition: 'color 0.2s',
+            }}>
+              {chatOpen ? 'Close' : 'Interview Me'}
+            </p>
+            {!chatOpen && (
+              <p style={{
+                fontFamily: 'var(--mono)', fontSize: 8,
+                letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.3)', margin: 0,
+              }}>Ask me anything</p>
+            )}
+          </div>
+        </button>
+      </div>
+
+      {/* ── TOOLBAR — music player only, centered ────────────────────────── */}
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,
-        height: 56,
-        background: 'rgba(18,18,18,0.97)',
+        height: 64,
+        background: 'rgba(12,12,12,0.97)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(255,255,255,0.14)',
+        borderTop: '1px solid rgba(255,255,255,0.1)',
         boxShadow: '0 -1px 0 rgba(255,255,255,0.04), 0 -16px 48px rgba(0,0,0,0.7)',
-        display: 'flex', alignItems: 'center',
-        padding: '0 20px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '0 24px',
         zIndex: 999,
         fontFamily: 'var(--sans)',
       }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, maxWidth: 480, width: '100%' }}>
 
-        {/* ── LEFT: Music player ───────────────────────────────────── */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flex: 1, minWidth: 0 }}>
-
-          <img src="/images/toolbar/spotify_logo.png" alt="Spotify" style={{ height: 18, width: 18, objectFit: 'contain', opacity: 0.7, flexShrink: 0 }} />
+          <img
+            src="/images/toolbar/spotify_logo.png"
+            alt="Spotify"
+            style={{ height: 18, width: 18, objectFit: 'contain', opacity: 0.6, flexShrink: 0 }}
+          />
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 2, flexShrink: 0 }}>
             <TBtn onClick={() => goToTrack((trackIdx - 1 + TRACKS.length) % TRACKS.length)} label="Previous"><IconPrev /></TBtn>
@@ -483,9 +570,14 @@ export default function PortfolioToolbar() {
             <TBtn onClick={() => goToTrack((trackIdx + 1) % TRACKS.length)} label="Next"><IconNext /></TBtn>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0, flex: 1, maxWidth: 320 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flex: 1, minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', whiteSpace: 'nowrap', flexShrink: 0, opacity: playing ? 1 : 0, transition: 'opacity 0.4s' }}>Now Playing</span>
+              <span style={{
+                fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.18em',
+                textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)',
+                whiteSpace: 'nowrap', flexShrink: 0,
+                opacity: playing ? 1 : 0, transition: 'opacity 0.4s',
+              }}>Now Playing</span>
               {playing && (
                 <div style={{ display: 'flex', alignItems: 'flex-end', gap: 2, height: 12, flexShrink: 0 }}>
                   {['eqBar 0.9s ease-in-out infinite', 'eqBar 0.9s ease-in-out 0.3s infinite', 'eqBar 0.9s ease-in-out 0.6s infinite'].map((anim, i) => (
@@ -493,59 +585,34 @@ export default function PortfolioToolbar() {
                   ))}
                 </div>
               )}
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 500, letterSpacing: '-0.01em', color: playing ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', transition: 'color 0.4s' }}>
-                {track.artist} <span style={{ fontWeight: 400, color: playing ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.25)' }}>— {track.title}</span>
+              <span style={{
+                fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 500,
+                letterSpacing: '-0.01em',
+                color: playing ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.4)',
+                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                transition: 'color 0.4s',
+              }}>
+                {track.artist}{' '}
+                <span style={{ fontWeight: 400, color: playing ? 'rgba(255,255,255,0.42)' : 'rgba(255,255,255,0.22)' }}>
+                  — {track.title}
+                </span>
               </span>
             </div>
-            <div ref={progressRef} onClick={seekTo} style={{ height: 2, background: 'rgba(255,255,255,0.09)', borderRadius: 1, cursor: 'pointer', position: 'relative' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: `${progress * 100}%`, background: playing ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.25)', borderRadius: 1, transition: 'background 0.4s' }} />
+
+            <div
+              ref={progressRef}
+              onClick={seekTo}
+              style={{ height: 2, background: 'rgba(255,255,255,0.09)', borderRadius: 1, cursor: 'pointer', position: 'relative' }}
+            >
+              <div style={{
+                position: 'absolute', top: 0, left: 0, height: '100%',
+                width: `${progress * 100}%`,
+                background: playing ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.22)',
+                borderRadius: 1, transition: 'background 0.4s',
+              }} />
             </div>
           </div>
         </div>
-
-        {/* Divider */}
-        <div style={{ width: 1, height: 22, background: 'rgba(255,255,255,0.12)', marginLeft: 20, flexShrink: 0 }} />
-
-        {/* ── RIGHT: Interview Me trigger ──────────────────────────── */}
-        <button
-          className="im-trigger"
-          onClick={() => setChatOpen(o => !o)}
-          aria-label={chatOpen ? 'Close interview' : 'Interview me'}
-          style={{
-            display: 'flex', alignItems: 'center', gap: 9,
-            background: chatOpen ? 'rgba(255,255,255,0.06)' : 'none',
-            border: 'none',
-            borderRadius: 8,
-            padding: '0 10px 0 6px',
-            height: 38,
-            cursor: 'pointer',
-            marginLeft: 16,
-            flexShrink: 0,
-            transition: 'background 0.2s',
-          }}
-        >
-          {/* Avatar — 28px, fits within 56px bar with margin */}
-          <div style={{
-            width: 28, height: 28,
-            borderRadius: '50%',
-            overflow: 'hidden',
-            flexShrink: 0,
-            border: `1.5px solid ${chatOpen ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.18)'}`,
-            transition: 'border-color 0.2s',
-          }}>
-            <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          </div>
-
-          {/* Label */}
-          <span style={{
-            fontFamily: 'var(--mono)', fontSize: 9,
-            letterSpacing: '0.14em', textTransform: 'uppercase',
-            color: chatOpen ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.38)',
-            whiteSpace: 'nowrap',
-            transition: 'color 0.2s',
-          }}>Interview Me</span>
-        </button>
-
       </div>
     </>
   )
