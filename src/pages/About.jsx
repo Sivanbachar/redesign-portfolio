@@ -105,13 +105,13 @@ export default function About() {
               Baum
             </h1>
             <p className="resume-bio">
-              Senior Product Designer at Amazon, focused on the Kindle reading experience.
+              Senior Product Designer & AI practitioner at Amazon, focused on the Kindle reading experience.
             </p>
             <p className="resume-bio">
               I define the interaction models and systems that products rely on, translating
-              ambiguous ideas into concrete, scalable experiences. I use AI to accelerate
-              exploration and reduce the cost of iteration, enabling teams to make better product
-              decisions earlier.
+              ambiguous ideas into concrete, scalable experiences. I build with AI — using it to
+              accelerate exploration, prototype rapidly, and reduce the cost of iteration so teams
+              can make better product decisions earlier.
             </p>
             <p className="resume-bio">
               My work reaches millions of users and helps teams align on what to build by making

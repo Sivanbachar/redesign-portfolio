@@ -6,8 +6,8 @@ const TRACKS = [
   { src: '/audio/Jungle - Julia.mp3',                             artist: 'Jungle',         title: 'Julia',                art: '/images/toolbar/Jungle_julia.jpg' },
   { src: '/audio/Rhye - Open.mp3',                                artist: 'Rhye',           title: 'Open',                 art: '/images/toolbar/rhye_open.jpg' },
   { src: '/audio/Parcels - Yougotmefeeling (Lyric Video).mp3',    artist: 'Parcels',        title: 'Yougotmefeeling',      art: '/images/toolbar/parcels_yougotmefeeling.jpg' },
-  { src: '/audio/Lana Del Rey - Blue Jeans.mp3',                  artist: 'Lana Del Rey',   title: 'Blue Jeans',           art: '/images/toolbar/lana del rey_blue jeans.webp' },
-  { src: "/audio/L'Impératrice  AGITATIONS TROPICALES.mp3",       artist: "L'Impératrice",  title: 'Agitations Tropicales', art: "/images/toolbar/L'Impératrice_tropicales.jpg" },
+  { src: '/audio/Lana Del Rey - Blue Jeans.mp3',                  artist: 'Lana Del Rey',   title: 'Blue Jeans',           art: '/images/toolbar/lana_del_rey_blue_jeans.webp' },
+  { src: "/audio/L'Impératrice  AGITATIONS TROPICALES.mp3",       artist: "L'Impératrice",  title: 'Agitations Tropicales', art: '/images/toolbar/limperatrice_tropicales.jpg' },
   { src: '/audio/Muse - Uprising  Lyrics.mp3',                    artist: 'Muse',           title: 'Uprising',             art: '/images/toolbar/muse_uprising.jpg' },
   { src: '/audio/Roosevelt - Ordinary Love (Official Audio).mp3', artist: 'Roosevelt',      title: 'Ordinary Love',        art: '/images/toolbar/roosevelt_ordinarylove.jpg' },
 ]
@@ -228,7 +228,8 @@ export default function PortfolioToolbar() {
   const [formStatus,  setFormStatus]  = useState('idle')
   const [ownQuestion, setOwnQuestion] = useState('')
   const [ownEmail,    setOwnEmail]    = useState('')
-  const chatBottomRef = useRef(null)
+  const chatBottomRef  = useRef(null)
+  const lastAnswerRef  = useRef(null)
 
   const initialIds = ROUTE_INITIAL_IDS[pathname] || DEFAULT_INITIAL_IDS
   const currentPrompts = [
@@ -274,8 +275,18 @@ export default function PortfolioToolbar() {
   }
 
   useEffect(() => {
-    if (messages.length > 0 || typing) {
+    if (typing) {
+      // Show typing indicator — scroll to bottom
       setTimeout(() => chatBottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }), 60)
+    } else if (messages.length > 0) {
+      const last = messages[messages.length - 1]
+      if (last.type === 'answer') {
+        // Scroll to the TOP of the answer so user sees it from the start
+        setTimeout(() => lastAnswerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60)
+      } else {
+        // Question added — scroll to bottom
+        setTimeout(() => chatBottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }), 60)
+      }
     }
   }, [messages, typing])
 
@@ -381,7 +392,7 @@ export default function PortfolioToolbar() {
                   padding: '2px 0',
                 }}>AI</span>
               </div>
-              <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0 }}>Sr. Product Designer · Amazon Kindle</p>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0 }}>Sr. Product Designer · AI · Amazon Kindle</p>
             </div>
             <button onClick={() => setChatOpen(false)} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.25)', cursor: 'pointer', padding: 4, display: 'flex', borderRadius: 4 }}>
               <IconClose />
@@ -394,29 +405,30 @@ export default function PortfolioToolbar() {
               <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', paddingBottom: 6 }}>
                 <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
                 <div style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '12px 12px 12px 3px', padding: '10px 14px', maxWidth: '82%' }}>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, margin: 0 }}>Hi, I'm Sivan. Select a question and I'll answer it — or ask me anything about my work.</p>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, margin: 0 }}>Hi, I'm Sivan. Select a question and I'll answer it — or ask me anything about my work.</p>
                 </div>
               </div>
             )}
 
-            {messages.map((msg) =>
-              msg.type === 'question' ? (
+            {messages.map((msg, idx) => {
+              const isLastMsg = idx === messages.length - 1
+              return msg.type === 'question' ? (
                 <div key={`q-${msg.id}`} style={{ display: 'flex', justifyContent: 'flex-end', animation: 'msgIn 0.18s ease', padding: '3px 0' }}>
                   <div style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px 12px 3px 12px', padding: '10px 14px', maxWidth: '82%' }}>
-                    <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55, margin: 0 }}>{msg.text}</p>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55, margin: 0 }}>{msg.text}</p>
                   </div>
                 </div>
               ) : (
-                <div key={`a-${msg.id}`} style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', padding: '3px 0' }}>
+                <div key={`a-${msg.id}`} ref={isLastMsg ? lastAnswerRef : null} style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', padding: '3px 0' }}>
                   <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
                   <div style={{ background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.18)', borderRadius: '12px 12px 12px 3px', padding: '10px 14px', maxWidth: '82%' }}>
                     {msg.text.split('\n\n').map((para, i) => (
-                      <p key={i} style={{ fontSize: 14, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, margin: 0, marginTop: i > 0 ? 10 : 0 }}>{para}</p>
+                      <p key={i} style={{ fontSize: 15, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, margin: 0, marginTop: i > 0 ? 10 : 0 }}>{para}</p>
                     ))}
                   </div>
                 </div>
               )
-            )}
+            })}
 
             {typing && <TypingDots />}
             <div ref={chatBottomRef} style={{ height: 1 }} />
@@ -443,8 +455,8 @@ export default function PortfolioToolbar() {
                       transition: 'background 0.15s', width: '100%',
                     }}
                   >
-                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.4 }}>{item.question}</span>
-                    <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 13, flexShrink: 0 }}>↗</span>
+                    <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.4 }}>{item.question}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 14, flexShrink: 0 }}>↗</span>
                   </button>
                 ))}
               </div>
