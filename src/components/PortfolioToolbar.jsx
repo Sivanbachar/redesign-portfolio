@@ -347,7 +347,7 @@ export default function PortfolioToolbar() {
               <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', paddingBottom: 6 }}>
                 <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
                 <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px 12px 12px 3px', padding: '9px 13px', maxWidth: '82%' }}>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.55, margin: 0 }}>Hi. Select a question below and I'll answer it.</p>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.55, margin: 0 }}>Hi. Select a question below and I'll answer it.</p>
                 </div>
               </div>
             )}
@@ -355,8 +355,8 @@ export default function PortfolioToolbar() {
             {messages.map((msg) =>
               msg.type === 'question' ? (
                 <div key={`q-${msg.id}`} style={{ display: 'flex', justifyContent: 'flex-end', animation: 'msgIn 0.18s ease', padding: '3px 0' }}>
-                  <div style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px 12px 3px 12px', padding: '9px 13px', maxWidth: '82%' }}>
-                    <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5, margin: 0 }}>{msg.text}</p>
+                  <div style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px 12px 3px 12px', padding: '10px 14px', maxWidth: '82%' }}>
+                    <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55, margin: 0 }}>{msg.text}</p>
                   </div>
                 </div>
               ) : (
@@ -364,7 +364,7 @@ export default function PortfolioToolbar() {
                   <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
                   <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px 12px 12px 3px', padding: '10px 13px', maxWidth: '82%' }}>
                     {msg.text.split('\n\n').map((para, i) => (
-                      <p key={i} style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0, marginTop: i > 0 ? 10 : 0 }}>{para}</p>
+                      <p key={i} style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0, marginTop: i > 0 ? 10 : 0 }}>{para}</p>
                     ))}
                   </div>
                 </div>
@@ -396,8 +396,8 @@ export default function PortfolioToolbar() {
                       transition: 'background 0.15s', width: '100%',
                     }}
                   >
-                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', lineHeight: 1.4 }}>{item.question}</span>
-                    <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, flexShrink: 0 }}>↗</span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.4 }}>{item.question}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 13, flexShrink: 0 }}>↗</span>
                   </button>
                 ))}
               </div>
@@ -426,7 +426,7 @@ export default function PortfolioToolbar() {
                       background: 'rgba(255,255,255,0.04)',
                       border: '1px solid rgba(255,255,255,0.08)',
                       borderRadius: 8, padding: '9px 11px',
-                      color: 'rgba(255,255,255,0.7)', fontSize: 12, lineHeight: 1.55,
+                      color: 'rgba(255,255,255,0.7)', fontSize: 14, lineHeight: 1.55,
                       fontFamily: 'var(--sans)', resize: 'none', outline: 'none',
                       marginBottom: 8,
                     }}
@@ -442,7 +442,7 @@ export default function PortfolioToolbar() {
                         flex: 1, background: 'rgba(255,255,255,0.04)',
                         border: '1px solid rgba(255,255,255,0.08)',
                         borderRadius: 6, padding: '8px 10px',
-                        color: 'rgba(255,255,255,0.7)', fontSize: 12,
+                        color: 'rgba(255,255,255,0.7)', fontSize: 14,
                         fontFamily: 'var(--sans)', outline: 'none',
                       }}
                     />
