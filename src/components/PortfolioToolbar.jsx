@@ -3,13 +3,13 @@ import { useLocation } from 'react-router-dom'
 
 // ─── TRACKS ──────────────────────────────────────────────────────────────────
 const TRACKS = [
-  { src: '/audio/Jungle - Julia.mp3',                             artist: 'Jungle',         title: 'Julia' },
-  { src: '/audio/Rhye - Open.mp3',                                artist: 'Rhye',           title: 'Open' },
-  { src: '/audio/Parcels - Yougotmefeeling (Lyric Video).mp3',    artist: 'Parcels',        title: 'Yougotmefeeling' },
-  { src: '/audio/Lana Del Rey - Blue Jeans.mp3',                  artist: 'Lana Del Rey',   title: 'Blue Jeans' },
-  { src: "/audio/L'Impératrice  AGITATIONS TROPICALES.mp3",       artist: "L'Impératrice",  title: 'Agitations Tropicales' },
-  { src: '/audio/Muse - Uprising  Lyrics.mp3',                    artist: 'Muse',           title: 'Uprising' },
-  { src: '/audio/Roosevelt - Ordinary Love (Official Audio).mp3', artist: 'Roosevelt',      title: 'Ordinary Love' },
+  { src: '/audio/Jungle - Julia.mp3',                             artist: 'Jungle',         title: 'Julia',                art: '/images/toolbar/Jungle_julia.jpg' },
+  { src: '/audio/Rhye - Open.mp3',                                artist: 'Rhye',           title: 'Open',                 art: '/images/toolbar/rhye_open.jpg' },
+  { src: '/audio/Parcels - Yougotmefeeling (Lyric Video).mp3',    artist: 'Parcels',        title: 'Yougotmefeeling',      art: '/images/toolbar/parcels_yougotmefeeling.jpg' },
+  { src: '/audio/Lana Del Rey - Blue Jeans.mp3',                  artist: 'Lana Del Rey',   title: 'Blue Jeans',           art: '/images/toolbar/lana del rey_blue jeans.webp' },
+  { src: "/audio/L'Impératrice  AGITATIONS TROPICALES.mp3",       artist: "L'Impératrice",  title: 'Agitations Tropicales', art: "/images/toolbar/L'Impératrice_tropicales.jpg" },
+  { src: '/audio/Muse - Uprising  Lyrics.mp3',                    artist: 'Muse',           title: 'Uprising',             art: '/images/toolbar/muse_uprising.jpg' },
+  { src: '/audio/Roosevelt - Ordinary Love (Official Audio).mp3', artist: 'Roosevelt',      title: 'Ordinary Love',        art: '/images/toolbar/roosevelt_ordinarylove.jpg' },
 ]
 
 // ─── INTERVIEW DATA ───────────────────────────────────────────────────────────
@@ -581,26 +581,31 @@ export default function PortfolioToolbar() {
 
         {/* ── LEFT: album art + track info ─────────────────────────────── */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
-          {/* Album art placeholder */}
+          {/* Album art */}
           <div style={{
             width: 48, height: 48, borderRadius: 4, flexShrink: 0,
-            background: 'linear-gradient(135deg, #2a2a2a, #1a1a1a)',
+            background: '#1a1a1a',
             border: '1px solid rgba(255,255,255,0.07)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            overflow: 'hidden',
+            overflow: 'hidden', position: 'relative',
           }}>
-            {playing ? (
-              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 2, height: 18 }}>
-                {['eqBar 0.9s ease-in-out infinite', 'eqBar 0.9s ease-in-out 0.3s infinite', 'eqBar 0.9s ease-in-out 0.6s infinite'].map((anim, i) => (
-                  <div key={i} style={{ width: 3, borderRadius: 2, background: 'rgba(255,255,255,0.55)', animation: anim, height: 12 }} />
-                ))}
+            <img
+              src={track.art}
+              alt={track.title}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+            {/* EQ overlay when playing */}
+            {playing && (
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'rgba(0,0,0,0.45)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 2, height: 18 }}>
+                  {['eqBar 0.9s ease-in-out infinite', 'eqBar 0.9s ease-in-out 0.3s infinite', 'eqBar 0.9s ease-in-out 0.6s infinite'].map((anim, i) => (
+                    <div key={i} style={{ width: 3, borderRadius: 2, background: 'rgba(255,255,255,0.85)', animation: anim, height: 12 }} />
+                  ))}
+                </div>
               </div>
-            ) : (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M2 4h10v1.5H2V4zm0 3h10v1.5H2V7zm0 3h7v1.5H2V10z" fill="rgba(255,255,255,0.2)"/>
-                <circle cx="12" cy="12" r="2.5" fill="rgba(255,255,255,0.2)"/>
-                <line x1="14" y1="5" x2="14" y2="10.5" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
-              </svg>
             )}
           </div>
 
