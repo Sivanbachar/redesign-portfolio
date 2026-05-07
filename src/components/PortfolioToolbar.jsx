@@ -311,16 +311,20 @@ export default function PortfolioToolbar() {
           to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes pulseRing {
-          0%   { transform: scale(1);    opacity: 0.5; }
-          70%  { transform: scale(1.55); opacity: 0; }
-          100% { transform: scale(1.55); opacity: 0; }
+          0%   { transform: scale(1);    opacity: 0.6; }
+          70%  { transform: scale(1.7);  opacity: 0; }
+          100% { transform: scale(1.7);  opacity: 0; }
         }
         @keyframes imEntrance {
           from { opacity: 0; transform: translateY(16px) scale(0.95); }
           to   { opacity: 1; transform: translateY(0)    scale(1); }
         }
-        .chat-prompt-btn:hover { background: rgba(255,255,255,0.06) !important; }
-        .im-fab:hover { border-color: rgba(255,255,255,0.28) !important; box-shadow: 0 12px 40px rgba(0,0,0,0.7) !important; }
+        @keyframes sparkle {
+          0%, 100% { transform: scale(1) rotate(0deg);   opacity: 1; }
+          50%       { transform: scale(1.2) rotate(15deg); opacity: 0.8; }
+        }
+        .chat-prompt-btn:hover { background: rgba(99,102,241,0.08) !important; border-color: rgba(99,102,241,0.25) !important; }
+        .im-fab:hover { box-shadow: 0 0 0 4px rgba(99,102,241,0.15), 0 16px 48px rgba(99,102,241,0.25) !important; }
       `}</style>
 
       {/* ── CHAT PANEL ───────────────────────────────────────────────────── */}
@@ -335,9 +339,9 @@ export default function PortfolioToolbar() {
             width: 'clamp(300px, 90vw, 380px)',
             maxHeight: 'min(520px, calc(100vh - 180px))',
             background: 'rgba(10,10,10,0.98)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '1px solid rgba(99,102,241,0.2)',
             borderRadius: 16,
-            boxShadow: '0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04)',
+            boxShadow: '0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(99,102,241,0.08), 0 0 40px rgba(99,102,241,0.08)',
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
@@ -345,17 +349,41 @@ export default function PortfolioToolbar() {
             animation: 'chatUp 0.25s cubic-bezier(0.16,1,0.3,1)',
           }}
         >
+          {/* Gradient bar at top */}
+          <div style={{ height: 3, background: 'linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa)', flexShrink: 0 }} />
+
           {/* Chat header */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px', borderBottom: '1px solid rgba(255,255,255,0.07)', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, background: 'rgba(99,102,241,0.04)' }}>
+            {/* Avatar + AI badge */}
             <div style={{ position: 'relative', flexShrink: 0 }}>
-              <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', display: 'block' }} />
-              <div style={{ position: 'absolute', bottom: 0, right: 0, width: 9, height: 9, borderRadius: '50%', background: '#4ade80', border: '1.5px solid #0a0a0a', boxShadow: '0 0 6px rgba(74,222,128,0.5)' }} />
+              <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', display: 'block', border: '2px solid rgba(99,102,241,0.4)' }} />
+              <div style={{
+                position: 'absolute', bottom: -2, right: -2,
+                width: 16, height: 16, borderRadius: '50%',
+                background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                border: '1.5px solid #0a0a0a',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <svg width="8" height="8" viewBox="0 0 16 16" fill="white">
+                  <path d="M8 1l1.8 3.6L14 6l-3 2.9.7 4.1L8 11l-3.7 2 .7-4.1L2 6l4.2-.4z"/>
+                </svg>
+              </div>
             </div>
+
             <div style={{ flex: 1 }}>
-              <p style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.88)', margin: 0, letterSpacing: '-0.01em' }}>Sivan Baum</p>
-              <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', margin: 0 }}>Sr. Product Designer · Amazon Kindle</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.92)', margin: 0, letterSpacing: '-0.01em' }}>Sivan Baum</p>
+                <span style={{
+                  fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  background: 'linear-gradient(90deg, #6366f1, #8b5cf6)',
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                  padding: '2px 0',
+                }}>AI</span>
+              </div>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0 }}>Sr. Product Designer · Amazon Kindle</p>
             </div>
-            <button onClick={() => setChatOpen(false)} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', padding: 4, display: 'flex', borderRadius: 4 }}>
+            <button onClick={() => setChatOpen(false)} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.25)', cursor: 'pointer', padding: 4, display: 'flex', borderRadius: 4 }}>
               <IconClose />
             </button>
           </div>
@@ -365,8 +393,8 @@ export default function PortfolioToolbar() {
             {messages.length === 0 && (
               <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', paddingBottom: 6 }}>
                 <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
-                <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px 12px 12px 3px', padding: '9px 13px', maxWidth: '82%' }}>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.55, margin: 0 }}>Hi. Select a question below and I'll answer it.</p>
+                <div style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '12px 12px 12px 3px', padding: '10px 14px', maxWidth: '82%' }}>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, margin: 0 }}>Hi, I'm Sivan. Select a question and I'll answer it — or ask me anything about my work.</p>
                 </div>
               </div>
             )}
@@ -381,9 +409,9 @@ export default function PortfolioToolbar() {
               ) : (
                 <div key={`a-${msg.id}`} style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', padding: '3px 0' }}>
                   <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
-                  <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px 12px 12px 3px', padding: '10px 13px', maxWidth: '82%' }}>
+                  <div style={{ background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.18)', borderRadius: '12px 12px 12px 3px', padding: '10px 14px', maxWidth: '82%' }}>
                     {msg.text.split('\n\n').map((para, i) => (
-                      <p key={i} style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0, marginTop: i > 0 ? 10 : 0 }}>{para}</p>
+                      <p key={i} style={{ fontSize: 14, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, margin: 0, marginTop: i > 0 ? 10 : 0 }}>{para}</p>
                     ))}
                   </div>
                 </div>
@@ -488,7 +516,7 @@ export default function PortfolioToolbar() {
         </div>
       )}
 
-      {/* ── FLOATING INTERVIEW ME BUTTON ─────────────────────────────────── */}
+      {/* ── FLOATING AI CHAT BUTTON ──────────────────────────────────────── */}
       <div style={{
         position: 'fixed',
         bottom: 96,
@@ -496,14 +524,15 @@ export default function PortfolioToolbar() {
         zIndex: 1000,
         animation: 'imEntrance 0.4s 0.6s cubic-bezier(0.16,1,0.3,1) both',
       }}>
-        {/* Pulse ring — only when closed */}
+        {/* Pulse ring */}
         {!chatOpen && (
           <div style={{
-            position: 'absolute', inset: 0,
-            borderRadius: 28,
-            border: '1.5px solid rgba(255,255,255,0.2)',
+            position: 'absolute', inset: -3,
+            borderRadius: '50%',
+            background: 'transparent',
+            border: '2px solid rgba(99,102,241,0.4)',
             pointerEvents: 'none',
-            animation: 'pulseRing 2.8s ease-out 1.2s infinite',
+            animation: 'pulseRing 2.8s ease-out 1.4s infinite',
           }} />
         )}
 
@@ -512,53 +541,76 @@ export default function PortfolioToolbar() {
           onClick={() => setChatOpen(o => !o)}
           aria-label={chatOpen ? 'Close chat' : 'Interview me'}
           style={{
-            display: 'flex', alignItems: 'center', gap: 10,
-            background: chatOpen ? 'rgba(30,30,30,0.98)' : 'rgba(18,18,18,0.96)',
-            border: `1px solid ${chatOpen ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.13)'}`,
-            borderRadius: 28,
-            padding: '8px 16px 8px 8px',
+            width: 56, height: 56,
+            borderRadius: '50%',
+            background: chatOpen
+              ? 'rgba(30,30,30,0.98)'
+              : 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+            border: chatOpen ? '1px solid rgba(255,255,255,0.15)' : 'none',
             cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: chatOpen
+              ? '0 8px 32px rgba(0,0,0,0.5)'
+              : '0 0 0 0 rgba(99,102,241,0.4), 0 8px 32px rgba(99,102,241,0.4)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            boxShadow: '0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03)',
-            transition: 'border-color 0.2s, box-shadow 0.2s, background 0.2s',
+            transition: 'box-shadow 0.3s, background 0.3s',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          {/* Avatar with online dot */}
-          <div style={{ position: 'relative', flexShrink: 0 }}>
-            <img
-              src={PROFILE_IMG}
-              alt="Sivan Baum"
-              style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', display: 'block' }}
-            />
+          {/* Subtle inner glow */}
+          {!chatOpen && (
             <div style={{
-              position: 'absolute', bottom: 0, right: 0,
-              width: 9, height: 9, borderRadius: '50%',
-              background: '#4ade80',
-              border: '1.5px solid #121212',
-              boxShadow: '0 0 6px rgba(74,222,128,0.55)',
+              position: 'absolute', inset: 0, borderRadius: '50%',
+              background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.18), transparent 60%)',
+              pointerEvents: 'none',
             }} />
-          </div>
+          )}
 
-          {/* Text */}
-          <div style={{ textAlign: 'left' }}>
-            <p style={{
-              fontSize: 12, fontWeight: 500,
-              color: chatOpen ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.88)',
-              margin: 0, letterSpacing: '-0.01em',
-              transition: 'color 0.2s',
-            }}>
-              {chatOpen ? 'Close' : 'Interview Me'}
-            </p>
-            {!chatOpen && (
-              <p style={{
-                fontFamily: 'var(--mono)', fontSize: 8,
-                letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.3)', margin: 0,
-              }}>Ask me anything</p>
-            )}
-          </div>
+          {chatOpen ? (
+            <IconClose />
+          ) : (
+            /* Avatar with AI sparkle */
+            <div style={{ position: 'relative', width: 32, height: 32 }}>
+              <img
+                src={PROFILE_IMG}
+                alt="Sivan Baum"
+                style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', display: 'block', border: '2px solid rgba(255,255,255,0.3)' }}
+              />
+              <div style={{
+                position: 'absolute', top: -3, right: -3,
+                width: 14, height: 14, borderRadius: '50%',
+                background: '#fff',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                animation: 'sparkle 3s ease-in-out infinite',
+              }}>
+                <svg width="8" height="8" viewBox="0 0 16 16" fill="#6366f1">
+                  <path d="M8 0l1.6 5.4H15l-4.4 3.2 1.7 5.4L8 11l-4.3 3 1.7-5.4L1 5.4h5.4z"/>
+                </svg>
+              </div>
+            </div>
+          )}
         </button>
+
+        {/* Tooltip label */}
+        {!chatOpen && (
+          <div style={{
+            position: 'absolute', right: 64, top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'rgba(10,10,10,0.92)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: 8, padding: '6px 12px',
+            whiteSpace: 'nowrap', pointerEvents: 'none',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            opacity: 0,
+            animation: 'imEntrance 0.3s 2s ease both',
+          }}>
+            <p style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.85)', margin: 0 }}>Interview Me</p>
+            <p style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(99,102,241,0.8)', margin: 0, marginTop: 2 }}>AI · Ask anything</p>
+          </div>
+        )}
       </div>
 
       {/* ── TOOLBAR — Spotify style ───────────────────────────────────────── */}
@@ -589,6 +641,7 @@ export default function PortfolioToolbar() {
             overflow: 'hidden', position: 'relative',
           }}>
             <img
+              key={track.art}
               src={track.art}
               alt={track.title}
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
