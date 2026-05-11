@@ -528,7 +528,7 @@ export default function PortfolioToolbar() {
         </div>
       )}
 
-      {/* ── FLOATING AI CHAT BUTTON ──────────────────────────────────────── */}
+      {/* ── FLOATING CHAT BUTTON ─────────────────────────────────────────── */}
       <div style={{
         position: 'fixed',
         bottom: 96,
@@ -536,93 +536,50 @@ export default function PortfolioToolbar() {
         zIndex: 1000,
         animation: 'imEntrance 0.4s 0.6s cubic-bezier(0.16,1,0.3,1) both',
       }}>
-        {/* Pulse ring */}
+        {/* Subtle pulse ring */}
         {!chatOpen && (
           <div style={{
-            position: 'absolute', inset: -3,
+            position: 'absolute', inset: -4,
             borderRadius: '50%',
             background: 'transparent',
-            border: '2px solid rgba(99,102,241,0.4)',
+            border: '2px solid rgba(255,255,255,0.18)',
             pointerEvents: 'none',
-            animation: 'pulseRing 2.8s ease-out 1.4s infinite',
+            animation: 'pulseRing 3.2s ease-out 1.6s infinite',
           }} />
         )}
 
         <button
           className="im-fab"
           onClick={() => setChatOpen(o => !o)}
-          aria-label={chatOpen ? 'Close chat' : 'Interview me'}
+          aria-label={chatOpen ? 'Close chat' : 'Chat with Sivan'}
           style={{
-            width: 56, height: 56,
+            width: 52, height: 52,
             borderRadius: '50%',
-            background: chatOpen
-              ? 'rgba(30,30,30,0.98)'
-              : 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-            border: chatOpen ? '1px solid rgba(255,255,255,0.15)' : 'none',
+            background: 'none',
+            border: chatOpen
+              ? '2px solid rgba(255,255,255,0.15)'
+              : '2px solid rgba(255,255,255,0.12)',
             cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: chatOpen
-              ? '0 8px 32px rgba(0,0,0,0.5)'
-              : '0 0 0 0 rgba(99,102,241,0.4), 0 8px 32px rgba(99,102,241,0.4)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            transition: 'box-shadow 0.3s, background 0.3s',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+            padding: 0,
+            transition: 'border-color 0.2s, box-shadow 0.2s',
             position: 'relative',
             overflow: 'hidden',
           }}
         >
-          {/* Subtle inner glow */}
-          {!chatOpen && (
-            <div style={{
-              position: 'absolute', inset: 0, borderRadius: '50%',
-              background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.18), transparent 60%)',
-              pointerEvents: 'none',
-            }} />
-          )}
-
           {chatOpen ? (
-            <IconClose />
-          ) : (
-            /* Avatar with AI sparkle */
-            <div style={{ position: 'relative', width: 32, height: 32 }}>
-              <img
-                src={PROFILE_IMG}
-                alt="Sivan Baum"
-                style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', display: 'block', border: '2px solid rgba(255,255,255,0.3)' }}
-              />
-              <div style={{
-                position: 'absolute', top: -3, right: -3,
-                width: 14, height: 14, borderRadius: '50%',
-                background: '#fff',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                animation: 'sparkle 3s ease-in-out infinite',
-              }}>
-                <svg width="8" height="8" viewBox="0 0 16 16" fill="#6366f1">
-                  <path d="M8 0l1.6 5.4H15l-4.4 3.2 1.7 5.4L8 11l-4.3 3 1.7-5.4L1 5.4h5.4z"/>
-                </svg>
-              </div>
+            <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'rgba(20,20,20,0.98)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <IconClose />
             </div>
+          ) : (
+            <img
+              src={PROFILE_IMG}
+              alt="Sivan Baum"
+              style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', display: 'block' }}
+            />
           )}
         </button>
-
-        {/* Tooltip label */}
-        {!chatOpen && (
-          <div style={{
-            position: 'absolute', right: 64, top: '50%',
-            transform: 'translateY(-50%)',
-            background: 'rgba(10,10,10,0.92)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            borderRadius: 8, padding: '6px 12px',
-            whiteSpace: 'nowrap', pointerEvents: 'none',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-            opacity: 0,
-            animation: 'imEntrance 0.3s 2s ease both',
-          }}>
-            <p style={{ fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.85)', margin: 0 }}>Interview Me</p>
-            <p style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(99,102,241,0.8)', margin: 0, marginTop: 2 }}>AI · Ask anything</p>
-          </div>
-        )}
       </div>
 
       {/* ── TOOLBAR — Spotify style ───────────────────────────────────────── */}
