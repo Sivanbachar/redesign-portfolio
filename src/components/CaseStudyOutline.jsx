@@ -107,7 +107,7 @@ export default function CaseStudyOutline() {
           zIndex:      600,
           width:       48,
           height:      48,
-          borderRadius: 14,
+          borderRadius: '50%',
           background:  'rgba(22,22,22,0.92)',
           border:      '1px solid rgba(255,255,255,0.09)',
           backdropFilter:        'blur(14px)',

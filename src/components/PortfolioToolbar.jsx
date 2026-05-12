@@ -302,67 +302,203 @@ export default function PortfolioToolbar() {
   // Slide deck: hide everything
   if (pathname === '/projects/bookpins/slides') return null
 
-  // Non-home pages: show only a minimal floating play/pause button
+  // Non-home pages: mini music pill (left) + chat FAB (right)
   if (pathname !== '/') {
+    const isCaseStudy = pathname.startsWith('/projects/')
     return (
       <>
         <style>{`
           @keyframes miniRing {
-            0%   { transform: scale(1);   opacity: 0.6; }
-            70%  { transform: scale(1.5); opacity: 0; }
-            100% { transform: scale(1.5); opacity: 0; }
+            0%   { transform: scale(1);   opacity: 0.5; }
+            70%  { transform: scale(1.6); opacity: 0; }
+            100% { transform: scale(1.6); opacity: 0; }
           }
-          .mini-player-btn { position: relative; }
-          .mini-player-btn:hover .mini-overlay { opacity: 1 !important; }
+          @keyframes chatUp {
+            from { opacity: 0; transform: translateY(12px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+          }
+          @keyframes msgIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes pulseRing {
+            0%   { transform: scale(1);   opacity: 0.6; }
+            70%  { transform: scale(1.7); opacity: 0; }
+            100% { transform: scale(1.7); opacity: 0; }
+          }
+          @keyframes imEntrance {
+            from { opacity: 0; transform: translateY(16px) scale(0.95); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+          }
+          .mini-ctrl-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; color: rgba(255,255,255,0.45); transition: color 0.15s; }
+          .mini-ctrl-btn:hover { color: rgba(255,255,255,0.9) !important; }
+          .chat-prompt-btn:hover { background: rgba(99,102,241,0.08) !important; border-color: rgba(99,102,241,0.25) !important; }
+          .im-fab:hover { box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.4) !important; }
         `}</style>
-        <div style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 900 }}>
-          {/* Playing ring */}
-          {playing && (
-            <div style={{
-              position: 'absolute', inset: -4, borderRadius: '50%',
-              border: '1.5px solid rgba(255,255,255,0.35)',
-              pointerEvents: 'none',
-              animation: 'miniRing 2.4s ease-out infinite',
-            }} />
-          )}
-          <button
-            className="mini-player-btn"
-            onClick={togglePlay}
-            title={playing ? `Pause · ${track.title}` : `Play · ${track.title}`}
-            style={{
-              width: 40, height: 40, borderRadius: '50%',
-              border: playing ? '2px solid rgba(255,255,255,0.25)' : '2px solid rgba(255,255,255,0.1)',
-              padding: 0, cursor: 'pointer', overflow: 'hidden',
-              boxShadow: playing ? '0 4px 20px rgba(0,0,0,0.6)' : '0 2px 12px rgba(0,0,0,0.4)',
-              transition: 'border-color 0.2s, box-shadow 0.2s',
-              position: 'relative',
-              background: 'none',
-            }}
-          >
+
+        {/* ── Mini music pill — bottom-left, below outline button ── */}
+        <div style={{
+          position: 'fixed',
+          bottom: isCaseStudy ? 40 : 28,
+          left: 28,
+          zIndex: 600,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          background: 'rgba(18,18,18,0.92)',
+          border: '1px solid rgba(255,255,255,0.09)',
+          borderRadius: 28,
+          padding: '6px 12px 6px 6px',
+          backdropFilter: 'blur(14px)',
+          WebkitBackdropFilter: 'blur(14px)',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+        }}>
+          {/* Album art */}
+          <div style={{ position: 'relative', flexShrink: 0 }}>
+            {playing && (
+              <div style={{
+                position: 'absolute', inset: -3, borderRadius: '50%',
+                border: '1.5px solid rgba(255,255,255,0.25)',
+                pointerEvents: 'none',
+                animation: 'miniRing 2.6s ease-out infinite',
+              }} />
+            )}
             <img
               key={track.art}
               src={track.art}
               alt={track.title}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '50%' }}
+              style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', display: 'block' }}
             />
-            {/* Hover overlay */}
-            <div className="mini-overlay" style={{
-              position: 'absolute', inset: 0, borderRadius: '50%',
-              background: 'rgba(0,0,0,0.55)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              opacity: 0, transition: 'opacity 0.15s',
-            }}>
-              {playing ? (
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="white">
-                  <rect x="2" y="1" width="3" height="10" rx="1"/>
-                  <rect x="7" y="1" width="3" height="10" rx="1"/>
-                </svg>
-              ) : (
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="white">
-                  <path d="M3 1.5l7 4.5-7 4.5z"/>
-                </svg>
-              )}
+          </div>
+
+          {/* Prev */}
+          <button className="mini-ctrl-btn" onClick={() => goToTrack((trackIdx - 1 + TRACKS.length) % TRACKS.length)} aria-label="Previous" style={{ width: 28, height: 28 }}>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <rect x="1" y="1.5" width="1.5" height="9" rx="0.5" fill="currentColor"/>
+              <path d="M11 2L5 6l6 4V2z" fill="currentColor"/>
+            </svg>
+          </button>
+
+          {/* Play / Pause */}
+          <button className="mini-ctrl-btn" onClick={togglePlay} aria-label={playing ? 'Pause' : 'Play'}
+            style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.85)', flexShrink: 0 }}>
+            {playing ? (
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <rect x="1.5" y="1" width="2.5" height="8" rx="0.8"/>
+                <rect x="6"   y="1" width="2.5" height="8" rx="0.8"/>
+              </svg>
+            ) : (
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M2 1l7 4-7 4z"/>
+              </svg>
+            )}
+          </button>
+
+          {/* Next */}
+          <button className="mini-ctrl-btn" onClick={() => goToTrack((trackIdx + 1) % TRACKS.length)} aria-label="Next" style={{ width: 28, height: 28 }}>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <rect x="9.5" y="1.5" width="1.5" height="9" rx="0.5" fill="currentColor"/>
+              <path d="M1 2l6 4-6 4V2z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+
+        {/* ── Chat FAB — bottom-right ── */}
+        {chatOpen && (
+          <div
+            onWheel={e => e.stopPropagation()}
+            onTouchMove={e => e.stopPropagation()}
+            style={{
+              position: 'fixed',
+              bottom: 168,
+              right: 20,
+              width: 'clamp(300px, 90vw, 380px)',
+              maxHeight: 'min(520px, calc(100vh - 180px))',
+              background: 'rgba(10,10,10,0.98)',
+              border: '1px solid rgba(99,102,241,0.2)',
+              borderRadius: 16,
+              boxShadow: '0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(99,102,241,0.08), 0 0 40px rgba(99,102,241,0.08)',
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+              zIndex: 1100,
+              animation: 'chatUp 0.25s cubic-bezier(0.16,1,0.3,1)',
+            }}
+          >
+            <div style={{ height: 3, background: 'linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa)', flexShrink: 0 }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, background: 'rgba(99,102,241,0.04)' }}>
+              <div style={{ position: 'relative', flexShrink: 0 }}>
+                <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', display: 'block', border: '2px solid rgba(99,102,241,0.4)' }} />
+                <div style={{ position: 'absolute', bottom: -2, right: -2, width: 16, height: 16, borderRadius: '50%', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', border: '1.5px solid #0a0a0a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="8" height="8" viewBox="0 0 16 16" fill="white"><path d="M8 1l1.8 3.6L14 6l-3 2.9.7 4.1L8 11l-3.7 2 .7-4.1L2 6l4.2-.4z"/></svg>
+                </div>
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                  <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.92)', margin: 0, letterSpacing: '-0.01em' }}>Sivan Baum</p>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.1em', textTransform: 'uppercase', background: 'linear-gradient(90deg, #6366f1, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', padding: '2px 0' }}>AI</span>
+                </div>
+                <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0 }}>Sr. Product Designer · AI · Amazon Kindle</p>
+              </div>
+              <button onClick={() => setChatOpen(false)} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.25)', cursor: 'pointer', padding: 4, display: 'flex', borderRadius: 4 }}><IconClose /></button>
             </div>
+            <div style={{ flex: 1, overflowY: 'auto', overscrollBehavior: 'contain', padding: '14px 16px 8px', display: 'flex', flexDirection: 'column', gap: 4, scrollbarWidth: 'none' }}>
+              {messages.length === 0 && (
+                <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', paddingBottom: 6 }}>
+                  <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
+                  <div style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '12px 12px 12px 3px', padding: '10px 14px', maxWidth: '82%' }}>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, margin: 0 }}>Hi, I'm Sivan. Select a question and I'll answer it — or ask me anything about my work.</p>
+                  </div>
+                </div>
+              )}
+              {messages.map((msg, idx) => {
+                const isLastMsg = idx === messages.length - 1
+                return msg.type === 'question' ? (
+                  <div key={`q-${msg.id}`} style={{ display: 'flex', justifyContent: 'flex-end', animation: 'msgIn 0.18s ease', padding: '3px 0' }}>
+                    <div style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px 12px 3px 12px', padding: '10px 14px', maxWidth: '82%' }}>
+                      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55, margin: 0 }}>{msg.text}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div key={`a-${msg.id}`} ref={isLastMsg ? lastAnswerRef : null} style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', padding: '3px 0' }}>
+                    <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
+                    <div style={{ background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.18)', borderRadius: '12px 12px 12px 3px', padding: '10px 14px', maxWidth: '82%' }}>
+                      {msg.text.split('\n\n').map((para, i) => (
+                        <p key={i} style={{ fontSize: 15, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, margin: 0, marginTop: i > 0 ? 10 : 0 }}>{para}</p>
+                      ))}
+                    </div>
+                  </div>
+                )
+              })}
+              {typing && <TypingDots />}
+              <div ref={chatBottomRef} style={{ height: 1 }} />
+            </div>
+            {!typing && currentPrompts.length > 0 && (
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '10px 12px', flexShrink: 0 }}>
+                <p style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)', margin: '0 0 7px 4px' }}>{messages.length === 0 ? 'Select a question' : 'Continue'}</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {currentPrompts.map(item => (
+                    <button key={item.id} className="chat-prompt-btn" onClick={() => handleSelect(item)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 8, padding: '9px 12px', cursor: 'pointer', textAlign: 'left', transition: 'background 0.15s', width: '100%' }}>
+                      <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.4 }}>{item.question}</span>
+                      <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 14, flexShrink: 0 }}>↗</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+        <div style={{ position: 'fixed', bottom: 96, right: 20, zIndex: 1000, animation: 'imEntrance 0.4s 0.6s cubic-bezier(0.16,1,0.3,1) both' }}>
+          {!chatOpen && (
+            <div style={{ position: 'absolute', inset: -4, borderRadius: '50%', background: 'transparent', border: '2px solid rgba(255,255,255,0.18)', pointerEvents: 'none', animation: 'pulseRing 3.2s ease-out 1.6s infinite' }} />
+          )}
+          <button className="im-fab" onClick={() => setChatOpen(o => !o)} aria-label={chatOpen ? 'Close chat' : 'Chat with Sivan'}
+            style={{ width: 52, height: 52, borderRadius: '50%', background: 'none', border: chatOpen ? '2px solid rgba(255,255,255,0.15)' : '2px solid rgba(255,255,255,0.12)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.5)', padding: 0, transition: 'border-color 0.2s', position: 'relative', overflow: 'hidden' }}>
+            {chatOpen ? (
+              <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'rgba(20,20,20,0.98)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><IconClose /></div>
+            ) : (
+              <img src={PROFILE_IMG} alt="Sivan Baum" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover', display: 'block' }} />
+            )}
           </button>
         </div>
       </>
