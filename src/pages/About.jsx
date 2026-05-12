@@ -153,7 +153,7 @@ export default function About() {
             <div className="sr">
               <h2 className="resume-h">Education</h2>
               <div className="edu-entry">
-                <p className="edu-degree">B.A., Marketing &amp; Management</p>
+                <p className="edu-degree">B.S., Psychology &amp; Marketing</p>
                 <p className="edu-school">Stern / Sy Syms Business School, Yeshiva University</p>
                 <p className="edu-year">2012 to 2016</p>
               </div>

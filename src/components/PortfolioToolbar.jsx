@@ -299,8 +299,75 @@ export default function PortfolioToolbar() {
     return `${m}:${sec.toString().padStart(2, '0')}`
   }
 
-  // Hide toolbar on the slide deck view
+  // Slide deck: hide everything
   if (pathname === '/projects/bookpins/slides') return null
+
+  // Non-home pages: show only a minimal floating play/pause button
+  if (pathname !== '/') {
+    return (
+      <>
+        <style>{`
+          @keyframes miniRing {
+            0%   { transform: scale(1);   opacity: 0.6; }
+            70%  { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(1.5); opacity: 0; }
+          }
+          .mini-player-btn { position: relative; }
+          .mini-player-btn:hover .mini-overlay { opacity: 1 !important; }
+        `}</style>
+        <div style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 900 }}>
+          {/* Playing ring */}
+          {playing && (
+            <div style={{
+              position: 'absolute', inset: -4, borderRadius: '50%',
+              border: '1.5px solid rgba(255,255,255,0.35)',
+              pointerEvents: 'none',
+              animation: 'miniRing 2.4s ease-out infinite',
+            }} />
+          )}
+          <button
+            className="mini-player-btn"
+            onClick={togglePlay}
+            title={playing ? `Pause · ${track.title}` : `Play · ${track.title}`}
+            style={{
+              width: 40, height: 40, borderRadius: '50%',
+              border: playing ? '2px solid rgba(255,255,255,0.25)' : '2px solid rgba(255,255,255,0.1)',
+              padding: 0, cursor: 'pointer', overflow: 'hidden',
+              boxShadow: playing ? '0 4px 20px rgba(0,0,0,0.6)' : '0 2px 12px rgba(0,0,0,0.4)',
+              transition: 'border-color 0.2s, box-shadow 0.2s',
+              position: 'relative',
+              background: 'none',
+            }}
+          >
+            <img
+              key={track.art}
+              src={track.art}
+              alt={track.title}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', borderRadius: '50%' }}
+            />
+            {/* Hover overlay */}
+            <div className="mini-overlay" style={{
+              position: 'absolute', inset: 0, borderRadius: '50%',
+              background: 'rgba(0,0,0,0.55)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              opacity: 0, transition: 'opacity 0.15s',
+            }}>
+              {playing ? (
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="white">
+                  <rect x="2" y="1" width="3" height="10" rx="1"/>
+                  <rect x="7" y="1" width="3" height="10" rx="1"/>
+                </svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="white">
+                  <path d="M3 1.5l7 4.5-7 4.5z"/>
+                </svg>
+              )}
+            </div>
+          </button>
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
