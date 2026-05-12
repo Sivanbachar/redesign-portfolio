@@ -272,6 +272,46 @@ export default function SwiftShift() {
           </div>
         </div>
 
+        {/* THE NURSE APP */}
+        <div className="cs-section">
+          <span className="cs-section-label sr">The Nurse App</span>
+          <h2 className="cs-h2 sr">One question the mobile experience had to answer: is this shift right for me?</h2>
+          <div className="cs-2col">
+            <div>
+              <p className="cs-p sr">Nurses are busy, often mid-shift or in transit when they're evaluating new work. The mobile experience needed to answer that one question as quickly as possible: is this worth my time?</p>
+              <p className="cs-p sr">I designed the search and filtering experience so nurses could narrow by location, skill requirements, and timing without friction. Shift cards surfaced the right information in the right order, with enough context to decide without digging deeper.</p>
+            </div>
+            <div />
+          </div>
+          <div className="sr" style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ border: '1px solid var(--bdr)', borderRadius: 12, overflow: 'hidden', width: '100%', maxWidth: 420 }}>
+              <div style={{ padding: '10px 16px', borderBottom: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--bg2)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--cobalt)', display: 'inline-block', flexShrink: 0 }} />
+                  <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0 }}>Live prototype — click to interact</p>
+                </div>
+                <button
+                  onClick={() => { const f = document.getElementById('nurse-proto'); f.src = f.src }}
+                  style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--txt3)', background: 'none', border: '1px solid var(--bdr)', borderRadius: 4, padding: '4px 10px', cursor: 'pointer' }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--txt)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--txt3)'}
+                >↺ Refresh</button>
+              </div>
+              <div style={{ position: 'relative', overflow: 'hidden', height: 560 }}>
+                <iframe
+                  id="nurse-proto"
+                  src="https://eagle-sauna-45279823.figma.site/"
+                  style={{ position: 'absolute', top: 0, left: '50%', marginLeft: -280, width: '560px', height: '746px', border: 'none', display: 'block', transform: 'scale(0.75)', transformOrigin: 'top center' }}
+                  allowFullScreen
+                />
+              </div>
+              <div style={{ padding: '10px 16px', borderTop: '1px solid var(--bdr)', background: 'var(--bg2)' }}>
+                <p style={{ fontFamily: 'var(--sans)', fontSize: 11, color: 'var(--txt3)', marginBottom: 0, textAlign: 'center' }}>Clickable prototype — tap or click through to explore the nurse-facing experience</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* CALL-OUT SYSTEM */}
         <div className="cs-section">
           <span className="cs-section-label sr">The Call-Out System</span>
