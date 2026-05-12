@@ -339,7 +339,7 @@ export default function PortfolioToolbar() {
         {/* ── Mini music pill — bottom-left, below outline button ── */}
         <div style={{
           position: 'fixed',
-          bottom: isCaseStudy ? 40 : 28,
+          bottom: 96,
           left: 28,
           zIndex: 600,
           display: 'flex',
