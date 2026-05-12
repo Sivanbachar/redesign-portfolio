@@ -66,11 +66,16 @@ export default function ExploreMore() {
             onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
             >
               {p.locked ? (
-                /* Lock icon for locked projects */
                 <svg width="28" height="32" viewBox="0 0 18 20" fill="none" style={{ opacity: 0.2 }}>
                   <rect x="3" y="9" width="12" height="10" rx="1.5" stroke="white" strokeWidth="1.5"/>
                   <path d="M6 9V6a3 3 0 0 1 6 0v3" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
+              ) : p.thumbVideo ? (
+                <video
+                  src={`/${p.thumbVideo}`}
+                  autoPlay loop muted playsInline
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               ) : p.thumbImg ? (
                 <img
                   src={`/${p.thumbImg}`}
