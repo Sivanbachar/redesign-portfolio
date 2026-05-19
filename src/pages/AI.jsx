@@ -54,9 +54,14 @@ export default function AI() {
                 <span className="proj-link sr d5">View Project →</span>
               </div>
               <div className="proj-img-wrap">
-                <div className="proj-img-block" style={{ background: p.thumbBg }}>
+                <div className="proj-img-block" style={{ background: p.thumbBg, aspectRatio: '4/3' }}>
                   {p.thumbImg ? (
-                    <img src={`/${p.thumbImg}`} alt={p.title} className="proj-img-photo" />
+                    <img
+                      src={`/${p.thumbImg}`}
+                      alt={p.title}
+                      className="proj-img-photo"
+                      style={{ objectFit: 'contain', padding: '12px' }}
+                    />
                   ) : (
                     <span style={{ fontSize: 48, opacity: 0.08 }}>{p.thumbIcon}</span>
                   )}
