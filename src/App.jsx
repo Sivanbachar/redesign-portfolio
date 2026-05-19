@@ -15,6 +15,7 @@ import SwiftShift       from './pages/cases/SwiftShift.jsx'
 import AI               from './pages/AI.jsx'
 import AIPortfolio      from './pages/ai/Portfolio.jsx'
 import AIResellerApp    from './pages/ai/ResellerApp.jsx'
+import AIGramercy       from './pages/ai/Gramercy.jsx'
 import InterviewMe      from './pages/InterviewMe.jsx'
 
 function ScrollToTop() {
@@ -47,6 +48,7 @@ function AppShell() {
         <Route path="/ai"                   element={<AI />} />
         <Route path="/ai/portfolio"         element={<AIPortfolio />} />
         <Route path="/ai/reseller"          element={<AIResellerApp />} />
+        <Route path="/ai/gramercy"          element={<AIGramercy />} />
         <Route path="/interview"            element={<InterviewMe />} />
         <Route path="*"                     element={<Home />} />
       </Routes>

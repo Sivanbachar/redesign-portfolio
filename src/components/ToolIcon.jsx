@@ -19,6 +19,10 @@ const TOOLS = {
     label: 'Vercel',
     src: `https://cdn.simpleicons.org/vercel/ffffff`,
   },
+  'netlify': {
+    label: 'Netlify',
+    src: `https://cdn.simpleicons.org/netlify/00C7B7`,
+  },
   'react': {
     label: 'React',
     src: `https://cdn.simpleicons.org/react/61DAFB`,

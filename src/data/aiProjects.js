@@ -45,6 +45,48 @@ export const AI_PROJECTS = [
   },
 
   {
+    id: 'gramercy',
+    title: 'Gramercy Investment Group',
+    type: 'AI-Built Client Website',
+    tagline: 'Designed and launched a full investment firm website using AI as the build layer — from sitemap to production in days.',
+    thumbBg: 'linear-gradient(135deg, #0f1a14 0%, #080f0a 100%)',
+    thumbIcon: '◈',
+    thumbImg: 'images/ai/gramercy_thumbnail.jpg',
+    route: '/ai/gramercy',
+    toolIcons: ['claude', 'chatgpt', 'netlify'],
+
+    heroImg: null,
+    description: 'A fully designed and launched website for a real investment group client — built using AI tooling from competitive analysis through production deployment.',
+
+    liveUrl: 'https://gramercyinvestors.com',
+
+    about: [
+      'Gramercy Investment Group needed a web presence that would establish credibility and clearly communicate their value to prospective investors and partners. The engagement covered everything: brand positioning, information architecture, design system, and production build.',
+      'I started with a competitive analysis of comparable investment firm sites to understand what signals trust, what creates friction, and where most firms leave value on the table. From that, I defined the sitemap and prioritized workflows based on the user behavior I wanted to drive — getting the right visitor to the right action with as little friction as possible.',
+      'The design system — typography, color, spacing, component logic — was defined by me. ChatGPT helped sharpen positioning copy and stress-test structural decisions. Claude Code handled the implementation, translating design decisions into production-quality code. I used it to iterate on animations, refine responsive behavior, and push polish across every state.',
+      'The site is hosted and deployed on Netlify. What would typically be a multi-week agency engagement was completed in days — without compromising on quality.',
+    ],
+
+    tools: [
+      { name: 'Claude Code', note: 'Primary build environment — code generation, animation refinement, responsive polish, and iteration' },
+      { name: 'ChatGPT', note: 'Positioning copy, structural feedback, and stress-testing information hierarchy decisions' },
+      { name: 'Netlify', note: 'Production hosting and continuous deployment' },
+    ],
+
+    builtWithAI: '~4 days',
+    estimatedWithout: '3–5 weeks',
+    timeNote: 'The speed wasn\'t the point — the quality was. AI compressed execution so I could stay focused on the decisions that mattered: what the site needed to communicate, in what order, and to whom.',
+
+    learnings: [
+      { heading: 'Competitive analysis still drives architecture', body: 'AI didn\'t define the sitemap or the content hierarchy — I did, based on patterns I found across comparable firms. The research phase is still entirely human. What changed is how fast the output of that thinking can be turned into a working site.' },
+      { heading: 'Design systems are the foundation', body: 'The quality of the build came from having a clear design system before touching code. When spacing, color, and typography are decided, AI can execute cleanly. When they\'re vague, AI fills in the gaps in ways that feel generic.' },
+      { heading: 'Client work demands precision prompting', body: 'With a real client, there\'s no room for "close enough." Getting AI to produce work that actually fits the brief required detailed, specific prompts — more like writing a spec than having a conversation. That discipline makes the output better.' },
+      { heading: 'Animations and motion are now in scope', body: 'Transitions, entrance animations, hover states — things that used to be cut for time or handed off to a motion designer — I was able to define and implement directly. AI makes motion accessible to any designer who can describe what they want.' },
+      { heading: 'Netlify deployment closes the loop', body: 'Being able to go from code to live URL without an engineering handoff changes the nature of the engagement. I could show the client a live site, get real feedback, and push changes the same day.' },
+    ],
+  },
+
+  {
     id: 'reseller',
     title: 'Reseller App',
     type: 'AI-Assisted App Design',
