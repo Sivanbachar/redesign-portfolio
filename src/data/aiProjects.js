@@ -51,7 +51,7 @@ export const AI_PROJECTS = [
     tagline: 'Designed and launched a full investment firm website using AI as the build layer — from sitemap to production in days.',
     thumbBg: 'linear-gradient(135deg, #0f1a14 0%, #080f0a 100%)',
     thumbIcon: '◈',
-    thumbImg: 'images/ai/gramercy_thumbnail.jpg',
+    thumbImg: 'images/ai/GIG.png',
     route: '/ai/gramercy',
     toolIcons: ['claude', 'chatgpt', 'netlify'],
 
