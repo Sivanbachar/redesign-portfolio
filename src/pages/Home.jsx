@@ -89,8 +89,8 @@ export default function Home() {
       <section className="intro-sec page-section" data-section="intro">
         <div className="intro-inner">
           <p className="intro-statement sr">
-            I define what gets built.{' '}
-            <span className="intro-gradient">Then I build it.</span>
+            I help teams define{' '}
+            <span className="intro-gradient">what to build, not just how it looks.</span>
           </p>
         </div>
       </section>
