@@ -6,7 +6,7 @@ import VP from '../../components/VP.jsx'
 
 const ITERATIONS = [
   { id: 'menu-toggle', name: 'Menu Toggle', img: '/images/hotspots/iterations/menu-toggle.jpg', behavior: 'Global toggle switches all insights on and off via a menu control.', rejected: 'All-or-nothing approach lacks contextual control. Readers either see everything or nothing, with no way to engage with a specific moment in the text. Also required awareness of a menu item to activate. At its core, it required the reader to interrupt reading to manage a tool.' },
-  { id: 'persistent-carousel', name: 'Persistent Carousel', img: '/images/hotspots/iterations/persistent-carousel.jpg', behavior: 'Horizontal scroll bar with insights always visible below the reading area.', rejected: 'Creates visual clutter and competes for attention. A persistently visible content strip fights the text rather than supporting it, adding noise to a surface already asking a lot of the reader. It was visible content competing with visible content — an unwinnable arrangement.' },
+  { id: 'persistent-carousel', name: 'Persistent Carousel', img: '/images/hotspots/iterations/persistent-carousel.jpg', behavior: 'Horizontal scroll bar with insights always visible below the reading area.', rejected: 'Creates visual clutter and competes for attention. A persistently visible content strip fights the text rather than supporting it, adding noise to a surface already asking a lot of the reader. It was visible content competing with visible content, an unwinnable arrangement.' },
   { id: 'section-indicators', name: 'Section-level Indicators', img: '/images/hotspots/iterations/section-level-indicators.jpg', behavior: 'Subtle markers in the margin hint at available insights for a given section.', rejected: 'Too subtle and easy to miss entirely. Required onboarding or help text to be discoverable, and still underperformed without it. A pattern that needs explanation to be found is not discoverable. Hidden access is not solved by making something slightly less hidden.' },
   { id: 'anchored-side-panel', name: 'Anchored Side Panel', img: '/images/hotspots/iterations/anchored-side-panel.jpg', behavior: 'Fixed sidebar shows insights alongside the reading content.', rejected: 'Takes valuable screen real estate, is not mobile-friendly, and starts competing with upcoming reading features. Adds a second surface the reading experience has to share attention with. Any solution that splits reading into two surfaces has already failed the core constraint.' },
   { id: 'bottom-peek', name: 'Bottom Peek Surface', img: '/images/hotspots/iterations/bottom-peek-surface.jpg', behavior: 'Collapsible drawer at the bottom reveals insights on tap.', rejected: 'Hidden by default and requires both awareness and deliberate action to use. No different from the pull model already failing. Readers still had to know something was there before they could find it. The failure mode was identical to the model we were trying to replace.' },
@@ -49,7 +49,7 @@ export default function ContextualLayers() {
 
       <div className="cs-body">
 
-        {/* ── Hero image — fades out at bottom into gate ── */}
+        {/* ── Hero image, fades out at bottom into gate ── */}
         <div className="cs-section sr" style={{ position: 'relative', marginBottom: 0, paddingBottom: 0 }}>
           <div style={{ position: 'relative', borderRadius: 8, overflow: 'hidden' }}>
             <img
@@ -66,20 +66,20 @@ export default function ContextualLayers() {
           {/* ORIGIN */}
           <div className="cs-section">
             <span className="cs-section-label sr">Origin</span>
-            <h2 className="cs-h2 sr">This work didn't start as a defined project.</h2>
-            <p className="cs-p sr">Product and leadership were exploring a long-term vision for reading — but there was no clear direction for how that vision should take shape.</p>
+            <h2 className="cs-h2 sr">This project didn't exist until I created it.</h2>
+            <p className="cs-p sr">Leadership had a mandate to define a three-year vision and no framework for doing it. I designed and ran a cross-functional workshop that reanchored the conversation from what should we build to where are readers failing today. That shift produced the first shared direction the team had. The opportunity I surfaced in that workshop became the funded project. Two years later, when AI made it technically viable, the foundation I had already built was waiting.</p>
             <div className="cs-outcome-row sr">
               <div className="cs-outcome-cell">
                 <p className="cs-outcome-label">Situation</p>
-                <p className="cs-outcome-val">A long-term vision existed but lacked direction. No defined brief, no assigned scope — just open ambiguity and an opportunity to shape something from scratch.</p>
+                <p className="cs-outcome-val">No defined brief, no assigned scope. Leadership needed direction. I created the frame that made direction possible.</p>
               </div>
               <div className="cs-outcome-cell">
-                <p className="cs-outcome-label">Approach</p>
-                <p className="cs-outcome-val">I brought together product, engineering, and leadership in a generative workshop to surface opportunities. Then carried it forward — translating ideas into concrete concepts and introducing directions beyond the initial outputs.</p>
+                <p className="cs-outcome-label">What I built</p>
+                <p className="cs-outcome-val">I designed and ran the workshop, identified the opportunity, developed the concept independently, and drove the direction forward after the initial session ended.</p>
               </div>
               <div className="cs-outcome-cell">
                 <p className="cs-outcome-label">Outcome</p>
-                <p className="cs-outcome-val">Making the work tangible created alignment across teams and gave leadership something real to evaluate. That direction was funded and became the foundation for everything that followed.</p>
+                <p className="cs-outcome-val">The direction I originated was funded and became the foundation for everything that followed. This project exists because I built the case for it.</p>
               </div>
             </div>
           </div>
@@ -136,12 +136,12 @@ export default function ContextualLayers() {
           {/* STRATEGY */}
           <div className="cs-section">
             <span className="cs-section-label sr">Strategy</span>
-            <h2 className="cs-h2 sr">Framework over feature.</h2>
+            <h2 className="cs-h2 sr">I replaced the model. Not the features.</h2>
             <div className="cs-2col">
               <div>
-                <p className="cs-p sr">The temptation was to fix the specific underperforming features. Better X-Ray. A smarter dictionary. That approach would have produced incremental improvements to a broken model.</p>
-                <p className="cs-p sr">The real opportunity was structural: replace the pull model entirely. Build a unified delivery layer that makes contextual content findable without requiring the reader to look for it.</p>
-                <p className="cs-p sr">This wasn't a feature design problem. It was a question of how supplemental content belongs inside a reading experience at all.</p>
+                <p className="cs-p sr">The obvious path was to improve specific underperforming features. Better X-Ray. A smarter dictionary. I rejected that direction. It would have produced incremental improvements to a structurally broken model.</p>
+                <p className="cs-p sr">I defined a different goal: replace the pull model entirely. Build a unified delivery layer that surfaces contextual content without requiring the reader to look for it.</p>
+                <p className="cs-p sr">This reframed the entire project. It wasn't a feature design problem. It was a question of how supplemental content should exist inside a reading experience at all.</p>
               </div>
               <div>
                 {[
@@ -210,8 +210,8 @@ export default function ContextualLayers() {
             </div>
             <div className="cs-2col">
               <div>
-                <p className="cs-p sr">The design breakthrough wasn't a UI solution it was a reframe. Every direction we'd explored placed supplemental content adjacent to reading. A panel. A menu. A button. All of them asked the reader to leave the text.</p>
-                <p className="cs-p sr">The layered model treated the text itself as the interface. Contextual layers live inside the reading surface. Content emerges from the words not from chrome around them. Readers never leave the page.</p>
+                <p className="cs-p sr">The breakthrough was a reframe, not a UI solution. Every direction explored placed supplemental content adjacent to reading. A panel. A menu. A button. All of them asked the reader to leave the text.</p>
+                <p className="cs-p sr">I introduced the layered model: the text itself becomes the interface. Contextual layers live inside the reading surface. Content emerges from the words, not from chrome around them. Readers never leave the page. That reframe is what made the product possible.</p>
               </div>
               <div>
                 {[
@@ -316,7 +316,7 @@ export default function ContextualLayers() {
             <span className="cs-section-label sr">Solution</span>
             <h2 className="cs-h2 sr">The layered reading model.</h2>
             <p className="cs-p sr">The solution wasn't a single UI pattern. It was a layered interaction model.</p>
-            <p className="cs-p sr">After eliminating every direction that moved the reader off the page, one model remained. Three components define it: inline markers embedded in the text, a toggle that keeps the reader in control, and a bottom sheet that surfaces content without removing the reading surface. This establishes a scalable pattern for how supplemental content can exist within the reading experience — not alongside it.</p>
+            <p className="cs-p sr">After eliminating every direction that moved the reader off the page, one model remained. Three components define it: inline markers embedded in the text, a toggle that keeps the reader in control, and a bottom sheet that surfaces content without removing the reading surface. This establishes a scalable pattern for how supplemental content can exist within the reading experience, not alongside it.</p>
             {/* Figma prototype embed */}
             <div className="sr" style={{ marginTop: 64 }}>
               <div style={{ border: '1px solid var(--bdr)', borderRadius: 10, overflow: 'hidden', background: 'var(--bg1)' }}>
@@ -341,7 +341,7 @@ export default function ContextualLayers() {
                   </a>
                 </div>
 
-                {/* Iframe — fixed to phone dimensions so Figma prototype renders at intended size */}
+                {/* Iframe, fixed to phone dimensions so Figma prototype renders at intended size */}
                 <div className="hs-figma-frame" style={{ width: '100%', display: 'flex', justifyContent: 'center', padding: '40px 24px', background: 'var(--bg1)' }}>
                   <iframe
                     src="https://adjust-fleck-61194520.figma.site"
@@ -365,7 +365,7 @@ export default function ContextualLayers() {
                     padding: '3px 7px', borderRadius: 3,
                   }}>AI-Rebuilt</span>
                   <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--txt3)', lineHeight: 1.6, marginBottom: 0 }}>
-                    These designs were recreated using AI tools to represent the solution. The interaction model, component structure, and product decisions are real — the visuals were rebuilt for portfolio presentation.
+                    These designs were recreated using AI tools to represent the solution. The interaction model, component structure, and product decisions are real, the visuals were rebuilt for portfolio presentation.
                   </p>
                 </div>
 
@@ -390,8 +390,8 @@ export default function ContextualLayers() {
           {/* SYSTEM IMPACT */}
           <div className="cs-section">
             <span className="cs-section-label sr">System Impact</span>
-            <h2 className="cs-h2 sr">One model. Platform wide implications.</h2>
-            <p className="cs-p sr">Contextual Layers wasn't just a feature, it established the architecture for how in reading features behave. The placement engine, rendering layer, and tracking infrastructure became reusable across content types. New content no longer needs a new interaction pattern. It inherits the framework.</p>
+            <h2 className="cs-h2 sr">I built the platform. The feature came with it.</h2>
+            <p className="cs-p sr">Contextual Layers established the architecture for how in-reading features behave across Kindle. The placement engine, rendering layer, and tracking infrastructure I built are reusable across content types. New content no longer requires a new interaction pattern. It inherits the framework. Engineering cost per new content type dropped significantly. That was the goal from day one.</p>
             <div className="cs-finding-grid two-col sr" style={{ marginTop: 48 }}>
               {[
                 { tag: 'Scalability', b: 'Placement, rendering, and engagement tracking shared across all supplemental content types. Engineering cost per new content type dropped significantly.' },

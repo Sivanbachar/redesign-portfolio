@@ -5,10 +5,10 @@
  * CSS tap-circle animations synced to the video loop.
  *
  * Props
- *   src          – video source path
- *   taps         – array of { x, y, delay } where x/y are % of screen dimensions
+ *   src          - video source path
+ *   taps         - array of { x, y, delay } where x/y are % of screen dimensions
  *                  and delay is the animation-delay in seconds
- *   videoDuration – used to repeat the tap cycle (seconds)
+ *   videoDuration - used to repeat the tap cycle (seconds)
  */
 export default function PhoneMockup({
   src = '/images/pins/solution_video.mp4',
@@ -41,7 +41,7 @@ export default function PhoneMockup({
         overflow: 'visible',
       }}>
 
-        {/* Volume buttons — left side */}
+        {/* Volume buttons, left side */}
         {[{ top: '18%', h: '6%' }, { top: '26%', h: '9%' }, { top: '37%', h: '9%' }].map((b, i) => (
           <div key={i} style={{
             position: 'absolute',
@@ -52,7 +52,7 @@ export default function PhoneMockup({
           }} />
         ))}
 
-        {/* Power button — right side */}
+        {/* Power button, right side */}
         <div style={{
           position: 'absolute',
           right: -4, top: '24%', height: '13%', width: 4,

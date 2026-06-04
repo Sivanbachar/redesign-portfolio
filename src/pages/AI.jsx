@@ -21,7 +21,7 @@ export default function AI() {
           <p className="ai-header-label sr">AI Projects</p>
           <h1 className="ai-header-h1 sr d1">AI Projects</h1>
           <p className="ai-header-sub sr d2">
-            I use AI to compress execution time — which frees up space for product
+            I use AI to compress execution time, which frees up space for product
             thinking, strategy, and the decisions that actually shape what gets built.
             These are real builds, not concepts.
           </p>
@@ -80,7 +80,7 @@ export default function AI() {
             <p className="ai-more-label">What's next</p>
             <h2 className="ai-more-h2">More in progress.</h2>
             <p className="ai-more-p">
-              Actively experimenting with new workflows — from design systems generation
+              Actively experimenting with new workflows, from design systems generation
               to research synthesis. New projects will appear here as they develop.
             </p>
             <div className="ai-more-dots">

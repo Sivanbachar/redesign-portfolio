@@ -101,18 +101,18 @@ export default function BookPins() {
           <h2 className="cs-h2 sr">The team had a direction problem. I reframed it as a user problem.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">Kindle's product team had been asked to define a three-year vision — but the work was stalling. Conversations kept circling without landing. Big ideas, no shared thread, and growing pressure to show direction.</p>
+              <p className="cs-p sr">Kindle's product team had been asked to define a three-year vision, but the work was stalling. Conversations kept circling without landing. Big ideas, no shared thread, and growing pressure to show direction.</p>
               <p className="cs-p sr">I stepped in and proposed a different starting point. Instead of beginning with the product, begin with the reader. I led a cross-functional workshop that brought together product managers, engineers, and leadership to map the current Kindle reading experience from the user's perspective.</p>
               <p className="cs-p sr">Not features. Not roadmaps. Friction. Where were readers struggling? Where were their expectations going unmet?</p>
             </div>
             <div>
               <div className="cs-callout sr">
-                <p><strong>One pattern surfaced clearly across the group:</strong> readers needed to engage with content non-linearly — revisiting earlier sections, cross-referencing ideas, holding two pieces of content in mind at once. The current experience didn't support any of it. And no one had named it clearly before.</p>
+                <p><strong>One pattern surfaced clearly across the group:</strong> readers needed to engage with content non-linearly, revisiting earlier sections, cross-referencing ideas, holding two pieces of content in mind at once. The current experience didn't support any of it. And no one had named it clearly before.</p>
               </div>
               <div style={{ marginTop: 28 }}>
                 {[
-                  ['Who was in the room', 'Product managers, engineering leads, and senior leadership — brought together under a shared user lens rather than a product roadmap.'],
-                  ['How I framed it', 'Reanchored the conversation from "what should we build" to "where are readers failing today" — shifting the group from ideation to diagnosis.'],
+                  ['Who was in the room', 'Product managers, engineering leads, and senior leadership, brought together under a shared user lens rather than a product roadmap.'],
+                  ['How I framed it', 'Reanchored the conversation from "what should we build" to "where are readers failing today", shifting the group from ideation to diagnosis.'],
                   ['What came out of it', 'Reference behavior was the clearest and most promising gap. That became the foundation for everything that followed.'],
                 ].map(([label, val]) => (
                   <div key={label} className="sr" style={{ padding: '14px 0', borderTop: '1px solid var(--bdr)' }}>
@@ -125,27 +125,27 @@ export default function BookPins() {
           </div>
           <div className="cs-insight sr" style={{ marginTop: 40 }}>
             <span className="cs-insight-label">The Pivot</span>
-            <p className="cs-insight-text">Reframing the three-year vision as a user problem created the clarity the team needed. It gave everyone a shared starting point — and gave me the opening to drive something forward that wouldn't have existed otherwise.</p>
+            <p className="cs-insight-text">Reframing the three-year vision as a user problem created the clarity the team needed. It gave everyone a shared starting point, and gave me the opening to drive something forward that wouldn't have existed otherwise.</p>
           </div>
         </div>
 
         {/* ORIGIN */}
         <div className="cs-section">
           <span className="cs-section-label sr">Origin</span>
-          <h2 className="cs-h2 sr">This work didn't start as a defined project.</h2>
-          <p className="cs-p sr">Product and leadership were exploring a long-term vision for reading — but there was no clear direction for how that vision should take shape.</p>
+          <h2 className="cs-h2 sr">Book Pins didn't exist until I built the argument for it.</h2>
+          <p className="cs-p sr">There was no brief. Leadership had a mandate to define a three-year vision and no mechanism for doing it. I created that mechanism: a cross-functional workshop that converted a stalled strategy conversation into a concrete funded direction. After the workshop surfaced reference behavior as the most critical unmet need, I didn't wait for an assignment. I developed the product concept, challenged existing assumptions about in-page UI, and drove the direction that became the funded project.</p>
           <div className="cs-outcome-row sr">
             <div className="cs-outcome-cell">
               <p className="cs-outcome-label">Situation</p>
-              <p className="cs-outcome-val">A long-term vision existed but lacked direction. No defined brief, no assigned scope — just open ambiguity and an opportunity to shape something from scratch.</p>
+              <p className="cs-outcome-val">No defined brief, no assigned scope. The team had a strategic mandate and no shared direction. I created the frame that produced one.</p>
             </div>
             <div className="cs-outcome-cell">
-              <p className="cs-outcome-label">Approach</p>
-              <p className="cs-outcome-val">I brought together product, engineering, and leadership in a generative workshop to surface opportunities. Then carried it forward — translating ideas into concrete concepts and introducing directions beyond the initial outputs.</p>
+              <p className="cs-outcome-label">What I built</p>
+              <p className="cs-outcome-val">Designed and ran the workshop. Identified the gap. Developed the concept independently. Challenged the team's core assumption about on-page UI and introduced the model that replaced it.</p>
             </div>
             <div className="cs-outcome-cell">
               <p className="cs-outcome-label">Outcome</p>
-              <p className="cs-outcome-val">Making the work tangible created alignment across teams and gave leadership something real to evaluate. That direction was funded and became the foundation for everything that followed.</p>
+              <p className="cs-outcome-val">The direction I originated was funded. The product concept I developed became the shipped feature. This project exists because I built the case for it.</p>
             </div>
           </div>
         </div>
@@ -153,15 +153,15 @@ export default function BookPins() {
         {/* OVERVIEW */}
         <div className="cs-section">
           <span className="cs-section-label sr">Overview</span>
-          <h2 className="cs-h2 sr">A new interaction model for referencing content in Kindle.</h2>
+          <h2 className="cs-h2 sr">I invented a new reading behavior. Then built the product that made it possible.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">I led the design of a new interaction model for referencing content within Kindle, addressing a core gap in how readers navigate and retain information.</p>
-              <p className="cs-p sr">This work introduced a scalable framework for in context reference, shifting Kindle from a linear reading experience to one that supports non linear behaviors like studying, comparing, and revisiting content.</p>
+              <p className="cs-p sr">Kindle treated referencing as a retrieval problem: save content, come back to it later. Readers needed something different entirely. They needed to hold two pieces of content in mind at once, in the moment, without leaving the page. No existing feature addressed this.</p>
+              <p className="cs-p sr">I defined the gap, challenged Kindle's core assumption that on-page UI was incompatible with deep reading, and introduced a layered interaction model that had never existed in the product before.</p>
             </div>
             <div>
-              <p className="cs-p sr">Partnering closely with product and engineering, I defined the product direction, drove alignment across teams, and translated an ambiguous problem space into a shippable experience used within the core reading flow.</p>
-              <p className="cs-p sr">The solution enabled readers to access and interact with referenced content without leaving the page, reducing disruption to reading flow and improving comprehension for high intent use cases like learning and research.</p>
+              <p className="cs-p sr">I drove product direction, built alignment across product and engineering, and translated an ambiguous opportunity into a framework that shipped to millions of readers and introduced a new class of in-context reading behavior.</p>
+              <p className="cs-p sr">The result wasn't a feature improvement. It was a new reading capability that Kindle had never supported before.</p>
             </div>
           </div>
           <div className="cs-kpi-row sr" style={{ marginTop: 64 }}>
@@ -262,14 +262,14 @@ export default function BookPins() {
         {/* IDEATION */}
         <div className="cs-section">
           <span className="cs-section-label">Ideation</span>
-          <h2 className="cs-h2 sr">Validating the interaction model</h2>
+          <h2 className="cs-h2 sr">Displacing an assumption</h2>
           <div className="cs-2col">
             <div>
-              <h3 className="cs-h3 sr" style={{ marginBottom: 16 }}>From overlays to a layered reading model</h3>
-              <p className="cs-p sr">Early exploration focused on floating and anchored UI layered on top of reading. While these approaches improved visibility, they increased cognitive load and disrupted the reading experience.</p>
-              <p className="cs-p sr">This led to a fundamental shift: instead of placing features around reading, I introduced a layered model that integrates functionality into the reading experience itself, enabling new capabilities without competing with the core act of reading.</p>
+              <h3 className="cs-h3 sr" style={{ marginBottom: 16 }}>The model nobody had tried</h3>
+              <p className="cs-p sr">Early explorations used floating and anchored UI overlaid on top of reading. Every direction increased cognitive load. Every direction pulled the reader away from the text. The problem wasn't execution quality. The entire frame was wrong.</p>
+              <p className="cs-p sr">Kindle's prevailing assumption was that preserving reading required minimizing on-page UI. I challenged that directly. What degraded reading wasn't the presence of UI. It was UI that pulled you away from the text. I introduced a layered model that integrated functionality into the reading surface itself, enabling new capabilities without competing with the core act of reading.</p>
               <div className="cs-callout sr" style={{ marginTop: 28 }}>
-                <p><strong>The pivot:</strong> We moved away from keeping content persistently visible and instead designed for on-demand interaction allowing readers to engage deeply when needed without compromising the reading experience.</p>
+                <p><strong>The displacement:</strong> The insight wasn't a UI pattern. It was a product principle. Features should live inside reading, not alongside it. That principle is what made the final model possible and what makes it extensible.</p>
               </div>
             </div>
             <div>
@@ -405,7 +405,7 @@ export default function BookPins() {
         <div className="cs-section">
           <span className="cs-section-label sr">User Feedback</span>
           <h2 className="cs-h2 sr">Hear it from readers.</h2>
-          <p className="cs-p sr">Book Pins resonated immediately after launch. Readers found use cases we hadn't fully anticipated — from religious study plans to fantasy map referencing — validating that the interaction model was flexible enough to support diverse reading behaviors.</p>
+          <p className="cs-p sr">Book Pins resonated immediately after launch. Readers found use cases we hadn't fully anticipated, from religious study plans to fantasy map referencing, validating that the interaction model was flexible enough to support diverse reading behaviors.</p>
           <div className="sr bp-reddit-grid" style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             {REDDIT_POSTS.map((post, i) => (
               <div key={i} style={{

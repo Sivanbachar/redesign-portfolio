@@ -63,7 +63,7 @@ export default function Loader() {
           if (data[(y * LOGO_SIZE + x) * 4 + 3] > 40) {
             const angle = Math.random() * Math.PI * 2
             const dist  = 48 + Math.random() * 72
-            // Each particle gets a small random phase shift (0–12% of cycle)
+            // Each particle gets a small random phase shift (0-12% of cycle)
             // so they stagger naturally instead of all moving in lockstep
             const phaseShift = Math.random() * 0.12
             particles.push({
@@ -79,7 +79,7 @@ export default function Loader() {
         }
       }
 
-      // ── Pure sine-wave animation — no hard phase transitions ──
+      // ── Pure sine-wave animation, no hard phase transitions ──
       // dispersion = (1 - cos(2πt)) / 2
       // → smoothly 0 at t=0, peaks at 1 at t=0.5, returns to 0 at t=1
       // The cosine derivative is 0 at both extremes, so it naturally

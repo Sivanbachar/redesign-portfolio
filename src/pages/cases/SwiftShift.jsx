@@ -16,7 +16,7 @@ export default function SwiftShift() {
       <div className="cs-hero sr">
         <p className="cs-tag">Swift Shift · Home Healthcare Staffing · 0→1 Product Design · Cross-Platform</p>
         <h1 className="cs-h1">SWIFT SHIFT</h1>
-        <p className="cs-lead">I was the sole designer at a startup that needed an entire product ecosystem live at once. Not one surface. Not a phased roadmap. A nurse-facing mobile app, a dense scheduling tool for coordinators, a marketing site, a brand system, and internal tooling. All at the same time, all needing to work together from day one.</p>
+        <p className="cs-lead">I was hired as a designer. I functioned as the entire product function. With no product manager, no design system, no research practice, and no validated understanding of either side of the marketplace, I built all of it from scratch simultaneously across five surfaces while defining what to build in the first place.</p>
       </div>
 
       <div className="cs-meta-row">
@@ -60,11 +60,11 @@ export default function SwiftShift() {
         {/* MY ROLE */}
         <div className="cs-section">
           <span className="cs-section-label sr">My Role</span>
-          <h2 className="cs-h2 sr">I was the only designer. I built everything.</h2>
+          <h2 className="cs-h2 sr">There was no PM. Every product decision was mine.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">I built the design system and visual language from scratch. I reworked the brand, designed the marketing site and ad creative, and designed both the nurse-facing mobile app and the scheduler desktop tool.</p>
-              <p className="cs-p sr">I also partnered directly with the CEO to define product direction, pressure-test hypotheses, and decide what to build next. There was no product manager in the room. The design and strategy work weren't separate.</p>
+              <p className="cs-p sr">I established the company's first research practice by spending a week embedded with schedulers and nurses before touching a screen. I defined the product principles that governed every design decision, including the privacy framework that determined what information could and couldn't be surfaced. I built the design system, the visual language, and the component library from zero.</p>
+              <p className="cs-p sr">I originated the call-out redistribution model and drove its development with the CEO. I made the prioritization calls that determined what got built. No one handed me a brief. I wrote it.</p>
             </div>
             <div>
               <div className="cs-finding-grid sr">
@@ -92,9 +92,9 @@ export default function SwiftShift() {
             <div className="cs-outcome-cell">
               <p className="cs-outcome-label">Product</p>
               <p className="cs-outcome-val">Onboarding experience</p>
-              <p className="cs-outcome-val" style={{ marginTop: 12 }}>Scheduler tool — desktop application</p>
-              <p className="cs-outcome-val" style={{ marginTop: 12 }}>Nurse app — mobile experience</p>
-              <p className="cs-outcome-val" style={{ marginTop: 12 }}>TCM app — iPad, pre-launch</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>Scheduler tool, desktop application</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>Nurse app, mobile experience</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>TCM app, iPad, pre-launch</p>
             </div>
             <div className="cs-outcome-cell">
               <p className="cs-outcome-label">Brand & Marketing</p>
@@ -104,7 +104,7 @@ export default function SwiftShift() {
             <div className="cs-outcome-cell">
               <p className="cs-outcome-label">Foundation</p>
               <p className="cs-outcome-val">Design language system and component foundations</p>
-              <p className="cs-outcome-val" style={{ marginTop: 12 }}>System states — error, empty, edge cases</p>
+              <p className="cs-outcome-val" style={{ marginTop: 12 }}>System states, error, empty, edge cases</p>
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@ export default function SwiftShift() {
                   <p style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 500, color: 'var(--txt)', marginBottom: 12 }}>{name}</p>
                   {tasks.map(task => (
                     <p key={task} style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--txt2)', lineHeight: 1.5, marginBottom: 4, display: 'flex', gap: 8 }}>
-                      <span style={{ color: 'var(--txt3)', flexShrink: 0 }}>—</span><span>{task}</span>
+                      <span style={{ color: 'var(--txt3)', flexShrink: 0 }}>, </span><span>{task}</span>
                     </p>
                   ))}
                 </div>
@@ -166,7 +166,7 @@ export default function SwiftShift() {
                 <span style={{ fontSize: 15, flexShrink: 0, marginTop: 2 }}>⚠</span>
                 <div>
                   <p style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 500, color: 'var(--txt)', marginBottom: 4 }}>Urgency was not apparent</p>
-                  <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--txt2)', lineHeight: 1.5, marginBottom: 0 }}>Schedulers had no single view to understand which shifts needed immediate attention. Last-minute call-outs and shift changes had to be manually tracked and communicated across multiple nurses — a complex, error-prone process with no safety net.</p>
+                  <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--txt2)', lineHeight: 1.5, marginBottom: 0 }}>Schedulers had no single view to understand which shifts needed immediate attention. Last-minute call-outs and shift changes had to be manually tracked and communicated across multiple nurses, a complex, error-prone process with no safety net.</p>
                 </div>
               </div>
             </div>
@@ -195,7 +195,7 @@ export default function SwiftShift() {
             border: '1px solid rgba(134,239,172,0.25)', padding: '3px 7px', borderRadius: 3, marginTop: 1,
           }}>AI-Rebuilt</span>
           <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--txt3)', lineHeight: 1.6, marginBottom: 0 }}>
-            These designs were recreated using AI tools to represent the solution. The product decisions, interaction patterns, and system design are real — the visuals were rebuilt for portfolio presentation.
+            These designs were recreated using AI tools to represent the solution. The product decisions, interaction patterns, and system design are real, the visuals were rebuilt for portfolio presentation.
           </p>
         </div>
 
@@ -288,7 +288,7 @@ export default function SwiftShift() {
               <div style={{ padding: '10px 16px', borderBottom: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--bg2)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--cobalt)', display: 'inline-block', flexShrink: 0 }} />
-                  <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0 }}>Live prototype — click to interact</p>
+                  <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0 }}>Live prototype, click to interact</p>
                 </div>
                 <button
                   onClick={() => { const f = document.getElementById('nurse-proto'); f.src = f.src }}
@@ -306,7 +306,7 @@ export default function SwiftShift() {
                 />
               </div>
               <div style={{ padding: '10px 16px', borderTop: '1px solid var(--bdr)', background: 'var(--bg2)' }}>
-                <p style={{ fontFamily: 'var(--sans)', fontSize: 11, color: 'var(--txt3)', marginBottom: 0, textAlign: 'center' }}>Clickable prototype — tap or click through to explore the nurse-facing experience</p>
+                <p style={{ fontFamily: 'var(--sans)', fontSize: 11, color: 'var(--txt3)', marginBottom: 0, textAlign: 'center' }}>Clickable prototype, tap or click through to explore the nurse-facing experience</p>
               </div>
             </div>
           </div>
@@ -315,13 +315,13 @@ export default function SwiftShift() {
         {/* CALL-OUT SYSTEM */}
         <div className="cs-section">
           <span className="cs-section-label sr">The Call-Out System</span>
-          <h2 className="cs-h2 sr">Last-minute call-outs were eating scheduler time. We designed a way to redistribute that load.</h2>
+          <h2 className="cs-h2 sr">I identified that schedulers were the wrong people to own last-minute coverage. Nurses were.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">One of the biggest operational drains was what happened when a nurse called out last minute. Schedulers were spending a significant amount of time on the phone finding replacements manually. It was reactive and slow.</p>
+              <p className="cs-p sr">Last-minute call-outs were the biggest operational drain in the system. Schedulers were spending significant time manually finding replacements by phone. It was reactive, slow, and unscalable.</p>
             </div>
             <div>
-              <p className="cs-p sr">I partnered with the CEO to test a different hypothesis: could nurses help fill shifts themselves? We built a group-based messaging system that organized nurses into care groups. When a nurse called out, the shift became visible to that group and nurses could pick it up directly.</p>
+              <p className="cs-p sr">I brought a different hypothesis to the CEO: the load shouldn't sit with schedulers at all. I developed the group-based coverage model, built the case for it, and drove its development through to launch. When a nurse called out, the shift became visible to a pre-organized care group and nurses could claim it directly. The scheduler became a fallback, not the first call.</p>
             </div>
           </div>
           <div className="cs-2col" style={{ marginTop: 64 }}>
@@ -423,7 +423,7 @@ export default function SwiftShift() {
           <h2 className="cs-h2 sr">This wasn't a set of features. It was a platform that changed how the work got done.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">Schedule managers saved an average of $5,120 per year. 60% report an easier time filling work shifts. 75% report improved employee autonomy, and 33% report improved retention — outcomes that trace directly back to giving nurses more agency and schedulers a clearer system.</p>
+              <p className="cs-p sr">Schedule managers saved an average of $5,120 per year. 60% report an easier time filling work shifts. 75% report improved employee autonomy, and 33% report improved retention, outcomes that trace directly back to giving nurses more agency and schedulers a clearer system.</p>
               <p className="cs-p sr">As schedulers saw results, adoption grew. The platform wasn't just functional. It became something people relied on.</p>
             </div>
             <div>

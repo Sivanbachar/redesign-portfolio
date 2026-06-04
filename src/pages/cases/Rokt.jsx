@@ -17,9 +17,7 @@ export default function Rokt() {
       <div className="cs-hero sr">
         <p className="cs-tag">Rokt · E-Commerce Ad-Tech · Experimentation &amp; Design · 2021</p>
         <h1 className="cs-h1">ROKT</h1>
-        <p className="cs-lead">Improving revenue per transaction through experimentation</p>
-        <p className="cs-lead" style={{ marginTop: 16 }}>Rokt helps companies generate additional revenue by showing ads at the moment of purchase. While overall revenue increased as more partners were added, a core metric — revenue per transaction (RPT) — had stagnated. The system was scaling, but the product itself wasn't becoming more effective.</p>
-        <p className="cs-lead" style={{ marginTop: 16 }}>My focus was to improve RPT by identifying what actually drives engagement and conversion in this high-intent moment.</p>
+        <p className="cs-lead">RPT had stagnated not because the designs were bad, but because the team had no mechanism for learning. Designs shipped. Results weren't systematically studied. Learnings weren't fed back into the next cycle. I built that mechanism.</p>
       </div>
 
       <div className="cs-meta-row">
@@ -27,7 +25,7 @@ export default function Rokt() {
           ['Year', '2021'],
           ['Role', 'Experimentation Strategy\nDesign Direction\nTeam Mentorship'],
           ['Devices', 'Mobile\nDesktop'],
-          ['Impact', '+25–30% lift in conversion per impression across key experiments, contributing to increased revenue per transaction (RPT)'],
+          ['Impact', '+25-30% lift in conversion per impression across key experiments, contributing to increased revenue per transaction (RPT)'],
         ].map(([l, v]) => (
           <div className="cs-meta-cell sr" key={l}>
             <p className="cs-meta-label">{l}</p>
@@ -67,7 +65,7 @@ export default function Rokt() {
             <div>
               <p className="cs-p sr">Ad revenue from the core product wasn't improving.</p>
               <p className="cs-p sr">Rokt's platform helps companies generate additional revenue by showing ads during high-intent moments, like after a purchase.</p>
-              <p className="cs-p sr">For example, if a company earns an additional $0.10 per transaction from ads, that quickly scales. At 100,000 transactions, that's an extra $10,000 in revenue. This metric — revenue per transaction (RPT) — is a key indicator of how effective the product is.</p>
+              <p className="cs-p sr">For example, if a company earns an additional $0.10 per transaction from ads, that quickly scales. At 100,000 transactions, that's an extra $10,000 in revenue. This metric, revenue per transaction (RPT), is a key indicator of how effective the product is.</p>
             </div>
             <div>
               <p className="cs-p sr">While overall revenue continued to grow as Rokt partnered with more companies, RPT had stagnated. The system was scaling, but the product itself wasn't becoming more effective.</p>
@@ -79,10 +77,10 @@ export default function Rokt() {
         {/* MY ROLE */}
         <div className="cs-section">
           <span className="cs-section-label sr">My Role</span>
-          <h2 className="cs-h2 sr">Design direction and experimentation strategy.</h2>
+          <h2 className="cs-h2 sr">I built the system that made the team smarter over time.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">I led design direction and experimentation strategy for improving ad performance across key partner experiences, while mentoring a designer through execution. My focus was not just designing ad units, but defining how design decisions influenced performance outcomes — work that sat at the intersection of product, data, and business.</p>
+              <p className="cs-p sr">There was no structured experimentation process when I arrived. I built one. I defined the hypothesis framework, established the testing cadence, created the metrics definitions, and built the feedback loop that connected results across partner environments. I also established a mentorship structure that scaled my thinking to a second designer, so the system could run without being bottlenecked by me.</p>
             </div>
             <div>
               {[
@@ -103,12 +101,12 @@ export default function Rokt() {
         {/* APPROACH */}
         <div className="cs-section">
           <span className="cs-section-label sr">Approach</span>
-          <h2 className="cs-h2 sr">Shifting from design to experimentation.</h2>
+          <h2 className="cs-h2 sr">I converted a design team into a learning system.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">Instead of treating this as a redesign effort, we reframed it as a system of continuous experimentation.</p>
-              <p className="cs-p sr">We established a repeatable loop: generate hypotheses based on behavior and performance gaps, design targeted variations, test across live partner environments, measure impact on key metrics (CTR, conversion, RPT), then feed learnings into the next iteration.</p>
-              <p className="cs-p sr">Over time, this shifted the team from shipping static designs to building a system that continuously improves performance.</p>
+              <p className="cs-p sr">Before this work, the team shipped designs. I reframed the entire engagement as a system of continuous experimentation and built the operating mechanism that made it run.</p>
+              <p className="cs-p sr">I defined the hypothesis framework, established the testing cadence, created the metrics definitions, and built the feedback loop that connected results across partner environments. Over 18 months, this shifted the team from shipping static designs once a month to running continuous experiments at twice the cadence, with learnings that compounded across verticals rather than staying siloed.</p>
+              <p className="cs-p sr">The question I introduced to the team: not what should we design, but what should we learn next.</p>
             </div>
             <div>
               <div className="cs-insight sr">
@@ -138,7 +136,7 @@ export default function Rokt() {
               color: 'rgba(255,255,255,0.28)',
               marginBottom: 0,
               textAlign: 'center',
-            }}>Experimentation Loop — System Overview</p>
+            }}>Experimentation Loop, System Overview</p>
 
             {/* SVG viewBox clips the standalone-file title block (y<120),
                 showing only the loop itself. All colors adapted to dark theme. */}
@@ -227,7 +225,7 @@ export default function Rokt() {
           <h2 className="cs-h2 sr">The finding that changed everything.</h2>
 
           {/* Intro + method cards */}
-          <p className="cs-p sr" style={{ maxWidth: 680 }}>I surveyed and screened over 100 users to interview 50 about their experience shopping online and encountering ads. Sessions were conducted on actual sites they use — probing how they notice, process, and respond to ads at different points in the journey.</p>
+          <p className="cs-p sr" style={{ maxWidth: 680 }}>I surveyed and screened over 100 users to interview 50 about their experience shopping online and encountering ads. Sessions were conducted on actual sites they use, probing how they notice, process, and respond to ads at different points in the journey.</p>
 
           <div className="cs-method-row sr" style={{ marginTop: 40 }}>
             {[
@@ -243,7 +241,7 @@ export default function Rokt() {
             ))}
           </div>
 
-          {/* Pullquote — full width */}
+          {/* Pullquote, full width */}
           <div className="cs-pullquote sr" style={{ marginTop: 64 }}>
             <p className="cs-pullquote-text">"I don't even see them anymore. My brain just skips past anything that looks like an ad."</p>
             <p className="cs-pullquote-attr">User interview · Discovery research</p>
@@ -258,11 +256,11 @@ export default function Rokt() {
                 ))}
               </div>
               <p className="cs-dot-fraction">50 <span>/ 100+</span></p>
-              <p className="cs-dot-label">users screened — 50 selected for in-depth sessions based on shopping behavior and ad engagement patterns</p>
+              <p className="cs-dot-label">users screened, 50 selected for in-depth sessions based on shopping behavior and ad engagement patterns</p>
             </div>
             <div className="cs-insight" style={{ margin: 0, padding: '40px 0' }}>
               <span className="cs-insight-label">Central Finding</span>
-              <p className="cs-insight-text">Users aren't passively ignoring ads — they're actively avoiding them regardless of relevance. The question became: how do we earn the right to be there at all?</p>
+              <p className="cs-insight-text">Users aren't passively ignoring ads, they're actively avoiding them regardless of relevance. The question became: how do we earn the right to be there at all?</p>
             </div>
           </div>
         </div>
@@ -286,10 +284,10 @@ export default function Rokt() {
           </div>
           <div className="cs-finding-grid sr" style={{ marginTop: 64 }}>
             {[
-              { tag: 'Experiment · Visual Context', h: 'Relevance mattered more than visual restraint', b: 'Imagery had been avoided due to historically poor performance. Testing functional and contextual imagery — visuals that reinforced the offer\'s value — showed that relevance and clarity outweighed assumptions about visual noise. Result: +25% conversion per impression.' },
+              { tag: 'Experiment · Visual Context', h: 'Relevance mattered more than visual restraint', b: 'Imagery had been avoided due to historically poor performance. Testing functional and contextual imagery, visuals that reinforced the offer\'s value, showed that relevance and clarity outweighed assumptions about visual noise. Result: +25% conversion per impression.' },
               { tag: 'Experiment · Content Clarity', h: 'Users scan, not read', b: 'In transactional flows, users process information quickly. Replacing dense copy with structured benefit lists made offers easier to evaluate at a glance. Result: incremental performance lift and measurably improved clarity scores.' },
-              { tag: 'Experiment · Interaction Control', h: 'Agency increased engagement', b: 'Once dismissed, offers could not be revisited. Adding navigation between offers let users explore at their own pace — shifting the experience from passive exposure to active exploration. Result: +30% conversion per impression.' },
-              { tag: 'Experiment · Visual Trust', h: 'Brand association drove content engagement', b: "Users were more likely to engage with ad content when the UI mirrored the visual language of the host site. They extended trust from the brand they had just purchased from to the ad content alongside it. Ads that felt native weren't seen as intrusions — they were perceived as endorsed." },
+              { tag: 'Experiment · Interaction Control', h: 'Agency increased engagement', b: 'Once dismissed, offers could not be revisited. Adding navigation between offers let users explore at their own pace, shifting the experience from passive exposure to active exploration. Result: +30% conversion per impression.' },
+              { tag: 'Experiment · Visual Trust', h: 'Brand association drove content engagement', b: "Users were more likely to engage with ad content when the UI mirrored the visual language of the host site. They extended trust from the brand they had just purchased from to the ad content alongside it. Ads that felt native weren't seen as intrusions, they were perceived as endorsed." },
             ].map(({ tag, h, b }) => (
               <div className="cs-finding sr" key={tag}>
                 <span className="cs-finding-tag">{tag}</span>
@@ -309,8 +307,8 @@ export default function Rokt() {
           <h2 className="cs-h2 sr">More than incremental improvements.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">This work extended beyond individual experiment results. 40+ experiments across multiple design directions, doubled experimentation velocity from monthly to biweekly, and applied learnings across major partners.</p>
-              <p className="cs-p sr">This created a system where performance improvements could compound over time — not just for a single partner, but across the platform.</p>
+              <p className="cs-p sr">The outcome wasn't 40 experiments. It was an operating mechanism that didn't exist before: a team that learns faster than it ships, with a shared library of validated performance principles that any partner environment can draw from. I built that. The 40+ experiments, the doubled velocity, the cross-vertical application are what the system produced.</p>
+              <p className="cs-p sr">Performance improvements now compound over time. Not because any single design was brilliant, but because the system I built keeps getting smarter.</p>
             </div>
             <div>
               {[
@@ -334,7 +332,7 @@ export default function Rokt() {
           <div className="cs-finding-grid sr">
             {[
               { h: "The most effective products aren't defined by a single solution. They're defined by how well they learn.", b: 'In high-intent environments, small changes can have outsized impact. The key is not predicting the right answer upfront, but building systems that can discover it quickly.' },
-              { h: "Design's role is most powerful when it's connected to outcomes, not just outputs.", b: "The work that mattered most wasn't any individual design decision. It was building a system that could continuously improve — and positioning design as the engine of that improvement." },
+              { h: "Design's role is most powerful when it's connected to outcomes, not just outputs.", b: "The work that mattered most wasn't any individual design decision. It was building a system that could continuously improve, and positioning design as the engine of that improvement." },
             ].map(({ h, b }) => (
               <div className="cs-finding" key={h}>
                 <span className="cs-finding-tag">Key Learning</span>

@@ -13,7 +13,7 @@ export default function LogoMark({ onClick }) {
       onMouseLeave={() => setHovered(false)}
       aria-label="Home"
     >
-      {/* Original SB monogram — 4 paths that disperse on hover */}
+      {/* Original SB monogram, 4 paths that disperse on hover */}
       <svg
         width="24" height="24"
         viewBox="0 0 228 226"
@@ -48,7 +48,7 @@ export default function LogoMark({ onClick }) {
         />
       </svg>
 
-      {/* Home icon — fades in as logo disperses */}
+      {/* Home icon, fades in as logo disperses */}
       <svg
         width="24" height="24"
         viewBox="0 0 24 24"

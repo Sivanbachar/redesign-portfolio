@@ -41,7 +41,7 @@ export default function Footer() {
       gap:            16,
     }}>
 
-      {/* Left — copyright */}
+      {/* Left, copyright */}
       <p style={{
         fontFamily:    'var(--mono)',
         fontSize:       10,
@@ -53,7 +53,7 @@ export default function Footer() {
         © Sivan Baum {new Date().getFullYear()}
       </p>
 
-      {/* Center — social icons */}
+      {/* Center, social icons */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
         <a
           href={LINKEDIN}
@@ -88,7 +88,7 @@ export default function Footer() {
         </a>
       </div>
 
-      {/* Right — back to top */}
+      {/* Right, back to top */}
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button
           onClick={backToTop}

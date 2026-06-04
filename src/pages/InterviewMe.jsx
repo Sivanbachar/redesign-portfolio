@@ -159,7 +159,7 @@ export default function InterviewMe() {
           </div>
         )}
 
-        {/* All questions asked — contact form */}
+        {/* All questions asked, contact form */}
         {currentPrompts.length === 0 && messages.length > 0 && (
           <div className="im-end im-appear">
             <div className="im-contact-card">

@@ -99,7 +99,7 @@ export default function ChatAssistant() {
   const bottomRef = useRef(null)
   const panelRef  = useRef(null)
 
-  // Route-aware question priority — re-orders when route changes
+  // Route-aware question priority, re-orders when route changes
   const initialIds = ROUTE_INITIAL_IDS[pathname] || DEFAULT_INITIAL_IDS
 
   // Always filter out asked questions; initial IDs for this route come first
@@ -167,7 +167,7 @@ export default function ChatAssistant() {
     return () => document.removeEventListener('mousedown', handler)
   }, [open])
 
-  // Proactive nudge — fires once per session, 9s after page load, not if already open
+  // Proactive nudge, fires once per session, 9s after page load, not if already open
   useEffect(() => {
     if (nudgeDone || open) return
     const t = setTimeout(() => {
@@ -322,7 +322,7 @@ export default function ChatAssistant() {
               </div>
             )}
 
-            {/* All done — own question form */}
+            {/* All done, own question form */}
             {!typing && currentPrompts.length === 0 && messages.length > 0 && (
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '14px 16px', flexShrink: 0 }}>
                 {formStatus === 'sent' ? (
@@ -425,7 +425,7 @@ export default function ChatAssistant() {
               <span style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap' }}>Interview me</span>
             </div>
           )}
-          {/* Avatar — pulses gently when nudge fires */}
+          {/* Avatar, pulses gently when nudge fires */}
           <div style={{
             width: 44, height: 44, borderRadius: '50%',
             border: `2px solid ${open ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.15)'}`,

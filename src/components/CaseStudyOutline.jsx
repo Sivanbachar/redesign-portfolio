@@ -96,7 +96,7 @@ export default function CaseStudyOutline() {
 
   return (
     <>
-      {/* ── Toggle button — fixed bottom-left ── */}
+      {/* ── Toggle button, fixed bottom-left ── */}
       <button
         onClick={() => setOpen(o => !o)}
         aria-label="Case study outline"
@@ -175,7 +175,7 @@ export default function CaseStudyOutline() {
           marginBottom:   32,
         }}>Case Study</p>
 
-        {/* Slide deck toggle — BookPins only */}
+        {/* Slide deck toggle, BookPins only */}
         {(location.pathname === '/projects/bookpins' || location.pathname === '/projects/bookpins/slides') && (
           <div style={{ padding: '0 16px 24px', marginTop: 8 }}>
             <button

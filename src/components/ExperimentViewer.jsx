@@ -155,7 +155,7 @@ export default function ExperimentViewer() {
           fontFamily: 'var(--mono)', fontSize: 9,
           letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.3)',
-        }}>Interactive — Ad Placement Variants</span>
+        }}>Interactive, Ad Placement Variants</span>
         <span style={{
           fontFamily: 'var(--mono)', fontSize: 9,
           letterSpacing: '0.14em', textTransform: 'uppercase',
@@ -201,7 +201,7 @@ export default function ExperimentViewer() {
             draggable={false}
           />
 
-          {/* Scrim — softens screen content behind the ad slot */}
+          {/* Scrim, softens screen content behind the ad slot */}
           <div style={{
             position: 'absolute',
             inset: 0,
@@ -210,7 +210,7 @@ export default function ExperimentViewer() {
             pointerEvents: 'none',
           }} />
 
-          {/* Ad slot — overlaid exactly on the grey box, floats above scrim */}
+          {/* Ad slot, overlaid exactly on the grey box, floats above scrim */}
           <div style={{
             position: 'absolute',
             top:   `${SLOT.top}%`,

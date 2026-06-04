@@ -14,7 +14,7 @@ const isTouch = () =>
 function KeyboardHint() {
   const [vis, setVis] = useState(false)
   useEffect(() => {
-    if (isTouch()) return  // no keyboard on touch — skip
+    if (isTouch()) return  // no keyboard on touch, skip
     const check = () => {
       const proj = document.querySelector('.projects-sec')
       if (!proj) return
@@ -89,8 +89,8 @@ export default function Home() {
       <section className="intro-sec page-section" data-section="intro">
         <div className="intro-inner">
           <p className="intro-statement sr">
-            I help teams define{' '}
-            <span className="intro-gradient">what to build, not just how it looks.</span>
+            I define what gets built.{' '}
+            <span className="intro-gradient">Then I build it.</span>
           </p>
         </div>
       </section>

@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 
-// Skip canvas + rAF loop entirely on touch/mobile — GPU compositing causes blank screens on Safari
+// Skip canvas + rAF loop entirely on touch/mobile, GPU compositing causes blank screens on Safari
 const isTouch = () =>
   typeof window !== 'undefined' &&
   (('ontouchstart' in window) || window.matchMedia('(pointer: coarse)').matches)
 
 export default function ElectricGrid() {
   useEffect(() => {
-    if (isTouch()) return  // no cursor on mobile — bail immediately
+    if (isTouch()) return  // no cursor on mobile, bail immediately
 
     const GRID = 56
     let sparks = []

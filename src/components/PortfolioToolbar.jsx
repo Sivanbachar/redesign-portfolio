@@ -276,7 +276,7 @@ export default function PortfolioToolbar() {
 
   useEffect(() => {
     if (typing) {
-      // Show typing indicator — scroll to bottom
+      // Show typing indicator, scroll to bottom
       setTimeout(() => chatBottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }), 60)
     } else if (messages.length > 0) {
       const last = messages[messages.length - 1]
@@ -284,7 +284,7 @@ export default function PortfolioToolbar() {
         // Scroll to the TOP of the answer so user sees it from the start
         setTimeout(() => lastAnswerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60)
       } else {
-        // Question added — scroll to bottom
+        // Question added, scroll to bottom
         setTimeout(() => chatBottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }), 60)
       }
     }
@@ -336,7 +336,7 @@ export default function PortfolioToolbar() {
           .im-fab:hover { box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.4) !important; }
         `}</style>
 
-        {/* ── Mini music pill — bottom-left, below outline button ── */}
+        {/* ── Mini music pill, bottom-left, below outline button ── */}
         <div style={{
           position: 'fixed',
           bottom: 96,
@@ -403,7 +403,7 @@ export default function PortfolioToolbar() {
           </button>
         </div>
 
-        {/* ── Chat FAB — bottom-right ── */}
+        {/* ── Chat FAB, bottom-right ── */}
         {chatOpen && (
           <div
             onWheel={e => e.stopPropagation()}
@@ -447,7 +447,7 @@ export default function PortfolioToolbar() {
                 <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', paddingBottom: 6 }}>
                   <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
                   <div style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '12px 12px 12px 3px', padding: '10px 14px', maxWidth: '82%' }}>
-                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, margin: 0 }}>Hi, I'm Sivan. Select a question and I'll answer it — or ask me anything about my work.</p>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, margin: 0 }}>Hi, I'm Sivan. Select a question and I'll answer it, or ask me anything about my work.</p>
                   </div>
                 </div>
               )}
@@ -608,7 +608,7 @@ export default function PortfolioToolbar() {
               <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end', animation: 'msgIn 0.2s ease', paddingBottom: 6 }}>
                 <img src={PROFILE_IMG} alt="" style={{ width: 26, height: 26, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
                 <div style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '12px 12px 12px 3px', padding: '10px 14px', maxWidth: '82%' }}>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, margin: 0 }}>Hi, I'm Sivan. Select a question and I'll answer it — or ask me anything about my work.</p>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, margin: 0 }}>Hi, I'm Sivan. Select a question and I'll answer it, or ask me anything about my work.</p>
                 </div>
               </div>
             )}
@@ -785,7 +785,7 @@ export default function PortfolioToolbar() {
         </button>
       </div>
 
-      {/* ── TOOLBAR — Spotify style ───────────────────────────────────────── */}
+      {/* ── TOOLBAR, Spotify style ───────────────────────────────────────── */}
       <div style={{
         position: 'fixed', bottom: 0, left: 0, right: 0,
         height: 80,
