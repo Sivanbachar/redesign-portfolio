@@ -42,7 +42,7 @@ function KeyboardHint() {
 
 function InteractiveHero() {
   const heroRef = useRef(null)
-  const tagline = useScramble('Product Designer · AI · Amazon Kindle')
+  const tagline = useScramble('Sr. Product Designer · Builder · Amazon')
 
   useEffect(() => {
     if (isTouch()) return  // filter:blur() on large composited elements crashes mobile Safari
@@ -194,7 +194,7 @@ export default function Home() {
 
       <footer className="footer">
         <span className="footer-l">© 2025 Sivan Baum</span>
-        <span className="footer-r">Sr. Product Designer · AI · Amazon Kindle</span>
+        <span className="footer-r">Sr. Product Designer · Builder · Amazon</span>
       </footer>
     </div>
   )
