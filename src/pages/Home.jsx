@@ -66,6 +66,9 @@ function InteractiveHero() {
           Baum
         </h1>
         <div className="hero-tagline">{tagline}</div>
+        <p style={{ fontFamily: 'var(--mono)', fontSize: 'clamp(10px,1vw,11px)', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0, marginTop: 12 }}>
+          Product definition · Discovery · Lean UX facilitation
+        </p>
         <div className="hero-scroll">
           <span>Scroll</span>
           <span className="hero-scroll-chevron">∨</span>
@@ -89,9 +92,30 @@ export default function Home() {
       <section className="intro-sec page-section" data-section="intro">
         <div className="intro-inner">
           <p className="intro-statement sr">
-            I help teams define{' '}
-            <span className="intro-gradient">what to build, not just how it looks.</span>
+            Most of my work happens{' '}
+            <span className="intro-gradient">before the design brief exists.</span>
           </p>
+          <p className="sr" style={{
+            fontFamily: 'var(--sans)', fontSize: 'clamp(16px,1.5vw,20px)',
+            color: 'var(--txt2)', lineHeight: 1.7, fontWeight: 400,
+            maxWidth: 640, textAlign: 'center', margin: '32px auto 0',
+          }}>
+            I find the problem worth solving, build the case for it, and drive it from concept to shipped product.
+          </p>
+
+          {/* Capability row */}
+          <div className="cap-row sr">
+            {[
+              { label: 'Product definition', body: 'Define the problem worth solving before anyone writes a brief.' },
+              { label: 'Discovery leadership', body: 'Run Lean UX workshops that convert ambiguous situations into shared direction.' },
+              { label: 'Systems design', body: 'Build frameworks that ship with the product and outlast it.' },
+            ].map(({ label, body }) => (
+              <div key={label} className="cap-cell">
+                <p className="cap-label">{label}</p>
+                <p className="cap-body">{body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -160,22 +184,13 @@ export default function Home() {
               into direction.
             </h2>
             <p className="about-band-bio sr-slide-right d3">
-              I work on problems where the hardest part isn't designing the solution; it's defining
-              what should exist in the first place.
+              I work on problems where the hardest part is not designing the solution. It is deciding what should exist in the first place.
             </p>
             <p className="about-band-bio sr-slide-right d4">
-              At Amazon Kindle, I've led the definition of interaction models that shape how features
-              come together, aligning teams, clarifying direction and turning abstract ideas into
-              systems that scale. My work reaches millions of reading sessions, but its impact shows
-              up earlier: in the interaction models and frameworks that help teams align on what to
-              build and how it should work.
+              At Amazon Kindle, I defined and drove adoption of a three-year product vision that shaped roadmap investment across the reading experience. The frameworks I built are now used by teams shipping features I did not design. That is what I mean by systems that scale.
             </p>
             <p className="about-band-bio sr-slide-right d4">
-              I operate at the intersection of product, design, and engineering, using interaction
-              design to pressure test ideas, expose tradeoffs, and define how products actually
-              behave. Before Amazon, I led 0→1 product work across healthcare, fintech, and ad tech,
-              building systems from the ground up in fast moving environments where there was no
-              clear playbook.
+              I am a certified Lean UX facilitator. I run workshops that turn disconnected stakeholder conversations into shared product direction. Before Amazon, I built 0 to 1 product systems across healthcare, ad tech, and fintech in environments with no PM and no established process.
             </p>
             <div className="about-band-actions sr-slide-right d5">
               <button className="btn-white" onClick={() => navigate('/about')}>
