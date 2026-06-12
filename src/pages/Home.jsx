@@ -65,10 +65,12 @@ function InteractiveHero() {
           <br />
           Baum
         </h1>
-        <div className="hero-tagline">{tagline}</div>
-        <p style={{ fontFamily: 'var(--mono)', fontSize: 'clamp(10px,1vw,11px)', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 0, marginTop: 12 }}>
-          Product definition · Discovery · Lean UX facilitation
-        </p>
+        <div style={{ marginBottom: 40 }}>
+          <div className="hero-tagline" style={{ marginBottom: 8 }}>{tagline}</div>
+          <p style={{ fontFamily: 'var(--mono)', fontSize: 'clamp(9px,0.9vw,10px)', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--txt3)', opacity: 0.6, margin: 0 }}>
+            Product definition · Discovery · Lean UX facilitation
+          </p>
+        </div>
         <div className="hero-scroll">
           <span>Scroll</span>
           <span className="hero-scroll-chevron">∨</span>
