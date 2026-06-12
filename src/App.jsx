@@ -1,7 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Nav              from './components/Nav.jsx'
-import PortfolioToolbar from './components/PortfolioToolbar.jsx'
 import Loader           from './components/Loader.jsx'
 import CaseStudyOutline from './components/CaseStudyOutline.jsx'
 import ExploreMore      from './components/ExploreMore.jsx'
@@ -37,7 +36,6 @@ function AppShell() {
       <ScrollToTop />
       <Nav />
       <CaseStudyOutline />
-      <PortfolioToolbar />
 
       <Routes>
         <Route path="/"                     element={<Home />} />
