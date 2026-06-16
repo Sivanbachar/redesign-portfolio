@@ -89,8 +89,8 @@ export default function Home() {
       <section className="intro-sec page-section" data-section="intro">
         <div className="intro-inner">
           <p className="intro-statement sr">
-            Most of my work happens{' '}
-            <span className="intro-gradient">before the design brief exists.</span>
+            I define what gets built,{' '}
+            <span className="intro-gradient">not just how it looks.</span>
           </p>
           <p className="sr" style={{
             fontFamily: 'var(--sans)', fontSize: 'clamp(16px,1.5vw,20px)',
