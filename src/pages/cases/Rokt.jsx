@@ -17,7 +17,17 @@ export default function Rokt() {
       <div className="cs-hero sr">
         <p className="cs-tag">Rokt · E-Commerce Ad-Tech · Experimentation &amp; Design · 2021</p>
         <h1 className="cs-h1">ROKT</h1>
-        <p className="cs-lead">RPT had stagnated not because the designs were bad, but because the team had no mechanism for learning. Designs shipped. Results weren't systematically studied. Learnings weren't fed back into the next cycle. I built that mechanism.</p>
+        <p className="cs-lead">Rokt ran hundreds of experiments each year, but the team had no reliable way to capture what was working and why. Insights were scattered across decks, tickets, and conversations, which meant teams often repeated work or solved the same problems multiple times. We needed a system that could turn individual experiments into shared organizational learning.</p>
+        <div className="cs-biz-strip sr">
+          <div className="cs-biz-cell">
+            <p className="cs-biz-label">Why it mattered</p>
+            <p className="cs-biz-val">In performance advertising, the team that compounds its learning and the team that doesn't diverge fast. Rokt's ability to optimize its ad product at scale depended on building a knowledge system, not just running more experiments.</p>
+          </div>
+          <div className="cs-biz-cell">
+            <p className="cs-biz-label">What changed</p>
+            <p className="cs-biz-val">An end-to-end experimentation infrastructure shipped that ran more than 40 experiments per year, converting the design function from an execution team into a continuous optimization operation — with a 25 to 30% lift in conversion per impression across key experiments.</p>
+          </div>
+        </div>
       </div>
 
       <div className="cs-meta-row">

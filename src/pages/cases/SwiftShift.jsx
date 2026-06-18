@@ -16,7 +16,17 @@ export default function SwiftShift() {
       <div className="cs-hero sr">
         <p className="cs-tag">Swift Shift · Home Healthcare Staffing · 0→1 Product Design · Cross-Platform</p>
         <h1 className="cs-h1">SWIFT SHIFT</h1>
-        <p className="cs-lead">I was hired as a designer. I functioned as the entire product function. With no product manager, no design system, no research practice, and no validated understanding of either side of the marketplace, I built all of it from scratch simultaneously across five surfaces while defining what to build in the first place.</p>
+        <p className="cs-lead">Hospitals were struggling to fill open shifts quickly enough to maintain coverage. Staffing coordinators spent hours calling, texting, and emailing employees one at a time, creating delays that impacted both operations and patient care. The company needed a product that could replace a highly manual process with a scalable workforce platform.</p>
+        <div className="cs-biz-strip sr">
+          <div className="cs-biz-cell">
+            <p className="cs-biz-label">Why it mattered</p>
+            <p className="cs-biz-val">Every unfilled shift creates compounding consequences: direct financial loss, downstream clinical risk, and burnout for the nurses absorbing excess coverage — a problem with simultaneous financial, safety, and human stakes.</p>
+          </div>
+          <div className="cs-biz-cell">
+            <p className="cs-biz-label">What changed</p>
+            <p className="cs-biz-val">A group-based self-coverage model transferred ownership of last-minute vacancies from schedulers to nursing peers, saving $5,120 per manager per year and creating a scalable operational mechanism the company could take to market.</p>
+          </div>
+        </div>
       </div>
 
       <div className="cs-meta-row">

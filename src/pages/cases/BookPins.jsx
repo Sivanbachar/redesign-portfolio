@@ -69,7 +69,17 @@ export default function BookPins() {
       <div className="cs-hero sr">
         <p className="cs-tag">Amazon · Kindle · UX Lead Initiative · 2024</p>
         <h1 className="cs-h1">Book Pins</h1>
-        <p className="cs-lead">Redesigning how readers reference content in Kindle, shifting from a linear reading experience to one that supports studying, comparing and revisiting content in context.</p>
+        <p className="cs-lead">Kindle readers had plenty of ways to save information, but no good way to revisit it later. Power users were exporting highlights, taking screenshots, and relying on third-party tools to organize what they learned from books. We saw an opportunity to turn scattered reading artifacts into a system readers could actually return to and use.</p>
+        <div className="cs-biz-strip sr">
+          <div className="cs-biz-cell">
+            <p className="cs-biz-label">Why it mattered</p>
+            <p className="cs-biz-val">Readers who actively annotate and reference their books are the highest-retention, highest-advocacy cohort on the platform — and they were churning to external tools to do work Kindle should have owned.</p>
+          </div>
+          <div className="cs-biz-cell">
+            <p className="cs-biz-label">What changed</p>
+            <p className="cs-biz-val">Book Pins shipped as a funded product, reached 446,000 readers, and established a new behavior category on Kindle — reader-organized knowledge that persists across an entire library.</p>
+          </div>
+        </div>
       </div>
 
       <div className="cs-meta-row">

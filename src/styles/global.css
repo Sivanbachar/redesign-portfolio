@@ -801,6 +801,12 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 .cs-decision-cell { padding: 36px; background: var(--bg1); border-right: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr); }
 .cs-decision-cell:nth-child(2n) { border-right: none; }
 .cs-decision-cell:nth-last-child(-n+2) { border-bottom: none; }
+.cs-biz-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; border: 1px solid var(--bdr); border-radius: 4px; overflow: hidden; margin-top: 32px; }
+.cs-biz-cell { padding: 24px 28px; background: var(--bg1); border-right: 1px solid var(--bdr); }
+.cs-biz-cell:last-child { border-right: none; }
+.cs-biz-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+.cs-biz-val { font-family: var(--sans); font-size: 15px; color: var(--txt2); line-height: 1.65; margin: 0; }
+@media (max-width: 600px) { .cs-biz-strip { grid-template-columns: 1fr; } .cs-biz-cell { border-right: none; border-bottom: 1px solid var(--bdr); } .cs-biz-cell:last-child { border-bottom: none; } }
 .cs-outcome-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--bdr); border-radius: 4px; overflow: hidden; margin-top: 48px; }
 .cs-outcome-cell { padding: 36px 28px; background: var(--bg1); border-right: 1px solid var(--bdr); }
 .cs-outcome-cell:last-child { border-right: none; }
