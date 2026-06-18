@@ -84,10 +84,13 @@ export default function Home() {
   useEffect(() => {
     const onScroll = () => {
       if (!introRef.current) return
-      const sec = introRef.current.closest('.intro-sec')
-      if (!sec) return
-      const rect = sec.getBoundingClientRect()
-      const p = Math.max(0, Math.min(1, -rect.top / (rect.height * 0.55)))
+      // Use the wrapper container to track scroll progress —
+      // intro-sec is sticky so its own rect.top doesn't change
+      const wrap = introRef.current.closest('.intro-log-wrap')
+      if (!wrap) return
+      const scrolledPast = Math.max(0, -wrap.getBoundingClientRect().top)
+      const threshold = wrap.offsetHeight * 0.45
+      const p = Math.min(1, scrolledPast / threshold)
       introRef.current.style.opacity = 1 - p * 0.95
       introRef.current.style.transform = `translateY(${-p * 48}px)`
       if (!isTouch()) introRef.current.style.filter = `blur(${p * 7}px)`
@@ -102,16 +105,17 @@ export default function Home() {
       <KeyboardHint />
       <InteractiveHero />
 
-      <section className="intro-sec page-section" data-section="intro">
-        <div className="intro-inner" ref={introRef}>
-          <p className="intro-statement sr">
-            I define what gets built,{' '}
-            <span className="intro-gradient">not just how it looks.</span>
-          </p>
-        </div>
-      </section>
+      <div className="intro-log-wrap">
+        <section className="intro-sec page-section" data-section="intro">
+          <div className="intro-inner" ref={introRef}>
+            <p className="intro-statement sr">
+              I define what gets built,{' '}
+              <span className="intro-gradient">not just how it looks.</span>
+            </p>
+          </div>
+        </section>
 
-      <section className="log-sec page-section" data-section="log">
+        <section className="log-sec page-section" data-section="log">
         <div className="log-inner">
           <p className="log-heading sr">Things I've built</p>
           {[
@@ -132,7 +136,8 @@ export default function Home() {
             </p>
           ))}
         </div>
-      </section>
+        </section>
+      </div>
 
       <section className="projects-sec">
         {PROJECTS.filter(p => !p.hidden).map((p, i) => (

@@ -559,7 +559,10 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 .sr.vis .intro-gradient { background-size: 100% 100%; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ BUILDER LOG ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.log-sec { padding: 80px var(--pad) 60px; position: relative; z-index: 2; }
+/* Wrapper lets intro stay sticky while log slides over it */
+.intro-log-wrap { position: relative; }
+.intro-sec { position: sticky; top: var(--nav); z-index: 1; }
+.log-sec { padding: 80px var(--pad) 100px; position: relative; z-index: 2; background: var(--bg); }
 .log-inner { max-width: 900px; margin: 0 auto; }
 .log-heading { font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--txt3); margin: 0 0 32px; }
 .log-entry { font-family: var(--mono); font-size: 12px; line-height: 2; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05); margin: 0; }
