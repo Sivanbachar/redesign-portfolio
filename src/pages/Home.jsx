@@ -77,8 +77,24 @@ function InteractiveHero() {
 
 export default function Home() {
   const navigate = useNavigate()
+  const introRef = useRef(null)
   useScrollReveal()
   usePaginatedScroll(true)
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (!introRef.current) return
+      const sec = introRef.current.closest('.intro-sec')
+      if (!sec) return
+      const rect = sec.getBoundingClientRect()
+      const p = Math.max(0, Math.min(1, -rect.top / (rect.height * 0.55)))
+      introRef.current.style.opacity = 1 - p * 0.95
+      introRef.current.style.transform = `translateY(${-p * 48}px)`
+      if (!isTouch()) introRef.current.style.filter = `blur(${p * 7}px)`
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <div className="pg">
@@ -87,7 +103,7 @@ export default function Home() {
       <InteractiveHero />
 
       <section className="intro-sec page-section" data-section="intro">
-        <div className="intro-inner">
+        <div className="intro-inner" ref={introRef}>
           <p className="intro-statement sr">
             I define what gets built,{' '}
             <span className="intro-gradient">not just how it looks.</span>
@@ -99,20 +115,6 @@ export default function Home() {
           }}>
             I find the problem worth solving, build the case for it, and drive it from concept to shipped product.
           </p>
-
-          {/* Capability row */}
-          <div className="cap-row sr">
-            {[
-              { label: 'Product definition', body: 'Define the problem worth solving before anyone writes a brief.' },
-              { label: 'Discovery leadership', body: 'Run Lean UX workshops that convert ambiguous situations into shared direction.' },
-              { label: 'Systems design', body: 'Build frameworks that ship with the product and outlast it.' },
-            ].map(({ label, body }) => (
-              <div key={label} className="cap-cell">
-                <p className="cap-label">{label}</p>
-                <p className="cap-body">{body}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
