@@ -116,6 +116,29 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="log-sec page-section" data-section="log">
+        <div className="log-inner">
+          <p className="log-heading sr">Things I've built</p>
+          {[
+            { domain: 'AI & Publishing', platform: 'Consumer Products + Devices', desc: 'Reading and knowledge workflows', company: 'Amazon Kindle' },
+            { domain: 'AdTech & E-commerce', platform: 'SaaS + Internal Platforms', desc: 'Experimentation and optimization systems', company: 'Rokt' },
+            { domain: 'Workforce Management & FinTech', platform: 'Mobile + SaaS Platform', desc: 'Labor and scheduling workflows', company: 'SwiftShift' },
+            { domain: 'AdTech', platform: 'Enterprise SaaS', desc: 'Advertising operations workflows', company: 'OUTFRONT' },
+            { domain: 'HealthTech', platform: 'Consumer Products + Services', desc: 'Patient acquisition and care coordination workflows', company: 'Get U Well' },
+          ].map(({ domain, platform, desc, company }, i) => (
+            <p key={company} className={`log-entry sr d${i + 1}`}>
+              <span className="log-domain">{domain}</span>
+              <span className="log-dot"> · </span>
+              <span className="log-platform">{platform}</span>
+              <span className="log-dot"> · </span>
+              <span className="log-desc">{desc}</span>
+              <span className="log-dot"> · </span>
+              <span className="log-company">{company}</span>
+            </p>
+          ))}
+        </div>
+      </section>
+
       <section className="projects-sec">
         {PROJECTS.filter(p => !p.hidden).map((p, i) => (
           <div

@@ -558,6 +558,19 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 }
 .sr.vis .intro-gradient { background-size: 100% 100%; }
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ BUILDER LOG ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.log-sec { padding: 80px var(--pad) 60px; position: relative; z-index: 2; }
+.log-inner { max-width: 900px; margin: 0 auto; }
+.log-heading { font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--txt3); margin: 0 0 32px; }
+.log-entry { font-family: var(--mono); font-size: 12px; line-height: 2; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05); margin: 0; }
+.log-entry:first-of-type { border-top: 1px solid rgba(255,255,255,0.05); }
+.log-domain { color: var(--txt3); }
+.log-platform { color: var(--txt3); }
+.log-desc { color: var(--txt2); }
+.log-company { color: var(--txt); }
+.log-dot { color: rgba(255,255,255,0.12); }
+@media (max-width: 640px) { .log-entry { font-size: 11px; line-height: 1.9; } }
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PROJECT PANELS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .projects-sec { position: relative; z-index: 2; }
 .cap-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 72px; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; overflow: hidden; background: rgba(255,255,255,0.03); max-width: 820px; margin-left: auto; margin-right: auto; }
