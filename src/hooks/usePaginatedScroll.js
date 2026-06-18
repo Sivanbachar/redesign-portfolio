@@ -10,10 +10,10 @@ export function usePaginatedScroll(active = true) {
     let lastNav = 0
     let currentIdx = 0
 
-    // Only project panels + about are snap targets.
-    // Hero / intro / log scroll naturally so the melt effect can play.
     const getSections = () =>
       [
+        document.querySelector('.hero-wrap'),
+        document.querySelector('.intro-sec'),
         ...Array.from(document.querySelectorAll('.proj-panel')),
         document.querySelector('.about-band'),
       ].filter(Boolean)
@@ -32,13 +32,6 @@ export function usePaginatedScroll(active = true) {
     syncIdx()
     window.addEventListener('load', syncIdx, { once: true })
 
-    // Only intercept wheel/key once the user is in the projects area
-    const inProjectsArea = () => {
-      const sections = getSections()
-      if (!sections.length) return false
-      return window.scrollY + window.innerHeight * 0.6 >= docTop(sections[0])
-    }
-
     const goTo = (idx) => {
       const now = Date.now()
       if (now - lastNav < COOLDOWN) return
@@ -50,34 +43,18 @@ export function usePaginatedScroll(active = true) {
     }
 
     const onWheel = (e) => {
-      if (Math.abs(e.deltaY) < THRESHOLD) return
-      const dir = e.deltaY > 0 ? 1 : -1
-      syncIdx()
-      const nextIdx = currentIdx + dir
-
-      // Scrolling up from first project — let natural scroll take user back
-      if (nextIdx < 0) return
-
-      // Not yet in projects area and scrolling down — let natural scroll carry them in
-      if (!inProjectsArea() && dir > 0) return
-
-      // Not in projects area at all — natural scroll
-      if (!inProjectsArea()) return
-
       e.preventDefault()
-      goTo(nextIdx)
+      if (Math.abs(e.deltaY) < THRESHOLD) return
+      goTo(currentIdx + (e.deltaY > 0 ? 1 : -1))
     }
 
     const onKey = (e) => {
-      if (!inProjectsArea()) return
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
         e.preventDefault()
-        syncIdx()
         goTo(currentIdx + 1)
       }
       if (e.key === 'ArrowUp' || e.key === 'PageUp') {
         e.preventDefault()
-        syncIdx()
         goTo(currentIdx - 1)
       }
     }

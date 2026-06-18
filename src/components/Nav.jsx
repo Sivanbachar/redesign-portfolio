@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { PROJECTS } from '../data/projects.js'
 import LogoMark from './LogoMark.jsx'
+import NavPlayer from './NavPlayer.jsx'
 
 export default function Nav() {
   const navigate = useNavigate()
@@ -67,6 +68,7 @@ export default function Nav() {
           >
             Interview Me
           </button>
+          <NavPlayer />
         </div>
       </nav>
 

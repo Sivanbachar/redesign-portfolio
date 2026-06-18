@@ -6,15 +6,59 @@ import { useScramble } from '../hooks/useScramble.js'
 import ElectricGrid from '../components/ElectricGrid.jsx'
 import { PROJECTS } from '../data/projects.js'
 
-// Keyboard hint is only useful on devices with physical keyboards
 const isTouch = () =>
   typeof window !== 'undefined' &&
   (('ontouchstart' in window) || window.matchMedia('(pointer: coarse)').matches)
 
+const INDUSTRIES = [
+  'AI & Machine Learning',
+  'Publishing & Reading',
+  'Healthcare Technology',
+  'Workforce Management',
+  'Advertising Technology',
+  'E-commerce',
+  'FinTech',
+]
+
+const PLATFORMS = [
+  'Consumer Mobile',
+  'Web Applications',
+  'SaaS Products',
+  'Internal Tools',
+  'E-reader Devices',
+  'AI-Powered Experiences',
+  'Service Design',
+  'Operational Workflows',
+]
+
+function MarqueeRow({ items, reverse = false }) {
+  const tripled = [...items, ...items, ...items]
+  return (
+    <div className="marquee-row">
+      <div className={`marquee-track${reverse ? ' marquee-track--rev' : ''}`}>
+        {tripled.map((item, i) => (
+          <span key={i} className="marquee-item">
+            {item}<span className="marquee-dot"> · </span>
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function MarqueeSection() {
+  return (
+    <section className="marquee-sec">
+      <MarqueeRow items={INDUSTRIES} />
+      <MarqueeRow items={PLATFORMS} reverse />
+    </section>
+  )
+}
+
 function KeyboardHint() {
   const [vis, setVis] = useState(false)
   useEffect(() => {
-    if (isTouch()) return  // no keyboard on touch, skip
+    if (isTouch()) return
     const check = () => {
       const proj = document.querySelector('.projects-sec')
       if (!proj) return
@@ -45,7 +89,7 @@ function InteractiveHero() {
   const tagline = useScramble('Sr. Product Designer · Builder · Amazon')
 
   useEffect(() => {
-    if (isTouch()) return  // filter:blur() on large composited elements crashes mobile Safari
+    if (isTouch()) return
     const onScroll = () => {
       if (!heroRef.current) return
       const p = Math.min(window.scrollY / (heroRef.current.offsetHeight * 0.55), 1)
@@ -77,27 +121,8 @@ function InteractiveHero() {
 
 export default function Home() {
   const navigate = useNavigate()
-  const introRef = useRef(null)
   useScrollReveal()
   usePaginatedScroll(true)
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (!introRef.current) return
-      // Use the wrapper container to track scroll progress —
-      // intro-sec is sticky so its own rect.top doesn't change
-      const wrap = introRef.current.closest('.intro-log-wrap')
-      if (!wrap) return
-      const scrolledPast = Math.max(0, -wrap.getBoundingClientRect().top)
-      const threshold = wrap.offsetHeight * 0.45
-      const p = Math.min(1, scrolledPast / threshold)
-      introRef.current.style.opacity = 1 - p * 0.95
-      introRef.current.style.transform = `translateY(${-p * 48}px)`
-      if (!isTouch()) introRef.current.style.filter = `blur(${p * 7}px)`
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   return (
     <div className="pg">
@@ -105,39 +130,16 @@ export default function Home() {
       <KeyboardHint />
       <InteractiveHero />
 
-      <div className="intro-log-wrap">
-        <section className="intro-sec page-section" data-section="intro">
-          <div className="intro-inner" ref={introRef}>
-            <p className="intro-statement sr">
-              I define what gets built,{' '}
-              <span className="intro-gradient">not just how it looks.</span>
-            </p>
-          </div>
-        </section>
-
-        <section className="log-sec page-section" data-section="log">
-        <div className="log-inner">
-          <p className="log-heading sr">Things I've built</p>
-          {[
-            { domain: 'AI & Publishing', platform: 'Consumer Products + Devices', desc: 'Reading and knowledge workflows', company: 'Amazon Kindle' },
-            { domain: 'AdTech & E-commerce', platform: 'SaaS + Internal Platforms', desc: 'Experimentation and optimization systems', company: 'Rokt' },
-            { domain: 'Workforce Management & FinTech', platform: 'Mobile + SaaS Platform', desc: 'Labor and scheduling workflows', company: 'SwiftShift' },
-            { domain: 'AdTech', platform: 'Enterprise SaaS', desc: 'Advertising operations workflows', company: 'OUTFRONT' },
-            { domain: 'HealthTech', platform: 'Consumer Products + Services', desc: 'Patient acquisition and care coordination workflows', company: 'Get U Well' },
-          ].map(({ domain, platform, desc, company }, i) => (
-            <p key={company} className={`log-entry sr d${i + 1}`}>
-              <span className="log-domain">{domain}</span>
-              <span className="log-dot"> · </span>
-              <span className="log-platform">{platform}</span>
-              <span className="log-dot"> · </span>
-              <span className="log-desc">{desc}</span>
-              <span className="log-dot"> · </span>
-              <span className="log-company">{company}</span>
-            </p>
-          ))}
+      <section className="intro-sec page-section" data-section="intro">
+        <div className="intro-inner">
+          <p className="intro-statement sr">
+            I define what gets built,{' '}
+            <span className="intro-gradient">not just how it looks.</span>
+          </p>
         </div>
-        </section>
-      </div>
+      </section>
+
+      <MarqueeSection />
 
       <section className="projects-sec">
         {PROJECTS.filter(p => !p.hidden).map((p, i) => (
@@ -227,10 +229,6 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer">
-        <span className="footer-l">© 2025 Sivan Baum</span>
-        <span className="footer-r">Sr. Product Designer · Builder · Amazon</span>
-      </footer>
     </div>
   )
 }
