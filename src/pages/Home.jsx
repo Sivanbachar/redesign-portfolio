@@ -109,8 +109,12 @@ function InteractiveHero() {
           <br />
           Baum
         </h1>
-        <div className="hero-tagline" style={{ marginBottom: 40 }}>{tagline}</div>
-        <div className="hero-scroll">
+        <div className="hero-tagline" style={{ marginBottom: 48 }}>{tagline}</div>
+        <div className="hero-ticker">
+          <MarqueeRow items={INDUSTRIES} />
+          <MarqueeRow items={PLATFORMS} reverse />
+        </div>
+        <div className="hero-scroll" style={{ marginTop: 48 }}>
           <span>Scroll</span>
           <span className="hero-scroll-chevron">∨</span>
         </div>
@@ -138,8 +142,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-
-      <MarqueeSection />
 
       <section className="projects-sec">
         {PROJECTS.filter(p => !p.hidden).map((p, i) => (

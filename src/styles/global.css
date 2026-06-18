@@ -578,6 +578,12 @@ body.mega-open .pg { filter: blur(6px); transform: scale(0.995); }
 }
 .sr.vis .intro-gradient { background-size: 100% 100%; }
 
+/* ── Hero ticker (full-width breakout inside hero-content) ────────────────── */
+.hero-ticker { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); overflow: hidden; }
+.hero-ticker::before, .hero-ticker::after { content: ''; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 3; pointer-events: none; }
+.hero-ticker::before { left: 0; background: linear-gradient(to right, var(--bg) 30%, transparent); }
+.hero-ticker::after  { right: 0; background: linear-gradient(to left,  var(--bg) 30%, transparent); }
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MARQUEE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .marquee-sec { padding: 48px 0 56px; overflow: hidden; position: relative; z-index: 2; }
 .marquee-sec::before,
