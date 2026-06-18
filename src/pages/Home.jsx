@@ -108,13 +108,6 @@ export default function Home() {
             I define what gets built,{' '}
             <span className="intro-gradient">not just how it looks.</span>
           </p>
-          <p className="sr" style={{
-            fontFamily: 'var(--sans)', fontSize: 'clamp(16px,1.5vw,20px)',
-            color: 'var(--txt2)', lineHeight: 1.7, fontWeight: 400,
-            maxWidth: 640, textAlign: 'center', margin: '32px auto 0',
-          }}>
-            I find the problem worth solving, build the case for it, and drive it from concept to shipped product.
-          </p>
         </div>
       </section>
 

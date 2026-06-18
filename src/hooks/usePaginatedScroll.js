@@ -15,6 +15,7 @@ export function usePaginatedScroll(active = true) {
       [
         document.querySelector('.hero-wrap'),
         document.querySelector('.intro-sec'),
+        document.querySelector('.log-sec'),
         ...Array.from(document.querySelectorAll('.proj-panel')),
         document.querySelector('.about-band'),
       ].filter(Boolean)
