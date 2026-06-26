@@ -5,60 +5,57 @@ const skills = [
   {
     group: 'Design',
     items: [
-      'Product Design', 'Design Systems', 'Native Mobile (iOS/Android)',
-      'Interaction Design', 'Visual Design', 'Information Architecture',
-      'Accessibility (WCAG)', 'Rapid Prototyping',
-    ],
-  },
-  {
-    group: 'Development',
-    items: [
-      'React/HTML/CSS/JS', 'Agentic AI Workflows', 'AI-Assisted Development',
-      'Front-End Development', 'AI Prototyping', 'Prompt Design',
+      'Interaction & Visual Design', 'Design Systems', 'Rapid Prototyping',
+      'Native Mobile (iOS/Android)', 'Information Architecture',
+      'Accessibility (WCAG)', 'Design Thinking & Facilitation',
     ],
   },
   {
     group: 'Strategy',
     items: [
-      '0→1 Product Design', 'PRD Writing', 'Cross-Functional Collaboration',
-      'Stakeholder Storytelling', 'User Research', 'Requirements Gathering',
-      'Product Discovery', 'Experimentation',
+      'Product Strategy & Discovery', '0→1 Product Design', 'Cross Functional Leadership',
+      'Stakeholder Alignment', 'User Research', 'Research Synthesis',
+      'Experimentation & A/B Testing', 'AI Assisted Workflows',
     ],
   },
   {
     group: 'Tools',
-    items: ['Figma', 'GitHub', 'Vercel', 'Jira', 'Confluence', 'Framer'],
+    items: ['Figma', 'FigJam', 'Protopie', 'Framer', 'Miro', 'Jira', 'Claude', 'Cursor'],
   },
   {
     group: 'AI Tools',
-    items: ['Claude Code', 'Claude Design', 'Google Stitch', 'Figma Make', 'Kiro (Amazon)', 'Quick Suite (Amazon)', 'Vercel AI', 'GitHub Copilot'],
+    items: ['Claude Code', 'Kiro (Amazon)', 'GitHub Copilot', 'Vercel AI', 'Figma Make', 'Google Stitch'],
   },
 ]
 
 const experience = [
   {
     logo: '/images/resume/amazon_logo.jpg',
-    role: 'UX Designer II',
+    role: 'Senior Product Designer (UX Designer II)',
     company: 'Amazon · Kindle',
     location: 'New York',
     date: 'Aug 2022 to Present',
     bullets: [
-      'Defined and secured leadership adoption of a 3-year vision for the core Kindle reading experience across mobile and e-reader platforms, shaping roadmap investment and enabling new in-book content capabilities.',
-      'Led end-to-end design and launch of four customer-facing features Pinnable Content, Link Preview, Contextual Layers, and Entity Cards improving discoverability and engagement across millions of reading sessions.',
-      'Architected a scalable UX framework for contextual content, increasing feature development velocity and reducing time-to-launch for new reading capabilities.',
-      'Used AI-assisted prototyping via Kiro to build functional, production-like prototypes, shortening iteration cycles and reducing engineering rework through earlier stakeholder alignment.',
+      'Defined and drove product vision for emerging customer experiences, influencing roadmap priorities and investment decisions across initiatives serving millions of readers.',
+      'Led user research and discovery efforts, synthesizing customer insights into product opportunities, long-term strategy, and roadmap decisions.',
+      'Presented product strategy, research findings, and design recommendations to senior leadership, earning alignment and support for new product directions across multiple initiatives.',
+      'Facilitated cross-functional workshops and product discovery efforts across design, product, and engineering organizations, aligning stakeholders around customer needs, product strategy, and investment priorities.',
+      'Built more than 60 interactive prototypes to pressure test concepts, align stakeholders, and reduce the time from idea to decision by up to two months.',
+      'Led the design of AI-powered reading experiences that integrated large language models into Kindle and shipped to millions of readers, helping them understand characters, places, and concepts while preserving trust and immersion.',
+      'Designed reusable interaction patterns and design system frameworks that improved consistency, strengthened accessibility, and accelerated future product development.',
     ],
   },
   {
     logo: '/images/resume/getuwell_logo.jpg',
-    role: 'Head of Service & Product Design',
+    role: 'Service and UX Design Lead (Consultant)',
     company: 'Getuwell',
     location: 'New York',
     date: 'Nov 2021 to Aug 2022',
     bullets: [
-      'Led launch and scale of a high-volume COVID-19 testing service, designing integrated digital and operational systems across physical and digital touchpoints.',
-      'Ran on-site workflow diagnostics and redesigned intake processes, increasing daily patient throughput and clearing operational bottlenecks.',
-      'Designed and launched patient-facing digital experiences that streamlined scheduling and improved visit efficiency end to end.',
+      'Led product and service design initiatives supporting more than 600,000 patients across healthcare operations.',
+      'Increased patient throughput by 56% through workflow redesign, operational simplification, and service improvements.',
+      'Designed service experiences end to end, spanning multiple user groups, operational teams, and touchpoints.',
+      'Conducted research across patients, providers, and operational stakeholders to identify opportunities and prioritize investments; partnered with leadership to deliver scalable, efficient solutions.',
     ],
   },
   {
@@ -68,21 +65,28 @@ const experience = [
     location: 'New York',
     date: 'Oct 2020 to Nov 2021',
     bullets: [
-      'Led experimentation-driven optimization of checkout cross-sell experiences, designing and testing variations in placement, messaging, and interaction patterns.',
-      'Ran multivariate experiments that improved click-through and conversion rates by double-digit percentages, directly informing product and monetization strategy.',
+      'Designed customer experiences across millions of e-commerce transactions, improving conversion and engagement through experimentation, behavioral analysis, and iterative A/B testing.',
+      'Improved conversion and reduced drop-off by 15–25% through workflow simplification, customer journey optimization, and data-informed design decisions.',
+      'Partnered with product, engineering, and analytics teams to define experiments and measure business impact; translated behavioral insights into scalable interaction systems and experimentation frameworks.',
     ],
   },
   {
     logo: '/images/resume/swift_shift_logo.png',
-    role: 'UX Designer',
+    role: 'Founding UX Designer',
     company: 'Swift Shift',
     location: 'New York',
     date: 'Feb 2019 to Oct 2020',
     bullets: [
-      'Served as sole designer across three products, establishing structured UX research practices and scalable experience frameworks from scratch.',
-      'Conducted research with schedulers and nurses to digitize manual coordination workflows, increasing nurse application rates while reducing scheduler workload.',
+      'Led product design from concept through launch for a healthcare staffing platform spanning internal workforce management systems and mobile experiences for healthcare professionals.',
+      'Designed complex operational workflows used by staffing coordinators to manage scheduling, workforce allocation, and shift fulfillment, ensuring decisions translated seamlessly into the nurse experience.',
+      'Conducted research across coordinators, facilities, and nurses; partnered directly with founders and engineers to define product direction and establish scalable product foundations that supported platform growth.',
     ],
   },
+]
+
+const previousExperience = [
+  { company: 'Outfront Media', role: 'UX Designer', date: '2017 to 2019' },
+  { company: 'Agents of Change | Wellb', role: 'UX Designer', date: '2016 to 2017' },
 ]
 
 export default function About() {
@@ -105,10 +109,10 @@ export default function About() {
               Baum
             </h1>
             <p className="resume-bio">
-              Senior Product Designer and AI practitioner at Amazon, building new capabilities inside the Kindle reading experience.
+              Senior Product Designer with 10 years of experience across fintech, healthcare, and consumer products.
             </p>
             <p className="resume-bio">
-              I create the frameworks that make products possible. At Amazon I have built interaction models adopted platform-wide, established research and experimentation practices that didn't exist before I arrived, and driven product directions from ambiguous starting points to shipped experiences used by millions of readers.
+              I lead complex, cross-functional initiatives from discovery through launch, translating ambiguous business and customer problems into scalable products, workflows, and services. I partner with product, engineering, and executive stakeholders to define strategy, drive alignment, and deliver measurable business outcomes.
             </p>
             <p className="resume-bio">
               I don't wait for a brief. I write it. I use AI to compress execution time so more of my energy goes toward the decisions that actually shape what gets built and why.
@@ -148,7 +152,7 @@ export default function About() {
             <div className="sr">
               <h2 className="resume-h">Education</h2>
               <div className="edu-entry">
-                <p className="edu-degree">B.S., Psychology &amp; Marketing</p>
+                <p className="edu-degree">B.S., Psychology &amp; Management</p>
                 <p className="edu-school">Stern / Sy Syms Business School, Yeshiva University</p>
                 <p className="edu-year">2012 to 2016</p>
               </div>
@@ -162,6 +166,10 @@ export default function About() {
                 <p className="edu-school">Lean UX</p>
                 <p className="edu-year">2021</p>
                 <span className="edu-badge">🏅 Workshop Facilitator</span>
+              </div>
+              <div className="edu-entry">
+                <p className="edu-degree">Certification, UX Analytics</p>
+                <p className="edu-school">Nielsen Norman Group (NNG)</p>
               </div>
             </div>
 
@@ -232,6 +240,20 @@ export default function About() {
                 </div>
               </div>
             ))}
+
+            {/* Previous experience */}
+            <div style={{ marginTop: 40 }} className="sr">
+              <h2 className="resume-h">Previous Experience</h2>
+              {previousExperience.map((e) => (
+                <div key={e.company} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '10px 0', borderBottom: '1px solid var(--bdr)' }}>
+                  <div>
+                    <span className="exp-role" style={{ fontSize: 14 }}>{e.company}</span>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--txt3)', marginLeft: 10 }}>{e.role}</span>
+                  </div>
+                  <span className="exp-date">{e.date}</span>
+                </div>
+              ))}
+            </div>
 
             {/* Leadership */}
             <div style={{ marginTop: 48 }}>
