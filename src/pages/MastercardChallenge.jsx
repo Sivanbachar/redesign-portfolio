@@ -4,11 +4,9 @@ import '../styles/mastercard.css'
 // ── DATA ──────────────────────────────────────────────────────────
 
 const DAYS = [
-  { day: 'Mon', label: 'Understanding\nPeople', desc: 'User forums, App Store reviews, Reddit threads, Trustpilot' },
-  { day: 'Tue', label: 'Reviewing\nProducts', desc: 'Splitwise, Venmo, Tricount, Honeydue, Copilot Money' },
-  { day: 'Wed', label: 'Finding\nPatterns', desc: 'Six recurring industry patterns across all five products' },
-  { day: 'Thu', label: 'Exploring\nConcepts', desc: 'Multiple directions tested against five core user needs' },
-  { day: 'Fri', label: 'Refining and\nPrioritizing', desc: 'One direction forward, features ordered by user confidence' },
+  { day: 'Day 1', label: 'Understanding\nPeople', desc: 'User forums, App Store reviews, Reddit threads, Trustpilot' },
+  { day: 'Day 2', label: 'Competitive\nAnalysis', desc: 'Splitwise, Venmo, Tricount, Honeydue, Copilot Money' },
+  { day: 'Day 3', label: 'Designing and\nPrioritizing', desc: 'Concepts tested against core user needs, one direction forward' },
 ]
 
 const OBSERVATIONS = [
@@ -68,7 +66,7 @@ function SlideShell({ children }) {
   return (
     <>
       <div className="mc-meta mc-a0">
-        <p className="mc-badge">Mastercard · Design Challenge · 2025</p>
+        <p className="mc-badge">Mastercard · Design Challenge · 2026</p>
       </div>
       {children}
     </>
@@ -87,7 +85,7 @@ function Slide1() {
         </div>
         <div className="mc-meta-pair mc-a4">
           <p className="mc-meta-key">Timeline</p>
-          <p className="mc-meta-val">5 days · Solo designer</p>
+          <p className="mc-meta-val">3 days · Solo designer</p>
         </div>
         <div className="mc-meta-pair mc-a4">
           <p className="mc-meta-key">Deliverables</p>
@@ -144,11 +142,11 @@ function Slide2() {
   )
 }
 
-// ── SLIDE 3 · HOW I SPENT FIVE DAYS ──────────────────────────────
+// ── SLIDE 3 · HOW I SPENT THREE DAYS ─────────────────────────────
 function Slide3() {
   return (
     <SlideShell>
-      <h1 className="mc-h1 mc-a1">How I Spent Five Days</h1>
+      <h1 className="mc-h1 mc-a1">How I Spent Three Days</h1>
       <div className="mc-divider mc-a2" />
       <div className="mc-timeline-wrap mc-a3">
         <div className="mc-timeline-track">
@@ -163,7 +161,7 @@ function Slide3() {
           ))}
         </div>
         <p className="mc-timeline-note mc-a4">
-          Given the five day timeline, secondary research and competitive analysis allowed rapid understanding of both user behavior and current market approaches before designing anything.
+          Given the three day timeline, secondary research and competitive analysis allowed rapid understanding of both user behavior and current market approaches before designing anything.
         </p>
       </div>
     </SlideShell>
@@ -248,10 +246,11 @@ function Slide6() {
         <p className="mc-shift-result mc-a3">
           I designed a shared <span>financial dashboard</span>.
         </p>
-        <div className="mc-illus-placeholder mc-a4">
-          <p className="mc-illus-label">Illustration Placeholder</p>
-          <p className="mc-illus-label">Shared Financial Dashboard Concept</p>
-        </div>
+        <img
+          src="/images/toolbar/the_shift_slide.png"
+          alt="Shared Financial Dashboard"
+          className="mc-shift-img mc-a4"
+        />
       </div>
     </SlideShell>
   )
@@ -358,18 +357,16 @@ function Slide10() {
         <div className="mc-uf-person-row mc-a3">
           <p className="mc-uf-person-label">Sarah</p>
           <div className="mc-uf-steps">
-            {row1.map((step, i) => (
-              <>
-                <div
-                  key={step}
-                  className="mc-uf-rect"
-                  style={{ animationDelay: `${0.28 + i * 0.06}s` }}
-                >
-                  {step}
-                </div>
-                {i < row1.length - 1 && <span key={`a${i}`} className="mc-uf-arr">›</span>}
-              </>
-            ))}
+            {row1.flatMap((step, i) => [
+              <div
+                key={step}
+                className="mc-uf-rect"
+                style={{ animationDelay: `${0.28 + i * 0.06}s` }}
+              >
+                {step}
+              </div>,
+              i < row1.length - 1 && <span key={`a${i}`} className="mc-uf-connector" />,
+            ])}
           </div>
         </div>
 
@@ -382,18 +379,16 @@ function Slide10() {
         <div className="mc-uf-person-row mc-a4">
           <p className="mc-uf-person-label">Alex</p>
           <div className="mc-uf-steps">
-            {row2.map((step, i) => (
-              <>
-                <div
-                  key={step}
-                  className={`mc-uf-rect ${step.includes('owe') ? 'mc-uf-rect--accent' : ''} ${step.includes('balanced') ? 'mc-uf-rect--end' : ''}`}
-                  style={{ animationDelay: `${0.42 + i * 0.06}s` }}
-                >
-                  {step}
-                </div>
-                {i < row2.length - 1 && <span key={`b${i}`} className="mc-uf-arr">›</span>}
-              </>
-            ))}
+            {row2.flatMap((step, i) => [
+              <div
+                key={step}
+                className={`mc-uf-rect ${step.includes('owe') ? 'mc-uf-rect--accent' : ''} ${step.includes('balanced') ? 'mc-uf-rect--end' : ''}`}
+                style={{ animationDelay: `${0.42 + i * 0.06}s` }}
+              >
+                {step}
+              </div>,
+              i < row2.length - 1 && <span key={`b${i}`} className="mc-uf-connector" />,
+            ])}
           </div>
         </div>
 
