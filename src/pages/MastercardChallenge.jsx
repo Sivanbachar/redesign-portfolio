@@ -1,7 +1,5 @@
-import { useState, useEffect, useCallback, useRef, Fragment } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import '../styles/mastercard.css'
-
-const TOTAL = 10
 
 // ── DATA ──────────────────────────────────────────────────────────
 const NEEDS = [
@@ -17,7 +15,7 @@ const FRICTIONS = [
   { title: 'Manual bookkeeping is exhausting', desc: 'Forgotten expenses and recurring bills create constant, error-prone maintenance.' },
   { title: 'Money creates social tension', desc: 'People dislike chasing roommates for repayment and often become the household "finance parent."' },
   { title: 'Trust is fragile', desc: 'Hidden calculations, sync issues, and unexpected charges quickly erode shared confidence.' },
-  { title: 'Existing apps solve math — not relationships', desc: 'Most products calculate balances well but do little to reduce emotional friction.' },
+  { title: 'Existing apps solve math, not relationships', desc: 'Most products calculate balances well but do little to reduce emotional friction.' },
 ]
 
 const AFFINITY_CARDS = [
@@ -31,56 +29,56 @@ const AFFINITY_CARDS = [
 const INSIGHTS = [
   {
     finding: 'Balances are confusing, not just unknown.',
-    evidence: '"I just never look at Splitwise anymore because I can never figure out why it says what it says." — App Store review',
-    impl: '→ Every balance needs a one-tap explanation.',
+    evidence: '"I just never look at Splitwise anymore because I can never figure out why it says what it says." (App Store review)',
+    impl: 'Every balance needs a clear, one-tap explanation.',
   },
   {
     finding: 'One person always becomes the household accountant.',
-    evidence: '"My roommate never logs anything. I\'ve just accepted that I track everything for both of us." — Reddit r/personalfinance',
-    impl: '→ Design for the tracked, not just the tracker.',
+    evidence: '"My roommate never logs anything. I\'ve just accepted that I track everything for both of us." (Reddit, r/personalfinance)',
+    impl: 'Design for the tracked, not just the tracker.',
   },
   {
     finding: 'Asking for money feels confrontational.',
-    evidence: '"I just paid the whole thing to avoid the conversation." — Reddit',
-    impl: '→ Reframe requests as shared updates, not demands.',
+    evidence: '"I just paid the whole thing to avoid the conversation." (Reddit)',
+    impl: 'Reframe requests as shared updates, not demands.',
   },
   {
     finding: 'Manual entry leads to drift and forgotten expenses.',
-    evidence: '"I stopped tracking because it was more work than it was worth." — App Store review',
-    impl: '→ Reduce entry to the minimum viable interaction.',
+    evidence: '"I stopped tracking because it was more work than it was worth." (App Store review)',
+    impl: 'Reduce entry to the minimum viable interaction.',
   },
   {
     finding: 'Settlement paralysis grows with balance size.',
-    evidence: '"We\'ve had this $200 balance for three months. At this point it\'s awkward to bring up." — Reddit',
-    impl: '→ Surface balances early. Make small settlements feel natural.',
+    evidence: '"We\'ve had this $200 balance for three months. At this point it\'s awkward to bring up." (Reddit)',
+    impl: 'Surface balances early. Make small settlements feel natural.',
   },
 ]
 
 const PATTERNS = [
-  { pattern: 'Running balances', why: 'Simplest mental model for shared debt', opp: 'Keep — industry-standard expectation' },
-  { pattern: 'Manual expense entry', why: 'Low-friction build, maximum flexibility', opp: 'Reduce — largest single pain point' },
-  { pattern: 'Group-first organization', why: 'Logical container for shared costs', opp: 'Expand to full household context' },
-  { pattern: 'Separate settlement flow', why: 'Regulatory simplicity, less liability', opp: 'Simplify — close the two-app gap' },
-  { pattern: 'Transaction-only activity feed', why: 'Shows what happened', opp: 'Improve with "why" and ownership context' },
-  { pattern: 'Notification-based nudges', why: 'Reactive, familiar pattern', opp: 'Rethink — proactive, relationship-aware language' },
+  { pattern: 'Running balances',               why: 'Simplest mental model for shared debt',             opp: 'Keep. Industry standard expectation' },
+  { pattern: 'Manual expense entry',            why: 'Low friction build, maximum flexibility',           opp: 'Reduce. Largest single pain point' },
+  { pattern: 'Group first organization',        why: 'Logical container for shared costs',                opp: 'Expand to full household context' },
+  { pattern: 'Separate settlement flow',        why: 'Regulatory simplicity, less liability',             opp: 'Simplify. Close the two app gap' },
+  { pattern: 'Transaction only activity feed',  why: 'Shows what happened',                              opp: 'Improve with "why" and ownership context' },
+  { pattern: 'Notification based nudges',       why: 'Reactive, familiar pattern',                       opp: 'Rethink. Proactive, relationship aware language' },
 ]
 
 const STORY_STEPS = [
   { action: <><strong>Sarah</strong> pays the electricity bill.</>, accent: false },
   { action: <>She opens the app and adds the expense with a receipt photo.</>, accent: false },
   { action: <>Assigns it to the household. Split defaults to equal.</>, accent: false },
-  { action: <>The shared household balance updates immediately — for both of them.</>, accent: true },
+  { action: <>The shared household balance updates immediately for both of them.</>, accent: true },
   { action: <>Alex opens the app and sees:</>, callout: '"You owe Sarah $46 for December Electricity."', accent: false },
   { action: <>Alex taps <strong>Settle</strong>. Payment initiates from within the app.</>, accent: false },
 ]
 
 const METRICS = [
-  { metric: 'Time to settle expenses',           type: 'Product',   target: '↓ 40% vs. baseline' },
-  { metric: 'Both members active (households)',   type: 'Behavior',  target: '> 60% of households' },
-  { metric: 'Manual edits per expense',          type: 'Product',   target: '< 1 edit per 10 expenses' },
-  { metric: 'Expense → payment time',            type: 'Behavior',  target: '< 48 hours median' },
-  { metric: 'Recurring bills configured',        type: 'Behavior',  target: '> 3 per household' },
-  { metric: 'In-app settlement rate',            type: 'Business',  target: '> 50% of settlements' },
+  { metric: 'Time to settle expenses',           type: 'Product',   target: '40% reduction vs baseline' },
+  { metric: 'Both members active per household', type: 'Behavior',  target: 'Over 60% of households' },
+  { metric: 'Manual edits per expense',          type: 'Product',   target: 'Under 1 edit per 10 expenses' },
+  { metric: 'Expense to payment time',           type: 'Behavior',  target: 'Under 48 hours median' },
+  { metric: 'Recurring bills configured',        type: 'Behavior',  target: 'Over 3 per household' },
+  { metric: 'In app settlement rate',            type: 'Business',  target: 'Over 50% of settlements' },
 ]
 
 // ── SLIDE COMPONENTS ──────────────────────────────────────────────
@@ -103,7 +101,7 @@ function Slide1() {
       <div className="mc-divider mc-a2" />
       <div className="mc-challenge-body">
         <div className="mc-prompt-box mc-a3" style={{ gridColumn: '1 / -1' }}>
-          <p>"Design a digital experience that helps people who share frequent day-to-day expenses with others — roommates or a partner — track and manage these costs with clarity."</p>
+          <p>"Design a digital experience that helps people who share frequent day to day expenses with others (roommates or a partner) and track and manage these costs with clarity."</p>
         </div>
         <div className="mc-meta-pair mc-a4">
           <p className="mc-meta-key">Timeline</p>
@@ -111,7 +109,7 @@ function Slide1() {
         </div>
         <div className="mc-meta-pair mc-a4">
           <p className="mc-meta-key">Deliverables</p>
-          <p className="mc-meta-val">End-to-end UX · Research · Strategy · Prototype</p>
+          <p className="mc-meta-val">End to end UX · Research · Strategy · Prototype</p>
         </div>
         <div className="mc-objective mc-a5" style={{ gridColumn: '1 / -1' }}>
           <span className="mc-objective-key">Objective</span>
@@ -140,7 +138,7 @@ function Slide2() {
           </div>
         </div>
         <div className="mc-questions-col">
-          <p className="mc-not-asking">People aren't asking "How do I split this?" — they're asking:</p>
+          <p className="mc-not-asking">People aren't asking "How do I split this?" They're asking:</p>
           {[
             'Who owes what?',
             'Why?',
@@ -162,8 +160,8 @@ function Slide3() {
   const steps = [
     { num: '01', name: 'Secondary Research', details: 'Reddit · App Store · Google Play · Trustpilot · Finance forums\n\nFocused on behavioral patterns and recurring frustrations across existing tools.' },
     { num: '02', name: 'Competitive Analysis', details: 'Splitwise · Venmo · Tricount · Honeydue · Copilot Money\n\nReviewed key flows: onboarding, expense entry, balance view, settlement.' },
-    { num: '03', name: 'Synthesis', details: 'Identified 5 recurring behavior patterns and 6 industry-standard interaction models.\n\nSeparated what\'s proven from what\'s missing.' },
-    { num: '04', name: 'Opportunity Areas', details: '5 design opportunities mapped to user needs — not features.\n\nEach tied directly to a research finding.' },
+    { num: '03', name: 'Synthesis', details: "Identified 5 recurring behavior patterns and 6 industry standard interaction models.\n\nSeparated what's proven from what's missing." },
+    { num: '04', name: 'Opportunity Areas', details: '5 design opportunities mapped to user needs, not features.\n\nEach tied directly to a research finding.' },
   ]
 
   return (
@@ -183,7 +181,7 @@ function Slide3() {
         ]).filter(Boolean)}
       </div>
       <div className="mc-approach-note mc-a4">
-        Given a five-day timeline, secondary research across user forums and existing products allowed rapid understanding of both user needs and current market approaches — without the time cost of primary research.
+        Given a five day timeline, secondary research across user forums and existing products allowed rapid understanding of both user needs and current market approaches, without the time cost of primary research.
       </div>
     </SlideShell>
   )
@@ -233,7 +231,7 @@ function Slide5() {
         </tbody>
       </table>
       <p className="mc-comp-caption mc-a4">
-        Five apps reviewed. One consistent gap: the experience ends at the transaction — not the relationship.
+        Five apps reviewed. One consistent gap: the experience ends at the transaction, not the relationship.
       </p>
     </SlideShell>
   )
@@ -244,16 +242,16 @@ function Slide6() {
     {
       name: 'Transparency First',
       desc: 'Every balance is immediately understandable. No hidden calculations. No ambiguity about who owes what or why.',
-      eg: 'Shows up as: one-tap balance explanation, full edit history, real-time sync.',
+      eg: 'Shows up as: one tap balance explanation, full edit history, real time sync.',
     },
     {
       name: 'Shared Accountability',
-      desc: 'Both parties have equal clarity and agency — not just the person who tracked the expense.',
-      eg: 'Shows up as: dual-perspective balance view, shared notifications, mutual confirmation.',
+      desc: 'Both parties have equal clarity and agency, not just the person who tracked the expense.',
+      eg: 'Shows up as: dual perspective balance view, shared notifications, mutual confirmation.',
     },
     {
       name: 'Reduce Bookkeeping',
-      desc: 'Every time the product can automate a decision, apply a default, or pre-fill a field — it should.',
+      desc: 'Every time the product can automate a decision, apply a default, or pre-fill a field, it should.',
       eg: 'Shows up as: recurring expense detection, smart split defaults, automatic reminders.',
     },
   ]
@@ -265,7 +263,7 @@ function Slide6() {
       <div className="mc-vision-statement mc-a3">
         <p className="mc-vision-eyebrow">Product Vision</p>
         <p className="mc-vision-text">
-          A shared <span>financial dashboard</span> — not an expense tracker.
+          A shared <span>financial dashboard</span>, not an expense tracker.
         </p>
       </div>
       <div className="mc-principles-grid">
@@ -290,7 +288,7 @@ function Slide7() {
       <div className="mc-priority-cols">
         {/* MVP */}
         <div className="mc-priority-col mc-priority-col--now mc-a3">
-          <p className="mc-priority-col-label mc-priority-col-label--now">MVP — Launch</p>
+          <p className="mc-priority-col-label mc-priority-col-label--now">MVP · Launch</p>
           <p className="mc-priority-group-label">Household Core</p>
           {['Shared household dashboard', 'Running balance (both parties)', 'Expense entry with receipt upload', 'Equal and custom split options', 'Expense history with edit log'].map((f, i) => (
             <p key={i} className="mc-priority-item">{f}</p>
@@ -310,13 +308,13 @@ function Slide7() {
         {/* Future */}
         <div className="mc-priority-col mc-a5">
           <p className="mc-priority-col-label mc-priority-col-label--future">Future Vision</p>
-          {['Bank / card integration', 'Predictive settlements', 'Household financial insights', 'AI anomaly detection', 'Multi-household support'].map((f, i) => (
+          {['Bank and card integration', 'Predictive settlements', 'Household financial insights', 'AI anomaly detection', 'Multi household support'].map((f, i) => (
             <p key={i} className="mc-priority-item">{f}</p>
           ))}
         </div>
       </div>
       <div className="mc-deferred-note mc-a6">
-        Future features assume a trust level and behavioral data richness that doesn't exist at launch. Earn confidence with core clarity first — then expand.
+        Future features assume a trust level and behavioral data richness that doesn't exist at launch. Earn confidence with core clarity first, then expand.
       </div>
     </SlideShell>
   )
@@ -361,10 +359,10 @@ function Slide8() {
 function Slide9() {
   const themes = [
     { name: 'Household Overview', desc: 'Shared dashboard. Running balance visible to both parties.' },
-    { name: 'Transparency', desc: 'Every balance is traceable. One-tap history behind any number.' },
-    { name: 'Adding Expenses', desc: 'Receipt upload, smart defaults, three-tap happy path.' },
-    { name: 'Recurring Bills', desc: 'Auto-detected templates. Effortless monthly tracking.' },
-    { name: 'Payments', desc: 'Settlement in-app. From balance visible to balance resolved.' },
+    { name: 'Transparency', desc: 'Every balance is traceable. One tap history behind any number.' },
+    { name: 'Adding Expenses', desc: 'Receipt upload, smart defaults, three tap happy path.' },
+    { name: 'Recurring Bills', desc: 'Auto detected templates. Effortless monthly tracking.' },
+    { name: 'Payments', desc: 'Settlement in app. From balance visible to balance resolved.' },
   ]
 
   return (
@@ -390,11 +388,11 @@ function Slide9() {
 
 function Slide10() {
   const validate = [
-    { tag: 'Research', item: 'Does financial transparency reduce conflict — or increase awareness of it?' },
+    { tag: 'Research', item: 'Does financial transparency reduce conflict, or increase awareness of it?' },
     { tag: 'Research', item: 'Do couples and roommates have meaningfully different sharing behaviors?' },
-    { tag: 'Testing', item: 'How often do users expect reminder notifications — and what tone lands best?' },
+    { tag: 'Testing', item: 'How often do users expect reminder notifications, and what tone lands best?' },
     { tag: 'Testing', item: 'Does receipt upload increase trust, or add friction?' },
-    { tag: 'Assumption', item: 'Both parties want shared visibility. May be false for privacy-conscious users.' },
+    { tag: 'Assumption', item: 'Both parties want shared visibility. May be false for privacy conscious users.' },
   ]
 
   return (
@@ -437,17 +435,33 @@ function Slide10() {
   )
 }
 
-// Research findings slides (from original request)
+// Research findings slides
 function SlideResearch() {
   return (
     <SlideShell>
-      <h1 className="mc-h1 mc-a1" style={{ fontSize: 'clamp(20px, 2.2vw, 28px)' }}>
+      <h1 className="mc-h1 mc-a1" style={{ fontSize: 'clamp(20px, 2.2vw, 26px)' }}>
         Cross-Product Research: Where Shared Expense Apps Still Fall Short
       </h1>
       <p className="mc-sub mc-a2">
-        Insights synthesized from Reddit, App Store &amp; Google Play reviews, Trustpilot, and finance communities across Splitwise, Venmo, Honeydue, Tricount, and Monarch/Copilot.
+        Insights synthesized from Reddit, App Store and Google Play reviews, Trustpilot, and finance communities across Splitwise, Venmo, Honeydue, Tricount, and Monarch/Copilot.
       </p>
-      <div className="mc-divider mc-a2" />
+      {/* Affinity cluster at top to show thematic hierarchy */}
+      <div className="mc-affinity-section mc-a2">
+        <div className="mc-affinity-row">
+          {AFFINITY_CARDS.map((card, i) => (
+            <div key={i} className="mc-affinity-card-wrap">
+              <div className="mc-card">
+                <span className="mc-card-emoji">{card.emoji}</span>
+                <span className="mc-card-label">{card.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mc-caption mc-af">
+          Five recurring themes observed consistently across community discussions, app reviews, and user feedback.
+        </p>
+      </div>
+      <div className="mc-divider mc-a3" />
       <div className="mc-cols mc-a3">
         <div>
           <p className="mc-label mc-label--amber mc-col-header">Users are trying to…</p>
@@ -466,26 +480,11 @@ function SlideResearch() {
           <div className="mc-frictions">
             {FRICTIONS.map((f, i) => (
               <p key={i} className="mc-friction">
-                <strong>{f.title}</strong> — {f.desc}
+                <strong>{f.title}. </strong>{f.desc}
               </p>
             ))}
           </div>
         </div>
-      </div>
-      <div className="mc-affinity-section mc-a4">
-        <div className="mc-affinity-row">
-          {AFFINITY_CARDS.map((card, i) => (
-            <div key={i} className="mc-affinity-card-wrap">
-              <div className="mc-card">
-                <span className="mc-card-emoji">{card.emoji}</span>
-                <span className="mc-card-label">{card.label}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="mc-caption mc-af">
-          "Patterns observed consistently across community discussions, app reviews, and user feedback — not isolated product complaints."
-        </p>
       </div>
     </SlideShell>
   )
@@ -497,7 +496,7 @@ function SlideOpportunities() {
     ['Accountability','Difficult to know who is responsible',       'Make ownership explicit throughout the experience'],
     ['Low Effort',   'Manual expense tracking is tedious',          'Reduce bookkeeping overhead'],
     ['Harmony',      'Money conversations become awkward',          'Design to reduce interpersonal friction'],
-    ['Predictability','Unexpected costs create distrust',           'Increase transparency around recurring and one-off expenses'],
+    ['Predictability','Unexpected costs create distrust',           'Increase transparency around recurring and one off expenses'],
   ]
 
   return (
@@ -523,7 +522,7 @@ function SlideOpportunities() {
         </tbody>
       </table>
       <div className="mc-takeaway mc-a4">
-        <p>"The opportunity isn't better expense splitting — it's reducing the emotional and cognitive cost of managing shared finances."</p>
+        <p>"The opportunity isn't better expense splitting. It's reducing the emotional and cognitive cost of managing shared finances."</p>
       </div>
     </SlideShell>
   )
