@@ -17,6 +17,7 @@ import AIPortfolio      from './pages/ai/Portfolio.jsx'
 import AIResellerApp    from './pages/ai/ResellerApp.jsx'
 import AIGramercy       from './pages/ai/Gramercy.jsx'
 import InterviewMe      from './pages/InterviewMe.jsx'
+import MastercardChallenge from './pages/MastercardChallenge.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -62,5 +63,12 @@ function AppShell() {
 }
 
 export default function App() {
-  return <AppShell />
+  return (
+    <Routes>
+      {/* Standalone — no nav, footer, or portfolio chrome */}
+      <Route path="/challenge" element={<MastercardChallenge />} />
+      {/* Everything else goes through the normal shell */}
+      <Route path="/*" element={<AppShell />} />
+    </Routes>
+  )
 }
