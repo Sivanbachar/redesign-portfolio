@@ -194,10 +194,13 @@ function Slide2() {
           <p className="mc-problem-setup">Managing shared expenses isn't primarily a payment problem.</p>
           <p className="mc-problem-punchline">It's a confidence problem.</p>
           <p className="mc-problem-narrative">
-            During research I expected to find complaints about splitting money. Instead, people repeatedly described something else:
+            During research I expected complaints about splitting math or payment methods. What I found was more fundamental — people weren't questioning the numbers. They were questioning whether the numbers could be trusted.
           </p>
           <p className="mc-problem-reveal">
-            They weren't unsure how much they owed. They were unsure whether they could trust what they were seeing.
+            Every unexplained expense. Every missed follow-up. Every time someone had to re-enter a receipt manually. These aren't isolated friction points. They're small, repeated signals of distrust between people who share a space or a life.
+          </p>
+          <p className="mc-problem-tension">
+            The tension isn't financial. It's relational. And no existing product was designed with that in mind.
           </p>
         </div>
         <div className="mc-a4">
@@ -206,22 +209,25 @@ function Slide2() {
           <p className="mc-were-asking">They were asking...</p>
           {[
             'Why do I owe this?',
-            'Who paid?',
+            'Who paid for what?',
             'Is this still accurate?',
-            'Are we looking at the same information?',
+            'Are we looking at the same numbers?',
+            'Am I the only one keeping track?',
           ].map((q, i) => (
-            <div key={i} className="mc-understanding-q">
+            <div key={i} className={`mc-understanding-q${i === 4 ? ' mc-understanding-q--relational' : ''}`}>
               <span className="mc-understanding-dot" />
               <span>{q}</span>
             </div>
           ))}
         </div>
       </div>
-      <div className="mc-design-goal mc-a5">
-        <span className="mc-design-goal-key">Design Goal</span>
-        <p className="mc-design-goal-val">Create confidence through transparency.</p>
+      <div className="mc-spine-callout mc-a5">
+        <span className="mc-spine-label">The Reframe</span>
+        <p className="mc-spine-text">
+          The challenge isn't building a better calculator — it's designing a system that removes the{' '}
+          <em>financial anxiety</em> that lives between people who share a life or a lease.
+        </p>
       </div>
-
     </SlideShell>
   )
 }
@@ -252,11 +258,11 @@ function Slide3() {
   )
 }
 
-// ── SLIDE 4 · USER INSIGHTS ───────────────────────────────────────
+// ── SLIDE 4 · USER RESEARCH ───────────────────────────────────────
 function Slide4() {
   return (
     <SlideShell>
-      <h1 className="mc-h1 mc-a1">User Insights</h1>
+      <h1 className="mc-h1 mc-a1">User Research</h1>
       <div className="mc-divider mc-a2" />
       <div className="mc-insight-split">
         <div className="mc-a3">
@@ -651,7 +657,7 @@ const SLIDE_NAMES = [
   'The Challenge',
   'Understanding the Problem',
   'How I Spent Three Days',
-  'User Insights',
+  'User Research',
   'Competitive Landscape',
   'The Shift',
   'Product Principles',
@@ -668,8 +674,8 @@ const SLIDE_PHASES = [
   null,          // 1  The Challenge
   'Discovery',   // 2  Understanding the Problem
   'Discovery',   // 3  How I Spent Three Days
-  'Discovery',   // 4  User Insights
-  'Discovery',   // 5  Competitive Landscape
+  'Research',    // 4  User Research
+  'Research',    // 5  Competitive Landscape
   'Exploration', // 6  The Shift
   'Exploration', // 7  Product Principles
   'Exploration', // 8  Prioritization

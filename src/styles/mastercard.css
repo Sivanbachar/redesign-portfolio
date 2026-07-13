@@ -246,8 +246,17 @@
   font-size: 18px;
   font-style: italic;
   color: var(--mc-txt-s);
-  line-height: 1.5;
+  line-height: 1.55;
+  margin: 0 0 14px;
+}
+.mc-problem-tension {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--mc-txt);
+  line-height: 1.55;
   margin: 0;
+  padding: 12px 0 0 16px;
+  border-left: 2.5px solid var(--mc-accent);
 }
 .mc-not-asking {
   font-size: 17px;
@@ -283,6 +292,14 @@
   color: var(--mc-txt);
   line-height: 1.4;
 }
+.mc-understanding-q--relational {
+  color: var(--mc-accent);
+  font-weight: 700;
+  opacity: 0.85;
+}
+.mc-understanding-q--relational .mc-understanding-dot {
+  background: var(--mc-accent-2);
+}
 .mc-understanding-dot {
   width: 5px;
   height: 5px;
@@ -314,6 +331,39 @@
   border-left: 3px solid var(--mc-accent);
   padding-left: 18px;
   line-height: 1.5;
+}
+
+/* ── SLIDE 2 · SPINE CALLOUT ──────────────────────────────────── */
+.mc-spine-callout {
+  margin-top: 16px;
+  padding: 14px 20px 14px 20px;
+  border-left: 3px solid var(--mc-accent);
+  background: var(--mc-accent-hi);
+  border-radius: 0 8px 8px 0;
+}
+.mc-spine-label {
+  font-family: var(--mc-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mc-accent);
+  font-weight: 700;
+  display: block;
+  margin: 0 0 7px;
+}
+.mc-spine-text {
+  font-family: var(--mc-serif);
+  font-size: 19px;
+  font-style: italic;
+  color: var(--mc-txt-s);
+  margin: 0;
+  line-height: 1.6;
+}
+.mc-spine-text em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--mc-accent);
+  font-style: normal;
 }
 
 /* ── SLIDE 3 · HOW I SPENT THREE DAYS (TIMELINE) ─────────────── */
