@@ -87,10 +87,19 @@ const DAYS = [
   { day: 'Day 3', label: 'Designing and\nPrioritizing', desc: 'Concepts tested against core user needs, one direction forward' },
 ]
 
-const OBSERVATIONS = [
-  'Balances become difficult to trust when history is hidden.',
-  'One person becomes the household accountant by default.',
-  'Asking for money is socially uncomfortable in every product.',
+const RESEARCH_THEMES = [
+  {
+    theme: 'Transparency',
+    desc: 'Balances become difficult to understand or trust when expense history is unclear, missing, or easy to edit without context.',
+  },
+  {
+    theme: 'Responsibility',
+    desc: 'One person often ends up managing everything — entering expenses, remembering recurring bills, correcting mistakes — while the other stays passive.',
+  },
+  {
+    theme: 'Relationships',
+    desc: 'Asking for repayment or flagging an error feels uncomfortable enough that people avoid it. The discomfort outlasts the debt.',
+  },
 ]
 
 const PATTERNS = [
@@ -124,11 +133,21 @@ const PRINCIPLES = [
 ]
 
 const OPPORTUNITIES = [
-  { finding: 'Unexpected expenses create distrust', opp: 'Help people understand why they owe money', feature: 'Require receipts for one-time expenses' },
-  { finding: 'Nobody knows who is responsible for what', opp: 'Nobody should become the household accountant', feature: 'Show who added every expense with a dual-perspective view' },
-  { finding: 'Manual tracking gets abandoned', opp: 'People should not have to remember recurring expenses', feature: 'Auto detect recurring bills and pre-fill templates' },
-  { finding: 'Asking for money feels confrontational', opp: 'Money requests belong next to the expense, not in a text', feature: 'Quiet in-context settlement tied directly to each expense' },
-  { finding: 'Settlement requires leaving the app', opp: 'Close the gap between seeing a balance and resolving it', feature: 'Complete settlement from balance to payment in one flow' },
+  {
+    theme: 'Transparency',
+    need: 'Understand and trust the shared financial record',
+    opp: 'Increase visibility and explainability of every expense',
+  },
+  {
+    theme: 'Responsibility',
+    need: 'Reduce manual bookkeeping and unequal tracking workload',
+    opp: 'Lower the coordination effort for both people',
+  },
+  {
+    theme: 'Relationships',
+    need: 'Reduce interpersonal friction around money',
+    opp: 'Make shared finances easier to navigate together',
+  },
 ]
 
 const METRICS = [
@@ -190,26 +209,25 @@ function Slide2() {
       <h1 className="mc-h1 mc-a1">Understanding the Challenge</h1>
       <div className="mc-divider mc-a2" />
       <div className="mc-problem-stack mc-a3">
-        <p className="mc-problem-setup">Managing shared expenses isn't just a payment problem.</p>
-        <p className="mc-problem-punchline" style={{ margin: 0 }}>It's a confidence problem.</p>
+        <p className="mc-problem-setup">Managing shared expenses isn't just about splitting money.</p>
+        <p className="mc-problem-punchline" style={{ margin: 0 }}>It's about managing shared financial relationships.</p>
         <p className="mc-problem-body-p">
-          When people share expenses, they're not just tracking who owes whom. They're trying to maintain a shared understanding of what actually happened.
+          Modern products make calculating balances relatively easy. The harder challenge is maintaining an accurate shared record, distributing responsibility fairly, and reducing the interpersonal friction that naturally emerges whenever people manage money together.
         </p>
-        <p className="mc-problem-body-p mc-problem-body-p--evidence">
-          Across community discussions and app reviews, users consistently described uncertainty around missing expenses, forgotten recurring bills, edits made after the fact, and contributions submitted without supporting evidence. These moments force people to mentally reconstruct transactions, double-check balances, or rely on conversations outside the app.
-        </p>
-        <p className="mc-problem-reveal" style={{ margin: 0 }}>
-          The resulting friction isn't caused by the calculations themselves. It's caused by the confidence required to believe the record is complete, accurate, and fair.
-        </p>
-        <p className="mc-problem-tension" style={{ margin: 0 }}>
-          Every forgotten receipt. Every unexplained expense. Every manual correction. Every follow-up message asking, "Does this look right?" is a small signal that the system still depends on human bookkeeping rather than shared confidence.
-        </p>
+        <div className="mc-theme-cards mc-a4">
+          {RESEARCH_THEMES.map((t, i) => (
+            <div key={i} className="mc-theme-card">
+              <p className="mc-theme-card-label">{t.theme}</p>
+              <p className="mc-theme-card-desc">{t.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="mc-spine-callout mc-a5">
         <span className="mc-spine-label">The Opportunity</span>
         <p className="mc-spine-text">
-          The opportunity isn't simply to help people split expenses more accurately. It's to reduce the cognitive and social burden of managing shared finances by helping people{' '}
-          <em>trust the record from the start</em>.
+          The opportunity isn't simply better calculations. It's reducing the cognitive and social effort required to{' '}
+          <em>coordinate shared finances</em>.
         </p>
       </div>
     </SlideShell>
@@ -266,19 +284,19 @@ function Slide4() {
           </div>
         </div>
         <div className="mc-obs-rule" />
-        <p className="mc-obs-label mc-a4">Three things came up across every product and every community</p>
+        <p className="mc-obs-label mc-a4">Three themes emerged consistently across every product and every community</p>
         <div className="mc-obs-three mc-a4">
-          {OBSERVATIONS.map((obs, i) => (
-            <div key={i} className="mc-obs-card">
-              <span className="mc-obs-dot" />
-              <span>{obs}</span>
+          {RESEARCH_THEMES.map((t, i) => (
+            <div key={i} className="mc-obs-card mc-obs-card--themed">
+              <p className="mc-obs-theme-label">{t.theme}</p>
+              <p className="mc-obs-theme-desc">{t.desc}</p>
             </div>
           ))}
         </div>
       </div>
       <div className="mc-research-takeaway mc-a5">
         <span className="mc-rt-key">Research Takeaway</span>
-        <p className="mc-rt-text">People weren't questioning the math. They were questioning whether the record was complete, whether the system was working for both of them equally, and whether what they owed was actually fair.</p>
+        <p className="mc-rt-text">The difficulty isn't in the math. It's in the ongoing coordination required to keep a shared financial record accurate, distribute the work fairly, and navigate money without it becoming a source of tension.</p>
       </div>
     </SlideShell>
   )
@@ -349,7 +367,7 @@ function Slide6() {
           <p className="mc-shift-statement">
             Research changed the product I thought I was designing.
           </p>
-          <p className="mc-shift-bridge-context">Confidence in the record, accountability for who added what, and the social burden of asking for money — these weren't tracker problems. They were relationship problems.</p>
+          <p className="mc-shift-bridge-context">Gaps in transparency, uneven responsibility, and the social friction around money. None of these are problems a better calculator solves. They are coordination problems.</p>
           <p className="mc-shift-bridge">Instead of another expense tracker...</p>
           <p className="mc-shift-result">
             I designed a shared <span>financial dashboard</span>.
@@ -435,18 +453,18 @@ function Slide9() {
         {OPPORTUNITIES.map((opp, i) => (
           <div key={i} className={`mc-lane mc-a${i + 3}`}>
             <div className="mc-lane-finding">
-              <p className="mc-lane-seg-label">Research Finding</p>
-              <p className="mc-lane-text">{opp.finding}</p>
+              <p className="mc-lane-seg-label">Research Theme</p>
+              <p className="mc-lane-text mc-lane-theme-name">{opp.theme}</p>
             </div>
             <div className="mc-lane-arrow">›</div>
             <div className="mc-lane-opp">
-              <p className="mc-lane-seg-label">Opportunity</p>
-              <p className="mc-lane-text">{opp.opp}</p>
+              <p className="mc-lane-seg-label">User Need</p>
+              <p className="mc-lane-text">{opp.need}</p>
             </div>
             <div className="mc-lane-arrow">›</div>
             <div className="mc-lane-feature">
-              <p className="mc-lane-seg-label">Feature</p>
-              <p className="mc-lane-text">{opp.feature}</p>
+              <p className="mc-lane-seg-label">Opportunity</p>
+              <p className="mc-lane-text">{opp.opp}</p>
             </div>
           </div>
         ))}
@@ -593,7 +611,7 @@ function SlideValidate() {
         </div>
       </div>
       <p className="mc-closing-statement mc-a4">
-        The goal was never transparency for its own sake. It was confidence — a record both people can look at and say, without hesitation, "this is right."
+        The goal was not to build a better expense tracker. It was to reduce the ongoing effort — cognitive, logistical, and social — that shared finances place on people.
       </p>
     </SlideShell>
   )
