@@ -203,32 +203,53 @@ function Slide4() {
 }
 
 // ── SLIDE 5 · COMPETITIVE LANDSCAPE ──────────────────────────────
+const COMP_SCREENS = [
+  { name: 'Splitwise', file: 'splitwise.png' },
+  { name: 'Venmo',     file: 'venmo.png' },
+  { name: 'Tricount',  file: 'tricount.webp' },
+  { name: 'Honeydue',  file: 'honeydue.png' },
+  { name: 'Copilot',   file: 'copilot.png' },
+]
+
 function Slide5() {
-  const products = ['Splitwise', 'Venmo', 'Tricount', 'Honeydue', 'Copilot Money']
   return (
     <SlideShell>
       <h1 className="mc-h1 mc-a1">Competitive Landscape</h1>
-      <div className="mc-comp-products mc-a2">
-        {products.map(p => <span key={p} className="mc-product-badge">{p}</span>)}
-      </div>
-      <table className="mc-pattern-table mc-a3">
-        <thead>
-          <tr>
-            <th>Industry Pattern</th>
-            <th>Why It Exists</th>
-            <th className="mc-opp-th">Opportunity</th>
-          </tr>
-        </thead>
-        <tbody>
-          {PATTERNS.map((row, i) => (
-            <tr key={i}>
-              <td className="mc-col-name">{row.pattern}</td>
-              <td>{row.why}</td>
-              <td className="mc-opp-col">{row.opp}</td>
-            </tr>
+      <div className="mc-comp-layout mc-a2">
+        <div className="mc-comp-screens">
+          {COMP_SCREENS.map((app, i) => (
+            <div key={app.name} className="mc-comp-screen-col" style={{ animationDelay: `${0.28 + i * 0.06}s` }}>
+              <div className="mc-comp-screen-frame">
+                <img
+                  src={`/images/challenge/comp/${app.file}`}
+                  alt={app.name}
+                  className="mc-comp-screen-img"
+                  onError={e => { e.target.style.display = 'none'; e.target.parentElement.setAttribute('data-empty', '1') }}
+                />
+              </div>
+              <p className="mc-comp-screen-label">{app.name}</p>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+        <table className="mc-pattern-table mc-a3">
+          <thead>
+            <tr>
+              <th>Industry Pattern</th>
+              <th>Why It Exists</th>
+              <th className="mc-opp-th">Opportunity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {PATTERNS.map((row, i) => (
+              <tr key={i}>
+                <td className="mc-col-name">{row.pattern}</td>
+                <td>{row.why}</td>
+                <td className="mc-opp-col">{row.opp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <p className="mc-comp-statement mc-a4">
         Every competitor solved the transaction. None solved the relationship.
       </p>
