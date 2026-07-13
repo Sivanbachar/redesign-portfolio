@@ -751,7 +751,9 @@ function SlideTOC({ current, goTo, open, setOpen }) {
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────
 export default function MastercardChallenge() {
-  const [viewerName, setViewerName] = useState('')
+  const [viewerName, setViewerName] = useState(() => {
+    try { return localStorage.getItem('mc-viewer-name') || '' } catch { return '' }
+  })
   const [current,    setCurrent]    = useState(0)
   const [keys,       setKeys]       = useState(() => Array(SLIDES_BASE.length).fill(0))
   const [prevSlide,  setPrev]       = useState(null)
@@ -823,7 +825,12 @@ export default function MastercardChallenge() {
     return () => { document.body.style.overflow = prev }
   }, [])
 
-  if (!viewerName) return <NameEntry onSubmit={setViewerName} />
+  const handleNameSubmit = useCallback((name) => {
+    try { localStorage.setItem('mc-viewer-name', name) } catch {}
+    setViewerName(name)
+  }, [])
+
+  if (!viewerName) return <NameEntry onSubmit={handleNameSubmit} />
 
   return (
     <SlideIndexContext.Provider value={current}>
