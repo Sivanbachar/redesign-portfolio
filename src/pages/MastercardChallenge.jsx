@@ -192,21 +192,23 @@ function Slide2() {
       <div className="mc-understanding-layout">
         <div className="mc-a3">
           <p className="mc-problem-setup">Managing shared expenses isn't primarily a payment problem.</p>
-          <p className="mc-problem-punchline">It's a visibility problem.</p>
+          <p className="mc-problem-punchline">It's a trust problem.</p>
           <p className="mc-problem-narrative">
-            People rarely questioned the math. They questioned everything around it.
+            People need more than a total. They need to understand what they are being asked to pay for, and feel confident that the expense is legitimate.
           </p>
           <p className="mc-problem-reveal">
-            When those answers aren't obvious, people stop trusting the numbers — and start relying on memory, screenshots, or awkward conversations to fill the gaps.
+            When expenses are unclear, undocumented, or easy to miss, the balance becomes harder to trust, and the burden shifts to the people involved to resolve it through screenshots, follow-ups, and uncomfortable conversations.
           </p>
         </div>
         <div className="mc-a4">
-          <p className="mc-were-asking">They were asking...</p>
+          <p className="mc-question-context">
+            Today, anyone can add a charge with little context or proof. That leaves others asking:
+          </p>
           {[
-            'Why do I owe this?',
-            'Who paid for it?',
-            'Is this balance still accurate?',
-            'Did everyone see the same expense?',
+            'What was this for?',
+            'Is this amount correct?',
+            'Why am I responsible for it?',
+            'Is there a receipt?',
           ].map((q, i) => (
             <div key={i} className="mc-understanding-q">
               <span className="mc-understanding-dot" />
@@ -221,8 +223,8 @@ function Slide2() {
       <div className="mc-spine-callout mc-a5">
         <span className="mc-spine-label">The Opportunity</span>
         <p className="mc-spine-text">
-          The real opportunity wasn't to make paying easier. It was to create a{' '}
-          <em>shared source of truth</em> that gives everyone confidence in where they stand.
+          The opportunity was not simply to make splitting or paying faster. It was to create a{' '}
+          <em>shared financial record</em> where every charge is clear, supported, and accountable.
         </p>
       </div>
     </SlideShell>

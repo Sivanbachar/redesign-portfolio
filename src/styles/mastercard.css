@@ -546,6 +546,12 @@
   padding-top: 16px;
   border-top: 1px solid var(--mc-bdr);
 }
+.mc-question-context {
+  font-size: 16px;
+  color: var(--mc-txt-s);
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
 .mc-question-source {
   font-family: var(--mc-mono);
   font-size: 11px;
