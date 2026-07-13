@@ -420,9 +420,6 @@ function Slide10() {
           </div>
         </div>
 
-        <div className="mc-uf-proto-placeholder mc-a5">
-          Figma prototype animation placeholder
-        </div>
       </div>
     </SlideShell>
   )
@@ -436,10 +433,7 @@ function SlidePrototype() {
         {/* LEFT: context */}
         <div className="mc-proto-left">
           <h1 className="mc-h1 mc-a1">Prototype</h1>
-          <p className="mc-sub mc-a2">
-            The following prototype demonstrates the core household experience informed by research.
-          </p>
-          <div className="mc-prototype-cols mc-a3">
+          <div className="mc-prototype-cols mc-a2">
             <div>
               <p className="mc-proto-col-label">What I'd Validate</p>
               {['Reminder timing', 'Couples vs roommates', 'Receipt friction', 'Notification tone'].map((item, i) => (
