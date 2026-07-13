@@ -627,7 +627,7 @@
   font-family: var(--mc-serif);
   font-size: 48px;
   font-weight: 700;
-  color: var(--mc-accent-bg);
+  color: var(--mc-accent);
   line-height: 1;
   letter-spacing: -0.02em;
   margin-bottom: -4px;
@@ -1031,4 +1031,95 @@
   background: var(--mc-surf-alt);
   color: var(--mc-txt-s);
   box-shadow: 0 1px 0 var(--mc-bdr);
+}
+
+/* ── PROTOTYPE · INTERACTIVE BADGE ───────────────────────────── */
+.mc-proto-interactive-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mc-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mc-accent);
+  margin-bottom: 12px;
+  padding: 7px 16px;
+  border: 1.5px solid var(--mc-accent-bg);
+  border-radius: 999px;
+  background: var(--mc-accent-hi);
+  width: fit-content;
+}
+.mc-proto-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mc-accent);
+  flex-shrink: 0;
+  animation: mc-pulse 1.8s ease-in-out infinite;
+}
+@keyframes mc-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.7); }
+}
+
+/* ── SLIDE 12 · THANK YOU ─────────────────────────────────────── */
+.mc-ty-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  max-width: 640px;
+}
+.mc-ty-heading {
+  font-family: var(--mc-serif);
+  font-size: 88px;
+  font-weight: 700;
+  color: var(--mc-txt);
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.mc-ty-profile {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid var(--mc-bdr);
+}
+.mc-ty-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid var(--mc-bdr);
+  flex-shrink: 0;
+}
+.mc-ty-name {
+  font-family: var(--mc-serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--mc-txt);
+  margin: 0 0 4px;
+}
+.mc-ty-role {
+  font-size: 16px;
+  color: var(--mc-txt-m);
+  margin: 0 0 12px;
+}
+.mc-ty-link {
+  font-family: var(--mc-mono);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--mc-accent);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--mc-accent-bg);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+  display: inline-block;
+}
+.mc-ty-link:hover {
+  border-color: var(--mc-accent);
 }

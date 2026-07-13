@@ -457,8 +457,8 @@ function SlidePrototype() {
                   {METRICS.map((m, i) => (
                     <tr key={i}>
                       <td>{m.metric}</td>
-                      <td style={{ fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--txt-m)' }}>{m.type}</td>
-                      <td style={{ color: 'var(--accent)', fontStyle: 'italic' }}>{m.target}</td>
+                      <td style={{ fontFamily: 'var(--mc-mono)', fontSize: '13px', color: 'var(--mc-txt-m)' }}>{m.type}</td>
+                      <td style={{ color: 'var(--mc-accent)', fontStyle: 'italic' }}>{m.target}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -471,6 +471,10 @@ function SlidePrototype() {
         </div>
         {/* RIGHT: phone frame */}
         <div className="mc-proto-right">
+          <div className="mc-proto-interactive-hint mc-a2">
+            <span className="mc-proto-pulse-dot" />
+            Interactive — tap &amp; scroll to explore
+          </div>
           <div className="mc-phone-frame">
             <iframe
               src="https://wagon-source-57534990.figma.site"
@@ -479,6 +483,36 @@ function SlidePrototype() {
               allow="fullscreen"
               title="Mastercard Household Expense Prototype"
             />
+          </div>
+        </div>
+      </div>
+    </SlideShell>
+  )
+}
+
+// ── SLIDE 12 · THANK YOU ──────────────────────────────────────────
+function SlideThankYou() {
+  return (
+    <SlideShell>
+      <div className="mc-ty-layout">
+        <h1 className="mc-ty-heading mc-a1">Thank you.</h1>
+        <div className="mc-ty-profile mc-a2">
+          <img
+            src="/images/resume/profile.png"
+            alt="Sivan Baum"
+            className="mc-ty-avatar"
+          />
+          <div className="mc-ty-info">
+            <p className="mc-ty-name">Sivan Baum</p>
+            <p className="mc-ty-role">Senior Product Designer</p>
+            <a
+              href="https://builtbysivan.com"
+              className="mc-ty-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              builtbysivan.com ↗
+            </a>
           </div>
         </div>
       </div>
@@ -499,6 +533,7 @@ const SLIDES = [
   Slide9,
   Slide10,
   SlidePrototype,
+  SlideThankYou,
 ]
 const ACTUAL_TOTAL = SLIDES.length
 
