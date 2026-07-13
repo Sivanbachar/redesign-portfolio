@@ -7,12 +7,16 @@ const SlideIndexContext = createContext(0)
 
 // ── VIEWER TRACKING ───────────────────────────────────────────────
 // Paste your Google Apps Script web app URL here after deploying it
-const TRACKING_URL = ''
+const TRACKING_URL = 'https://formspree.io/f/mojgqygp'
 
 function logViewer(name) {
   if (!TRACKING_URL) return
   try {
-    fetch(`${TRACKING_URL}?name=${encodeURIComponent(name)}`, { mode: 'no-cors' })
+    fetch(TRACKING_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ name, _subject: `New viewer: ${name}` }),
+    })
   } catch {}
 }
 
