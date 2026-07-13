@@ -426,48 +426,29 @@ function Slide10() {
 }
 
 // ── SLIDE 11 · PROTOTYPE ──────────────────────────────────────────
+const USER_FLOWS = [
+  { n: '01', label: 'View household' },
+  { n: '02', label: 'View expense' },
+  { n: '03', label: 'Create new expense' },
+  { n: '04', label: 'Review monthly expenses (fixed)' },
+]
+
 function SlidePrototype() {
   return (
     <SlideShell>
       <div className="mc-proto-layout">
-        {/* LEFT: context */}
+        {/* LEFT: flows to test */}
         <div className="mc-proto-left">
           <h1 className="mc-h1 mc-a1">Prototype</h1>
-          <div className="mc-prototype-cols mc-a2">
-            <div>
-              <p className="mc-proto-col-label">What I'd Validate</p>
-              {['Reminder timing', 'Couples vs roommates', 'Receipt friction', 'Notification tone'].map((item, i) => (
-                <div key={i} className="mc-validate-item">
-                  <span className="mc-validate-dot" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-            <div>
-              <p className="mc-proto-col-label">Success Metrics</p>
-              <table className="mc-metrics-table">
-                <thead>
-                  <tr>
-                    <th>Metric</th>
-                    <th>Type</th>
-                    <th>Target</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {METRICS.map((m, i) => (
-                    <tr key={i}>
-                      <td>{m.metric}</td>
-                      <td style={{ fontFamily: 'var(--mc-mono)', fontSize: '13px', color: 'var(--mc-txt-m)' }}>{m.type}</td>
-                      <td style={{ color: 'var(--mc-accent)', fontStyle: 'italic' }}>{m.target}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+          <p className="mc-proto-col-label mc-a2" style={{ marginBottom: 20 }}>User flows to test</p>
+          <div className="mc-flow-list">
+            {USER_FLOWS.map((f, i) => (
+              <div key={i} className={`mc-flow-item mc-a${i + 3}`}>
+                <span className="mc-flow-num">{f.n}</span>
+                <span className="mc-flow-label">{f.label}</span>
+              </div>
+            ))}
           </div>
-          <p className="mc-closing-statement mc-a4">
-            Transparency isn't about showing more information. It's about showing the right information, at the moment people need confidence.
-          </p>
         </div>
         {/* RIGHT: phone frame */}
         <div className="mc-proto-right">
@@ -486,6 +467,51 @@ function SlidePrototype() {
           </div>
         </div>
       </div>
+    </SlideShell>
+  )
+}
+
+// ── SLIDE 12 · VALIDATE & METRICS ─────────────────────────────────
+function SlideValidate() {
+  return (
+    <SlideShell>
+      <h1 className="mc-h1 mc-a1">What I'd Validate</h1>
+      <div className="mc-divider mc-a2" />
+      <div className="mc-prototype-cols mc-a3">
+        <div>
+          <p className="mc-proto-col-label">Areas to Test</p>
+          {['Reminder timing', 'Couples vs roommates', 'Receipt friction', 'Notification tone'].map((item, i) => (
+            <div key={i} className="mc-validate-item">
+              <span className="mc-validate-dot" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+        <div>
+          <p className="mc-proto-col-label">Success Metrics</p>
+          <table className="mc-metrics-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Type</th>
+                <th>Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              {METRICS.map((m, i) => (
+                <tr key={i}>
+                  <td>{m.metric}</td>
+                  <td style={{ fontFamily: 'var(--mc-mono)', fontSize: '13px', color: 'var(--mc-txt-m)' }}>{m.type}</td>
+                  <td style={{ color: 'var(--mc-accent)', fontStyle: 'italic' }}>{m.target}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p className="mc-closing-statement mc-a4">
+        Transparency isn't about showing more information. It's about showing the right information, at the moment people need confidence.
+      </p>
     </SlideShell>
   )
 }
@@ -533,6 +559,7 @@ const SLIDES = [
   Slide9,
   Slide10,
   SlidePrototype,
+  SlideValidate,
   SlideThankYou,
 ]
 const ACTUAL_TOTAL = SLIDES.length
