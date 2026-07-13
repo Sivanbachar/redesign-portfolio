@@ -3,6 +3,7 @@ import '../styles/mastercard.css'
 
 // ── VIEWER CONTEXT ────────────────────────────────────────────────
 const ViewerContext = createContext('')
+const SlideIndexContext = createContext(0)
 
 // ── TYPEWRITER HOOK ───────────────────────────────────────────────
 function useTypewriter(text, speed = 32, delay = 600) {
@@ -140,10 +141,13 @@ const METRICS = [
 
 // ── SHARED SHELL ──────────────────────────────────────────────────
 function SlideShell({ children }) {
+  const index = useContext(SlideIndexContext)
+  const phase = SLIDE_PHASES[index]
   return (
     <>
       <div className="mc-meta mc-a0">
         <p className="mc-badge">Mastercard · Design Challenge · 2026</p>
+        {phase && <span className="mc-phase-badge">{phase}</span>}
       </div>
       {children}
     </>
@@ -527,12 +531,8 @@ function SlidePrototype() {
             ))}
           </div>
         </div>
-        {/* RIGHT: phone frame */}
+        {/* RIGHT: phone frame + interactive hint below */}
         <div className="mc-proto-right">
-          <div className="mc-proto-interactive-hint mc-a2">
-            <span className="mc-proto-pulse-dot" />
-            Interactive — tap &amp; scroll to explore
-          </div>
           <div className="mc-phone-frame">
             <iframe
               src="https://wagon-source-57534990.figma.site"
@@ -541,6 +541,10 @@ function SlidePrototype() {
               allow="fullscreen"
               title="Mastercard Household Expense Prototype"
             />
+          </div>
+          <div className="mc-proto-interactive-hint mc-a5">
+            <span className="mc-proto-pulse-dot" />
+            Interactive — tap &amp; scroll to explore
           </div>
         </div>
       </div>
@@ -642,6 +646,96 @@ const SLIDES_BASE = [
   SlideThankYou,
 ]
 
+const SLIDE_NAMES = [
+  'Welcome',
+  'The Challenge',
+  'Understanding the Problem',
+  'How I Spent Three Days',
+  'User Insights',
+  'Competitive Landscape',
+  'The Shift',
+  'Product Principles',
+  'Prioritization',
+  'Design Opportunities',
+  'Experience Walkthrough',
+  'Prototype',
+  "What I'd Validate",
+  'Thank You',
+]
+
+const SLIDE_PHASES = [
+  null,          // 0  Welcome
+  null,          // 1  The Challenge
+  'Discovery',   // 2  Understanding the Problem
+  'Discovery',   // 3  How I Spent Three Days
+  'Discovery',   // 4  User Insights
+  'Discovery',   // 5  Competitive Landscape
+  'Exploration', // 6  The Shift
+  'Exploration', // 7  Product Principles
+  'Exploration', // 8  Prioritization
+  'Exploration', // 9  Design Opportunities
+  'Design',      // 10 Experience Walkthrough
+  'Design',      // 11 Prototype
+  'Handoff',     // 12 What I'd Validate
+  null,          // 13 Thank You
+]
+
+// ── SLIDE TOC ─────────────────────────────────────────────────────
+function SlideTOC({ current, goTo, open, setOpen }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [setOpen])
+
+  return (
+    <>
+      {/* Toggle button — bottom left */}
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="mc-toc-btn"
+        aria-label="Slide navigation"
+      >
+        <svg width="17" height="13" viewBox="0 0 17 13" fill="none">
+          <circle cx="1.5" cy="1.5"  r="1.5" fill="currentColor" fillOpacity="0.65"/>
+          <rect   x="5"   y="0.75"  width="12" height="1.5" rx="0.75" fill="currentColor" fillOpacity="0.4"/>
+          <circle cx="1.5" cy="6.5"  r="1.5" fill="currentColor" fillOpacity="0.65"/>
+          <rect   x="5"   y="5.75"  width="12" height="1.5" rx="0.75" fill="currentColor" fillOpacity="0.4"/>
+          <circle cx="1.5" cy="11.5" r="1.5" fill="currentColor" fillOpacity="0.65"/>
+          <rect   x="5"   y="10.75" width="12" height="1.5" rx="0.75" fill="currentColor" fillOpacity="0.4"/>
+        </svg>
+      </button>
+
+      {/* Backdrop */}
+      <div
+        onClick={() => setOpen(false)}
+        className={`mc-toc-backdrop${open ? ' mc-toc-backdrop--open' : ''}`}
+      />
+
+      {/* Slide-out panel */}
+      <nav className={`mc-toc-panel${open ? ' mc-toc-panel--open' : ''}`}>
+        <p className="mc-toc-header">Slides</p>
+        {SLIDE_NAMES.map((name, i) => {
+          const isActive = i === current
+          const phase = SLIDE_PHASES[i]
+          return (
+            <button
+              key={i}
+              onClick={() => { goTo(i); setOpen(false) }}
+              className={`mc-toc-item${isActive ? ' mc-toc-item--active' : ''}`}
+            >
+              <span className={`mc-toc-dot${isActive ? ' mc-toc-dot--active' : ''}`} />
+              <span className="mc-toc-num">{String(i + 1).padStart(2, '0')}</span>
+              <span className="mc-toc-label">{name}</span>
+              {phase && <span className="mc-toc-phase">{phase}</span>}
+            </button>
+          )
+        })}
+      </nav>
+    </>
+  )
+}
+
 // ── MAIN COMPONENT ────────────────────────────────────────────────
 export default function MastercardChallenge() {
   const [viewerName, setViewerName] = useState('')
@@ -649,6 +743,13 @@ export default function MastercardChallenge() {
   const [keys,       setKeys]       = useState(() => Array(SLIDES_BASE.length).fill(0))
   const [prevSlide,  setPrev]       = useState(null)
   const [locked,     setLocked]     = useState(false)
+  const tocOpenRef = useRef(false)
+  const [tocOpen,  setTocOpenState] = useState(false)
+  const setTocOpen = useCallback((v) => {
+    const next = typeof v === 'function' ? v(tocOpenRef.current) : v
+    tocOpenRef.current = next
+    setTocOpenState(next)
+  }, [])
 
   const TOTAL = SLIDES_BASE.length
 
@@ -666,6 +767,7 @@ export default function MastercardChallenge() {
 
   useEffect(() => {
     const h = (e) => {
+      if (tocOpenRef.current) return
       if (['ArrowDown', 'ArrowRight', ' '].includes(e.key)) { e.preventDefault(); goNext() }
       if (['ArrowUp', 'ArrowLeft'].includes(e.key)) { e.preventDefault(); goPrev() }
     }
@@ -677,7 +779,7 @@ export default function MastercardChallenge() {
   useEffect(() => {
     const h = (e) => {
       e.preventDefault()
-      if (wheelCooldown.current) return
+      if (tocOpenRef.current || wheelCooldown.current) return
       wheelCooldown.current = true
       if (e.deltaY > 20) goNext()
       else if (e.deltaY < -20) goPrev()
@@ -692,6 +794,7 @@ export default function MastercardChallenge() {
     const ts = (e) => { touchStart.current = e.touches[0].clientY }
     const te = (e) => {
       if (!touchStart.current) return
+      if (tocOpenRef.current) { touchStart.current = null; return }
       const delta = touchStart.current - e.changedTouches[0].clientY
       if (Math.abs(delta) > 50) { delta > 0 ? goNext() : goPrev() }
       touchStart.current = null
@@ -710,6 +813,7 @@ export default function MastercardChallenge() {
   if (!viewerName) return <NameEntry onSubmit={setViewerName} />
 
   return (
+    <SlideIndexContext.Provider value={current}>
     <ViewerContext.Provider value={viewerName}>
     <div className="mc-shell">
       <div className="mc-progress-bar" style={{ width: `${((current + 1) / TOTAL) * 100}%` }} />
@@ -748,7 +852,10 @@ export default function MastercardChallenge() {
         <span className="mc-key">Space</span>
         <span style={{ marginLeft: 4 }}>advance</span>
       </div>
+
+      <SlideTOC current={current} goTo={goTo} open={tocOpen} setOpen={setTocOpen} />
     </div>
     </ViewerContext.Provider>
+    </SlideIndexContext.Provider>
   )
 }
