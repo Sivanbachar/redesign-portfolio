@@ -350,9 +350,6 @@ function Slide5() {
           </tbody>
         </table>
       </div>
-      <p className="mc-comp-statement mc-a4">
-        Every competitor solved the transaction. None solved the relationship.
-      </p>
     </SlideShell>
   )
 }
