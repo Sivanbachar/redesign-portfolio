@@ -27,9 +27,10 @@
   inset: 0;
   background-color: var(--mc-bg);
   background-image:
-    linear-gradient(to right, rgba(27, 63, 170, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(27, 63, 170, 0.07) 1px, transparent 1px);
-  background-size: 56px 56px;
+    radial-gradient(ellipse 65% 75% at 50% 50%, rgba(247, 246, 243, 0.82) 0%, transparent 100%),
+    linear-gradient(to right, rgba(27, 63, 170, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 63, 170, 0.09) 1px, transparent 1px);
+  background-size: 100% 100%, 56px 56px, 56px 56px;
   overflow: hidden;
   color: var(--mc-txt);
   font-family: var(--mc-sans);
