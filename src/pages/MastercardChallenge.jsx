@@ -272,7 +272,17 @@ function Slide4() {
         </div>
         <div className="mc-insight-vdivider" />
         <div className="mc-a4">
-          <p className="mc-obs-label">Three things came up in every product, across every community</p>
+          <p className="mc-approach-method-label">Approach</p>
+          <p className="mc-approach-intro">
+            Given the three-day timeline, I focused on secondary research to map existing user sentiment at scale — reading across App Store reviews, Reddit communities, Trustpilot, and product forums. I wasn't starting with a hypothesis. I wanted to understand why the problem persisted despite a crowded market of tools already trying to solve it.
+          </p>
+          <div className="mc-source-tags">
+            {['App Store Reviews', 'Reddit', 'Trustpilot', 'Product Forums', 'User Blogs'].map(s => (
+              <span key={s} className="mc-source-tag">{s}</span>
+            ))}
+          </div>
+          <div className="mc-obs-rule" />
+          <p className="mc-obs-label">Three things came up across every product and every community</p>
           {OBSERVATIONS.map((obs, i) => (
             <div key={i} className="mc-obs-item">
               <span className="mc-obs-dot" />
@@ -283,7 +293,7 @@ function Slide4() {
       </div>
       <div className="mc-research-takeaway mc-a5">
         <span className="mc-rt-key">Research Takeaway</span>
-        <p className="mc-rt-text">People weren't questioning the math. They were questioning whether they could trust it.</p>
+        <p className="mc-rt-text">People weren't questioning the math. They were questioning whether they could trust it — and whether the product, or the person on the other side, was being straight with them.</p>
       </div>
     </SlideShell>
   )

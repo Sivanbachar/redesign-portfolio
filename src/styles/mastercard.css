@@ -477,6 +477,43 @@
   color: var(--mc-txt-l);
   margin: 0;
 }
+.mc-approach-method-label {
+  font-family: var(--mc-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mc-accent);
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.mc-approach-intro {
+  font-size: 16px;
+  color: var(--mc-txt-m);
+  line-height: 1.65;
+  margin: 0 0 14px;
+}
+.mc-source-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.mc-source-tag {
+  font-family: var(--mc-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mc-accent);
+  background: var(--mc-accent-bg);
+  border: 1px solid rgba(27,63,170,0.15);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.mc-obs-rule {
+  height: 1px;
+  background: var(--mc-bdr);
+  margin-bottom: 14px;
+}
 .mc-obs-label {
   font-family: var(--mc-mono);
   font-size: 13px;
