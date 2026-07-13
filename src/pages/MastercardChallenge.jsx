@@ -194,7 +194,7 @@ function Slide2() {
           <p className="mc-problem-setup">Managing shared expenses isn't primarily a payment problem.</p>
           <p className="mc-problem-punchline">It's a confidence problem.</p>
           <p className="mc-problem-narrative">
-            During research I expected complaints about splitting math or payment methods. What I found was more fundamental — people weren't questioning the numbers. They were questioning whether the numbers could be trusted.
+            Reading through thousands of App Store reviews, Reddit threads, and community forums left by real users of Splitwise, Venmo, Honeydue, and Tricount, I kept finding the same thing. People weren't complaining about the math. They were questioning whether what they were seeing could be trusted.
           </p>
           <p className="mc-problem-reveal">
             Every unexplained expense. Every missed follow-up. Every time someone had to re-enter a receipt manually. These aren't isolated friction points. They're small, repeated signals of distrust between people who share a space or a life.
@@ -204,7 +204,7 @@ function Slide2() {
           </p>
         </div>
         <div className="mc-a4">
-          <p className="mc-not-asking">People weren't asking...</p>
+          <p className="mc-not-asking">Real users of existing apps weren't asking...</p>
           <p className="mc-not-asking-q">"How do I split this?"</p>
           <p className="mc-were-asking">They were asking...</p>
           {[
@@ -219,6 +219,9 @@ function Slide2() {
               <span>{q}</span>
             </div>
           ))}
+          <p className="mc-question-source">
+            Sourced from App Store reviews, Reddit communities, and Trustpilot for Splitwise, Venmo, Honeydue &amp; Tricount
+          </p>
         </div>
       </div>
       <div className="mc-spine-callout mc-a5">
@@ -572,7 +575,7 @@ function SlidePrototype() {
 function SlideValidate() {
   return (
     <SlideShell>
-      <h1 className="mc-h1 mc-a1">What I'd Validate</h1>
+      <h1 className="mc-h1 mc-a1">What I'd Do Next</h1>
       <div className="mc-divider mc-a2" />
       <div className="mc-prototype-cols mc-a3">
         <div>
@@ -675,7 +678,7 @@ const SLIDE_NAMES = [
   'Design Opportunities',
   'Experience Walkthrough',
   'Prototype',
-  "What I'd Validate",
+  "What I'd Do Next",
   'Thank You',
 ]
 
@@ -692,7 +695,7 @@ const SLIDE_PHASES = [
   'Exploration', // 9  Design Opportunities
   'Design',      // 10 Experience Walkthrough
   'Design',      // 11 Prototype
-  'Handoff',     // 12 What I'd Validate
+  "What's Next", // 12 What I'd Validate
   null,          // 13 Thank You
 ]
 
