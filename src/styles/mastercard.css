@@ -672,7 +672,7 @@
 /* ── SLIDE 6 · THE SHIFT ──────────────────────────────────────── */
 .mc-shift-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.25fr;
   gap: 48px;
   align-items: center;
   margin-top: 12px;
@@ -713,11 +713,10 @@
 }
 .mc-shift-img {
   width: 100%;
-  max-height: 520px;
-  border-radius: 16px;
+  max-height: 640px;
+  border-radius: 0;
   object-fit: contain;
   object-position: top;
-  box-shadow: 0 12px 52px rgba(0,0,0,0.15);
 }
 
 /* ── SLIDE 7 · PRODUCT PRINCIPLES ────────────────────────────── */
