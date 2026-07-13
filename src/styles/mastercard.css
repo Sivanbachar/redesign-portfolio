@@ -1033,6 +1033,106 @@
   box-shadow: 0 1px 0 var(--mc-bdr);
 }
 
+/* ── NAME ENTRY GATE ──────────────────────────────────────────── */
+.mc-entry-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 clamp(40px, 8vw, 160px);
+  max-width: 680px;
+}
+.mc-entry-heading {
+  font-family: var(--mc-serif);
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--mc-txt);
+  line-height: 1.1;
+  margin: 12px 0 32px;
+  letter-spacing: -0.01em;
+}
+.mc-entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.mc-entry-prompt {
+  font-size: 20px;
+  color: var(--mc-txt-m);
+  margin: 0;
+}
+.mc-entry-row {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+.mc-entry-input {
+  flex: 1;
+  font-family: var(--mc-sans);
+  font-size: 20px;
+  color: var(--mc-txt);
+  background: var(--mc-surf);
+  border: 1.5px solid var(--mc-bdr);
+  border-radius: 10px;
+  padding: 14px 20px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.mc-entry-input::placeholder { color: var(--mc-txt-l); }
+.mc-entry-input:focus { border-color: var(--mc-accent); }
+.mc-entry-btn {
+  font-family: var(--mc-mono);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--mc-accent);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 24px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.mc-entry-btn:disabled { opacity: 0.35; cursor: default; }
+.mc-entry-btn:not(:disabled):hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* ── SLIDE 0 · GREETING ───────────────────────────────────────── */
+.mc-greeting-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 720px;
+}
+.mc-greeting-text {
+  font-family: var(--mc-serif);
+  font-size: 36px;
+  font-style: italic;
+  color: var(--mc-txt);
+  line-height: 1.5;
+  margin: 0;
+}
+.mc-cursor {
+  display: inline-block;
+  color: var(--mc-accent);
+  margin-left: 2px;
+  animation: mc-blink 0.9s step-end infinite;
+}
+.mc-cursor--done { animation: none; opacity: 0; }
+@keyframes mc-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.mc-greeting-continue {
+  font-family: var(--mc-mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-txt-l);
+}
+
 /* ── PROTOTYPE · USER FLOW LIST ──────────────────────────────── */
 .mc-flow-list {
   display: flex;

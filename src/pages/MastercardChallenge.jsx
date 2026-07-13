@@ -1,5 +1,82 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useContext, createContext, useMemo } from 'react'
 import '../styles/mastercard.css'
+
+// ── VIEWER CONTEXT ────────────────────────────────────────────────
+const ViewerContext = createContext('')
+
+// ── TYPEWRITER HOOK ───────────────────────────────────────────────
+function useTypewriter(text, speed = 32, delay = 600) {
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone] = useState(false)
+  useEffect(() => {
+    setDisplayed('')
+    setDone(false)
+    let i = 0
+    const timeout = setTimeout(() => {
+      const iv = setInterval(() => {
+        i++
+        setDisplayed(text.slice(0, i))
+        if (i >= text.length) { clearInterval(iv); setDone(true) }
+      }, speed)
+      return () => clearInterval(iv)
+    }, delay)
+    return () => clearTimeout(timeout)
+  }, [text, speed, delay])
+  return { displayed, done }
+}
+
+// ── NAME ENTRY GATE ───────────────────────────────────────────────
+function NameEntry({ onSubmit }) {
+  const [name, setName] = useState('')
+  const handle = (e) => {
+    e.preventDefault()
+    if (name.trim()) onSubmit(name.trim())
+  }
+  return (
+    <div className="mc-shell">
+      <div className="mc-entry-wrap">
+        <p className="mc-badge mc-a0">Mastercard · Design Challenge · 2026</p>
+        <h1 className="mc-entry-heading mc-a1">Before we begin —</h1>
+        <form className="mc-entry-form mc-a2" onSubmit={handle}>
+          <p className="mc-entry-prompt">What's your name?</p>
+          <div className="mc-entry-row">
+            <input
+              className="mc-entry-input"
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              placeholder="Your name"
+              autoFocus
+            />
+            <button className="mc-entry-btn" type="submit" disabled={!name.trim()}>
+              Let's go →
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+// ── SLIDE 0 · GREETING ────────────────────────────────────────────
+function SlideGreeting() {
+  const name = useContext(ViewerContext)
+  const text = `Hi ${name} — welcome to my Mastercard design challenge. It's really great to have you here.`
+  const { displayed, done } = useTypewriter(text, 30, 600)
+  return (
+    <SlideShell>
+      <div className="mc-greeting-wrap">
+        <p className="mc-greeting-text">
+          {displayed}
+          <span className={`mc-cursor${done ? ' mc-cursor--done' : ''}`}>|</span>
+        </p>
+        {done && (
+          <p className="mc-greeting-continue mc-af">Press Space or ↓ to begin</p>
+        )}
+      </div>
+    </SlideShell>
+  )
+}
 
 // ── DATA ──────────────────────────────────────────────────────────
 
@@ -516,12 +593,13 @@ function SlideValidate() {
   )
 }
 
-// ── SLIDE 12 · THANK YOU ──────────────────────────────────────────
+// ── SLIDE 13 · THANK YOU ──────────────────────────────────────────
 function SlideThankYou() {
+  const name = useContext(ViewerContext)
   return (
     <SlideShell>
       <div className="mc-ty-layout">
-        <h1 className="mc-ty-heading mc-a1">Thank you.</h1>
+        <h1 className="mc-ty-heading mc-a1">{name ? `Thank you, ${name}.` : 'Thank you.'}</h1>
         <div className="mc-ty-profile mc-a2">
           <img
             src="/images/resume/profile.png"
@@ -546,8 +624,9 @@ function SlideThankYou() {
   )
 }
 
-// ── SLIDES ARRAY ──────────────────────────────────────────────────
-const SLIDES = [
+// ── SLIDES ARRAY (greeting prepended dynamically in component) ────
+const SLIDES_BASE = [
+  SlideGreeting,
   Slide1,
   Slide2,
   Slide3,
@@ -562,17 +641,19 @@ const SLIDES = [
   SlideValidate,
   SlideThankYou,
 ]
-const ACTUAL_TOTAL = SLIDES.length
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────
 export default function MastercardChallenge() {
-  const [current, setCurrent] = useState(0)
-  const [keys,    setKeys]    = useState(() => Array(SLIDES.length).fill(0))
-  const [prevSlide, setPrev]  = useState(null)
-  const [locked,  setLocked]  = useState(false)
+  const [viewerName, setViewerName] = useState('')
+  const [current,    setCurrent]    = useState(0)
+  const [keys,       setKeys]       = useState(() => Array(SLIDES_BASE.length).fill(0))
+  const [prevSlide,  setPrev]       = useState(null)
+  const [locked,     setLocked]     = useState(false)
+
+  const TOTAL = SLIDES_BASE.length
 
   const goTo = useCallback((idx) => {
-    if (idx < 0 || idx >= ACTUAL_TOTAL || locked) return
+    if (idx < 0 || idx >= TOTAL || locked) return
     setLocked(true)
     setPrev(current)
     setCurrent(idx)
@@ -626,11 +707,14 @@ export default function MastercardChallenge() {
     return () => { document.body.style.overflow = prev }
   }, [])
 
-  return (
-    <div className="mc-shell">
-      <div className="mc-progress-bar" style={{ width: `${((current + 1) / ACTUAL_TOTAL) * 100}%` }} />
+  if (!viewerName) return <NameEntry onSubmit={setViewerName} />
 
-      {SLIDES.map((SlideComp, i) => (
+  return (
+    <ViewerContext.Provider value={viewerName}>
+    <div className="mc-shell">
+      <div className="mc-progress-bar" style={{ width: `${((current + 1) / TOTAL) * 100}%` }} />
+
+      {SLIDES_BASE.map((SlideComp, i) => (
         <div
           key={i}
           className={[
@@ -646,7 +730,7 @@ export default function MastercardChallenge() {
       ))}
 
       <nav className="mc-nav-dots" aria-label="Slide navigation">
-        {SLIDES.map((_, i) => (
+        {SLIDES_BASE.map((_, i) => (
           <button
             key={i}
             className={`mc-nav-dot ${i === current ? 'mc-nav-dot--active' : ''}`}
@@ -665,5 +749,6 @@ export default function MastercardChallenge() {
         <span style={{ marginLeft: 4 }}>advance</span>
       </div>
     </div>
+    </ViewerContext.Provider>
   )
 }
