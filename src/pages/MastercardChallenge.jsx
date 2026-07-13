@@ -5,6 +5,17 @@ import '../styles/mastercard.css'
 const ViewerContext = createContext('')
 const SlideIndexContext = createContext(0)
 
+// ── VIEWER TRACKING ───────────────────────────────────────────────
+// Paste your Google Apps Script web app URL here after deploying it
+const TRACKING_URL = ''
+
+function logViewer(name) {
+  if (!TRACKING_URL) return
+  try {
+    fetch(`${TRACKING_URL}?name=${encodeURIComponent(name)}`, { mode: 'no-cors' })
+  } catch {}
+}
+
 // ── TYPEWRITER HOOK ───────────────────────────────────────────────
 function useTypewriter(text, speed = 32, delay = 600) {
   const [displayed, setDisplayed] = useState('')
@@ -832,6 +843,7 @@ export default function MastercardChallenge() {
   const handleNameSubmit = useCallback((name) => {
     try { localStorage.setItem('mc-viewer-name', name) } catch {}
     setViewerName(name)
+    logViewer(name)
   }, [])
 
   if (!viewerName) return <NameEntry onSubmit={handleNameSubmit} />
