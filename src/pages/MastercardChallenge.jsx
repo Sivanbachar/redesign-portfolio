@@ -37,7 +37,7 @@ function NameEntry({ onSubmit }) {
     <div className="mc-shell">
       <div className="mc-entry-wrap">
         <p className="mc-badge mc-a0">Mastercard · Design Challenge · 2026</p>
-        <h1 className="mc-entry-heading mc-a1">Before we begin —</h1>
+        <h1 className="mc-entry-heading mc-a1">Before we begin</h1>
         <form className="mc-entry-form mc-a2" onSubmit={handle}>
           <p className="mc-entry-prompt">What's your name?</p>
           <div className="mc-entry-row">
@@ -62,7 +62,7 @@ function NameEntry({ onSubmit }) {
 // ── SLIDE 0 · GREETING ────────────────────────────────────────────
 function SlideGreeting() {
   const name = useContext(ViewerContext)
-  const text = `Hi ${name} — welcome to my Mastercard design challenge. It's really great to have you here.`
+  const text = `Hi ${name}, welcome to my Mastercard design challenge. It's really great to have you here.`
   const { displayed, done } = useTypewriter(text, 30, 600)
   return (
     <SlideShell>
@@ -189,42 +189,27 @@ function Slide2() {
     <SlideShell>
       <h1 className="mc-h1 mc-a1">Understanding the Challenge</h1>
       <div className="mc-divider mc-a2" />
-      <div className="mc-understanding-layout">
-        <div className="mc-a3">
-          <p className="mc-problem-setup">Managing shared expenses isn't primarily a payment problem.</p>
-          <p className="mc-problem-punchline">It's a trust problem.</p>
-          <p className="mc-problem-narrative">
-            People need more than a total. They need to understand what they are being asked to pay for, and feel confident that the expense is legitimate.
-          </p>
-          <p className="mc-problem-reveal">
-            When expenses are unclear, undocumented, or easy to miss, the balance becomes harder to trust, and the burden shifts to the people involved to resolve it through screenshots, follow-ups, and uncomfortable conversations.
-          </p>
-        </div>
-        <div className="mc-a4">
-          <p className="mc-question-context">
-            Today, anyone can add a charge with little context or proof. That leaves others asking:
-          </p>
-          {[
-            'What was this for?',
-            'Is this amount correct?',
-            'Why am I responsible for it?',
-            'Is there a receipt?',
-          ].map((q, i) => (
-            <div key={i} className="mc-understanding-q">
-              <span className="mc-understanding-dot" />
-              <span>{q}</span>
-            </div>
-          ))}
-          <p className="mc-question-source">
-            Sourced from App Store reviews, Reddit communities, and Trustpilot for Splitwise, Venmo, Honeydue &amp; Tricount
-          </p>
-        </div>
+      <div className="mc-problem-stack mc-a3">
+        <p className="mc-problem-setup">Managing shared expenses isn't just a payment problem.</p>
+        <p className="mc-problem-punchline" style={{ margin: 0 }}>It's a confidence problem.</p>
+        <p className="mc-problem-body-p">
+          When people share expenses, they're not just tracking who owes whom. They're trying to maintain a shared understanding of what actually happened.
+        </p>
+        <p className="mc-problem-body-p mc-problem-body-p--evidence">
+          Across community discussions and app reviews, users consistently described uncertainty around missing expenses, forgotten recurring bills, edits made after the fact, and contributions submitted without supporting evidence. These moments force people to mentally reconstruct transactions, double-check balances, or rely on conversations outside the app.
+        </p>
+        <p className="mc-problem-reveal" style={{ margin: 0 }}>
+          The resulting friction isn't caused by the calculations themselves. It's caused by the confidence required to believe the record is complete, accurate, and fair.
+        </p>
+        <p className="mc-problem-tension" style={{ margin: 0 }}>
+          Every forgotten receipt. Every unexplained expense. Every manual correction. Every follow-up message asking, "Does this look right?" is a small signal that the system still depends on human bookkeeping rather than shared confidence.
+        </p>
       </div>
       <div className="mc-spine-callout mc-a5">
         <span className="mc-spine-label">The Opportunity</span>
         <p className="mc-spine-text">
-          The opportunity was not simply to make splitting or paying faster. It was to create a{' '}
-          <em>shared financial record</em> where every charge is clear, supported, and accountable.
+          The opportunity isn't simply to help people split expenses more accurately. It's to reduce the cognitive and social burden of managing shared finances by helping people{' '}
+          <em>trust the record from the start</em>.
         </p>
       </div>
     </SlideShell>
@@ -263,27 +248,28 @@ function Slide4() {
     <SlideShell>
       <h1 className="mc-h1 mc-a1">User Research</h1>
       <div className="mc-divider mc-a2" />
-      <div className="mc-insight-split">
-        <div className="mc-a3">
-          <span className="mc-pull-mark">"</span>
-          <p className="mc-pull-quote">I never know if Splitwise is actually right.</p>
-          <p className="mc-pull-source">App Store Review</p>
-        </div>
-        <div className="mc-insight-vdivider" />
-        <div className="mc-a4">
-          <p className="mc-approach-method-label">Approach</p>
-          <p className="mc-approach-intro">
-            Given the three-day timeline, I focused on secondary research to map existing user sentiment at scale — reading across App Store reviews, Reddit communities, Trustpilot, and product forums. I wasn't starting with a hypothesis. I wanted to understand why the problem persisted despite a crowded market of tools already trying to solve it.
-          </p>
-          <div className="mc-source-tags">
-            {['App Store Reviews', 'Reddit', 'Trustpilot', 'Product Forums', 'User Blogs'].map(s => (
-              <span key={s} className="mc-source-tag">{s}</span>
-            ))}
+      <div className="mc-research-full mc-a3">
+        <div className="mc-research-approach-row">
+          <div className="mc-research-approach-left">
+            <p className="mc-approach-method-label">Approach</p>
+            <p className="mc-approach-intro">
+              I focused on secondary research to map existing user sentiment at scale, reading across App Store reviews, Reddit communities, Trustpilot, and product forums. I wasn't starting with a hypothesis. I wanted to understand why the problem persisted despite a crowded market of tools already trying to solve it.
+            </p>
           </div>
-          <div className="mc-obs-rule" />
-          <p className="mc-obs-label">Three things came up across every product and every community</p>
+          <div className="mc-research-approach-right">
+            <p className="mc-approach-method-label">Sources</p>
+            <div className="mc-source-tags mc-source-tags--stacked">
+              {['App Store Reviews', 'Reddit', 'Trustpilot', 'Product Forums', 'User Blogs'].map(s => (
+                <span key={s} className="mc-source-tag">{s}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="mc-obs-rule" />
+        <p className="mc-obs-label mc-a4">Three things came up across every product and every community</p>
+        <div className="mc-obs-three mc-a4">
           {OBSERVATIONS.map((obs, i) => (
-            <div key={i} className="mc-obs-item">
+            <div key={i} className="mc-obs-card">
               <span className="mc-obs-dot" />
               <span>{obs}</span>
             </div>
@@ -292,7 +278,7 @@ function Slide4() {
       </div>
       <div className="mc-research-takeaway mc-a5">
         <span className="mc-rt-key">Research Takeaway</span>
-        <p className="mc-rt-text">People weren't questioning the math. They were questioning whether they could trust it — and whether the product, or the person on the other side, was being straight with them.</p>
+        <p className="mc-rt-text">People weren't questioning the math. They were questioning whether the record was complete, whether the system was working for both of them equally, and whether what they owed was actually fair.</p>
       </div>
     </SlideShell>
   )
@@ -363,6 +349,7 @@ function Slide6() {
           <p className="mc-shift-statement">
             Research changed the product I thought I was designing.
           </p>
+          <p className="mc-shift-bridge-context">Confidence in the record, accountability for who added what, and the social burden of asking for money — these weren't tracker problems. They were relationship problems.</p>
           <p className="mc-shift-bridge">Instead of another expense tracker...</p>
           <p className="mc-shift-result">
             I designed a shared <span>financial dashboard</span>.
@@ -559,7 +546,7 @@ function SlidePrototype() {
           </div>
           <div className="mc-proto-interactive-hint mc-a5">
             <span className="mc-proto-pulse-dot" />
-            Interactive — tap &amp; scroll to explore
+            Interactive · tap &amp; scroll to explore
           </div>
         </div>
       </div>
@@ -606,7 +593,7 @@ function SlideValidate() {
         </div>
       </div>
       <p className="mc-closing-statement mc-a4">
-        Transparency isn't about showing more information. It's about showing the right information, at the moment people need confidence.
+        The goal was never transparency for its own sake. It was confidence — a record both people can look at and say, without hesitation, "this is right."
       </p>
     </SlideShell>
   )

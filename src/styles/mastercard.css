@@ -258,6 +258,22 @@
   padding: 12px 0 0 16px;
   border-left: 2.5px solid var(--mc-accent);
 }
+.mc-problem-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 4px;
+}
+.mc-problem-body-p {
+  font-size: 15.5px;
+  color: var(--mc-txt-m);
+  line-height: 1.7;
+  margin: 0;
+}
+.mc-problem-body-p--evidence {
+  color: var(--mc-txt-s);
+  font-size: 15px;
+}
 .mc-not-asking {
   font-size: 17px;
   color: var(--mc-txt-m);
@@ -541,6 +557,46 @@
   flex-shrink: 0;
   margin-top: 10px;
 }
+/* ── SLIDE 4 · FULL-WIDTH RESEARCH LAYOUT ───────────────────── */
+.mc-research-full {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mc-research-approach-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 44px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+.mc-source-tags--stacked {
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 0;
+}
+.mc-obs-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.mc-obs-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16.5px;
+  color: var(--mc-txt-s);
+  line-height: 1.6;
+  padding: 16px;
+  border: 1px solid var(--mc-bdr);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.015);
+}
+.mc-obs-card .mc-obs-dot {
+  margin-top: 8px;
+}
 .mc-research-takeaway {
   margin-top: 18px;
   padding-top: 16px;
@@ -697,11 +753,17 @@
   line-height: 1.4;
   margin: 0;
 }
+.mc-shift-bridge-context {
+  font-size: 15px;
+  color: var(--mc-txt-s);
+  line-height: 1.65;
+  margin: 14px 0 10px;
+}
 .mc-shift-bridge {
   font-size: 17px;
   color: var(--mc-txt-m);
   font-style: italic;
-  margin: 14px 0 6px;
+  margin: 0 0 6px;
 }
 .mc-shift-result {
   font-family: var(--mc-serif);
