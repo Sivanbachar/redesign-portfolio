@@ -62,7 +62,7 @@ function NameEntry({ onSubmit }) {
 // ── SLIDE 0 · GREETING ────────────────────────────────────────────
 function SlideGreeting() {
   const name = useContext(ViewerContext)
-  const text = `Hi ${name}, welcome to my Mastercard design challenge. It's really great to have you here.`
+  const text = `Hi ${name}, welcome to my Mastercard design challenge. Let's dive in.`
   const { displayed, done } = useTypewriter(text, 30, 600)
   return (
     <SlideShell>
