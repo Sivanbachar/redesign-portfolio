@@ -12,8 +12,8 @@
   --accent-grad: linear-gradient(130deg, #0D3829 0%, #154F3D 55%, #1E7358 100%);
   --txt:         #131211;
   --txt-s:       #3C3A37;
-  --txt-m:       #76726A;
-  --txt-l:       #ACA79F;
+  --txt-m:       #5A5650;
+  --txt-l:       #6E6A63;
   --bdr:         #DDD9D2;
   --bdr-s:       #EAE7E2;
   --serif:       'Fraunces', Georgia, serif;
@@ -557,8 +557,8 @@
 /* ── SLIDE 6 · THE SHIFT ──────────────────────────────────────── */
 .mc-shift-layout {
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 56px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   align-items: center;
   margin-top: 12px;
 }
@@ -597,12 +597,12 @@
   justify-content: center;
 }
 .mc-shift-img {
-  max-height: 380px;
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  max-height: 520px;
   border-radius: 16px;
   object-fit: contain;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  object-position: top;
+  box-shadow: 0 12px 52px rgba(0,0,0,0.15);
 }
 
 /* ── SLIDE 7 · PRODUCT PRINCIPLES ────────────────────────────── */
@@ -860,26 +860,47 @@
 }
 
 /* ── SLIDE 11 · PROTOTYPE ─────────────────────────────────────── */
-.mc-proto-wrap {
+.mc-proto-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 52px;
+  align-items: start;
   width: 100%;
-  border-radius: 12px;
+}
+.mc-proto-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+.mc-proto-right {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.mc-phone-frame {
+  width: 300px;
+  height: 620px;
+  border-radius: 44px;
   overflow: hidden;
-  border: 1px solid var(--bdr);
-  margin-bottom: 16px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-  animation: mc-scale-in 0.5s cubic-bezier(0.16,1,0.3,1) 0.25s both;
-  background: var(--surf);
+  border: 10px solid #1C1C1E;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.10);
+  background: #000;
+  flex-shrink: 0;
+  animation: mc-rise 0.5s cubic-bezier(0.16,1,0.3,1) 0.28s both;
 }
 .mc-proto-iframe {
   width: 100%;
-  height: 340px;
+  height: 100%;
   border: none;
   display: block;
 }
 .mc-prototype-cols {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
-  gap: 32px;
+  gap: 28px;
+  margin-top: 20px;
+  margin-bottom: 4px;
 }
 .mc-proto-col-label {
   font-family: var(--mono);

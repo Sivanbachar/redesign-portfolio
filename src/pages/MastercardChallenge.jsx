@@ -432,54 +432,62 @@ function Slide10() {
 function SlidePrototype() {
   return (
     <SlideShell>
-      <h1 className="mc-h1 mc-a1">Prototype</h1>
-      <p className="mc-sub mc-a2">
-        The following prototype demonstrates the core household experience informed by research.
-      </p>
-      <div className="mc-proto-wrap mc-a3">
-        <iframe
-          src="https://wagon-source-57534990.figma.site"
-          className="mc-proto-iframe"
-          allowFullScreen
-          allow="fullscreen"
-          title="Mastercard Household Expense Prototype"
-        />
-      </div>
-      <div className="mc-prototype-cols mc-a4">
-        <div>
-          <p className="mc-proto-col-label">What I'd Validate</p>
-          {['Reminder timing', 'Couples vs roommates', 'Receipt friction', 'Notification tone'].map((item, i) => (
-            <div key={i} className="mc-validate-item">
-              <span className="mc-validate-dot" />
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
-        <div>
-          <p className="mc-proto-col-label">Success Metrics</p>
-          <table className="mc-metrics-table">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>Type</th>
-                <th>Target</th>
-              </tr>
-            </thead>
-            <tbody>
-              {METRICS.map((m, i) => (
-                <tr key={i}>
-                  <td>{m.metric}</td>
-                  <td style={{ fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--txt-m)' }}>{m.type}</td>
-                  <td style={{ color: 'var(--accent)', fontStyle: 'italic' }}>{m.target}</td>
-                </tr>
+      <div className="mc-proto-layout">
+        {/* LEFT: context */}
+        <div className="mc-proto-left">
+          <h1 className="mc-h1 mc-a1">Prototype</h1>
+          <p className="mc-sub mc-a2">
+            The following prototype demonstrates the core household experience informed by research.
+          </p>
+          <div className="mc-prototype-cols mc-a3">
+            <div>
+              <p className="mc-proto-col-label">What I'd Validate</p>
+              {['Reminder timing', 'Couples vs roommates', 'Receipt friction', 'Notification tone'].map((item, i) => (
+                <div key={i} className="mc-validate-item">
+                  <span className="mc-validate-dot" />
+                  <span>{item}</span>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+            <div>
+              <p className="mc-proto-col-label">Success Metrics</p>
+              <table className="mc-metrics-table">
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Type</th>
+                    <th>Target</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {METRICS.map((m, i) => (
+                    <tr key={i}>
+                      <td>{m.metric}</td>
+                      <td style={{ fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--txt-m)' }}>{m.type}</td>
+                      <td style={{ color: 'var(--accent)', fontStyle: 'italic' }}>{m.target}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className="mc-closing-statement mc-a4">
+            Transparency isn't about showing more information. It's about showing the right information, at the moment people need confidence.
+          </p>
+        </div>
+        {/* RIGHT: phone frame */}
+        <div className="mc-proto-right">
+          <div className="mc-phone-frame">
+            <iframe
+              src="https://wagon-source-57534990.figma.site"
+              className="mc-proto-iframe"
+              allowFullScreen
+              allow="fullscreen"
+              title="Mastercard Household Expense Prototype"
+            />
+          </div>
         </div>
       </div>
-      <p className="mc-closing-statement mc-af">
-        Transparency isn't about showing more information. It's about showing the right information, at the moment people need confidence.
-      </p>
     </SlideShell>
   )
 }
