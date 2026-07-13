@@ -80,20 +80,22 @@ function Slide1() {
       <h1 className="mc-h1 mc-a1">The Challenge</h1>
       <div className="mc-divider mc-a2" />
       <div className="mc-challenge-body">
-        <div className="mc-prompt-box mc-a3" style={{ gridColumn: '1 / -1' }}>
-          <p>"Design a digital experience that helps people who share frequent day to day expenses with others (roommates or a partner) and track and manage these costs with clarity."</p>
+        <p className="mc-prompt mc-a3">
+          "Design a digital experience that helps people who share frequent day to day expenses with others (roommates or a partner) and track and manage these costs with clarity."
+        </p>
+        <div className="mc-meta-row mc-a4">
+          <div className="mc-meta-item">
+            <span className="mc-meta-key">Timeline</span>
+            <span className="mc-meta-val">3 days · Solo designer</span>
+          </div>
+          <div className="mc-meta-item">
+            <span className="mc-meta-key">Deliverables</span>
+            <span className="mc-meta-val">End to end UX · Research · Strategy · Prototype</span>
+          </div>
         </div>
-        <div className="mc-meta-pair mc-a4">
-          <p className="mc-meta-key">Timeline</p>
-          <p className="mc-meta-val">3 days · Solo designer</p>
-        </div>
-        <div className="mc-meta-pair mc-a4">
-          <p className="mc-meta-key">Deliverables</p>
-          <p className="mc-meta-val">End to end UX · Research · Strategy · Prototype</p>
-        </div>
-        <div className="mc-objective mc-a5" style={{ gridColumn: '1 / -1' }}>
-          <span className="mc-objective-key">Design Goal</span>
-          <p className="mc-objective-val">Create a shared expense experience that helps people understand where they stand financially, without creating more work or awkward conversations.</p>
+        <div className="mc-callout mc-a5">
+          <span className="mc-callout-label">Design Goal</span>
+          <p className="mc-callout-text">Create a shared expense experience that helps people understand where they stand financially, without creating more work or awkward conversations.</p>
         </div>
       </div>
     </SlideShell>
@@ -138,6 +140,7 @@ function Slide2() {
         <span className="mc-design-goal-key">Design Goal</span>
         <p className="mc-design-goal-val">Create confidence through transparency.</p>
       </div>
+
     </SlideShell>
   )
 }
@@ -239,18 +242,22 @@ function Slide6() {
     <SlideShell>
       <h1 className="mc-h1 mc-a1">The Shift</h1>
       <div className="mc-shift-layout">
-        <p className="mc-shift-statement mc-a2">
-          Research changed the product I thought I was designing.
-        </p>
-        <p className="mc-shift-bridge mc-a3">Instead of another expense tracker...</p>
-        <p className="mc-shift-result mc-a3">
-          I designed a shared <span>financial dashboard</span>.
-        </p>
-        <img
-          src="/images/toolbar/the_shift_slide.png"
-          alt="Shared Financial Dashboard"
-          className="mc-shift-img mc-a4"
-        />
+        <div className="mc-shift-text mc-a2">
+          <p className="mc-shift-statement">
+            Research changed the product I thought I was designing.
+          </p>
+          <p className="mc-shift-bridge">Instead of another expense tracker...</p>
+          <p className="mc-shift-result">
+            I designed a shared <span>financial dashboard</span>.
+          </p>
+        </div>
+        <div className="mc-shift-visual mc-a3">
+          <img
+            src="/images/toolbar/the_shift_slide.png"
+            alt="Shared Financial Dashboard"
+            className="mc-shift-img"
+          />
+        </div>
       </div>
     </SlideShell>
   )
@@ -262,10 +269,10 @@ function Slide7() {
     <SlideShell>
       <h1 className="mc-h1 mc-a1">Product Principles</h1>
       <div className="mc-divider mc-a2" />
-      <div className="mc-principles-grid">
+      <div className="mc-principles-list">
         {PRINCIPLES.map((p, i) => (
-          <div key={i} className={`mc-principle-card mc-a${i + 3}`}>
-            <div className="mc-principle-icon">{p.icon}</div>
+          <div key={i} className={`mc-principle-item mc-a${i + 3}`}>
+            <span className="mc-principle-num">0{i + 1}</span>
             <p className="mc-principle-name">{p.name}</p>
             <p className="mc-principle-desc">{p.desc}</p>
             <p className="mc-principle-eg">{p.eg}</p>
@@ -408,8 +415,14 @@ function SlidePrototype() {
       <p className="mc-sub mc-a2">
         The following prototype demonstrates the core household experience informed by research.
       </p>
-      <div className="mc-figma-embed mc-a3">
-        <p className="mc-figma-label">Figma Prototype Embed</p>
+      <div className="mc-proto-wrap mc-a3">
+        <iframe
+          src="https://wagon-source-57534990.figma.site"
+          className="mc-proto-iframe"
+          allowFullScreen
+          allow="fullscreen"
+          title="Mastercard Household Expense Prototype"
+        />
       </div>
       <div className="mc-prototype-cols mc-a4">
         <div>
@@ -435,8 +448,8 @@ function SlidePrototype() {
               {METRICS.map((m, i) => (
                 <tr key={i}>
                   <td>{m.metric}</td>
-                  <td style={{ fontFamily: 'var(--mc-mono)', fontSize: '10px', color: 'var(--mc-txt-m)' }}>{m.type}</td>
-                  <td style={{ color: 'var(--mc-amber)', fontStyle: 'italic' }}>{m.target}</td>
+                  <td style={{ fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--txt-m)' }}>{m.type}</td>
+                  <td style={{ color: 'var(--accent)', fontStyle: 'italic' }}>{m.target}</td>
                 </tr>
               ))}
             </tbody>
