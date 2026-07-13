@@ -840,6 +840,7 @@ export default function MastercardChallenge() {
     <SlideIndexContext.Provider value={current}>
     <ViewerContext.Provider value={viewerName}>
     <div className="mc-shell">
+      <div className="mc-progress-bar-track" />
       <div className="mc-progress-bar" style={{ width: `${((current + 1) / TOTAL) * 100}%` }} />
 
       {SLIDES_BASE.map((SlideComp, i) => (
