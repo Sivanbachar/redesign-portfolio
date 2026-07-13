@@ -183,38 +183,32 @@ function Slide1() {
   )
 }
 
-// ── SLIDE 2 · UNDERSTANDING THE PROBLEM ──────────────────────────
+// ── SLIDE 2 · UNDERSTANDING THE CHALLENGE ────────────────────────
 function Slide2() {
   return (
     <SlideShell>
-      <h1 className="mc-h1 mc-a1">Understanding the Problem</h1>
+      <h1 className="mc-h1 mc-a1">Understanding the Challenge</h1>
       <div className="mc-divider mc-a2" />
       <div className="mc-understanding-layout">
         <div className="mc-a3">
           <p className="mc-problem-setup">Managing shared expenses isn't primarily a payment problem.</p>
-          <p className="mc-problem-punchline">It's a confidence problem.</p>
+          <p className="mc-problem-punchline">It's a visibility problem.</p>
           <p className="mc-problem-narrative">
-            Reading through thousands of App Store reviews, Reddit threads, and community forums left by real users of Splitwise, Venmo, Honeydue, and Tricount, I kept finding the same thing. People weren't complaining about the math. They were questioning whether what they were seeing could be trusted.
+            People rarely questioned the math. They questioned everything around it.
           </p>
           <p className="mc-problem-reveal">
-            Every unexplained expense. Every missed follow-up. Every time someone had to re-enter a receipt manually. These aren't isolated friction points. They're small, repeated signals of distrust between people who share a space or a life.
-          </p>
-          <p className="mc-problem-tension">
-            The tension isn't financial. It's relational. And no existing product was designed with that in mind.
+            When those answers aren't obvious, people stop trusting the numbers — and start relying on memory, screenshots, or awkward conversations to fill the gaps.
           </p>
         </div>
         <div className="mc-a4">
-          <p className="mc-not-asking">Real users of existing apps weren't asking...</p>
-          <p className="mc-not-asking-q">"How do I split this?"</p>
           <p className="mc-were-asking">They were asking...</p>
           {[
             'Why do I owe this?',
-            'Who paid for what?',
-            'Is this still accurate?',
-            'Are we looking at the same numbers?',
-            'Am I the only one keeping track?',
+            'Who paid for it?',
+            'Is this balance still accurate?',
+            'Did everyone see the same expense?',
           ].map((q, i) => (
-            <div key={i} className={`mc-understanding-q${i === 4 ? ' mc-understanding-q--relational' : ''}`}>
+            <div key={i} className="mc-understanding-q">
               <span className="mc-understanding-dot" />
               <span>{q}</span>
             </div>
@@ -225,10 +219,10 @@ function Slide2() {
         </div>
       </div>
       <div className="mc-spine-callout mc-a5">
-        <span className="mc-spine-label">The Reframe</span>
+        <span className="mc-spine-label">The Opportunity</span>
         <p className="mc-spine-text">
-          The challenge isn't building a better calculator — it's designing a system that removes the{' '}
-          <em>financial anxiety</em> that lives between people who share a life or a lease.
+          The real opportunity wasn't to make paying easier. It was to create a{' '}
+          <em>shared source of truth</em> that gives everyone confidence in where they stand.
         </p>
       </div>
     </SlideShell>
@@ -668,7 +662,7 @@ const SLIDES_BASE = [
 const SLIDE_NAMES = [
   'Welcome',
   'The Challenge',
-  'Understanding the Problem',
+  'Understanding the Challenge',
   'How I Spent Three Days',
   'User Research',
   'Competitive Landscape',
