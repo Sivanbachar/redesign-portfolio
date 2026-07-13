@@ -5,15 +5,15 @@
   --bg:          #F7F6F3;
   --surf:        #FFFFFF;
   --surf-alt:    #F1EFEB;
-  --accent:      #154F3D;
-  --accent-2:    #1E7358;
-  --accent-bg:   #EBF3EF;
-  --accent-hi:   #F4F9F7;
-  --accent-grad: linear-gradient(130deg, #0D3829 0%, #154F3D 55%, #1E7358 100%);
+  --accent:      #1B3FAA;
+  --accent-2:    #2A5BD7;
+  --accent-bg:   #EBF0FF;
+  --accent-hi:   #F4F7FF;
+  --accent-grad: linear-gradient(130deg, #0F2264 0%, #1B3FAA 55%, #2A5BD7 100%);
   --txt:         #131211;
-  --txt-s:       #3C3A37;
-  --txt-m:       #5A5650;
-  --txt-l:       #6E6A63;
+  --txt-s:       #2E2C2A;
+  --txt-m:       #404040;
+  --txt-l:       #565250;
   --bdr:         #DDD9D2;
   --bdr-s:       #EAE7E2;
   --serif:       'Fraunces', Georgia, serif;
@@ -97,9 +97,9 @@
 }
 .mc-badge {
   font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: var(--txt-l);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--txt-m);
   text-transform: uppercase;
   margin: 0;
 }
@@ -135,7 +135,7 @@
 }
 .mc-callout-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
@@ -179,7 +179,7 @@
 }
 .mc-meta-key {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--txt-m);
@@ -278,7 +278,7 @@
 }
 .mc-design-goal-key {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
@@ -329,7 +329,7 @@
 }
 .mc-tl-day {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--txt-m);
@@ -403,7 +403,7 @@
 }
 .mc-pull-source {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--txt-l);
@@ -411,7 +411,7 @@
 }
 .mc-obs-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--txt-m);
@@ -443,7 +443,7 @@
 }
 .mc-rt-key {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
@@ -502,7 +502,7 @@
 }
 .mc-comp-screen-label {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--txt-l);
@@ -515,7 +515,7 @@
 }
 .mc-pattern-table th {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   padding: 8px 0 10px;
@@ -665,7 +665,7 @@
 }
 .mc-priority-col-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin: 0 0 12px;
@@ -678,7 +678,7 @@
 .mc-priority-col-label--future { color: var(--txt-l); }
 .mc-priority-group-label {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--txt-l);
@@ -728,7 +728,7 @@
 .mc-lane-finding { padding-right: 20px; }
 .mc-lane-seg-label {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--txt-l);
@@ -773,7 +773,7 @@
 }
 .mc-uf-person-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--txt-m);
@@ -804,9 +804,9 @@
   font-weight: 600;
 }
 .mc-uf-rect--end {
-  border-color: #3A8A58;
-  background: #F0FAF4;
-  color: #2D6E46;
+  border-color: var(--accent-2);
+  background: var(--accent-bg);
+  color: var(--accent);
   font-weight: 600;
 }
 /* Arrow connector between flow steps */
@@ -814,31 +814,29 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: 28px;
+  width: 32px;
   position: relative;
 }
 .mc-uf-connector::before {
   content: '';
   position: absolute;
   left: 0;
-  right: 9px;
-  height: 1.5px;
-  background: var(--accent);
+  right: 10px;
+  height: 2px;
+  background: var(--accent-2);
   top: 50%;
   transform: translateY(-50%);
-  opacity: 0.5;
 }
 .mc-uf-connector::after {
   content: '';
   position: absolute;
-  right: 5px;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
-  width: 7px;
-  height: 7px;
-  border-top: 1.5px solid var(--accent);
-  border-right: 1.5px solid var(--accent);
-  opacity: 0.5;
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid var(--accent-2);
+  border-right: 2px solid var(--accent-2);
 }
 .mc-uf-bridge {
   display: flex;
@@ -848,8 +846,9 @@
 }
 .mc-uf-bridge-line {
   flex: 1;
-  height: 1px;
-  background: var(--bdr);
+  height: 1.5px;
+  background: var(--accent-2);
+  opacity: 0.4;
 }
 .mc-uf-bridge-label {
   font-family: var(--serif);
@@ -904,7 +903,7 @@
 }
 .mc-proto-col-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
@@ -936,7 +935,7 @@
 }
 .mc-metrics-table th {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 7px 12px 9px 0;
@@ -1000,23 +999,29 @@
 .mc-nav-dot--active      { background: var(--accent); border-color: var(--accent); }
 .mc-key-hint {
   position: fixed;
-  top: 18px;
-  right: 52px;
+  top: 16px;
+  right: 48px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: var(--txt-l);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--txt-s);
   pointer-events: none;
   z-index: 200;
+  background: var(--surf);
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--bdr);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
 }
 .mc-key {
-  border: 1px solid var(--bdr);
-  border-radius: 3px;
-  padding: 2px 5px;
-  font-size: 10px;
-  background: var(--surf);
-  color: var(--txt-m);
+  border: 1.5px solid var(--bdr);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 13px;
+  background: var(--surf-alt);
+  color: var(--txt-s);
+  box-shadow: 0 1px 0 var(--bdr);
 }
