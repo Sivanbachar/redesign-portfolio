@@ -29,15 +29,15 @@ export default function ContextualLayers() {
         <p className="cs-tag">Amazon · Kindle · AI-Powered Experience · Sole Designer · 2026</p>
         <h1 className="cs-h1">Contextual Layers</h1>
         <p className="cs-subtitle sr">A layered model for surfacing contextual knowledge within reading</p>
-        <p className="cs-lead">Kindle had spent years building features like X-Ray, Dictionary, and Wikipedia, but most readers rarely used them. Accessing additional context meant interrupting the reading experience, so readers often left Kindle altogether to look things up elsewhere. The opportunity was not to create more content — it was to bring relevant context into the reading flow itself.</p>
+        <p className="cs-lead">Kindle had spent years building features like X-Ray, Dictionary, and Wikipedia, but most readers rarely used them. Accessing additional context meant interrupting the reading experience, so readers often left Kindle altogether to look things up elsewhere. The opportunity was not to create more content. It was to bring relevant context into the reading flow itself.</p>
         <div className="cs-biz-strip sr">
           <div className="cs-biz-cell">
             <p className="cs-biz-label">Why it mattered</p>
-            <p className="cs-biz-val">Every reader who left mid-session to search Google or ChatGPT was a signal that the platform was losing the highest-value moment in reading — the gap between what a reader encounters and what they understand.</p>
+            <p className="cs-biz-val">Every reader who left mid-session to search Google or ChatGPT was a signal that the platform was losing the highest-value moment in reading: the gap between what a reader encounters and what they understand.</p>
           </div>
           <div className="cs-biz-cell">
             <p className="cs-biz-label">What changed</p>
-            <p className="cs-biz-val">A new layered architecture surfaced supplemental knowledge directly within the reading context without disrupting flow — establishing a content delivery model that teams are now building new features on top of.</p>
+            <p className="cs-biz-val">A new layered architecture surfaced supplemental knowledge directly within the reading context without disrupting flow, establishing a content delivery model that teams are now building new features on top of.</p>
           </div>
         </div>
         <p className="cs-tag" style={{ marginTop: 16, fontFamily: 'var(--sans)', letterSpacing: 0, textTransform: 'none', fontSize: 13, opacity: 0.5 }}>This work is based on internal product development and has been adapted to remove confidential details while preserving the core problem, approach, and design decisions.</p>

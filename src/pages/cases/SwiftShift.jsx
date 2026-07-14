@@ -20,7 +20,7 @@ export default function SwiftShift() {
         <div className="cs-biz-strip sr">
           <div className="cs-biz-cell">
             <p className="cs-biz-label">Why it mattered</p>
-            <p className="cs-biz-val">Every unfilled shift creates compounding consequences: direct financial loss, downstream clinical risk, and burnout for the nurses absorbing excess coverage — a problem with simultaneous financial, safety, and human stakes.</p>
+            <p className="cs-biz-val">Every unfilled shift creates compounding consequences: direct financial loss, downstream clinical risk, and burnout for the nurses absorbing excess coverage, a problem with simultaneous financial, safety, and human stakes.</p>
           </div>
           <div className="cs-biz-cell">
             <p className="cs-biz-label">What changed</p>

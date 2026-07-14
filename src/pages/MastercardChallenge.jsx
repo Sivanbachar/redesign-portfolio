@@ -109,7 +109,7 @@ const RESEARCH_THEMES = [
   },
   {
     theme: 'Responsibility',
-    desc: 'One person often ends up managing everything — entering expenses, remembering recurring bills, correcting mistakes — while the other stays passive.',
+    desc: 'One person often ends up managing everything: entering expenses, remembering recurring bills, correcting mistakes, while the other stays passive.',
   },
   {
     theme: 'Relationships',
@@ -623,7 +623,7 @@ function SlideValidate() {
         </div>
       </div>
       <p className="mc-closing-statement mc-a4">
-        The goal was not to build a better expense tracker. It was to reduce the ongoing effort — cognitive, logistical, and social — that shared finances place on people.
+        The goal was not to build a better expense tracker. It was to reduce the ongoing effort (cognitive, logistical, and social) that shared finances place on people.
       </p>
     </SlideShell>
   )

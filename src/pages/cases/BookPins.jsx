@@ -73,11 +73,11 @@ export default function BookPins() {
         <div className="cs-biz-strip sr">
           <div className="cs-biz-cell">
             <p className="cs-biz-label">Why it mattered</p>
-            <p className="cs-biz-val">Readers who actively annotate and reference their books are the highest-retention, highest-advocacy cohort on the platform — and they were churning to external tools to do work Kindle should have owned.</p>
+            <p className="cs-biz-val">Readers who actively annotate and reference their books are the highest-retention, highest-advocacy cohort on the platform, and they were churning to external tools to do work Kindle should have owned.</p>
           </div>
           <div className="cs-biz-cell">
             <p className="cs-biz-label">What changed</p>
-            <p className="cs-biz-val">Book Pins shipped as a funded product, reached 446,000 readers, and established a new behavior category on Kindle — reader-organized knowledge that persists across an entire library.</p>
+            <p className="cs-biz-val">Book Pins shipped as a funded product, reached 446,000 readers, and established a new behavior category on Kindle: reader-organized knowledge that persists across an entire library.</p>
           </div>
         </div>
       </div>

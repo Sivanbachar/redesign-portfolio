@@ -50,7 +50,7 @@ export default function NavPlayer() {
   }
 
   const track = TRACKS[trackIdx]
-  const label = `${track.title}  —  ${track.artist}`
+  const label = `${track.title} · ${track.artist}`
 
   return (
     <div className="nav-player">

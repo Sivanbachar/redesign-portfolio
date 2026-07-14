@@ -25,7 +25,7 @@ export default function Rokt() {
           </div>
           <div className="cs-biz-cell">
             <p className="cs-biz-label">What changed</p>
-            <p className="cs-biz-val">An end-to-end experimentation infrastructure shipped that ran more than 40 experiments per year, converting the design function from an execution team into a continuous optimization operation — with a 25 to 30% lift in conversion per impression across key experiments.</p>
+            <p className="cs-biz-val">An end-to-end experimentation infrastructure shipped that ran more than 40 experiments per year, converting the design function from an execution team into a continuous optimization operation, with a 25 to 30% lift in conversion per impression across key experiments.</p>
           </div>
         </div>
       </div>

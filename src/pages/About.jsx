@@ -66,7 +66,7 @@ const experience = [
     date: 'Oct 2020 to Nov 2021',
     bullets: [
       'Designed customer experiences across millions of e-commerce transactions, improving conversion and engagement through experimentation, behavioral analysis, and iterative A/B testing.',
-      'Improved conversion and reduced drop-off by 15–25% through workflow simplification, customer journey optimization, and data-informed design decisions.',
+      'Improved conversion and reduced drop-off by 15 to 25% through workflow simplification, customer journey optimization, and data-informed design decisions.',
       'Partnered with product, engineering, and analytics teams to define experiments and measure business impact; translated behavioral insights into scalable interaction systems and experimentation frameworks.',
     ],
   },
