@@ -614,7 +614,6 @@
 }
 /* ── SLIDE 4 · FULL-WIDTH RESEARCH LAYOUT ───────────────────── */
 .mc-research-full {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0;
