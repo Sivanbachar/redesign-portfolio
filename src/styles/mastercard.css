@@ -168,6 +168,34 @@
 }
 
 /* ── SLIDE 1 · THE CHALLENGE ──────────────────────────────────── */
+.mc-challenge-context {
+  font-size: 17px;
+  color: var(--mc-txt-s);
+  line-height: 1.7;
+  margin: 0;
+}
+.mc-hl {
+  position: relative;
+  color: var(--mc-txt-s);
+  transition: color 0.35s ease;
+}
+.mc-hl::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--mc-accent);
+  border-radius: 1px;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mc-hl--active {
+  color: var(--mc-txt);
+}
+.mc-hl--active::after {
+  width: 100%;
+}
 .mc-challenge-body {
   display: flex;
   flex-direction: column;

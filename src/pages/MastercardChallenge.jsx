@@ -4,6 +4,10 @@ import '../styles/mastercard.css'
 // ── VIEWER CONTEXT ────────────────────────────────────────────────
 const ViewerContext = createContext('')
 const SlideIndexContext = createContext(0)
+const SubStepContext = createContext(0)
+
+// Slides with internal sub-steps (index → count)
+const SLIDE_SUB_STEPS = { 1: 2 }
 
 // ── VIEWER TRACKING ───────────────────────────────────────────────
 // Paste your Google Apps Script web app URL here after deploying it
@@ -190,15 +194,27 @@ function SlideShell({ children }) {
 
 // ── SLIDE 1 · THE CHALLENGE ───────────────────────────────────────
 function Slide1() {
+  const subStep = useContext(SubStepContext)
   return (
     <SlideShell>
       <h1 className="mc-h1 mc-a1">The Challenge</h1>
       <div className="mc-divider mc-a2" />
       <div className="mc-challenge-body">
-        <p className="mc-prompt mc-a3">
+        <p className="mc-challenge-context mc-a3">
+          Splitting costs with friends or housemates can be tricky. It's easy to{' '}
+          <span className={`mc-hl${subStep >= 1 ? ' mc-hl--active' : ''}`}>
+            lose track of who owes what
+          </span>
+          , which can lead to{' '}
+          <span className={`mc-hl${subStep >= 2 ? ' mc-hl--active' : ''}`}>
+            confusion, awkward conversations
+          </span>
+          , or delays in payment.
+        </p>
+        <p className="mc-prompt mc-a4">
           "Design a digital experience that helps people who share frequent day to day expenses with others (roommates or a partner) and track and manage these costs with clarity."
         </p>
-        <div className="mc-meta-row mc-a4">
+        <div className="mc-meta-row mc-a5">
           <div className="mc-meta-item">
             <span className="mc-meta-key">Timeline</span>
             <span className="mc-meta-val">3 days · Solo designer</span>
@@ -208,7 +224,7 @@ function Slide1() {
             <span className="mc-meta-val">End to end UX · Research · Strategy · Prototype</span>
           </div>
         </div>
-        <div className="mc-callout mc-a5">
+        <div className="mc-callout mc-a6">
           <span className="mc-callout-label">Design Goal</span>
           <p className="mc-callout-text">Create a shared expense experience that helps people understand where they stand financially, without creating more work or awkward conversations.</p>
         </div>
@@ -774,6 +790,7 @@ export default function MastercardChallenge() {
     try { return localStorage.getItem('mc-viewer-name') || '' } catch { return '' }
   })
   const [current,    setCurrent]    = useState(0)
+  const [subStep,    setSubStep]    = useState(0)
   const [keys,       setKeys]       = useState(() => Array(SLIDES_BASE.length).fill(0))
   const [prevSlide,  setPrev]       = useState(null)
   const [locked,     setLocked]     = useState(false)
@@ -789,6 +806,7 @@ export default function MastercardChallenge() {
 
   const goTo = useCallback((idx) => {
     if (idx < 0 || idx >= TOTAL || locked) return
+    setSubStep(0)
     setLocked(true)
     setPrev(current)
     setCurrent(idx)
@@ -796,8 +814,16 @@ export default function MastercardChallenge() {
     setTimeout(() => { setLocked(false); setPrev(null) }, 750)
   }, [current, locked])
 
-  const goNext = useCallback(() => goTo(current + 1), [current, goTo])
-  const goPrev = useCallback(() => goTo(current - 1), [current, goTo])
+  const goNext = useCallback(() => {
+    const maxSub = SLIDE_SUB_STEPS[current] ?? 0
+    if (subStep < maxSub) { setSubStep(s => s + 1); return }
+    goTo(current + 1)
+  }, [current, subStep, goTo])
+
+  const goPrev = useCallback(() => {
+    if (subStep > 0) { setSubStep(s => s - 1); return }
+    goTo(current - 1)
+  }, [current, subStep, goTo])
 
   useEffect(() => {
     const h = (e) => {
@@ -854,6 +880,7 @@ export default function MastercardChallenge() {
 
   return (
     <SlideIndexContext.Provider value={current}>
+    <SubStepContext.Provider value={subStep}>
     <ViewerContext.Provider value={viewerName}>
     <div className="mc-shell">
       <div className="mc-progress-bar-track" />
@@ -897,6 +924,7 @@ export default function MastercardChallenge() {
       <SlideTOC current={current} goTo={goTo} open={tocOpen} setOpen={setTocOpen} />
     </div>
     </ViewerContext.Provider>
+    </SubStepContext.Provider>
     </SlideIndexContext.Provider>
   )
 }
