@@ -22,7 +22,7 @@ export default function PasswordGate({ children }) {
       setVisible(false)
       return
     }
-    const t = setTimeout(() => setVisible(true), 1500)
+    const t = setTimeout(() => setVisible(true), 500)
     return () => clearTimeout(t)
   }, [authed, isHome])
 
