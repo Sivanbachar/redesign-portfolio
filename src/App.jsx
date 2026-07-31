@@ -5,6 +5,7 @@ import Loader           from './components/Loader.jsx'
 import CaseStudyOutline from './components/CaseStudyOutline.jsx'
 import ExploreMore      from './components/ExploreMore.jsx'
 import Footer           from './components/Footer.jsx'
+import PasswordGate     from './components/PasswordGate.jsx'
 import Home             from './pages/Home.jsx'
 import About            from './pages/About.jsx'
 import ContextualLayers from './pages/cases/Hotspots.jsx'
@@ -32,7 +33,7 @@ function AppShell() {
   const isCaseStudy  = pathname.startsWith('/projects/') || (pathname.startsWith('/ai/') && pathname.length > 4)
 
   return (
-    <>
+    <PasswordGate>
       <Loader />
       <ScrollToTop />
       <Nav />
@@ -57,8 +58,7 @@ function AppShell() {
       {isCaseStudy && <ExploreMore />}
 
       <Footer />
-
-    </>
+    </PasswordGate>
   )
 }
 
@@ -66,7 +66,7 @@ export default function App() {
   return (
     <Routes>
       {/* Standalone — no nav, footer, or portfolio chrome */}
-      <Route path="/challenge" element={<MastercardChallenge />} />
+      <Route path="/challenge" element={<PasswordGate><MastercardChallenge /></PasswordGate>} />
       {/* Everything else goes through the normal shell */}
       <Route path="/*" element={<AppShell />} />
     </Routes>
