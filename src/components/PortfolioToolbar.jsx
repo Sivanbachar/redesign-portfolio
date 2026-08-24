@@ -300,7 +300,7 @@ export default function PortfolioToolbar() {
   }
 
   // Slide deck: hide everything
-  if (pathname === '/projects/bookpins/slides') return null
+  if (pathname === '/projects/bookpins/slides' || pathname === '/projects/rokt/slides') return null
 
   // Non-home pages: mini music pill (left) + chat FAB (right)
   if (pathname !== '/') {

@@ -19,6 +19,7 @@ import AIResellerApp    from './pages/ai/ResellerApp.jsx'
 import AIGramercy       from './pages/ai/Gramercy.jsx'
 import InterviewMe      from './pages/InterviewMe.jsx'
 import MastercardChallenge from './pages/MastercardChallenge.jsx'
+import RoktSlides          from './pages/cases/RoktSlides.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -45,7 +46,8 @@ function AppShell() {
         <Route path="/projects/contextual-layers" element={<ContextualLayers />} />
         <Route path="/projects/bookpins"        element={<BookPins />} />
         <Route path="/projects/bookpins/slides" element={<BookPinsSlides />} />
-        <Route path="/projects/rokt"        element={<Rokt />} />
+        <Route path="/projects/rokt"          element={<Rokt />} />
+        <Route path="/projects/rokt/slides"  element={<RoktSlides />} />
         <Route path="/projects/swiftshift"  element={<SwiftShift />} />
         <Route path="/ai"                   element={<AI />} />
         <Route path="/ai/portfolio"         element={<AIPortfolio />} />
