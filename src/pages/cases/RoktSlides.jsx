@@ -29,7 +29,7 @@ const H2 = (extra = {}) => ({
   color: '#fff',
   ...extra,
 })
-const BODY = { fontSize: 17, color: 'rgba(255,255,255,0.75)', lineHeight: 1.75 }
+const BODY = { fontSize: 18, color: 'rgba(255,255,255,0.78)', lineHeight: 1.75 }
 
 const SLIDE_IDS = [
   'slide-cover',
@@ -197,15 +197,34 @@ export default function RoktSlides() {
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px)',
           backgroundSize: '80px 80px',
         }} />
-        <div style={{ position: 'relative', maxWidth: 1200 }}>
+        {/* Phone visual — top right */}
+        <div style={{
+          position: 'absolute', top: 0, right: 200, bottom: 0,
+          display: 'flex', alignItems: 'center',
+          pointerEvents: 'none',
+        }}>
+          <img
+            src="/images/rokt/background_video.gif"
+            alt="Rokt ad experience on mobile"
+            style={{
+              height: '75vh', width: 'auto',
+              opacity: 0.35,
+              borderRadius: 24,
+              maskImage: 'linear-gradient(to bottom, transparent 2%, black 15%, black 85%, transparent 98%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 2%, black 15%, black 85%, transparent 98%)',
+            }}
+          />
+        </div>
+
+        <div style={{ position: 'relative', maxWidth: 700 }}>
           <p className="sr" style={{ ...mono({ marginBottom: 48 }) }}>Rokt · E-Commerce Ad-Tech · Experimentation &amp; Design · 2021</p>
           <h1 className="sr" style={{
             fontSize: 'clamp(72px, 12vw, 160px)', fontWeight: 700,
             letterSpacing: '-0.045em', lineHeight: 0.9, color: '#fff', marginBottom: 40,
           }}>ROKT</h1>
           <p className="sr" style={{
-            fontSize: 'clamp(15px, 1.6vw, 20px)',
-            color: 'rgba(255,255,255,0.65)', maxWidth: 520, lineHeight: 1.6, marginBottom: 72,
+            fontSize: 'clamp(16px, 1.6vw, 22px)',
+            color: 'rgba(255,255,255,0.72)', maxWidth: 520, lineHeight: 1.6, marginBottom: 72,
           }}>
             How I turned a design team into a learning system — building the experimentation infrastructure
             that drove 25–30% conversion lift across key ad experiences.
@@ -223,7 +242,7 @@ export default function RoktSlides() {
             ))}
           </div>
         </div>
-        <p style={{ ...slideNum, position: 'absolute', bottom: 100, right: 80 }}>01 / {TOTAL}</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 100, right: 200 }}>01 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -348,56 +367,49 @@ export default function RoktSlides() {
             </div>
           ))}
         </div>
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>04 / {TOTAL}</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 200 }}>04 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           05 / DISCOVERY
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section id="slide-discovery" style={{
-        minHeight: '100vh', display: 'grid', gridTemplateColumns: '360px 1fr',
-        ...DIVIDER, background: '#080808', position: 'relative',
+        minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center',
+        padding: '100px 200px', ...DIVIDER, background: '#080808', position: 'relative',
       }}>
-        <div style={{
-          padding: '100px 60px 100px 200px', borderRight: '1px solid rgba(255,255,255,0.06)',
-          display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        }}>
-          <p className="sr" style={{ ...mono({ marginBottom: 28 }) }}>05: Discovery &amp; Research</p>
-          <h2 className="sr" style={{ ...H2({ fontSize: 'clamp(28px, 2.8vw, 40px)', marginBottom: 24 }) }}>
+        {/* Header */}
+        <p className="sr" style={{ ...mono({ marginBottom: 20 }) }}>05: Discovery &amp; Research</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64 }}>
+          <h2 className="sr" style={{ ...H2({ fontSize: 'clamp(32px, 3.5vw, 54px)', maxWidth: 600 }) }}>
             I went to users before I went to the design.
           </h2>
-          <p className="sr" style={{ fontSize: 14, color: 'rgba(255,255,255,0.60)', lineHeight: 1.7 }}>
-            Before forming hypotheses about what to test, I needed to understand how users were actually experiencing ad placements in post-purchase flows.
-          </p>
-          <div style={{ marginTop: 40, display: 'flex', gap: 24 }}>
-            {[['100+', 'Users screened'], ['50', 'In-depth sessions'], ['3', 'Research methods']].map(([n, l]) => (
-              <div key={l}>
-                <p style={{ fontSize: 28, fontWeight: 700, letterSpacing: '-0.04em', color: '#fff', marginBottom: 4 }}>{n}</p>
+          <div className="sr" style={{ display: 'flex', gap: 48, flexShrink: 0, paddingLeft: 48 }}>
+            {[['100+', 'Users screened'], ['50', 'In-depth sessions'], ['3', 'Methods']].map(([n, l]) => (
+              <div key={l} style={{ textAlign: 'right' }}>
+                <p style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.04em', color: '#fff', marginBottom: 4 }}>{n}</p>
                 <p style={{ ...mono({ fontSize: 8 }), marginBottom: 0 }}>{l}</p>
               </div>
             ))}
           </div>
         </div>
-        <div style={{ padding: '100px 200px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+
+        {/* Method cards — 3 columns */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'rgba(255,255,255,0.06)' }}>
           {[
             ['01', 'Behavioral Data Audit', 'Tableau + Business Analytics', 'Analyzed performance data across partner environments to identify where and when users were dropping, engaging, or converting. Surfaced patterns that couldn\'t be explained by the existing designs alone.'],
             ['02', 'User Surveys', '100+ screened respondents', 'Recruited users who regularly shopped online and had encountered ads at checkout. Screened for variety in shopping behaviors and ad engagement patterns.'],
-            ['03', 'In-Depth User Interviews', '50 sessions on live sites', 'Conducted sessions on sites they actually use — watching them encounter ads in real context, not synthetic environments. Probed how they notice, process, and respond to ads at different moments in the journey.'],
+            ['03', 'In-Depth Interviews', '50 sessions on live sites', 'Conducted sessions on sites they actually use — watching them encounter ads in real context. Probed how they notice, process, and respond to ads at different moments in the journey.'],
           ].map(([n, title, sub, desc]) => (
-            <div key={n} className="sr" style={{
-              display: 'grid', gridTemplateColumns: '48px 1fr', gap: '0 24px',
-              padding: '28px 0', borderTop: '1px solid rgba(255,255,255,0.07)',
-            }}>
-              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'rgba(255,255,255,0.2)', marginTop: 2 }}>{n}</p>
-              <div>
-                <p style={{ fontSize: 17, fontWeight: 500, color: 'rgba(255,255,255,0.82)', marginBottom: 4, letterSpacing: '-0.01em' }}>{title}</p>
-                <p style={{ ...mono({ fontSize: 8, marginBottom: 10 }) }}>{sub}</p>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.62)', lineHeight: 1.65 }}>{desc}</p>
-              </div>
+            <div key={n} className="sr" style={{ background: '#080808', padding: '36px 40px' }}>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'rgba(255,255,255,0.2)', marginBottom: 16 }}>{n}</p>
+              <p style={{ fontSize: 18, fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: 6, letterSpacing: '-0.01em', lineHeight: 1.25 }}>{title}</p>
+              <p style={{ ...mono({ fontSize: 8, marginBottom: 16 }) }}>{sub}</p>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.62)', lineHeight: 1.7 }}>{desc}</p>
             </div>
           ))}
         </div>
-        <p style={{ ...slideNum, gridColumn: '1 / -1', textAlign: 'right', padding: '0 200px 40px' }}>05 / {TOTAL}</p>
+
+        <p style={{ ...slideNum, position: 'absolute', bottom: 40, right: 200 }}>05 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -426,7 +438,7 @@ export default function RoktSlides() {
         <p className="sr" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)' }}>
           The question became: how do we earn the right to be there at all?
         </p>
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>06 / {TOTAL}</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 200 }}>06 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -485,7 +497,7 @@ export default function RoktSlides() {
             A fourth hypothesis — <strong style={{ color: 'rgba(255,255,255,0.65)' }}>Visual Trust</strong> — emerged from early experimentation: when the ad UI mirrors the host site's visual language, users extend their trust in the brand they just purchased from to the ad content alongside it.
           </p>
         </div>
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>07 / {TOTAL}</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 200 }}>07 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -561,7 +573,21 @@ export default function RoktSlides() {
             <text x="500" y="800" textAnchor="middle" fill="rgba(255,255,255,0.22)" fontSize={8.5} fontFamily="'Satoshi','Inter',sans-serif">↑  Improved revenue per transaction</text>
           </svg>
         </div>
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>08 / {TOTAL}</p>
+        {/* Key experiments visual */}
+        <div className="sr" style={{ marginTop: 40 }}>
+          <p style={{ ...mono({ marginBottom: 16 }) }}>Experiment output · 34 experiments, 7 verticals</p>
+          <img
+            src="/images/rokt/key_experiments.png"
+            alt="Key experiment variants overview"
+            style={{
+              width: '100%', borderRadius: 10,
+              border: '1px solid rgba(255,255,255,0.08)',
+              display: 'block',
+            }}
+          />
+        </div>
+
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 200 }}>08 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -757,7 +783,7 @@ export default function RoktSlides() {
           Each variant represents a hypothesis. Select any to see the design direction, the hypothesis it tested, and what the data showed.
         </p>
         <ExperimentViewer />
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>13 / {TOTAL}</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 200 }}>13 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -814,7 +840,7 @@ export default function RoktSlides() {
             </div>
           ))}
         </div>
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>14 / {TOTAL}</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 200 }}>14 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -864,7 +890,7 @@ export default function RoktSlides() {
             an execution function to the engine of performance improvement.
           </p>
         </div>
-        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 80 }}>15 / {TOTAL}</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 200 }}>15 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -892,7 +918,7 @@ export default function RoktSlides() {
             </div>
           ))}
         </div>
-        <p style={{ ...slideNum, position: 'absolute', bottom: 56, right: 80 }}>16 / {TOTAL}</p>
+        <p style={{ ...slideNum, position: 'absolute', bottom: 56, right: 200 }}>16 / {TOTAL}</p>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
