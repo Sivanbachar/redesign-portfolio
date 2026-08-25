@@ -226,12 +226,12 @@ export default function RoktSlides() {
             fontSize: 'clamp(16px, 1.6vw, 22px)',
             color: 'rgba(255,255,255,0.72)', maxWidth: 520, lineHeight: 1.6, marginBottom: 72,
           }}>
-            How I turned a design team into a learning system — building the experimentation infrastructure
-            that drove 25–30% conversion lift across key ad experiences.
+            How I turned a design team into a learning system, building the experimentation infrastructure
+            that drove 25 to 30% conversion lift across key ad experiences.
           </p>
           <div className="sr" style={{ display: 'flex', gap: 56, alignItems: 'flex-end' }}>
             {[
-              ['+25–30%', 'Conversion lift per impression'],
+              ['+25 to 30%', 'Conversion lift per impression'],
               ['40+', 'Experiments across 7 verticals'],
               ['2×', 'Experiment velocity over 18 months'],
             ].map(([n, l]) => (
@@ -294,7 +294,7 @@ export default function RoktSlides() {
             The platform was growing. The product was not getting more effective.
           </h2>
           <p className="sr" style={{ ...BODY, marginBottom: 20 }}>
-            Rokt was onboarding more partners and growing total revenue — but RPT had stagnated.
+            Rokt was onboarding more partners and growing total revenue, but RPT had stagnated.
             The system was scaling, but the ad experience itself wasn't improving.
           </p>
           <p className="sr" style={{ ...BODY, marginBottom: 32 }}>
@@ -315,9 +315,9 @@ export default function RoktSlides() {
         </div>
         <div style={{ padding: '100px 200px 100px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 0 }}>
           {[
-            ['Why this was hard', 'The ad placement worked. Revenue was growing. There was no obvious crisis — which made it difficult to justify a fundamental rethink of how the team operated.'],
+            ['Why this was hard', 'The ad placement worked. Revenue was growing. There was no obvious crisis, which made it difficult to justify a fundamental rethink of how the team operated.'],
             ['The real gap', 'Without a structured way to learn from experiments, every design was a one-off. There was no feedback loop connecting what shipped to what changed performance.'],
-            ['What was needed', 'Not just better designs. A system for generating, testing, and capturing design knowledge at scale — so improvements could compound rather than reset with each project.'],
+            ['What was needed', 'Not just better designs. A system for generating, testing, and capturing design knowledge at scale so improvements could compound rather than reset with each project.'],
           ].map(([heading, body]) => (
             <div key={heading} className="sr" style={{ padding: '24px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
               <p style={{ ...mono({ marginBottom: 10 }) }}>{heading}</p>
@@ -339,7 +339,7 @@ export default function RoktSlides() {
           I built the system that made the team smarter over time.
         </h2>
         <p className="sr" style={{ fontSize: 16, color: 'rgba(255,255,255,0.60)', marginBottom: 72, maxWidth: 560, lineHeight: 1.6 }}>
-          There was no structured experimentation process when I arrived. I didn't just run experiments — I defined how the team would learn.
+          There was no structured experimentation process when I arrived. I didn't just run experiments. I defined how the team would learn.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, background: 'rgba(255,255,255,0.06)' }}>
           {[
@@ -353,7 +353,7 @@ export default function RoktSlides() {
               ['Product', 'Aligned on which verticals and partner environments to prioritize for testing, and how to sequence experiments against business goals.'],
               ['Engineering', 'Worked within platform constraints to determine which design variations were testable within existing infrastructure.'],
               ['Data & Analytics', 'Co-defined what signals to measure, reviewed experiment results together, and used data to determine when a result was conclusive.'],
-              ['Partner success', 'Understood partner-specific constraints — visual brand requirements, placement rules — that shaped what could be tested in each environment.'],
+              ['Partner success', 'Understood partner-specific constraints, including visual brand requirements and placement rules, that shaped what could be tested in each environment.'],
             ]},
           ].map(({ owner, items }) => (
             <div key={owner} style={{ background: '#080808', padding: '48px 56px' }}>
@@ -398,7 +398,7 @@ export default function RoktSlides() {
           {[
             ['01', 'Behavioral Data Audit', 'Tableau + Business Analytics', 'Analyzed performance data across partner environments to identify where and when users were dropping, engaging, or converting. Surfaced patterns that couldn\'t be explained by the existing designs alone.'],
             ['02', 'User Surveys', '100+ screened respondents', 'Recruited users who regularly shopped online and had encountered ads at checkout. Screened for variety in shopping behaviors and ad engagement patterns.'],
-            ['03', 'In-Depth Interviews', '50 sessions on live sites', 'Conducted sessions on sites they actually use — watching them encounter ads in real context. Probed how they notice, process, and respond to ads at different moments in the journey.'],
+            ['03', 'In-Depth Interviews', '50 sessions on live sites', 'Conducted sessions on sites they actually use, watching them encounter ads in real context. Probed how they notice, process, and respond to ads at different moments in the journey.'],
           ].map(([n, title, sub, desc]) => (
             <div key={n} className="sr" style={{ background: '#080808', padding: '36px 40px' }}>
               <p style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'rgba(255,255,255,0.2)', marginBottom: 16 }}>{n}</p>
@@ -432,7 +432,7 @@ export default function RoktSlides() {
           <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.60)' }}>passively ignoring</em>{' '}
           ads. They're{' '}
           <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.60)' }}>actively avoiding</em>{' '}
-          them — regardless of relevance."
+          them, regardless of relevance."
         </blockquote>
         <div style={{ width: 32, height: 1, background: 'rgba(255,255,255,0.18)', margin: '48px auto 40px' }} />
         <p className="sr" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)' }}>
@@ -471,7 +471,7 @@ export default function RoktSlides() {
             },
             {
               n: '03', label: 'Interaction Control',
-              thesis: 'Giving users agency in the experience — rather than passive exposure — shifts the dynamic from interruption to exploration.',
+              thesis: 'Giving users agency in the experience, rather than passive exposure, shifts the dynamic from interruption to exploration.',
               test: 'Test navigation between offers vs. single fixed ad placement.',
               color: 'rgba(255,180,100,0.12)',
             },
@@ -494,7 +494,7 @@ export default function RoktSlides() {
           background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10,
         }}>
           <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65 }}>
-            A fourth hypothesis — <strong style={{ color: 'rgba(255,255,255,0.65)' }}>Visual Trust</strong> — emerged from early experimentation: when the ad UI mirrors the host site's visual language, users extend their trust in the brand they just purchased from to the ad content alongside it.
+            A fourth hypothesis, <strong style={{ color: 'rgba(255,255,255,0.65)' }}>Visual Trust</strong>, emerged from early experimentation: when the ad UI mirrors the host site's visual language, users extend their trust in the brand they just purchased from to the ad content alongside it.
           </p>
         </div>
         <p style={{ ...slideNum, position: 'absolute', bottom: 48, right: 200 }}>07 / {TOTAL}</p>
@@ -610,11 +610,11 @@ export default function RoktSlides() {
             Relevance mattered more than visual restraint.
           </h2>
           <p className="sr" style={{ ...BODY, marginBottom: 20 }}>
-            The assumption on the team was that imagery hurt performance — historical data showed
-            poorly matched visuals underperformed plain text. So imagery had largely been avoided.
+            The assumption on the team was that imagery hurt performance. Historical data showed
+            poorly matched visuals underperformed plain text, so imagery had largely been avoided.
           </p>
           <p className="sr" style={{ ...BODY, marginBottom: 20 }}>
-            My hypothesis: the problem wasn't imagery — it was <em>irrelevant</em> imagery. Contextual
+            My hypothesis: the problem wasn't imagery. It was <em>irrelevant</em> imagery. Contextual
             and functional visuals that reinforced the offer's value would perform differently.
           </p>
         </div>
@@ -623,7 +623,7 @@ export default function RoktSlides() {
             ['The existing assumption', 'Imagery = visual noise. Teams had been avoiding visuals to keep ads "clean."'],
             ['What we tested', 'Contextual product imagery (showing what the offer is) vs. decorative imagery vs. text-only. Variants 3, 4, and 9 in the experiment suite.'],
             ['What the data showed', 'When imagery was functionally relevant to the offer, it increased conversion per impression by 25%. Users were more likely to engage when they could see what they were clicking to.'],
-            ['The product decision this changed', 'Imagery became a standard design direction across verticals — not just for select partners — with a clear rule: relevance is the filter, not restraint.'],
+            ['The product decision this changed', 'Imagery became a standard design direction across verticals, not just for select partners, with one clear rule: relevance is the filter, not restraint.'],
           ].map(([heading, body]) => (
             <div key={heading} className="sr" style={{ padding: '20px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
               <p style={{ ...mono({ fontSize: 8, marginBottom: 8 }) }}>{heading}</p>
@@ -655,20 +655,20 @@ export default function RoktSlides() {
           </h2>
           <p className="sr" style={{ ...BODY, marginBottom: 20 }}>
             In a transactional context, users are in "done" mode. They've just completed a purchase
-            and their attention is low. Dense persuasive copy — the default for ad creative — wasn't
+            and their attention is low. Dense persuasive copy, the default for ad creative, wasn't
             suited to the moment.
           </p>
           <p className="sr" style={{ ...BODY }}>
             Replacing dense copy with structured benefit lists made offers easier to evaluate at a
-            glance — matching how users actually process information in these high-speed moments.
+            glance, matching how users actually process information in these high-speed moments.
           </p>
         </div>
         <div style={{ padding: '100px 200px 100px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           {[
-            ['What we tested', 'Compact single-line layouts, expanded copy with inline CTAs, structured benefit lists — systematically varying how much information was present and how it was organized.'],
-            ['Collaboration moment', 'Data & Insights helped us define "clarity score" as a proxy metric alongside conversion — giving us a way to evaluate comprehension, not just clicks, before performance was conclusive.'],
+            ['What we tested', 'Compact single-line layouts, expanded copy with inline CTAs, structured benefit lists, systematically varying how much information was present and how it was organized.'],
+            ['Collaboration moment', 'Data & Insights helped us define "clarity score" as a proxy metric alongside conversion, giving us a way to evaluate comprehension rather than just clicks before performance was conclusive.'],
             ['What changed', 'Structured layouts that surfaced the offer\'s value proposition in the fewest possible words consistently outperformed dense or persuasive copy in post-purchase contexts.'],
-            ['How this generalizes', 'The principle — match information density to attention level — became a cross-vertical design rule that shaped how we briefed advertisers on creative requirements.'],
+            ['How this generalizes', 'Matching information density to attention level became a cross-vertical design rule that shaped how we briefed advertisers on creative requirements.'],
           ].map(([heading, body]) => (
             <div key={heading} className="sr" style={{ padding: '20px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
               <p style={{ ...mono({ fontSize: 8, marginBottom: 8 }) }}>{heading}</p>
@@ -703,7 +703,7 @@ export default function RoktSlides() {
             gone. This created a one-shot experience where disengagement was permanent.
           </p>
           <p className="sr" style={{ ...BODY }}>
-            Adding navigation between offers let users explore at their own pace — fundamentally changing the
+            Adding navigation between offers let users explore at their own pace, fundamentally changing the
             dynamic from passive exposure to active browsing. Users who had previously dismissed ads stayed
             engaged longer once they had control.
           </p>
@@ -712,8 +712,8 @@ export default function RoktSlides() {
           {[
             ['The tension', 'Product was concerned that navigation would increase complexity and distract from the primary conversion action. Engineering flagged that multi-offer navigation required infra changes.'],
             ['How we resolved it', 'We ran a scoped experiment with navigation on a single partner environment before proposing it as a platform feature. The +30% result made the case for investing in the infra work.'],
-            ['What this teaches', 'Experimentation wasn\'t just a design validation tool — it was the mechanism for resolving cross-functional debates. Data moved the conversation faster than alignment sessions.'],
-            ['The broader implication', 'This changed how we thought about the ad slot entirely — from a single placement to a browsable experience with multiple offers surfaced in sequence.'],
+            ['What this teaches', 'Experimentation wasn\'t just a design validation tool. It was the mechanism for resolving cross-functional debates. Data moved the conversation faster than alignment sessions.'],
+            ['The broader implication', 'This changed how we thought about the ad slot entirely, shifting it from a single placement to a browsable experience with multiple offers surfaced in sequence.'],
           ].map(([heading, body]) => (
             <div key={heading} className="sr" style={{ padding: '20px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
               <p style={{ ...mono({ fontSize: 8, marginBottom: 8 }) }}>{heading}</p>
@@ -741,11 +741,11 @@ export default function RoktSlides() {
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(100,220,160,0.75)' }}>Result: Increased content engagement</span>
           </div>
           <h2 className="sr" style={{ ...H2({ fontSize: 'clamp(28px, 3vw, 42px)', marginBottom: 24 }) }}>
-            Brand trust is transferable — if you earn it visually.
+            Brand trust is transferable, but only if you earn it visually.
           </h2>
           <p className="sr" style={{ ...BODY, marginBottom: 20 }}>
             The research surfaced something unexpected: users extended trust from the brand they had
-            just purchased from to ad content alongside it — but only when the ad UI felt visually
+            just purchased from to ad content alongside it, but only when the ad UI felt visually
             consistent with the host experience.
           </p>
           <p className="sr" style={{ ...BODY }}>
@@ -756,8 +756,8 @@ export default function RoktSlides() {
         <div style={{ padding: '100px 200px 100px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           {[
             ['What we tested', 'Restrained palette versions that mirrored host site visual language vs. generic Rokt-branded treatments. Variants 7 and 8.'],
-            ['The design principle', 'Camouflage by relevance, not by deception. The goal wasn\'t to hide the ad — it was to make the ad feel like it belonged to the same ecosystem of quality the user had just experienced.'],
-            ['The product implication', 'This informed how we worked with partners on creative direction — pushing for visuals and typography that adapted to each host context rather than defaulting to advertiser brand templates.'],
+            ['The design principle', 'Camouflage by relevance, not by deception. The goal wasn\'t to hide the ad. It was to make the ad feel like it belonged to the same ecosystem of quality the user had just experienced.'],
+            ['The product implication', 'This informed how we worked with partners on creative direction, pushing for visuals and typography that adapted to each host context rather than defaulting to advertiser brand templates.'],
             ['A constraint this surfaced', 'Some advertisers had brand guidelines that made native-style adaptation difficult. This became an ongoing conversation with partner success and product about how much creative flexibility we could require.'],
           ].map(([heading, body]) => (
             <div key={heading} className="sr" style={{ padding: '20px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
@@ -816,7 +816,7 @@ export default function RoktSlides() {
             {
               tension: 'Native visual treatment vs. advertiser brand guidelines',
               who: 'Design + Partner Success + Advertisers',
-              decision: 'Establish a "native adaptation tier" — flexible brand guidelines for Rokt placements.',
+              decision: 'Establish a "native adaptation tier" with flexible brand guidelines for Rokt placements.',
               why: 'Advertisers resisted deviation from their master brand. We needed to show them performance data from native-style tests before they\'d consider updating their creative requirements.',
             },
           ].map(({ tension, who, decision, why }) => (
@@ -859,7 +859,7 @@ export default function RoktSlides() {
         </h2>
         <div className="sr" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
           {[
-            ['+25–30%', 'Conversion per impression', 'Across key experiment categories'],
+            ['+25 to 30%', 'Conversion per impression', 'Across key experiment categories'],
             ['40+', 'Experiments shipped', 'Across 7 verticals in 18 months'],
             ['2×', 'Experiment velocity', 'Monthly cadence → biweekly'],
             ['Cross-vertical', 'Learning library', 'Insights shared across all partner environments'],
@@ -885,7 +885,7 @@ export default function RoktSlides() {
           maxWidth: 680,
         }}>
           <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
-            Performance improvements now compound over time — not because any single design was brilliant,
+            Performance improvements now compound over time, not because any single design was brilliant,
             but because the system I built keeps getting smarter. I elevated design's role from
             an execution function to the engine of performance improvement.
           </p>
@@ -905,9 +905,9 @@ export default function RoktSlides() {
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
           {[
-            ['The most effective products aren\'t defined by solutions. They\'re defined by how well they learn.', 'In high-intent environments, small design changes can have outsized revenue impact. The leverage isn\'t in predicting the right answer — it\'s in building systems that discover it faster than the competition.'],
-            ['Design\'s role is most powerful when it\'s connected to outcomes, not just outputs.', 'The work that mattered most wasn\'t any individual design decision. It was building the learning infrastructure — and positioning design as the engine of that improvement, not a downstream executor.'],
-            ['I\'d instrument the qualitative side earlier.', 'We built strong quantitative measurement. But qualitative insight — understanding *why* a variant worked — often came too late to influence the next round of hypotheses in time. I\'d build that loop in from the start.'],
+            ['The most effective products aren\'t defined by solutions. They\'re defined by how well they learn.', 'In high-intent environments, small design changes can have outsized revenue impact. The leverage isn\'t in predicting the right answer. It\'s in building systems that discover it faster than the competition.'],
+            ['Design\'s role is most powerful when it\'s connected to outcomes, not just outputs.', 'The work that mattered most wasn\'t any individual design decision. It was building the learning infrastructure and positioning design as the engine of that improvement, not a downstream executor.'],
+            ['I\'d instrument the qualitative side earlier.', 'We built strong quantitative measurement. But qualitative insight about why a variant worked often came too late to influence the next round of hypotheses. I\'d build that loop in from the start.'],
           ].map(([h, b], i) => (
             <div key={i} className="sr" style={{ paddingTop: 32, borderTop: '2px solid rgba(255,255,255,0.07)' }}>
               <p style={{ ...mono({ marginBottom: 20 }) }}>
@@ -941,10 +941,10 @@ export default function RoktSlides() {
             Both sides of the advertising ecosystem.
           </h2>
           <p className="sr" style={{ ...BODY, marginBottom: 24 }}>
-            At Rokt, I worked on the <strong style={{ color: 'rgba(255,255,255,0.75)' }}>external customer-facing experience</strong> — the ad itself, its performance, and how design decisions influenced conversion.
+            At Rokt, I worked on the <strong style={{ color: 'rgba(255,255,255,0.75)' }}>external customer-facing experience</strong>: the ad itself, its performance, and how design decisions influenced conversion.
           </p>
           <p className="sr" style={{ ...BODY, marginBottom: 24 }}>
-            At OUTFRONT Media, I worked on the <strong style={{ color: 'rgba(255,255,255,0.75)' }}>internal advertiser tooling</strong> — the platform marketers use to plan, configure, and manage campaigns for digital out-of-home advertising across the United States.
+            At OUTFRONT Media, I worked on the <strong style={{ color: 'rgba(255,255,255,0.75)' }}>internal advertiser tooling</strong>: the platform marketers use to plan, configure, and manage campaigns for digital out-of-home advertising across the United States.
           </p>
           <p className="sr" style={{ fontSize: 14, color: 'rgba(255,255,255,0.35)', lineHeight: 1.65, fontStyle: 'italic' }}>
             Consumer-facing ad experience + experimentation at Rokt →<br />
@@ -967,9 +967,9 @@ export default function RoktSlides() {
             </p>
           </div>
           {[
-            ['The problem', 'Campaign creation depended on manual coordination — conversations around inventory, bidding, placement timing, and creative requirements. The process was slow and hard to scale.'],
-            ['What I designed', 'An Ads Manager platform helping marketers define audience, location, campaign requirements, placement duration, and performance considerations — self-service, without manual handoffs.'],
-            ['The shift', 'From manual coordination to autonomous campaign creation — reducing dependence on back-and-forth and giving marketers direct control over digital billboard inventory across the US.'],
+            ['The problem', 'Campaign creation depended on manual coordination, including conversations around inventory, bidding, placement timing, and creative requirements. The process was slow and hard to scale.'],
+            ['What I designed', 'An Ads Manager platform helping marketers define audience, location, campaign requirements, placement duration, and performance considerations. Self-service, without manual handoffs.'],
+            ['The shift', 'From manual coordination to autonomous campaign creation, reducing dependence on back-and-forth and giving marketers direct control over digital billboard inventory across the US.'],
           ].map(([heading, body]) => (
             <div key={heading} className="sr" style={{ padding: '18px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
               <p style={{ ...mono({ fontSize: 8, marginBottom: 8 }) }}>{heading}</p>
