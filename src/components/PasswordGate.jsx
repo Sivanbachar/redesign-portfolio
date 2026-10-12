@@ -6,7 +6,7 @@ const STORAGE_KEY = 'pf-auth'
 
 export default function PasswordGate({ children }) {
   const { pathname } = useLocation()
-  const isHome = pathname === '/'
+  const isPublic = pathname === '/' || pathname === '/about' || pathname === '/interview'
 
   const [authed, setAuthed] = useState(() => {
     try { return localStorage.getItem(STORAGE_KEY) === '1' } catch { return false }
@@ -18,13 +18,13 @@ export default function PasswordGate({ children }) {
 
   // Start / cancel the 1.5 s delay based on route and auth state
   useEffect(() => {
-    if (authed || isHome) {
+    if (authed || isPublic) {
       setVisible(false)
       return
     }
     const t = setTimeout(() => setVisible(true), 500)
     return () => clearTimeout(t)
-  }, [authed, isHome])
+  }, [authed, isPublic])
 
   // Lock body scroll while gate is up
   useEffect(() => {
