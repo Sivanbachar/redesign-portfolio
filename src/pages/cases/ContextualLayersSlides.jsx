@@ -51,35 +51,6 @@ const SLIDE_IDS = [
 ]
 const TOTAL = SLIDE_IDS.length
 
-// ── Visual placeholder ────────────────────────────────────────────────────────
-function VisualPlaceholder({ label, height = 300 }) {
-  return (
-    <div style={{
-      border: '1px dashed rgba(255,255,255,0.12)',
-      borderRadius: 10,
-      height,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 14,
-      background: 'rgba(255,255,255,0.015)',
-    }}>
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="1" y="1" width="26" height="26" rx="5" stroke="rgba(255,255,255,0.18)" strokeWidth="1.2" strokeDasharray="4 3"/>
-        <path d="M7 20l5-6 3.5 4 2.5-3 5 5" stroke="rgba(255,255,255,0.22)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="10" cy="10" r="2" stroke="rgba(255,255,255,0.22)" strokeWidth="1.2"/>
-      </svg>
-      <p style={{
-        fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.15em',
-        textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)',
-        textAlign: 'center', maxWidth: 340, lineHeight: 1.9, marginBottom: 0, padding: '0 24px',
-      }}>
-        {label}
-      </p>
-    </div>
-  )
-}
 
 export default function ContextualLayersSlides() {
   const navigate       = useNavigate()
@@ -209,7 +180,6 @@ export default function ContextualLayersSlides() {
             </div>
           </div>
         </div>
-        <VisualPlaceholder label="Screenshot: Kindle X-Ray and Dictionary menus showing how deeply buried these features are from the reading surface" height={280} />
       </section>
 
       {/* ── 03 PROBLEM ────────────────────────────────────────────────────────── */}
@@ -234,7 +204,11 @@ export default function ContextualLayersSlides() {
             <strong style={{ color: '#fff', fontWeight: 500 }}>How might we</strong> deliver relevant, contextual information within reading in a way that improves comprehension without the reader ever leaving the page?
           </p>
         </div>
-        <VisualPlaceholder label="User flow diagram: reader exits Kindle mid-session to Google or ChatGPT, then attempts to return to their place" height={200} />
+        <img
+          src="/images/hotspots/before_after.png"
+          alt="Reader exits Kindle to search externally vs staying in the reading surface"
+          style={{ width: '100%', borderRadius: 8, border: '1px solid rgba(255,255,255,0.06)', display: 'block', marginTop: 8 }}
+        />
       </section>
 
       {/* ── 04 ORIGIN ─────────────────────────────────────────────────────────── */}
@@ -256,7 +230,6 @@ export default function ContextualLayersSlides() {
             </div>
           ))}
         </div>
-        <VisualPlaceholder label="Workshop artifact: opportunity framing or affinity cluster from the cross-functional session that originated this project" height={240} />
       </section>
 
       {/* ── 05 INSIGHT ────────────────────────────────────────────────────────── */}
@@ -311,9 +284,6 @@ export default function ContextualLayersSlides() {
               </div>
             ))}
           </div>
-        </div>
-        <div style={{ marginTop: 56 }}>
-          <VisualPlaceholder label="Diagram: old pull model vs new push model — showing how delivery changes from navigation-triggered to position-triggered" height={240} />
         </div>
       </section>
 
@@ -372,7 +342,11 @@ export default function ContextualLayersSlides() {
             </div>
           ))}
         </div>
-        <VisualPlaceholder label="Annotated UI: inline marker in text, toggle pill in reading corner, bottom sheet open over reading surface showing entity card" height={340} />
+        <img
+          src="/images/hotspots/hotspot-hero.jpg"
+          alt="Contextual Layers: inline markers in reading surface with bottom sheet entity card"
+          style={{ width: '100%', borderRadius: 8, border: '1px solid rgba(255,255,255,0.06)', display: 'block' }}
+        />
       </section>
 
       {/* ── 09 DECISIONS ──────────────────────────────────────────────────────── */}
@@ -415,9 +389,6 @@ export default function ContextualLayersSlides() {
             </div>
           </div>
         </div>
-        <div style={{ marginTop: 64 }}>
-          <VisualPlaceholder label="Experiment scope diagram: what shipped in MLP vs what was deferred, and the rationale for the sequencing" height={220} />
-        </div>
       </section>
 
       {/* ── 11 SYSTEM IMPACT ──────────────────────────────────────────────────── */}
@@ -438,7 +409,21 @@ export default function ContextualLayersSlides() {
             </div>
           ))}
         </div>
-        <VisualPlaceholder label="Architecture diagram: content types (character, place, term, annotation, AI output) all flowing through the shared placement and rendering layer" height={260} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginTop: 0 }}>
+          {[
+            { src: '/images/hotspots/iterations/menu-toggle.jpg', label: 'Menu Toggle' },
+            { src: '/images/hotspots/iterations/persistent-carousel.jpg', label: 'Persistent Carousel' },
+            { src: '/images/hotspots/iterations/section-level-indicators.jpg', label: 'Section Indicators' },
+            { src: '/images/hotspots/iterations/anchored-side-panel.jpg', label: 'Anchored Side Panel' },
+            { src: '/images/hotspots/iterations/bottom-peek-surface.jpg', label: 'Bottom Peek' },
+            { src: '/images/hotspots/iterations/layered-inline.jpg', label: 'Layered Inline ✓' },
+          ].map(({ src, label }) => (
+            <div key={label} style={{ position: 'relative' }}>
+              <img src={src} alt={label} style={{ width: '100%', borderRadius: 6, border: '1px solid rgba(255,255,255,0.06)', display: 'block', opacity: label.includes('✓') ? 1 : 0.35 }} />
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.12em', textTransform: 'uppercase', color: label.includes('✓') ? 'rgba(134,239,172,0.6)' : 'rgba(255,255,255,0.18)', marginTop: 8, marginBottom: 0 }}>{label}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* ── 12 METRICS ────────────────────────────────────────────────────────── */}
@@ -486,7 +471,22 @@ export default function ContextualLayersSlides() {
           </div>
         </div>
         <div style={{ marginTop: 56 }}>
-          <VisualPlaceholder label="Results summary: engagement rate before vs after, reading duration comparison showing the guardrail held, framework adoption across teams" height={240} />
+          <p style={{ ...mono(), marginBottom: 20, color: 'rgba(255,255,255,0.25)' }}>Interactive prototype · Click to explore</p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 40, alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+              <div style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, overflow: 'hidden', background: '#111' }}>
+                <iframe
+                  src="https://adjust-fleck-61194520.figma.site"
+                  style={{ width: 390, height: 700, border: 'none', display: 'block' }}
+                  allowFullScreen
+                  title="Contextual Layers Interactive Prototype"
+                />
+              </div>
+              <p style={{ fontFamily: 'var(--mono)', fontSize: 8, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.15)', marginBottom: 0 }}>
+                Rebuilt in Figma Make · Represents final interaction model
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

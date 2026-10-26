@@ -10,51 +10,6 @@ const isTouch = () =>
   typeof window !== 'undefined' &&
   (('ontouchstart' in window) || window.matchMedia('(pointer: coarse)').matches)
 
-const INDUSTRIES = [
-  'AI & Machine Learning',
-  'Publishing & Reading',
-  'Healthcare Technology',
-  'Workforce Management',
-  'Advertising Technology',
-  'E-commerce',
-  'FinTech',
-]
-
-const PLATFORMS = [
-  'Consumer Mobile',
-  'Web Applications',
-  'SaaS Products',
-  'Internal Tools',
-  'E-reader Devices',
-  'AI-Powered Experiences',
-  'Service Design',
-  'Operational Workflows',
-]
-
-function MarqueeRow({ items, reverse = false }) {
-  const tripled = [...items, ...items, ...items]
-  return (
-    <div className="marquee-row">
-      <div className={`marquee-track${reverse ? ' marquee-track--rev' : ''}`}>
-        {tripled.map((item, i) => (
-          <span key={i} className="marquee-item">
-            {item}<span className="marquee-dot"> · </span>
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function MarqueeSection() {
-  return (
-    <section className="marquee-sec">
-      <MarqueeRow items={INDUSTRIES} />
-      <MarqueeRow items={PLATFORMS} reverse />
-    </section>
-  )
-}
-
 function KeyboardHint() {
   const [vis, setVis] = useState(false)
   useEffect(() => {
@@ -110,10 +65,6 @@ function InteractiveHero() {
           Baum
         </h1>
         <div className="hero-tagline" style={{ marginBottom: 48 }}>{tagline}</div>
-        <div className="hero-ticker">
-          <MarqueeRow items={INDUSTRIES} />
-          <MarqueeRow items={PLATFORMS} reverse />
-        </div>
         <div className="hero-scroll" style={{ marginTop: 48 }}>
           <span>Scroll</span>
           <span className="hero-scroll-chevron">∨</span>
