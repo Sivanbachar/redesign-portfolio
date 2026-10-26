@@ -219,6 +219,17 @@ export default function CaseStudyOutline() {
           />
         )}
 
+        {/* Slide deck toggle — Contextual Layers */}
+        {(location.pathname === '/projects/contextual-layers' || location.pathname === '/projects/contextual-layers/slides') && (
+          <SlideDeckToggle
+            casePath="/projects/contextual-layers"
+            slidesPath="/projects/contextual-layers/slides"
+            location={location}
+            navigate={navigate}
+            setOpen={setOpen}
+          />
+        )}
+
         {/* Slide deck toggle — Rokt */}
         {(location.pathname === '/projects/rokt' || location.pathname === '/projects/rokt/slides') && (
           <SlideDeckToggle
