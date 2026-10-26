@@ -93,7 +93,7 @@ export default function AIDesign() {
           <div className="cs-2col">
             <div>
               <p className="cs-p sr">Home healthcare shift coverage was a manual process. When a nurse called out, a scheduler pulled a list of eligible nurses and contacted them one at a time by phone or text. Each outreach was a separate conversation. Most went unanswered. Of those that were answered, many nurses declined because they did not have enough information to decide: they did not know the neighborhood, the pay, or how much time was left before the shift started.</p>
-              <p className="cs-p sr">A single call-out could take a scheduler two to three hours to resolve. In that window, a patient could be without coverage.</p>
+              <p className="cs-p sr">A single callout could take a scheduler two to three hours to resolve. In that window, a patient could be without coverage.</p>
             </div>
             <div>
               <div className="cs-callout sr">
@@ -109,7 +109,7 @@ export default function AIDesign() {
           <p className="cs-p sr">The challenge was not automating the outreach. That was the easy part. The challenge was designing messages that a nurse would actually respond to when they came from a system rather than a person, while operating under a strict constraint: patient details could not be shared in nurse-facing communications.</p>
           <div className="cs-finding-grid sr" style={{ marginTop: 40 }}>
             {[
-              { tag: 'Constraint 01', h: 'No patient details', b: 'Patient name, condition, and specific address could not appear in messages sent to nurses. Privacy compliance was non-negotiable.' },
+              { tag: 'Constraint 01', h: 'No patient details', b: 'Patient name, condition, and specific address could not appear in messages sent to nurses. Privacy compliance was not negotiable.' },
               { tag: 'Constraint 02', h: 'Context still required', b: 'Nurses needed enough information to say yes with confidence. A message that omitted context would be ignored. Too little information was functionally the same as no message.' },
               { tag: 'Constraint 03', h: 'Speed mattered', b: 'A system that took as long as manual outreach to fill a vacancy was not meaningfully better. The design had to support fast decisions.' },
             ].map(({ tag, h, b }) => (
@@ -127,8 +127,8 @@ export default function AIDesign() {
           <h2 className="cs-h2 sr">Structured group outreach with the minimum information needed to act.</h2>
           <div className="cs-2col">
             <div>
-              <p className="cs-p sr">I designed a group-based push notification model. Instead of sequential one-to-one outreach, the system sent simultaneous messages to a pool of eligible nurses. The message was structured around the minimum information a nurse needed to make a decision: shift time, a neighborhood area rather than a specific address, estimated pay, and an urgency signal showing how much time remained before the shift started.</p>
-              <p className="cs-p sr">The response flow reduced what had been a multi-step conversation into a single in-app confirmation. The first nurse to claim the shift locked it. Schedulers were notified after the vacancy was filled, not during the process.</p>
+              <p className="cs-p sr">I designed a group based push notification model. Instead of sequential one to one outreach, the system sent simultaneous messages to a pool of eligible nurses. The message was structured around the minimum information a nurse needed to make a decision: shift time, a neighborhood area rather than a specific address, estimated pay, and an urgency signal showing how much time remained before the shift started.</p>
+              <p className="cs-p sr">The response flow reduced what had been a multi step conversation into a single in app confirmation. The first nurse to claim the shift locked it. Schedulers were notified after the vacancy was filled, not during the process.</p>
             </div>
             <div>
               <p className="cs-p sr">The message format went through several iterations before it worked. Early versions read like generic system alerts and nurses ignored them. The shift was in how the information was ordered. Urgency first, because if the shift starts in four hours and the nurse is unavailable, nothing else matters. Pay second, because that was the factor nurses said they needed to make a confident decision. Area context third, phrased to convey neighborhood without identifying the patient.</p>
@@ -145,7 +145,7 @@ export default function AIDesign() {
           <h2 className="cs-h2 sr">Schedulers stopped living on their phones.</h2>
           <div className="cs-outcome-row sr">
             {[
-              { label: 'Shift fill ease', val: '60% easier\nReported by schedulers post-launch' },
+              { label: 'Shift fill ease', val: '60% easier\nReported by schedulers post launch' },
               { label: 'Manager savings', val: '$5,120 / year\nPer manager, from reduced manual outreach' },
               { label: 'Nurse autonomy', val: '75% improvement\nIn perceived control over shift selection' },
               { label: 'Retention signal', val: '33% improvement\nIn nurse retention rate over 6 months' },
@@ -204,7 +204,7 @@ export default function AIDesign() {
           <div className="cs-2col">
             <div>
               <p className="cs-p sr">Kindle's search was built on keyword matching. If a reader remembered the title or author, it worked. But readers frequently search by memory, feeling, or concept. A book set in Japan that made someone cry. A scene involving a specific character they want to revisit. A theme that matches a mood they are in. Keyword search could not interpret any of those queries.</p>
-              <p className="cs-p sr">The problem appeared across multiple contexts. Library search. In-book search for specific passages. Discovery of books similar to ones a reader had already loved. Searching through personal highlights and notes. Keyword matching was the wrong model for all of them.</p>
+              <p className="cs-p sr">The problem appeared across multiple contexts. Library search. In book search for specific passages. Discovery of books similar to ones a reader had already loved. Searching through personal highlights and notes. Keyword matching was the wrong model for all of them.</p>
             </div>
             <div>
               <p className="cs-p sr">Readers who could not find what they were looking for in Kindle were leaving the product to search on Reddit, Goodreads, or Google, then returning to purchase. The platform was losing the moment of intent to external services.</p>
@@ -222,9 +222,9 @@ export default function AIDesign() {
           <div className="cs-finding-grid sr" style={{ marginTop: 40 }}>
             {[
               { tag: 'Query type 01', h: 'Vague memory search', b: 'Reader searches for a book they can partially describe. The system interprets partial title, plot detail, or fragmented memory and surfaces candidates.' },
-              { tag: 'Query type 02', h: 'In-book search', b: 'Reader searches within the book they are reading for a specific scene, passage, or character detail. Results point to a location in the text, not just a word match.' },
+              { tag: 'Query type 02', h: 'In book search', b: 'Reader searches within the book they are reading for a specific scene, passage, or character detail. Results point to a location in the text, not just a word match.' },
               { tag: 'Query type 03', h: 'Mood and theme discovery', b: 'Reader looks for something that feels like a book they loved, or fits a specific emotional need. The system matches on concept and tone rather than metadata.' },
-              { tag: 'Query type 04', h: 'Cross-library search', b: 'Reader searches across their highlights, notes, and saved passages to find something they marked and cannot locate.' },
+              { tag: 'Query type 04', h: 'Cross library search', b: 'Reader searches across their highlights, notes, and saved passages to find something they marked and cannot locate.' },
             ].map(({ tag, h, b }) => (
               <div className="cs-finding sr" key={tag}>
                 <span className="cs-finding-tag">{tag}</span>
