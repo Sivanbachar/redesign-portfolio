@@ -241,7 +241,7 @@ export default function AIDesign() {
           <div className="cs-2col">
             <div>
               <p className="cs-p sr">When a system interprets intent rather than matching exact strings, readers have no obvious way to tell if the result is right. A reader who searches for a specific scene and gets back three passages cannot evaluate which one is correct unless they understand why each appeared.</p>
-              <p className="cs-p sr">We designed match context into each result: a short, reader-legible explanation anchored to the words and intent of the query. Not a technical explanation of the model, but a signal that connected the result back to what the reader asked for.</p>
+              <p className="cs-p sr">We designed match context into each result: a short explanation in plain language, anchored to the words and intent of the query. Not a technical explanation of the model, but a signal that connected the result back to what the reader asked for.</p>
             </div>
             <div>
               <p className="cs-p sr">We also designed explicit fallback states rather than dead ends. When the system could not find a strong match, the experience offered a clear alternative path: try a different phrasing, browse by category, or switch to keyword search. Readers who hit a wall with no exit tended not to try again.</p>
@@ -260,7 +260,7 @@ export default function AIDesign() {
             <div>
               <div className="cs-outcome-row sr" style={{ flexDirection: 'column' }}>
                 {[
-                  { label: 'Search success rate', val: 'Improved post-launch\nMore readers reaching a result they acted on' },
+                  { label: 'Search success rate', val: 'Improved post launch\nMore readers reaching a result they acted on' },
                   { label: 'Search session length', val: 'Increased meaningfully\nReaders engaging more deeply before abandoning' },
                   { label: 'Status', val: 'Shipped and measured\nLive in production across Kindle surfaces' },
                 ].map(({ label, val }) => (
@@ -324,7 +324,7 @@ export default function AIDesign() {
         <div className="cs-section">
           <span className="cs-section-label sr">Task</span>
           <h2 className="cs-h2 sr">This project did not exist. I created it.</h2>
-          <p className="cs-p sr">Leadership needed a five-year product vision and had no framework for getting there. I designed and ran a cross-functional workshop that reanchored the conversation from "what should we build" to "where are readers failing today." I identified the underlying opportunity, secured leadership alignment and funding, built a prioritization matrix based on customer needs and business goals, and translated the vision into annual deliverables that Product and Engineering could execute against. Two years later, when AI made the concept technically viable, the groundwork was already in place. I was the concept originator and sole designer from the original workshop through the MLP beta.</p>
+          <p className="cs-p sr">Leadership needed a five-year product vision and had no framework for getting there. I designed and ran a cross functional workshop that reanchored the conversation from "what should we build" to "where are readers failing today." I identified the underlying opportunity, secured leadership alignment and funding, built a prioritization matrix based on customer needs and business goals, and translated the vision into annual deliverables that Product and Engineering could execute against. Two years later, when AI made the concept technically viable, the groundwork was already in place. I was the concept originator and sole designer from the original workshop through the MLP beta.</p>
         </div>
 
         <div className="cs-section">
@@ -336,11 +336,11 @@ export default function AIDesign() {
               <p className="cs-p sr">I worked through six distinct interaction directions: a menu toggle, a persistent carousel, section-level indicators, an anchored side panel, a bottom peek drawer, and a layered inline model. The first five were rejected against the same constraint. The layered inline model was the only direction that kept the reader inside the reading surface while making supplemental content accessible.</p>
             </div>
             <div>
-              <p className="cs-p sr">The final design had three components: inline markers embedded in the text, a reader-controlled toggle, and a bottom sheet that surfaced content without displacing the reading surface. The placement engine surfaced 2 to 4 relevant entities per page rather than annotating everything, because a page that looked annotated had already broken the reading-first constraint.</p>
-              <p className="cs-p sr">The opt-in toggle was a deliberate sequencing decision. A push-by-default approach would have inflated early numbers and generated trust complaints that could have ended the feature before it proved its value. Opt-in gave readers control before asking for engagement, and gave us clean behavioral signal to measure the model against.</p>
+              <p className="cs-p sr">The final design had three components: inline markers embedded in the text, a reader controlled toggle, and a bottom sheet that surfaced content without displacing the reading surface. The placement engine surfaced 2 to 4 relevant entities per page rather than annotating everything, because a page that looked annotated had already broken the reading first constraint.</p>
+              <p className="cs-p sr">The opt in toggle was a deliberate sequencing decision. A push by default approach would have inflated early numbers and generated trust complaints that could have ended the feature before it proved its value. Giving readers control before asking for engagement gave us clean behavioral signal to measure the model against.</p>
               <div className="cs-insight sr" style={{ marginTop: 32 }}>
                 <span className="cs-insight-label">Key Design Decision</span>
-                <p className="cs-insight-text">The framework was designed to accept AI-generated content from the start, even though the first beta shipped with curated content only. Validating the delivery model before introducing content quality as a variable was the right sequencing. Phase one proved the interaction. Phase two proved the content.</p>
+                <p className="cs-insight-text">The framework was designed to accept AI generated content from the start, even though the first beta shipped with curated content only. Validating the delivery model before introducing content quality as a variable was the right sequencing. Phase one proved the interaction. Phase two proved the content.</p>
               </div>
             </div>
           </div>
@@ -351,7 +351,7 @@ export default function AIDesign() {
           <h2 className="cs-h2 sr">The delivery model worked. The framework became the platform.</h2>
           <div className="cs-outcome-row sr">
             {[
-              { label: 'Engagement', val: 'Up post-experiment\nPush-based delivery outperformed pull baseline' },
+              { label: 'Engagement', val: 'Up post experiment\nPush based delivery outperformed pull baseline' },
               { label: 'Reading duration', val: 'Stable\nCore guardrail held across experiment cohorts' },
               { label: 'Platform outcome', val: 'MLP beta shipped\nFramework adopted by subsequent feature teams' },
               { label: 'Design role', val: 'Concept to beta\nSole designer across the full arc' },
@@ -412,7 +412,7 @@ export default function AIDesign() {
             {
               n: '01',
               h: 'Give users control before asking for engagement',
-              p1: 'In all three products, the interaction model that gave users control before asking them to engage worked better than one that assumed they would engage automatically. The opt-in toggle in Contextual Layers. The nurse response flow where the nurse claimed the shift rather than being assigned it. The ability to retry or switch modes in natural language search.',
+              p1: 'In all three products, the interaction model that gave users control before asking them to engage worked better than one that assumed they would engage automatically. The opt in toggle in Contextual Layers. The nurse response flow where the nurse claimed the shift rather than being assigned it. The ability to retry or switch modes in natural language search.',
               p2: 'Approaches that maximized early exposure to the experience consistently generated resistance before generating adoption. Giving users the option to engage is not a weaker design than pushing engagement. It is often the more durable one.',
             },
             {
@@ -431,7 +431,7 @@ export default function AIDesign() {
               n: '04',
               h: 'Design the failure state as carefully as the success state',
               p1: 'In each product, the failure state was where the experience either recovered or lost the user permanently. Nurses who received a message with too little information did not try again. Readers who hit a dead end in search without a clear alternative stopped searching. Contextual Layers readers who received irrelevant suggestions turned the feature off.',
-              p2: 'The failure state is not an edge case to handle after the main design is done. In experiences that involve uncertainty, partial information, or automated decision-making, it is a primary design surface.',
+              p2: 'The failure state is not an edge case to handle after the main design is done. In experiences that involve uncertainty, partial information, or automated decision making, it is a primary design surface.',
             },
           ].map(({ n, h, p1, p2 }) => (
             <div className="sr" key={n} style={{ padding: '40px 0', borderTop: '1px solid var(--bdr)' }}>
@@ -455,7 +455,7 @@ export default function AIDesign() {
           <h2 className="cs-h2 sr">Go deeper on any of the three products.</h2>
           <div className="cs-finding-grid sr" style={{ marginTop: 40 }}>
             {[
-              { tag: 'Swift Shift', b: 'The full 0 to 1 build: scheduling platform, nurse app, call-out redistribution model, and design system.', path: '/projects/swiftshift' },
+              { tag: 'Swift Shift', b: 'The full 0 to 1 build: scheduling platform, nurse app, callout redistribution model, and design system.', path: '/projects/swiftshift' },
               { tag: 'Contextual Layers', b: 'The full case study: workshop origin, six directions explored, system impact, and experiment design.', path: '/projects/contextual-layers' },
               { tag: 'Contextual Layers Slides', b: 'Presentation-format version of the Contextual Layers case study, built for interviews.', path: '/projects/contextual-layers/slides' },
             ].map(({ tag, b, path }) => (
