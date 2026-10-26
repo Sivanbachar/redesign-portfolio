@@ -33,6 +33,16 @@ export const PROJECTS = [
     status: 'available',
   },
   {
+    id: 'ai-design',
+    title: 'Designing with AI',
+    company: 'Amazon · Swift Shift',
+    type: 'AI Experience Design',
+    tagline: 'Three products. Three different ways AI can earn trust — or lose it.',
+    thumbBg: 'linear-gradient(135deg, #0f1a2e 0%, #080d1a 100%)',
+    thumbIcon: '⬡',
+    status: 'available',
+  },
+  {
     id: 'rokt',
     title: 'Rokt Ads',
     company: 'Rokt · Ad Tech',

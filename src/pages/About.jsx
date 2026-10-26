@@ -278,6 +278,32 @@ export default function About() {
           </div>
         </div>
 
+        {/* Case studies */}
+        <div className="sr" style={{ marginBottom: 80 }}>
+          <h2 className="resume-h">Case studies</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 1, border: '1px solid var(--bdr)', borderRadius: 8, overflow: 'hidden' }}>
+            {[
+              { title: 'Contextual Layers', co: 'Amazon · Kindle', desc: 'A new model for surfacing knowledge within reading without disrupting it.', path: '/projects/contextual-layers' },
+              { title: 'Book Pins', co: 'Amazon · Kindle', desc: 'Converted a stalled three-year vision into a funded product direction. Reached 446K readers.', path: '/projects/bookpins' },
+              { title: 'Swift Shift', co: 'Swift Shift', desc: '0 to 1 healthcare staffing platform. No PM, no brief. Defined what to build and built it.', path: '/projects/swiftshift' },
+              { title: 'Rokt Ads', co: 'Rokt · Ad Tech', desc: 'Built an experimentation system from scratch. Converted a design team into a continuous learning operation.', path: '/projects/rokt' },
+              { title: 'Designing with AI', co: 'Amazon · Swift Shift', desc: 'Three products. Three different ways AI can earn trust — or lose it. SwiftShift bots, Kindle NL search, Contextual Layers.', path: '/projects/ai-design' },
+            ].map(({ title, co, desc, path }) => (
+              <div
+                key={title}
+                onClick={() => navigate(path)}
+                style={{ padding: '28px 28px', background: 'var(--bg1)', cursor: 'pointer', transition: 'background 0.15s' }}
+                onMouseEnter={e => e.currentTarget.style.background = 'var(--bg2)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'var(--bg1)'}
+              >
+                <p style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--txt3)', marginBottom: 10 }}>{co}</p>
+                <p style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 500, color: 'var(--txt)', marginBottom: 10, lineHeight: 1.3 }}>{title}</p>
+                <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--txt2)', lineHeight: 1.6, marginBottom: 0 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Outside work */}
         <div className="outside-sec sr">
           <h2 className="resume-h">Outside work</h2>
