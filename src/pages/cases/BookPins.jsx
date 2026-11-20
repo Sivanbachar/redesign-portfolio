@@ -107,7 +107,6 @@ export default function BookPins() {
 
         {/* HOW IT STARTED */}
         <div className="cs-section">
-          <span className="cs-section-label sr">How It Started</span>
           <h2 className="cs-h2 sr">The team had a direction problem. I reframed it as a user problem.</h2>
           <div className="cs-2col">
             <div>
@@ -141,7 +140,6 @@ export default function BookPins() {
 
         {/* ORIGIN */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Origin</span>
           <h2 className="cs-h2 sr">Book Pins didn't exist until I built the argument for it.</h2>
           <p className="cs-p sr">There was no brief. Leadership had a mandate to define a three-year vision and no mechanism for doing it. I created that mechanism: a cross-functional workshop that converted a stalled strategy conversation into a concrete funded direction. After the workshop surfaced reference behavior as the most critical unmet need, I didn't wait for an assignment. I developed the product concept, challenged existing assumptions about in-page UI, and drove the direction that became the funded project.</p>
           <div className="cs-outcome-row sr">
@@ -162,7 +160,6 @@ export default function BookPins() {
 
         {/* OVERVIEW */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Overview</span>
           <h2 className="cs-h2 sr">I invented a new reading behavior. Then built the product that made it possible.</h2>
           <div className="cs-2col">
             <div>
@@ -201,7 +198,6 @@ export default function BookPins() {
 
         {/* IDENTIFYING THE OPPORTUNITY */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Identifying the Opportunity</span>
           <h2 className="cs-h2 sr">The problem space</h2>
           <div className="cs-2col">
             <div>
@@ -244,7 +240,6 @@ export default function BookPins() {
 
         {/* RESEARCH */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Research</span>
           <h2 className="cs-h2 sr">Approach</h2>
           <div className="cs-2col">
             <div>
@@ -271,7 +266,6 @@ export default function BookPins() {
 
         {/* IDEATION */}
         <div className="cs-section">
-          <span className="cs-section-label">Ideation</span>
           <h2 className="cs-h2 sr">Displacing an assumption</h2>
           <div className="cs-2col">
             <div>
@@ -358,7 +352,6 @@ export default function BookPins() {
 
         {/* FINAL SOLUTION */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Final Solution</span>
           <h2 className="cs-h2 sr">Book Pins</h2>
           <p className="cs-p sr" style={{ fontSize: 16, fontStyle: 'italic', color: 'var(--txt)', marginBottom: 8 }}>Reference in context. No page exits.</p>
           <p className="cs-p sr">Book Pins introduces a new interaction model that allows readers to reference content without leaving the page. Instead of navigating to saved highlights or notes, readers can bring relevant content into view and interact with it directly within the reading experience.</p>
@@ -413,7 +406,6 @@ export default function BookPins() {
 
         {/* REDDIT FEEDBACK */}
         <div className="cs-section">
-          <span className="cs-section-label sr">User Feedback</span>
           <h2 className="cs-h2 sr">Hear it from readers.</h2>
           <p className="cs-p sr">Book Pins resonated immediately after launch. Readers found use cases we hadn't fully anticipated, from religious study plans to fantasy map referencing, validating that the interaction model was flexible enough to support diverse reading behaviors.</p>
           <div className="sr bp-reddit-grid" style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
@@ -472,7 +464,6 @@ export default function BookPins() {
 
         {/* IMPACT */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Impact</span>
           <h2 className="cs-h2 sr">Book Pins fundamentally changed how readers interact with information.</h2>
           <p className="cs-p sr">Instead of navigating away to manage saved content, readers could engage with it directly leading to deeper interaction, higher retention and new reading behaviors.</p>
           <div className="cs-kpi-row sr">
@@ -506,7 +497,6 @@ export default function BookPins() {
 
         {/* LEARNINGS */}
         <div className="cs-section">
-          <span className="cs-section-label sr">What I Learned From This Project</span>
           <h2 className="cs-h2 sr">What I learned from this project.</h2>
           <div className="cs-finding-grid sr">
             {[

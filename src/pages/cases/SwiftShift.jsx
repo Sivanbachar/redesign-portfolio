@@ -52,7 +52,6 @@ export default function SwiftShift() {
 
         {/* THE PROBLEM */}
         <div className="cs-section">
-          <span className="cs-section-label sr">The Problem</span>
           <h2 className="cs-h2 sr">Filling shifts is the easy framing. The real problem was trust, speed, and coordination.</h2>
           <div className="cs-2col">
             <div>
@@ -69,7 +68,6 @@ export default function SwiftShift() {
 
         {/* MY ROLE */}
         <div className="cs-section">
-          <span className="cs-section-label sr">My Role</span>
           <h2 className="cs-h2 sr">There was no PM. Every product decision was mine.</h2>
           <div className="cs-2col">
             <div>
@@ -96,7 +94,6 @@ export default function SwiftShift() {
 
         {/* SCOPE OF WORK */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Scope of Work</span>
           <h2 className="cs-h2 sr">As the sole designer, I owned the end-to-end experience across the Swift Shift platform, spanning multiple surfaces and user types.</h2>
           <div className="cs-outcome-row sr">
             <div className="cs-outcome-cell">
@@ -121,7 +118,6 @@ export default function SwiftShift() {
 
         {/* FIELD WORK */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Understanding Real Workflows</span>
           <h2 className="cs-h2 sr">I spent a week sitting with schedulers and nurses before I designed anything.</h2>
           <div className="cs-2col">
             <div>
@@ -210,7 +206,6 @@ export default function SwiftShift() {
         </div>
 
         <div className="cs-section">
-          <span className="cs-section-label sr">The Scheduler Tool</span>
           <h2 className="cs-h2 sr">A system for seeing what needs attention and acting on it.</h2>
           <div className="cs-2col">
             <div>
@@ -256,7 +251,6 @@ export default function SwiftShift() {
 
         {/* PRIVACY */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Privacy vs. Context</span>
           <h2 className="cs-h2 sr">We couldn't show patient details. So we had to figure out what we could show.</h2>
           <div className="cs-2col">
             <div>
@@ -284,7 +278,6 @@ export default function SwiftShift() {
 
         {/* THE NURSE APP */}
         <div className="cs-section">
-          <span className="cs-section-label sr">The Nurse App</span>
           <h2 className="cs-h2 sr">One question the mobile experience had to answer: is this shift right for me?</h2>
           <div className="cs-2col">
             <div>
@@ -324,7 +317,6 @@ export default function SwiftShift() {
 
         {/* CALL-OUT SYSTEM */}
         <div className="cs-section">
-          <span className="cs-section-label sr">The Call-Out System</span>
           <h2 className="cs-h2 sr">I identified that schedulers were the wrong people to own last-minute coverage. Nurses were.</h2>
           <div className="cs-2col">
             <div>
@@ -361,7 +353,6 @@ export default function SwiftShift() {
 
         {/* CLOCK IN/OUT */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Clock In / Clock Out</span>
           <h2 className="cs-h2 sr">Designing a reliable clock in and clock out experience</h2>
 
           {/* Intro + image */}
@@ -414,7 +405,6 @@ export default function SwiftShift() {
 
         {/* OUTCOMES */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Making Performance Visible</span>
           <h2 className="cs-h2 sr">Schedulers needed to see whether the platform was actually working.</h2>
           <div className="cs-2col">
             <div>
@@ -429,7 +419,6 @@ export default function SwiftShift() {
 
         {/* OUTCOMES */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Outcomes</span>
           <h2 className="cs-h2 sr">This wasn't a set of features. It was a platform that changed how the work got done.</h2>
           <div className="cs-2col">
             <div>

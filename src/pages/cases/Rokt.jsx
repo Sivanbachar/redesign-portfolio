@@ -55,7 +55,6 @@ export default function Rokt() {
 
         {/* BACKGROUND */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Background</span>
           <h2 className="cs-h2 sr">What is Rokt?</h2>
           <div className="cs-2col">
             <div>
@@ -69,7 +68,6 @@ export default function Rokt() {
 
         {/* BUSINESS CONTEXT */}
         <div className="cs-section">
-          <span className="cs-section-label sr">The Business Context</span>
           <h2 className="cs-h2 sr">The business problem</h2>
           <div className="cs-2col">
             <div>
@@ -86,7 +84,6 @@ export default function Rokt() {
 
         {/* MY ROLE */}
         <div className="cs-section">
-          <span className="cs-section-label sr">My Role</span>
           <h2 className="cs-h2 sr">I built the system that made the team smarter over time.</h2>
           <div className="cs-2col">
             <div>
@@ -110,7 +107,6 @@ export default function Rokt() {
 
         {/* APPROACH */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Approach</span>
           <h2 className="cs-h2 sr">I converted a design team into a learning system.</h2>
           <div className="cs-2col">
             <div>
@@ -231,7 +227,6 @@ export default function Rokt() {
 
         {/* DISCOVERY */}
         <div className="cs-section">
-          <span className="cs-section-label sr">User Research</span>
           <h2 className="cs-h2 sr">The finding that changed everything.</h2>
 
           {/* Intro + method cards */}
@@ -277,7 +272,6 @@ export default function Rokt() {
 
         {/* KEY EXPERIMENTS */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Key Experiments</span>
           <h2 className="cs-h2 sr">34 experiments · 7 verticals · 200+ tests</h2>
           <div className="cs-kpi-row sr">
             {[
@@ -313,7 +307,6 @@ export default function Rokt() {
 
         {/* IMPACT */}
         <div className="cs-section">
-          <span className="cs-section-label sr">Impact</span>
           <h2 className="cs-h2 sr">More than incremental improvements.</h2>
           <div className="cs-2col">
             <div>
@@ -337,7 +330,6 @@ export default function Rokt() {
 
         {/* LEARNINGS */}
         <div className="cs-section">
-          <span className="cs-section-label sr">What I Learned</span>
           <h2 className="cs-h2 sr">Systems learn. Designs don't.</h2>
           <div className="cs-finding-grid sr">
             {[

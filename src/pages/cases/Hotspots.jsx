@@ -75,7 +75,6 @@ export default function ContextualLayers() {
 
           {/* ORIGIN */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Origin</span>
             <h2 className="cs-h2 sr">This project didn't exist until I created it.</h2>
             <p className="cs-p sr">Leadership had a mandate to define a three-year vision and no framework for doing it. I designed and ran a cross-functional workshop that reanchored the conversation from what should we build to where are readers failing today. That shift produced the first shared direction the team had. The opportunity I surfaced in that workshop became the funded project. Two years later, when AI made it technically viable, the foundation I had already built was waiting.</p>
             <div className="cs-outcome-row sr">
@@ -96,7 +95,6 @@ export default function ContextualLayers() {
 
           {/* CONTEXT */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Context</span>
             <h2 className="cs-h2 sr">The content existed.<br />The delivery model failed.</h2>
             <div className="cs-2col">
               <div>
@@ -115,7 +113,6 @@ export default function ContextualLayers() {
 
           {/* PROBLEM */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Problem</span>
             <h2 className="cs-h2 sr">A discoverability and delivery problem,<br />not a content problem.</h2>
             <p className="cs-p sr">Supplemental content was difficult to discover, fragmented across inconsistent interaction patterns, buried in menus, and entirely disconnected from reading position. The features weren't broken. The model was.</p>
             <div className="cs-finding-grid sr">
@@ -145,7 +142,6 @@ export default function ContextualLayers() {
 
           {/* STRATEGY */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Strategy</span>
             <h2 className="cs-h2 sr">I replaced the model. Not the features.</h2>
             <div className="cs-2col">
               <div>
@@ -170,7 +166,6 @@ export default function ContextualLayers() {
 
           {/* KEY DECISIONS */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Key Decisions</span>
             <h2 className="cs-h2 sr">Four decision points that shaped the product.</h2>
             {[
               { n: '01', h: 'Toggle model: opt in by default', p1: 'Contextual Layers launches in an off state. Readers activate it. This removed the most significant objection: that push content would feel intrusive.', p2: 'The opt in model also provided a clean signal for engagement analysis. Every activation was an intentional choice, not an accidental interaction.' },
@@ -195,7 +190,6 @@ export default function ContextualLayers() {
 
           {/* TRADEOFFS */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Tradeoffs</span>
             <h2 className="cs-h2 sr">What we chose not to do.</h2>
             <div className="cs-2col">
               <div>
@@ -211,7 +205,6 @@ export default function ContextualLayers() {
 
           {/* EXPLORATION */}
           <div className="cs-section">
-            <span className="cs-section-label">Exploration</span>
             <h2 className="cs-h2 sr">Multiple strong directions. One constraint.</h2>
             <p className="cs-p sr">The constraint that eliminated most directions: any solution that requires the reader to leave the reading surface fails. We were looking for a pattern that required no help text to understand, kept the reader inside the experience, didn't add clutter to an already dense page, and felt like a framework rather than another disconnected feature sitting on top of the content.</p>
             <div className="cs-insight sr">
@@ -323,7 +316,6 @@ export default function ContextualLayers() {
 
           {/* SOLUTION */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Solution</span>
             <h2 className="cs-h2 sr">The layered reading model.</h2>
             <p className="cs-p sr">The solution wasn't a single UI pattern. It was a layered interaction model.</p>
             <p className="cs-p sr">After eliminating every direction that moved the reader off the page, one model remained. Three components define it: inline markers embedded in the text, a toggle that keeps the reader in control, and a bottom sheet that surfaces content without removing the reading surface. This establishes a scalable pattern for how supplemental content can exist within the reading experience, not alongside it.</p>
@@ -399,7 +391,6 @@ export default function ContextualLayers() {
 
           {/* SYSTEM IMPACT */}
           <div className="cs-section">
-            <span className="cs-section-label sr">System Impact</span>
             <h2 className="cs-h2 sr">I built the platform. The feature came with it.</h2>
             <p className="cs-p sr">Contextual Layers established the architecture for how in-reading features behave across Kindle. The placement engine, rendering layer, and tracking infrastructure I built are reusable across content types. New content no longer requires a new interaction pattern. It inherits the framework. Engineering cost per new content type dropped significantly. That was the goal from day one.</p>
             <div className="cs-finding-grid two-col sr" style={{ marginTop: 48 }}>
@@ -419,7 +410,6 @@ export default function ContextualLayers() {
 
           {/* METRICS */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Metrics &amp; Validation</span>
             <h2 className="cs-h2 sr">Defined success before building.<br />Measured what mattered.</h2>
             <p className="cs-p sr">The experiment was designed to validate one question above all others: does push based delivery improve engagement without degrading the reading experience? That guardrail shaped every metric we tracked.</p>
             <div className="cs-3col sr" style={{ marginTop: 32, gap: 1, border: '1px solid var(--bdr)', borderRadius: 4, overflow: 'hidden' }}>
@@ -440,7 +430,6 @@ export default function ContextualLayers() {
 
           {/* OUTCOME */}
           <div className="cs-section">
-            <span className="cs-section-label sr">Outcome</span>
             <h2 className="cs-h2 sr">A new model.<br />Not just a new feature.</h2>
             <div className="cs-2col">
               <div>
